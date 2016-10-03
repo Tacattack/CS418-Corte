@@ -29,3 +29,10 @@ body{
     height:100%;
     border: 1px solid black;
 }
+
+#Content aside h3{
+    text-align: center;
+}
+
+/*---------------------------------------------------Form CSS---------------------------------------------*/
+

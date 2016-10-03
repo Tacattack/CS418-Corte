@@ -32,7 +32,13 @@ and open the template in the editor.
                 Password: <input type="password">
                 <input type="submit" value="Register">
             </form>
-            <h1>Unstacking Exchange</h1>
+            <div>
+                <h1>Unstacking Exchange</h1>
+                <ul>
+                    <li><a href="#">View Questions</a></li>
+                    <li><a href="ask.php">Ask Question</a></li>
+                </ul>
+            </div>
         </div>
         <div id="Container">
             <div id="Content">
