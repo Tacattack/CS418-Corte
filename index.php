@@ -27,7 +27,7 @@ and open the template in the editor.
                 <input type="submit" value="Login">
             </form>
             <form class="FormRegister">
-                Email: <input type="text">
+                Email: <input type="text" name="email">
                 Username: <input type="text">
                 Password: <input type="password">
                 <input type="submit" value="Register">
