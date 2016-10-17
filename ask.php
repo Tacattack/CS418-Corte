@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>UnstackingExchange</title>
         <meta charset="UTF-8">
@@ -40,7 +40,7 @@
                 <div class="AQuestDiv">
                     <forms class="AQuest">
                         Title: <input type="text" class="ATitle" />
-                        Description: <input type="text" class="ADesc" />
+                        Description: <textarea rows="30" cols="50" name="Question"></textarea>
                     </forms>
                 </div>
             </div>
