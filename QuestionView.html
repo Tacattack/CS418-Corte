@@ -30,27 +30,20 @@
             <div class="Navigation">
                 <h1>Unstacking Exchange</h1>
                 <ul>
-                    <li><a href="index.php">View Questions</a></li>
-                    <li><a href="#">Ask Question</a></li>
+                    <li>View Questions</li>
+                    <li>Ask Question</li>
                 </ul>
             </div>
         </div>
         <div id="Container">
             <div id="Content">
-                <div class="AQuestDiv">
-                    <form>
-                        <table>
-                            <tr>
-                                <td>Title:
-                                    <br /><input type="text" class="AQuestTitle"/></td>
-                            </tr>
-                            <tr>
-                                <td>Description:
-                                    <br /><textarea rows="30" cols="100" name="Question"></textarea></td>
-                            </tr>
-                        </table>
-                        <input type="submit" value="Submit Question" />
-                    </form>
+                <div id="QuestionTitle">
+                    <h1>A placeholder title</h1>
+                </div>
+                <div class="QuestionBody">
+                    <p>A placeholder paragraph of extreme proportions because if I don't test it to the fullest I will never get a good enough size for the 
+                    CSS to actually be somewhat correct. oanonasonoanfoinsdofnos ovns;d v;sod pspjfpapfn aas nao  sinpn pajsppasodjpasmdpamsp pjmpaspmd
+                    apsndnaspn poajspjapsdmapsjpasmdpwoj   wojdapsodp[ oajspdja poajspdnuwiqw-09 9a0us0dna ais pdj apsnpa napsoc[qonpqopj-as</p>
                 </div>
             </div>
         </div>
@@ -63,24 +56,5 @@
             </aside>
         </div>
     </body>
-    
-   <?PHP 
-   /*
-    $name = $email = "";
-   
-   if($_SERVER["REQUEST_METHOD"] == "POST")
-   {
-       $name = test_input($_POST["name"]);
-       $email = test_input($_POST["email"]);
-   }
-   
-   function test_input($data)
-   {
-       $data = trim($data);
-       $data = stripslashes($data);
-       $data = htmlspecialchars($data);
-   }
-   */
-   
-    ?>
 </html>
+

@@ -27,21 +27,30 @@
                 Password: <input type="password" name='newpass' value="<?PHP echo $newpass; ?>">
                 <input type="submit" value="Register">
             </form>
-            <div>
+            <div class="Navigation">
                 <h1>Unstacking Exchange</h1>
                 <ul>
-                    <li>View Questions</li>
-                    <li>Ask Question</li>
+                    <li><a href="index.php">View Questions</a></li>
+                    <li><a href="#">Ask Question</a></li>
                 </ul>
             </div>
         </div>
         <div id="Container">
             <div id="Content">
                 <div class="AQuestDiv">
-                    <forms class="AQuest">
-                        Title: <input type="text" class="ATitle" />
-                        Description: <textarea rows="30" cols="50" name="Question"></textarea>
-                    </forms>
+                    <form>
+                        <table>
+                            <tr>
+                                <td>Title:
+                                    <br /><input type="text" class="AQuestTitle"/></td>
+                            </tr>
+                            <tr>
+                                <td>Description:
+                                    <br /><textarea rows="30" cols="100" name="Question"></textarea></td>
+                            </tr>
+                        </table>
+                        <input type="submit" value="Submit Question" />
+                    </form>
                 </div>
             </div>
         </div>

@@ -1,10 +1,5 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+<html lang="en">
     <head>
         <title>UnstackingExchange</title>
         <meta charset="UTF-8">
@@ -21,18 +16,24 @@ and open the template in the editor.
                 </div>
             </div>
             <img src="" alt=""/>
-            <form action="ask.php" method="post" class="FormLogin">
+            <form class="FormLogin">
                 Username: <input type="text">
                 Password: <input type="password">
                 <input type="submit" value="Login">
             </form>
-            <form action="ask.php" method="post" class="FormRegister">
-                Email: <input type="text">
+            <form class="FormRegister">
+                Email: <input type="text" name="email">
                 Username: <input type="text">
                 Password: <input type="password">
                 <input type="submit" value="Register">
             </form>
-            <h1>Unstacking Exchange</h1>
+            <div class="Navigation">
+                <h1>Unstacking Exchange</h1>
+                <ul>
+                    <li><a href="#">View Questions</a></li>
+                    <li><a href="ask.php">Ask Question</a></li>
+                </ul>
+            </div>
         </div>
         <div id="Container">
             <div id="Content">
