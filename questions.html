@@ -30,28 +30,25 @@
             <div class="Navigation">
                 <h1>Unstacking Exchange</h1>
                 <ul>
-                    <li><a href="questions.php">View Questions</a></li>
-                    <li><a href="#">Ask Question</a></li>
+                    <li><a href="#" class="active">View Questions</a></li>
+                    <li><A href="ask.php">Ask Question</a></li>
                 </ul>
             </div>
         </div>
         <div id="Container">
             <div id="Content">
-                <div class="AQuestDiv">
-                    <form>
-                        <table>
-                            <tr>
-                                <td>Title:
-                                    <br /><input type="text" class="AQuestTitle"/></td>
-                            </tr>
-                            <tr>
-                                <td>Description:
-                                    <br /><textarea rows="30" name="Question"></textarea></td>
-                            </tr>
-                        </table>
-                        <input type="submit" value="Submit Question" style="margin: 20px 50px; float: right"/>
-                    </form>
-                </div>
+                <ul class="QuestionList">
+                    <li><p>This is a really long title that will be a placeholder for the titles until functionality works number 1</p></li>
+                    <li><p>This is a really long title that will be a placeholder for the titles until functionality works number 2</p></li>
+                    <li><p>This is a really long title that will be a placeholder for the titles until functionality works number 3</p></li>
+                    <li><p>This is a really long title that will be a placeholder for the titles until functionality works number 4</p></li>
+                    <li><p>This is a really long title that will be a placeholder for the titles until functionality works number 5</p></li>
+                    <li><p>This is a really long title that will be a placeholder for the titles until functionality works number 6</p></li>
+                    <li><p>This is a really long title that will be a placeholder for the titles until functionality works number 7</p></li>
+                    <li><p>This is a really long title that will be a placeholder for the titles until functionality works number 8</p></li>
+                    <li><p>This is a really long title that will be a placeholder for the titles until functionality works number 9</p></li>
+                    <li><p>This is a really long title that will be a placeholder for the titles until functionality works number 10</p></li>
+                </ul>
             </div>
         </div>
         <div id="Footer">
@@ -63,24 +60,5 @@
             </aside>
         </div>
     </body>
-    
-   <?PHP 
-   /*
-    $name = $email = "";
-   
-   if($_SERVER["REQUEST_METHOD"] == "POST")
-   {
-       $name = test_input($_POST["name"]);
-       $email = test_input($_POST["email"]);
-   }
-   
-   function test_input($data)
-   {
-       $data = trim($data);
-       $data = stripslashes($data);
-       $data = htmlspecialchars($data);
-   }
-   */
-   
-    ?>
 </html>
+

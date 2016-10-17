@@ -30,7 +30,7 @@
             <div class="Navigation">
                 <h1>Unstacking Exchange</h1>
                 <ul>
-                    <li><a href="index.php">View Questions</a></li>
+                    <li><a href="questions.php">View Questions</a></li>
                     <li><a href="#">Ask Question</a></li>
                 </ul>
             </div>
@@ -46,10 +46,10 @@
                             </tr>
                             <tr>
                                 <td>Description:
-                                    <br /><textarea rows="30" cols="100" name="Question"></textarea></td>
+                                    <br /><textarea rows="30" name="Question"></textarea></td>
                             </tr>
                         </table>
-                        <input type="submit" value="Submit Question" />
+                        <input type="submit" value="Submit Question" style="margin: 20px 50px; float: right"/>
                     </form>
                 </div>
             </div>

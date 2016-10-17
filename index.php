@@ -30,7 +30,7 @@
             <div class="Navigation">
                 <h1>Unstacking Exchange</h1>
                 <ul>
-                    <li><a href="#">View Questions</a></li>
+                    <li><a href="questions.php">View Questions</a></li>
                     <li><a href="ask.php">Ask Question</a></li>
                 </ul>
             </div>
