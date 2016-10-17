@@ -28,7 +28,9 @@
                 <input type="submit" value="Register">
             </form>
             <div class="Navigation">
-                <h1>Unstacking Exchange</h1>
+                <h1>
+                    <a href="index.php"><img src="images/Logo.png" class="logo"></a>
+                </h1>
                 <ul>
                     <li><a href="questions.php">View Questions</a></li>
                     <li><A href="ask.php">Ask Question</a></li>
@@ -48,12 +50,7 @@
             </div>
         </div>
         <div id="Footer">
-            <aside>
-                <h4>Class Website</h4>
-            </aside>
-            <aside>
-                <h4>Team Members</h4>
-            </aside>
+            
         </div>
     </body>
 </html>

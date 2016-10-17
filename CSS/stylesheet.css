@@ -44,6 +44,13 @@ body{
 .Navigation h1{
     display: inline-block;
     width: 60%;
+    margin: 0;
+    padding: 0;
+}
+
+.logo{
+    width: 300px;
+    height: 75px;
 }
 
 .Navigation ul{
@@ -108,13 +115,40 @@ body{
 
 /*--------------------------------------------------Questions CSS-------------------------------------------*/
 .QuestionList{
-    width: 75%;
+    width: 95%;
     margin: 0px auto;
 }
 
-.QuestionList li{
-    display: block;
-    height: 50px;
-    margin: 1px;
+.QuestionList div{
+    width: 75%;
+    margin: 0px auto;
+    padding: 0px;
+    border: 1px solid black;
+}
+
+/*----------------------------------------------Questions Front Page----------------------------------------*/
+.PQuest{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.PQuest div{
+    width: 100%;
+    margin: 0px auto;
+    padding: 0px;
+    border: 1px solid black;
+}
+
+.TQuest{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.TQuest div{
+    width: 100%;
+    margin: 0px auto;
+    padding: 0px;
     border: 1px solid black;
 }

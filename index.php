@@ -28,7 +28,9 @@
                 <input type="submit" value="Register">
             </form>
             <div class="Navigation">
-                <h1>Unstacking Exchange</h1>
+                <h1>
+                    <a href="index.php"><img src="images/Logo.png" class="logo"></a>
+                </h1>
                 <ul>
                     <li><a href="questions.php">View Questions</a></li>
                     <li><a href="ask.php">Ask Question</a></li>
@@ -39,33 +41,24 @@
             <div id="Content">
                 <aside class="TQuest">
                     <h3>Top Questions</h3>
-                    <ul>
-                        <li>This is a really long title that will be a placeholder for the titles until functionality works number 1</li>
-                        <li>This is a really long title that will be a placeholder for the titles until functionality works number 2</li>
-                        <li>This is a really long title that will be a placeholder for the titles until functionality works number 3</li>
-                        <li>This is a really long title that will be a placeholder for the titles until functionality works number 4</li>
-                        <li>This is a really long title that will be a placeholder for the titles until functionality works number 5</li>
-                    </ul>
+                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 1</h5></div>
+                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 2</h5></div>
+                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 3</h5></div>
+                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 4</h5></div>
+                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 5</h5></div>
                 </aside>
                 <aside class="PQuest">
                     <h3>Previously Asked Questions</h3>
-                    <ul>
-                        <li>This is a really long title that will be a placeholder for the titles until functionality works number 1</li>
-                        <li>This is a really long title that will be a placeholder for the titles until functionality works number 2</li>
-                        <li>This is a really long title that will be a placeholder for the titles until functionality works number 3</li>
-                        <li>This is a really long title that will be a placeholder for the titles until functionality works number 4</li>
-                        <li>This is a really long title that will be a placeholder for the titles until functionality works number 5</li>
-                    </ul>
+                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 1</h5></div>
+                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 2</h5></div>
+                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 3</h5></div>
+                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 4</h5></div>
+                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 5</h5></div>
                 </aside>
             </div>
         </div>
         <div id="Footer">
-            <aside>
-                <h4>Class Website</h4>
-            </aside>
-            <aside>
-                <h4>Team Members</h4>
-            </aside>
+            
         </div>
     </body>
 </html>
