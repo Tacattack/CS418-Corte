@@ -65,7 +65,7 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $database = "myDB";
+        $database = "QuestionAndAnswer";
 
         // Create connection
         $conn = mysqli_connect($servername, $username, $password, $database);
@@ -75,8 +75,8 @@
             die("Connection failed: " . mysqli_connect_error());
         }
         
-        mysql_selet_db("myDB", $conn);
-        $sql="INSERT INTO Question (questionTitle, questionBody)
+        mysql_selet_db("QuestionAndAnswer", $conn);
+        $sql="INSERT INTO Questions (questionTitle, questionBody)
             VALUES
             ('$_POST[QTitle]','$_POST[QBody]')";
         

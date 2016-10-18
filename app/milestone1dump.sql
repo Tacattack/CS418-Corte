@@ -33,7 +33,7 @@ DROP TABLE IF EXISTS `Questions`;
 CREATE TABLE `Questions` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `questionTitle` NOT NULL,
-  `questinBody` NOT NULL,
+  `questionBody` NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
