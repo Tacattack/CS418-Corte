@@ -21,12 +21,12 @@
                 Password: <input type="password" name='pass' value="<?PHP echo $pass;?>">
                 <input type="submit" value="Login">
             </form>
-            <form class="FormRegister">
+            <!--<form class="FormRegister">
                 Email: <input type="text" name='email' value ="<?PHP echo $email;?>">
                 Username: <input type="text" name='newuser' value="<?PHP echo $newuser;?>">
                 Password: <input type="password" name='newpass' value="<?PHP echo $newpass; ?>">
                 <input type="submit" value="Register">
-            </form>
+            </form>-->
             <div class="Navigation">
                 <h1>
                     <a href="index.php"><img src="images/Logo.png" class="logo"></a>
