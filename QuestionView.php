@@ -17,14 +17,14 @@
             </div>
             <img src="" alt=""/>
             <form class="FormLogin">
-                Username: <input type="text" name='user' value="<?PHP echo $name; ?>">
-                Password: <input type="password" name='pass' value="<?PHP echo $pass;?>">
+                Username: <input type="text" name='user' >
+                Password: <input type="password" name='pass' >
                 <input type="submit" value="Login">
             </form>
             <!--<form class="FormRegister">
-                Email: <input type="text" name='email' value ="<?PHP echo $email;?>">
-                Username: <input type="text" name='newuser' value="<?PHP echo $newuser;?>">
-                Password: <input type="password" name='newpass' value="<?PHP echo $newpass; ?>">
+                Email: <input type="text" name='email' >
+                Username: <input type="text" name='newuser' >
+                Password: <input type="password" name='newpass' >
                 <input type="submit" value="Register">
             </form>-->
             <div class="Navigation">
