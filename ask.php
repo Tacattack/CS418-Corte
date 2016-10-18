@@ -65,25 +65,25 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
+        $dbName = "QuestionAnswer";
 
         // Create connection
-        $conn = mysqli_connect($servername, $username, $password);
-
+        $conn = mysqli_connect($servername, $username, $password, $dbName);
         // Check connection
         if (!$conn) {
             die("Connection failed: " . mysqli_connect_error());
         }
-        
-        mysql_selet_db("QuestionAnswer", $conn);
+
         $sql="INSERT INTO Questions (questionTitle, questionBody)
             VALUES
             ('$_POST[QTitle]','$_POST[QBody]')";
-        
-        if (!mysql_query($sql,$conn))
-        {
-            die('Error: ' . mysql_error());
+
+        if (mysqli_query($conn, $sql)) {
+            echo "Questions Asked successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
         }
-        echo "Thank you for posting your question";
+       
         mysqli_close($conn);
     ?>
 </html>
