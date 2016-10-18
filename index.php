@@ -17,7 +17,6 @@
             if (!$conn) {
                     die("Connection failed: " . mysqli_connect_error());
                 }
-            }
 
             //Create Table used for questions and answers
             $sql = "CREATE TABLE IF NOT EXISTS Question (
