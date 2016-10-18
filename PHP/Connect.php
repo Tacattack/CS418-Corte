@@ -12,7 +12,7 @@
             }
             
             // Create database
-            $sqlDB = "CREATE IF NOT EXISTS DATABASE QuestionAnswer";
+            $sqlDB = "CREATE DATABASE QuestionAnswer";
             if (mysqli_query($conn, $sqlDB)) {
                 echo "Database created successfully";
             } else {
