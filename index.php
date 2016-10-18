@@ -10,11 +10,11 @@
     <body>
         <div id="Header">
             <div id="header-wrapper">
-                <div id="header-links">
+                <!--<div id="header-links">
                     <a href="" id="Register">sign up</a>
                     <a href="" id="Login">log in</a>
                     <a href="" title="help">help</a>
-                </div>
+                </div>-->
             </div>
             <img src="" alt=""/>
             <form class="FormLogin">

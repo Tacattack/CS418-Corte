@@ -9,11 +9,11 @@
     <body>
         <div id="Header">
             <div id="header-wrapper">
-                <div id="header-links">
+                <!--<div id="header-links">
                     <a href="" id="Register">sign up</a>
                     <a href="" id="Login">log in</a>
                     <a href="" title="help">help</a>
-                </div>
+                </div>-->
             </div>
             <img src="" alt=""/>
             <form class="FormLogin">
@@ -44,11 +44,11 @@
                         <table>
                             <tr>
                                 <td>Title:
-                                    <br /><input type="text" class="AQuestTitle"/></td>
+                                    <br /><input type="text" class="AQuestTitle" name="QTitle"/></td>
                             </tr>
                             <tr>
                                 <td>Description:
-                                    <br /><textarea rows="30" name="Question"></textarea></td>
+                                    <br /><textarea rows="30" name="QBody"></textarea></td>
                             </tr>
                         </table>
                         <input type="submit" value="Submit Question" style="margin: 20px 50px; float: right"/>
@@ -62,23 +62,30 @@
     </body>
     
    <?PHP 
-   /*
-    $name = $email = "";
-   
-   if($_SERVER["REQUEST_METHOD"] == "POST")
-   {
-       $name = test_input($_POST["name"]);
-       $email = test_input($_POST["email"]);
-   }
-   
-   function test_input($data)
-   {
-       $data = trim($data);
-       $data = stripslashes($data);
-       $data = htmlspecialchars($data);
-   }
-   */
-   
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "myDB";
+
+        // Create connection
+        $conn = mysqli_connect($servername, $username, $password, $database);
+
+        // Check connection
+        if (!$conn) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
+        
+        mysql_selet_db("myDB", $conn);
+        $sql="INSERT INTO Question (questionTitle, questionBody)
+            VALUES
+            ('$_POST[QTitle]','$_POST[QBody]')";
+        
+        if (!mysql_query($sql,$conn))
+        {
+            die('Error: ' . mysql_error());
+        }
+        echo "Thank you for posting your question";
+        mysqli_close($conn);
     ?>
 </html>
 
