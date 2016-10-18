@@ -11,6 +11,14 @@
                 die("Connection failed: " . mysqli_connect_error());
             }
             
+            // Create database
+            $sqlDB = "CREATE DATABASE myDB";
+            if (mysqli_query($conn, $sqlDB)) {
+                echo "Database created successfully";
+            } else {
+                echo "Error creating database: " . mysqli_error($conn);
+            }
+            
             mysqli_close($conn);
             
             $servernameT = "localhost";
