@@ -63,8 +63,8 @@
     
    <?PHP 
         $servername = "localhost";
-        $username = "root";
-        $password = "";
+        $username = "admin";
+        $password = "M0n@rch$";
         $database = "QuestionAnswer";
 
         // Create connection
@@ -86,25 +86,6 @@
         }
         echo "Thank you for posting your question";
         mysqli_close($conn);
-        
-        
-            
-   /*
-    $name = $email = "";
-   
-   if($_SERVER["REQUEST_METHOD"] == "POST")
-   {
-       $name = test_input($_POST["name"]);
-       $email = test_input($_POST["email"]);
-   }
-   
-   function test_input($data)
-   {
-       $data = trim($data);
-       $data = stripslashes($data);
-       $data = htmlspecialchars($data);
-   }
-   */
     ?>
 </html>
 
