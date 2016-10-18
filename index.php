@@ -5,33 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS/stylesheet.css">
-        <?php
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-
-            // Create connection
-            $conn = mysqli_connect($servername, $username, $password, $database);
-
-            // Check connection
-            if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-
-            //Create Table used for questions and answers
-            $sql = "CREATE TABLE IF NOT EXISTS Question (
-            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-            questionTitle NOT NULL,
-            questionBody NOT NULL
-            )";
-
-            if (mysqli_query($conn, $sql)) {
-                echo "Table QuestionAnswer created successfully";
-            } else {
-                echo "Error creating table: " . mysqli_error($conn);
-            }
-            mysqli_close($conn);
-        ?>
+        <?php require_once('Connect.php'); ?>
     </head>
     <body>
         <div id="Header">
