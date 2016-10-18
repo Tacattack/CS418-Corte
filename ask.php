@@ -62,9 +62,7 @@
     </body>
     
    <?PHP 
-        echo gethostname();
-   
-        $servername = "localhost";
+        $servername = "ODUCS418_Tacattack";
         $username = "admin";
         $password = "M0n@rch$";
         $database = "QuestionAnswer";
