@@ -2,7 +2,6 @@
 
 require_once("redirected.php");
 require_once("PHP/Connect.php");
-require_once("PHP/CreateTable.php");
 if(isset($_POST["submit"]))
 {
     //form submitted
