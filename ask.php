@@ -62,13 +62,13 @@
     </body>
     
    <?PHP 
-        $servername = "ODUCS418_Tacattack";
-        $username = "admin";
-        $password = "M0n@rch$";
-        $database = "QuestionAnswer";
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "QuestionAnswer";
 
         // Create connection
-        $conn = mysqli_connect($servername, $username, $password, $database);
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
 
         // Check connection
         if (!$conn) {
