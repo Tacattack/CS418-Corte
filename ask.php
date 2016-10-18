@@ -65,10 +65,10 @@
         $servername = "localhost";
         $username = "root";
         $password = "";
-        $database = "QuestionAnswer";
+        $dbname = "QuestionAnswer";
 
         // Create connection
-        $conn = mysqli_connect($servername, $username, $password, $database);
+        $conn = mysqli_connect($servername, $username, $password, $dbname);
 
         // Check connection
         if (!$conn) {
@@ -86,25 +86,6 @@
         }
         echo "Thank you for posting your question";
         mysqli_close($conn);
-        
-        
-            
-   /*
-    $name = $email = "";
-   
-   if($_SERVER["REQUEST_METHOD"] == "POST")
-   {
-       $name = test_input($_POST["name"]);
-       $email = test_input($_POST["email"]);
-   }
-   
-   function test_input($data)
-   {
-       $data = trim($data);
-       $data = stripslashes($data);
-       $data = htmlspecialchars($data);
-   }
-   */
     ?>
 </html>
 
