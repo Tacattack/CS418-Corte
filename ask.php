@@ -62,6 +62,8 @@
     </body>
     
    <?PHP 
+        echo gethostname();
+   
         $servername = "localhost";
         $username = "admin";
         $password = "M0n@rch$";
