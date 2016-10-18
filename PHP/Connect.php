@@ -12,7 +12,7 @@
             }
 
             // Create database
-            $sqldb = "CREATE DATABASE myDB";
+            $sqldb = "CREATE DATABASE QuestionAnswer";
             if (mysqli_query($conn, $sqldb)) {
                 echo "Database created successfully";
             } else {
@@ -20,10 +20,10 @@
             }
             
             //Create Table used for questions and answers
-            $sql = "CREATE TABLE IF NOT EXISTS Question (
+            $sql = "CREATE TABLE IF NOT EXISTS Questions (
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-            questionTitle NOT NULL,
-            questionBody NOT NULL
+            questionTitle CHAR(250) NOT NULL,
+            questionBody CHAR(250) NOT NULL
             )";
 
             if (mysqli_query($conn, $sql)) {
