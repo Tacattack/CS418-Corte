@@ -1,67 +1,5 @@
-<?php
-
-require_once("redirected.php");
-if(isset($_POST["submit"]))
-{
-    //form submitted
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    
-    //Hard coded until mysql is working with it
-    if($username == "admin" && $password == "cs518pa$$")
-    {
-        redirect_to("loggedin.html");
-    }
-    else if($username == "jbrunelle" && $password == "M0n@rch$")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "pvenkman" && $password == "imadoctor" )
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "dbarrett" && $password == "fr1ed3GGS")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "winston" && $password == "zeddM0r3")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "gozer" && $password == "d3$truct0R")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "slimer" && $password == "f33dM3")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "keymaster" && $password == "n0D@na")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "staypuft" && $password == "m@r$hM@ll0w")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "nbenfiel" && $password == "password")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "tcorte" && $password == "password")
-    {
-          redirect_to("loggedin.html");
-    }
-}
-else
-{
-  $username = "";   
-}
-
-?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>UnstackingExchange</title>
         <meta charset="UTF-8">
@@ -71,24 +9,21 @@ else
     <body>
         <div id="Header">
             <div id="header-wrapper">
-                <!--<div id="header-links">
-                    <a href="" id="Register">sign up</a>
-                    <a href="" id="Login">log in</a>
-                    <a href="" title="help">help</a>
-                </div>-->
+                <div id="header-links">
+                </div>
             </div>
             <img src="" alt=""/>
-            <form action="index.php" method="post" class="FormLogin">
-                Username: <input type="text" name="username" value="" <?php echo htmlspecialchars($username) ?>>
-                Password: <input type="password"name="password" value=""> 
-               <input type="submit" name="submit" value="Login">
-            </form>
-            <!--<form class="FormRegister">
+            <!--form class="FormLogin">
+                Username: <input type="text">
+                Password: <input type="password">
+                <input type="submit" value="Login">
+            </form-->
+            <!--form class="FormRegister">
                 Email: <input type="text" name="email">
                 Username: <input type="text">
                 Password: <input type="password">
                 <input type="submit" value="Register">
-            </form>-->
+            </form-->
             <div class="Navigation">
                 <h1>
                     <a href="index.php"><img src="images/Logo.png" class="logo"></a>
