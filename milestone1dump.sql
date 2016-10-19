@@ -20,8 +20,7 @@
 -- Current Database: `QuestionAnswer`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `QuestionAnswer` /*!40100 DEFAULT CHARA
-CTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `QuestionAnswer` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `QuestionAnswer`;
 
@@ -60,4 +59,3 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2016-10-19 13:40:20
-~
