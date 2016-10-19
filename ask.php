@@ -51,7 +51,7 @@
                                     <br /><textarea rows="30" name="QBody"></textarea></td>
                             </tr>
                         </table>
-                        <input type="submit" value="Submit Question" style="margin: 20px 50px; float: right"/>
+                        <input type="submit" name="submit" value="Submit Question" style="margin: 20px 50px; float: right"/>
                         <?PHP 
                             if(isset($_POST["submit"]))
                             {
