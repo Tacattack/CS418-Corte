@@ -40,16 +40,31 @@
         <div id="Container">
             <div id="Content">
                 <div class="QuestionList">
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 1</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 2</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 3</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 4</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 5</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 6</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 7</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 8</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 9</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 10</h5></div>
+                    <?php
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbName = "QuestionAnswer";
+
+                        // Create connection
+                        $conn = mysqli_connect($servername, $username, $password, $dbName);
+                        
+                        // Check connection
+                        if (!$conn) {
+                            die("Connection failed: " . mysqli_connect_error());
+                        }
+                        
+                        $sql = "SELECT questionTitle FROM Questions";
+                        $result = mysqli_query($conn, $sql);
+                        
+                        if (mysqli_num_rows($result) > 0)
+                        {
+                            while ($row = mysqli_fetch_assoc($result))
+                            {
+                                echo "<div><h5>".result['questionTitle']."</h5></div>";
+                            }
+                        }
+                    ?>
                 </div>
             </div>
         </div>
