@@ -66,10 +66,12 @@
                                 if (!$conn) {
                                     die("Connection failed: " . mysqli_connect_error());
                                 }
+                                
+                                $QuestionTitle = mysqli_real_escape_string($conn, filter_input(INPUT_POST, 'QTitle'));
+                                $QuestionBody = mysqli_real_escape_string($conn, filter_input(INPUT_POST, 'QBody'));
 
                                 $sql="INSERT INTO Questions (questionTitle, questionBody)
-                                    VALUES
-                                    ('$_POST[QTitle]','$_POST[QBody]')";
+                                    VALUES('QuestionTitle', 'QuestionBody')";
 
                                 if (mysqli_query($conn, $sql)) {
                                     echo "Questions Asked successfully";
