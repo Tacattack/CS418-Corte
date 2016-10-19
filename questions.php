@@ -63,7 +63,11 @@
                             {
                                 echo "<div><h5>".result['questionTitle']."</h5></div>";
                             }
+                        }else {
+                            echo "0 results";
                         }
+                        
+                        mysqli_close($conn);
                     ?>
                 </div>
             </div>
