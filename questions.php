@@ -61,7 +61,7 @@
                         {
                             while ($row = mysqli_fetch_assoc($result))
                             {
-                                echo "<div><h5>".result['questionTitle']."</h5></div>";
+                                echo "<div><h5>".row['questionTitle']."</h5></div>";
                             }
                         }else {
                             echo "0 results";
