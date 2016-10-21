@@ -17,8 +17,8 @@ $QuestionBody = $_POST['QBody'];
 $QuestionTitle = mysqli_real_escape_string($QuestionTitle);
 $QuestionBody = mysqli_real_escape_string($QuestionBody);
 
-$sql = "INSERT INTO Questions ('id', 'questionTitle', 'questionBody', 'answerBody')
-    VALUES(NULL, '$QuestionTitle', '$QuestionBody', NULL);";
+$sql = "INSERT INTO Questions ('questionTitle', 'questionBody')
+    VALUES('$QuestionTitle', '$QuestionBody')";
 
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
