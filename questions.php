@@ -63,9 +63,13 @@
                         
                         if (mysqli_num_rows($result) > 0)
                         {
-                            while ($row = mysqli_fetch_assoc($result))
+                            while ($row = mysqli_fetch_assoc())
                             {
-                                echo row['questionTitle'];
+                                echo "<div>";
+                                echo "<h5>";
+                                echo $row['questionTitle'];
+                                echo "</h5>";
+                                echo "</div>";
                             }
                         }else {
                             echo "0 results";
