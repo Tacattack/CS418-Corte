@@ -11,7 +11,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "INSERT INTO MyGuests (questionTitle, questionBody)
+$sql = "INSERT INTO Questions (questionTitle, questionBody)
 VALUES ('Question From a Game Dev', 'How Do?')";
 
 if (mysqli_query($conn, $sql)) {
