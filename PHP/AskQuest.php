@@ -1,9 +1,25 @@
 <?php
-                    $QuestionTitle = $_GET["QTitle"];
-                    $QuestionBody = $_GET["QBody"];
-                    
-                    mysql_connect("localhost", "root", "");
-                    mysql_select_db("Questions");
-                    mysql_query("insert into Questions values('$QuestionTitle', '$QuestionBody')");
+$servername = "localhost";
+$username = "username";
+$password = "password";
+$dbname = "QuestionAnswer";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+$sql = "INSERT INTO MyGuests (questionTitle, questionBody)
+VALUES ('Question From a Game Dev', 'How Do?')";
+
+if (mysqli_query($conn, $sql)) {
+    echo "New record created successfully";
+} else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+}
+
+mysqli_close($conn);
 ?>
 

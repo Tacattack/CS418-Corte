@@ -40,7 +40,7 @@
         <div id="Container">
             <div id="Content">
                 <div class="AQuestDiv">
-                    <form name="AskQuestion" method="post">
+                    <form name="AskQuestion" method="post" action="PHP/AskQuest.php">
                         <table>
                             <tr>
                                 <td>Title:
@@ -59,15 +59,6 @@
         <div id="Footer">
             
         </div>
-        
-        <script type="text/javascript">
-            function foo(){
-                var xmlhttp;
-                xmlhttp = new XMLHTTPRequest();
-                xmlhttp.open("GET", "PHP/AskQuest.php?QuestionTitle="+document.getElementByName("QTitle").value+"$QuestionBody="+document.getElementsByName("QBody").value,false);
-                xmlhttp.send(null);
-            }
-        </script>
     </body>
 </html>
 
