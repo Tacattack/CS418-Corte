@@ -53,17 +53,13 @@
                         if (!$conn) {
                             die("Connection failed: " . mysqli_connect_error());
                         }
-                        else 
-                        {
-                            echo "Connection successful!";
-                        }
                         
                         $sql = "SELECT questionTitle FROM Questions";
                         $result = mysqli_query($conn, $sql);
                         
                         if (mysqli_num_rows($result) > 0)
                         {
-                            while ($row = mysqli_fetch_assoc())
+                            while ($row = mysqli_fetch_assoc($result))
                             {
                                 echo "<div>";
                                 echo "<h5>";
@@ -72,7 +68,11 @@
                                 echo "</div>";
                             }
                         }else {
-                            echo "0 results";
+                            echo "<div>";
+                            echo "<h5>";
+                            echo "0 Results Found";
+                            echo "</h5>";
+                            echo "</div>";
                         }
                         
                         mysqli_close($conn);
