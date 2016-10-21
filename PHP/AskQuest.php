@@ -17,10 +17,6 @@ $QuestionBody = $_POST['QBody'];
 $QuestionTitle = mysqli_real_escape_string($QuestionTitle);
 $QuestionBody = mysqli_real_escape_string($QuestionBody);
 
-$QuestionID = $_GET['id'];
-if (! is_numeric($QuestionID))
-    die('invalid question id');
-
 $sql = "INSERT INTO Questions ('id', 'questionTitle', 'questionBody', 'answerBody')
     VALUES(NULL, '$QuestionTitle', '$QuestionBody', NULL);";
 
