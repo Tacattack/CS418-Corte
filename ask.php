@@ -55,6 +55,9 @@
                         <?PHP 
                             if(isset($_POST["submit"]))
                             {
+                                $QuestionTitle = $_GET["QTitle"];
+                                $QuestionBody = $_GET["QBody"];
+                                
                                 $servername = "localhost";
                                 $username = "root";
                                 $password = "";
@@ -67,18 +70,8 @@
                                     die("Connection failed: " . mysqli_connect_error());
                                 }
                                 
-                                $QuestionTitle = mysqli_real_escape_string($conn, filter_input(INPUT_POST, 'QTitle'));
-                                $QuestionBody = mysqli_real_escape_string($conn, filter_input(INPUT_POST, 'QBody'));
-
-                                $sql="INSERT INTO Questions (questionTitle, questionBody)
-                                    VALUES('QuestionTitle', 'QuestionBody')";
-
-                                if (mysqli_query($conn, $sql)) {
-                                    echo "Questions Asked successfully";
-                                } else {
-                                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                                }
-
+                                mysqli_query("INSERT INTO Questions VALUES('QuestionTitle','QuestionBody')");
+                                
                                 mysqli_close($conn);
                             }
                         ?>
