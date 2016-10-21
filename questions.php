@@ -54,7 +54,7 @@
                             die("Connection failed: " . mysqli_connect_error());
                         }
                         
-                        $sql = "SELECT questionTitle FROM Questions";
+                        $sql = "SELECT id, questionTitle, questionBody FROM Questions";
                         $result = mysqli_query($conn, $sql);
                         
                         if (mysqli_num_rows($result) > 0)
