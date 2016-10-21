@@ -112,11 +112,43 @@ else
                 </aside>
                 <aside class="PQuest">
                     <h3>Previously Asked Questions</h3>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 1</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 2</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 3</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 4</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 5</h5></div>
+                    <?php
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbName = "QuestionAnswer";
+
+                        // Create connection
+                        $conn = mysqli_connect($servername, $username, $password, $dbName);
+                        
+                        // Check connection
+                        if (!$conn) {
+                            die("Connection failed: " . mysqli_connect_error());
+                        }
+                        
+                        $sql = "SELECT id, questionTitle, questionBody, answerBody FROM Questions";
+                        $result = mysqli_query($conn, $sql);
+                        
+                        if (mysqli_num_rows($result) > 0)
+                        {
+                            while ($row = mysqli_fetch_assoc($result))
+                            {
+                                echo "<div>";
+                                echo "<h5>";
+                                echo $row["questionTitle"];
+                                echo "</h5>";
+                                echo "</div>";
+                            }
+                        }else {
+                            echo "<div>";
+                            echo "<h5>";
+                            echo "0 Results Found";
+                            echo "</h5>";
+                            echo "</div>";
+                        }
+                        
+                        mysqli_close($conn);
+                    ?>
                 </aside>
             </div>
         </div>

@@ -11,8 +11,18 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "INSERT INTO Questions (questionTitle, questionBody)
-VALUES ('Question From a Game Dev', 'How Do?')";
+$QuestionTitle = $_POST['QTitle'];
+$QuestionBody = $_POST['QBody'];
+
+$QuestionTitle = mysqli_real_escape_string($QuestionTitle);
+$QuestionBody = mysqli_real_escape_string($QuestionBody);
+
+$QuestionID = $_GET['id'];
+if (! is_numeric($QuestionID))
+    die('invalid question id');
+
+$sql = "INSERT INTO Questions ('id', 'questionTitle', 'questionBody', 'answerBody')
+    VALUES(NULL, '$QuestionTitle', '$QuestionBody', NULL);";
 
 if (mysqli_query($conn, $sql)) {
     echo "New record created successfully";
