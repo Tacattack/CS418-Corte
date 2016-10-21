@@ -40,7 +40,26 @@
         <div id="Container">
             <div id="Content">
                 <div class="QuestionList">
-                    
+                    <?php
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbName = "QuestionAnswer";
+
+                        // Create connection
+                        $conn = mysqli_connect($servername, $username, $password, $dbName);
+                        
+                        // Check connection
+                        if (!$conn) {
+                            die("Connection failed: " . mysqli_connect_error());
+                        }
+                        else 
+                        {
+                            echo "Coonection successful!";
+                        }
+                        
+                        mysqli_close($conn);
+                    ?>
                 </div>
             </div>
         </div>
