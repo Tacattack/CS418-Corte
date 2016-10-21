@@ -40,7 +40,7 @@
         <div id="Container">
             <div id="Content">
                 <div class="AQuestDiv">
-                    <form method="post">
+                    <form name="AskQuestion" method="post">
                         <table>
                             <tr>
                                 <td>Title:
@@ -52,29 +52,6 @@
                             </tr>
                         </table>
                         <input type="submit" name="submit" value="Submit Question" style="margin: 20px 50px; float: right"/>
-                        <?PHP 
-                            if(isset($_POST["submit"]))
-                            {
-                                $QuestionTitle = $_GET["QTitle"];
-                                $QuestionBody = $_GET["QBody"];
-                                
-                                $servername = "localhost";
-                                $username = "root";
-                                $password = "";
-                                $dbName = "QuestionAnswer";
-
-                                // Create connection
-                                $conn = mysqli_connect($servername, $username, $password, $dbName);
-                                // Check connection
-                                if (!$conn) {
-                                    die("Connection failed: " . mysqli_connect_error());
-                                }
-                                
-                                mysqli_query("INSERT INTO Questions VALUES('QuestionTitle','QuestionBody')");
-                                
-                                mysqli_close($conn);
-                            }
-                        ?>
                     </form>
                 </div>
             </div>
@@ -82,6 +59,15 @@
         <div id="Footer">
             
         </div>
+        
+        <script type="text/javascript">
+            function foo(){
+                var xmlhttp;
+                xmlhttp = new XMLHTTPRequest();
+                xmlhttp.open("GET", "ask.php?QuestionTitle="+document.getElementByName("QTitle").value+"$QuestionBody="+document.getElementsByName("QBody").value,false);
+                xmlhttp.send(null);
+            }
+        </script>
     </body>
 </html>
 

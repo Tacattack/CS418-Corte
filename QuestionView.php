@@ -39,14 +39,23 @@
         </div>
         <div id="Container">
             <div id="Content">
-                <div id="QuestionTitle">
+                <!--<div id="QuestionTitle">
                     <h1>A placeholder title</h1>
                 </div>
                 <div class="QuestionBody">
                     <p>A placeholder paragraph of extreme proportions because if I don't test it to the fullest I will never get a good enough size for the 
                     CSS to actually be somewhat correct. oanonasonoanfoinsdofnos ovns;d v;sod pspjfpapfn aas nao  sinpn pajsppasodjpasmdpamsp pjmpaspmd
                     apsndnaspn poajspjapsdmapsjpasmdpwoj   wojdapsodp[ oajspdja poajspdnuwiqw-09 9a0us0dna ais pdj apsnpa napsoc[qonpqopj-as</p>
-                </div>
+                </div>-->
+                
+                <?php
+                    $QuestionTitle = $GET_["QTitle"];
+                    $QuestionBody = $_GET["QBody"];
+                    
+                    mysql_connect("localhost", "root", "");
+                    mysql_select_db("Questions");
+                    mysql_query("insert into Questions values('$QuestionTitle', '$QuestionBody')");
+                ?>
             </div>
         </div>
         <div id="Footer">
