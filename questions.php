@@ -40,7 +40,17 @@
         <div id="Container">
             <div id="Content">
                 <div class="QuestionList">
-                    <?php
+                    
+                </div>
+            </div>
+        </div>
+        <div id="Footer">
+            
+        </div>
+    </body>
+</html>
+
+<?php
                         $servername = "localhost";
                         $username = "root";
                         $password = "";
@@ -73,11 +83,3 @@
                         
                         mysqli_close($conn);
                     ?>
-                </div>
-            </div>
-        </div>
-        <div id="Footer">
-            
-        </div>
-    </body>
-</html>
