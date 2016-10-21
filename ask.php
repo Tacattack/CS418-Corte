@@ -40,7 +40,7 @@
         <div id="Container">
             <div id="Content">
                 <div class="AQuestDiv">
-                    <form>
+                    <form method="post">
                         <table>
                             <tr>
                                 <td>Title:
