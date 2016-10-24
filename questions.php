@@ -54,16 +54,16 @@
                             die("Connection failed: " . mysqli_connect_error());
                         }
                         
-                        $sql = "SELECT id, questionTitle, questionBody, answerBody FROM Questions";
+                        $sql = "SELECT * FROM Questions";
                         $result = mysqli_query($conn, $sql);
                         
                         if (mysqli_num_rows($result) > 0)
                         {
-                            while ($row = mysqli_fetch_assoc($result))
+                            while ($row = mysqli_fetch_row($result))
                             {
                                 echo "<div>";
                                 echo "<h5>";
-                                print $row['questionTitle'];
+                                echo $row['questionTitle'];
                                 echo "</h5>";
                                 echo "</div>";
                             }
