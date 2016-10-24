@@ -90,10 +90,11 @@
                             while ($row = mysqli_fetch_assoc($result))
                             {
                                 header("Location: QuestionView.php?id=".$row["id"]);
-                                mysqli_close($conn);
                                 die(); 
                             }
                         }
+                        
+                        mysqli_close($conn);
                     }
                     ?>
                 </div>
