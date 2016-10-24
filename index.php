@@ -126,7 +126,7 @@ else
                             die("Connection failed: " . mysqli_connect_error());
                         }
                         
-                        $sql = "SELECT id, questionTitle, questionBody, answerBody FROM Questions";
+                        $sql = "SELECT * FROM Questions";
                         $result = mysqli_query($conn, $sql);
                         
                         if (mysqli_num_rows($result) > 0)
@@ -134,8 +134,10 @@ else
                             while ($row = mysqli_fetch_assoc($result))
                             {
                                 echo "<div>";
+                                echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
                                 echo "<h5>";
                                 echo $row["questionTitle"];
+                                echo "</a>";
                                 echo "</h5>";
                                 echo "</div>";
                             }

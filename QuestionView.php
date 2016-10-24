@@ -39,12 +39,44 @@
         </div>
         <div id="Container">
             <div id="Content">
-                <div id="QuestionTitle">
-                    <h1></h1>
-                </div>
-                <div class="QuestionBody">
-                    <p></p>
-                </div>
+                <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbName = "QuestionAnswer";
+
+                // Create connection
+                $conn = mysqli_connect($servername, $username, $password, $dbName);
+
+                // Check connection
+                if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
+
+                $sql = "SELECT * FROM Questions";
+                $result = mysqli_query($conn, $sql);
+
+                if (mysqli_num_rows($result) > 0)
+                {
+                    while ($row = mysqli_fetch_assoc($result))
+                    {
+                        if (isset($_GET["id"]))
+                        {
+                            echo "<div id=\"QuestionTitle\"";
+                            echo "<h1>";
+                            echo $row["questionTitle"];
+                            echo "</h1>";
+                            echo "</div>";
+
+                            echo "<div id=\"QuestionBody\"";
+                            echo "<p>";
+                            echo $row["questionBody"];
+                            echo "</p>";
+                            echo "</div>";
+                        }
+                    }
+                }
+                ?>
             </div>
         </div>
         <div id="Footer">
