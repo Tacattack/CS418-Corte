@@ -59,11 +59,11 @@
                         
                         if (mysqli_num_rows($result) > 0)
                         {
-                            while ($row = mysqli_fetch_row($result))
+                            while ($row = mysqli_fetch_assoc($result))
                             {
                                 echo "<div>";
                                 echo "<h5>";
-                                echo $row['questionTitle'];
+                                echo $row[1];
                                 echo "</h5>";
                                 echo "</div>";
                             }
