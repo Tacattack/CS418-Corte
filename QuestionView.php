@@ -62,7 +62,7 @@
                 {
                     while ($row = mysqli_fetch_assoc($result))
                     {
-                        if ($questionID == $row["id"])
+                        if ($questionID == 'QuestionView.php?id='.$row["id"])
                         {
                             echo "<div id=\"QuestionTitle\"";
                             echo "<h1>";
