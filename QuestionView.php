@@ -55,15 +55,13 @@
                 
                 $questionID = (isset($_GET["id"]) && trim($_GET["id"]) == 'QuestionView.php') ? trim($_GET["id"]) : '';
                 
-                $sql = "SELECT * FROM Questions";
+                $sql = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
                 $result = mysqli_query($conn, $sql);
 
                 if (mysqli_num_rows($result) > 0)
                 {
                     while ($row = mysqli_fetch_assoc($result))
                     {
-                        if ($questionID)
-                        {
                             echo "<div id=\"QuestionTitle\"";
                             echo "<h1>";
                             echo $row["questionTitle"];
@@ -75,7 +73,6 @@
                             echo $row["questionBody"];
                             echo "</p>";
                             echo "</div>";
-                        }
                     }
                 }
                 ?>
