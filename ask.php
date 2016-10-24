@@ -68,11 +68,11 @@
                             die("Connection failed: " . mysqli_connect_error());
                         }
 
-                        $QuestionTitle = $conn->mysqli_real_escape_string($_POST['QTitle']);
-                        $QuestionBody = $conn->mysqli_real_escape_string($_POST['QBody']);
+                        $QuestionTitle = $_POST['QTitle'];
+                        $QuestionBody = $_POST['QBody'];
 
                         $sql = "INSERT INTO Questions (questionTitle, questionBody)
-                            VALUES('$QuestionTitle', '$QuestionBody')";
+                            VALUES('{$QuestionTitle}', '{$QuestionBody}')";
 
                         if (mysqli_query($conn, $sql)) {
                             echo "New record created successfully";
