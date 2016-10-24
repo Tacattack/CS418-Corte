@@ -79,8 +79,21 @@
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                         }
+                        
+                        $questionID = (isset($_GET["id"]) && trim($_GET["id"]) == 'QuestionView.php') ? trim($_GET["id"]) : '';
+                
+                        $sql = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
+                        $result = mysqli_query($conn, $sql);
 
-                        mysqli_close($conn);
+                        if (mysqli_num_rows($result) > 0)
+                        {
+                            while ($row = mysqli_fetch_assoc($result))
+                            {
+                                header("Location: QuestionView.php?id=".$row["id"]);
+                                mysqli_close($conn);
+                                die(); 
+                            }
+                        }
                     }
                     ?>
                 </div>
