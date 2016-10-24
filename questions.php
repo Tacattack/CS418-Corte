@@ -63,7 +63,7 @@
                             {
                                 echo "<div>";
                                 echo "<h5>";
-                                echo $row[questionTitle];
+                                print $row['questionTitle'];
                                 echo "</h5>";
                                 echo "</div>";
                             }
