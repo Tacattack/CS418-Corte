@@ -33,8 +33,8 @@ DROP TABLE IF EXISTS `Questions`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Questions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `questionTitle` text(250) NOT NULL,
-  `questionBody` text(250) NOT NULL,
+  `questionTitle` varchar(250) NOT NULL,
+  `questionBody` varchar(250) NOT NULL,
   `answerBody` char(250) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

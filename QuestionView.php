@@ -52,10 +52,17 @@
                 if (!$conn) {
                     die("Connection failed: " . mysqli_connect_error());
                 }
-
+                
+                $questionID = (isset($_GET["id"]) && trim($_GET["id"]) == 'QuestionView.php') ? trim($_GET["id"]) : '';
+                
                 $sql = "SELECT * FROM Questions";
                 $result = mysqli_query($conn, $sql);
-                        if (isset($_GET["id"]))
+
+                if (mysqli_num_rows($result) > 0)
+                {
+                    while ($row = mysqli_fetch_assoc($result))
+                    {
+                        if ($questionID == $row["id"])
                         {
                             echo "<div id=\"QuestionTitle\"";
                             echo "<h1>";
@@ -69,6 +76,8 @@
                             echo "</p>";
                             echo "</div>";
                         }
+                    }
+                }
                 ?>
             </div>
         </div>
