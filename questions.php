@@ -62,9 +62,10 @@
                             while ($row = mysqli_fetch_assoc($result))
                             {
                                 echo "<div>";
+                                echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
                                 echo "<h5>";
-                                echo $row["id"];
                                 echo $row["questionTitle"];
+                                echo "</a>";
                                 echo "</h5>";
                                 echo "</div>";
                             }
