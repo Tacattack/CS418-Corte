@@ -55,11 +55,6 @@
 
                 $sql = "SELECT * FROM Questions";
                 $result = mysqli_query($conn, $sql);
-
-                if (mysqli_num_rows($result) > 0)
-                {
-                    while ($row = mysqli_fetch_assoc($result))
-                    {
                         if (isset($_GET["id"]))
                         {
                             echo "<div id=\"QuestionTitle\"";
@@ -74,8 +69,6 @@
                             echo "</p>";
                             echo "</div>";
                         }
-                    }
-                }
                 ?>
             </div>
         </div>
