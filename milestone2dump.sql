@@ -51,6 +51,14 @@ INSERT INTO `Answers` VALUES (3,1,6,'To do how or not how do to');
 INSERT INTO `Answers` VALUES (4,2,100,'Do you even monies?');
 INSERT INTO `Answers` VALUES (5,2,-250,'U Giv Dem Da MicroTransactions for da monies');
 INSERT INTO `Answers` VALUES (6,2,50,'2 Stoopid For da Monies!');
+INSERT INTO `Answers` VALUES (7,3,-250,'Unity For The Win!!');
+INSERT INTO `Answers` VALUES (8,3,50,'One Does Not Simply Unreal');
+INSERT INTO `Answers` VALUES (9,4,50,'The cake means you die you stoopid gamer 12 year old');
+INSERT INTO `Answers` VALUES (10,5,300,'Civilization Strategy Game FTW!!');
+INSERT INTO `Answers` VALUES (11,5,75,'All about that Shooter Genre');
+INSERT INTO `Answers` VALUES (12,5,50,'PC Musterd Race!');
+INSERT INTO `Answers` VALUES (13,5,-300,'Consoles For the Win');
+INSERT INTO `Answers` VALUES (14,5,200,'I like simulation');
 /*!40000 ALTER TABLE `Answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,6 +86,9 @@ LOCK TABLES `Questions` WRITE;
 /*!40000 ALTER TABLE `Questions` DISABLE KEYS */;
 INSERT INTO `Questions` VALUES (1,10,'Game Dev In Need Of Help','How Do?');
 INSERT INTO `Questions` VALUES (2,-100,'Help A Stoopid Game Dev','How do I make all the monies from the stoopid gamers?');
+INSERT INTO `Questions` VALUES (3,100,'Which is Better?','Im looking for an engine to use. Which is better? Unity or Unreal?');
+INSERT INTO `Questions` VALUES (4,-50,'Is The Cake Really A Lie?','Was just wondering if the cake really is a lie. Can someone help me?');
+INSERT INTO `Questions` VALUES (5,300,'Best Game Genre?','Im doing a report on the best game genre. What is it?');
 /*!40000 ALTER TABLE `Questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,21 +137,6 @@ PRIMARY KEY (`id`)
 ---
 
 LOCK TABLES `Users` WRITE;
-INSERT INTO `Users` VALUES(1,'admin','cs518pa$$');
-INSERT INTO `Users` VALUES(2,'jbrunelle','M0n@rch$');
-INSERT INTO `Users` VALUES(3,'pvenkman','imadoctor');
-INSERT INTO `Users` VALUES(4,'rstantz','"; INSERT INTO Customers (CustomerName,Address,City) Values(@0,@1,@2); --');
-INSERT INTO `Users` VALUES(5,'dbarrett','fr1ed3GGS');
-INSERT INTO `Users` VALUES(6,'ltully','<!--<i>');
-INSERT INTO `Users` VALUES(7,'espengler','dont cross the streams');
-INSERT INTO `Users` VALUES(8,'janine','--!drop tables;');
-INSERT INTO `Users` VALUES(9,'winston','zeddM0r3');
-INSERT INTO `Users` VALUES(10,'gozer','d3$truct0R');
-INSERT INTO `Users` VALUES(11,'slimer','f33dM3');
-INSERT INTO `Users` VALUES(12,'zuul','105"; DROP TABLE');
-INSERT INTO `Users` VALUES(13,'keymaster','n0D@na');
-INSERT INTO `Users` VALUES(14,'gatekeeper','$l0r');
-INSERT INTO `Users` VALUES(15,'staypuft','m@r$hM@ll0w');
 INSERT INTO `Users` VALUES(16,'nbenfiel','password');
 INSERT INTO `Users` VALUES(17,'tcorte','password');
 UNLOCK TABLES;
