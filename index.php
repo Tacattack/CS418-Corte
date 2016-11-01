@@ -62,7 +62,7 @@ require_once("redirected.php");
                             die("Connection failed: " . mysqli_connect_error());
                         }
                         
-                        $sqlT = "SELECT * FROM Questions ORDER BY answerScore DESC";
+                        $sqlT = "SELECT * FROM Questions ORDER BY questionScore DESC";
                         $resultT = mysqli_query($conn, $sqlT);
                         
                         if (mysqli_num_rows($resultT) > 0)
