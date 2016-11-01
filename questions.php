@@ -62,11 +62,18 @@
                             while ($row = mysqli_fetch_assoc($result))
                             {
                                 echo "<div>";
-                                echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
-                                echo "<h5>";
-                                echo $row["questionTitle"];
-                                echo "</a>";
-                                echo "</h5>";
+                                    echo "<div id=\"questionScore\">";
+                                        echo "<div>";
+                                            echo "<h5>" . $row["questionScore"] . "</h5>";
+                                        echo "</div>";
+                                    echo "</div>";
+                                    echo "<div id=\"questionTitleLink\">";
+                                        echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
+                                            echo "<h5>";
+                                                echo $row["questionTitle"];
+                                            echo "</a>";
+                                        echo "</h5>";
+                                    echo "</div";
                                 echo "</div>";
                             }
                         }else {

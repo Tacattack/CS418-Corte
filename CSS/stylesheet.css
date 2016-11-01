@@ -104,13 +104,30 @@ body{
 }
 
 /*------------------------------------------------Question View CSS---------------------------------------*/
-.QuestionBody {
-    margin: 40px;
+#QuestionBody {
+    margin: auto;
+    width: 90%;
 }
 
 #QuestionTitle{
     text-align: center;
     margin: auto;
+}
+
+#Answers{
+    width: 90%;
+    margin: auto;
+}
+
+#Answers table{
+    width: 80%;
+    Margin: auto;
+}
+
+#Answers table tr td{
+    width: 100%;
+    border: 1px solid black;
+    background-color: #F0F8FF;
 }
 
 /*--------------------------------------------------Questions CSS-------------------------------------------*/
@@ -126,11 +143,30 @@ body{
     border: 1px solid black;
 }
 
+.QuestionList #questionScore{
+    width: 30%;
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    border-right: 1px solid black;
+}
+
+.QuestionList #questionTitleLink{
+    width: 70%;
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    border-left: 1px solid black;
+}
+
 /*----------------------------------------------Questions Front Page----------------------------------------*/
 .PQuest{
     width: 100%;
     margin: 0;
     padding: 0;
+    vertical-align: top;
 }
 
 .PQuest div{
@@ -144,6 +180,7 @@ body{
     width: 100%;
     margin: 0;
     padding: 0;
+    vertical-align: top;
 }
 
 .TQuest div{

@@ -31,10 +31,11 @@ DROP TABLE IF EXISTS `Answers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Answers` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `AnswerID` int(11) NOT NULL AUTO_INCREMENT,
   `questionID` int(250) NOT NULL,
+  `answerScore` int(250) NOT NULL,
   `answerBody` varchar(250) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`AnswerID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -44,7 +45,12 @@ CREATE TABLE `Answers` (
 
 LOCK TABLES `Answers` WRITE;
 /*!40000 ALTER TABLE `Answers` DISABLE KEYS */;
-INSERT INTO `Answers` VALUES (1,1,'That is how do');
+INSERT INTO `Answers` VALUES (1,1,1,'That is how do');
+INSERT INTO `Answers` VALUES (2,1,-1,'This is also how do');
+INSERT INTO `Answers` VALUES (3,1,6,'To do how or not how do to');
+INSERT INTO `Answers` VALUES (4,2,100,'Do you even monies?');
+INSERT INTO `Answers` VALUES (5,2,-250,'U Giv Dem Da MicroTransactions for da monies');
+INSERT INTO `Answers` VALUES (6,2,50,'2 Stoopid For da Monies!');
 /*!40000 ALTER TABLE `Answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,6 +63,7 @@ DROP TABLE IF EXISTS `Questions`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Questions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `questionScore` int(250) NOT NULL,
   `questionTitle` varchar(250) NOT NULL,
   `questionBody` varchar(250) NOT NULL,
   PRIMARY KEY (`id`)
@@ -69,7 +76,8 @@ CREATE TABLE `Questions` (
 
 LOCK TABLES `Questions` WRITE;
 /*!40000 ALTER TABLE `Questions` DISABLE KEYS */;
-INSERT INTO `Questions` VALUES (1,'Game Dev In Need Of Help','How Do?');
+INSERT INTO `Questions` VALUES (1,10,'Game Dev In Need Of Help','How Do?');
+INSERT INTO `Questions` VALUES (2,-100,'Help A Stoopid Game Dev','How do I make all the monies from the stoopid gamers?');
 /*!40000 ALTER TABLE `Questions` ENABLE KEYS */;
 UNLOCK TABLES;
 

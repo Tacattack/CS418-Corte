@@ -59,27 +59,24 @@
                 $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."'";
                 $result = mysqli_query($conn, $sql);
                 $resultA = mysqli_query($conn, $sqlA);
+                
 
                 if (mysqli_num_rows($result) > 0)
                 {
                     while ($row = mysqli_fetch_assoc($result))
                     {
-                            echo "<div id=\"QuestionTitle\"";
-                            echo "<h1>";
-                            echo $row["questionTitle"];
-                            echo "</h1>";
+                            echo "<div id=\"QuestionTitle\">";
+                            echo "<h1>" . $row["questionTitle"] . "</h1>";
                             echo "</div>";
 
-                            echo "<div id=\"QuestionBody\"";
+                            echo "<div id=\"QuestionBody\">";
                             echo "<p>";
                             echo $row["questionBody"];
                             echo "</p>";
                             echo "</div>";
                             
-                            echo "<div>";
-                            echo "<h4>Answers</h4>";
-                            echo "<textarea rows=\"30\" name=\"QBody\"></textarea>";
-                            echo "<br />";
+                            echo "<div id=\"Answers\">";
+                            echo "<h3>Answers</h3>";
                             echo "<table>";
                             if (mysqli_num_rows($resultA) > 0)
                             {
@@ -88,16 +85,55 @@
                                     echo "<tr>";
                                     echo "<td>";
                                     echo "<p>";
-                                    echo $rowA["questionBody"];
+                                    echo $rowA["answerBody"];
                                     echo "</p>";
                                     echo "</td>";
                                     echo "</tr>";
                                 }
                             }
                             echo "</table>";
-                            echo "</div>";
+                            echo "<br />";
                     }
                 }
+                ?>
+                <form method="post">
+                    <textarea rows="30" name="ABody" style="width: 600px; height: 50px;"></textarea>
+                    <input type="submit" name="submit" value="Submit Answer" style="margin: 20px 50px; float: right"/>
+                </form>
+                
+                <?php
+                if (isset($_POST["submit"]))
+                    {
+                        $AnswerID = $_GET["id"];
+                        $AnswerBody = $_POST['ABody'];
+                                
+                        $AnswerCreate = "INSERT INTO Answers (questionID,answerBody)
+                        VALUES('{$AnswerID}', '{$AnswerBody}')";
+                            
+                        if (mysqli_query($conn, $AnswerCreate)) {
+                            echo "New record created successfully";
+                        } else {
+                            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                        }
+                        
+                        $QuestionReload = "SELECT * FROM Questions";
+                        $QuestionReloadResult = mysqli_query($conn, $QuestionReload);
+
+                        if (mysqli_num_rows($QuestionReloadResult) > 0)
+                        {
+                            while ($Qrow = mysqli_fetch_assoc($QuestionReloadResult))
+                            {
+                                if ($_GET["id"] == $Qrow["id"])
+                                {
+                                    header("Location: QuestionView.php?id=".$Qrow["id"]);
+                                    die(); 
+                                }
+                            }
+                        }
+                    }
+                    echo "</div>";
+                    
+                    mysqli_close($conn);
                 ?>
             </div>
         </div>
