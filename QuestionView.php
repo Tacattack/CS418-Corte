@@ -104,7 +104,7 @@
                 <?php
                 if (isset($_POST["submit"]))
                     {
-                        $AnswerID = $_POST[$_GET["id"]];
+                        $AnswerID = $_POST[$questionID];
                         $AnswerBody = $_POST['ABody'];
                                 
                         $AnswerCreate = "INSERT INTO Answers (questionID,answerBody)
