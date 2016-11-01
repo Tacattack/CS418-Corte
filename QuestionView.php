@@ -93,25 +93,31 @@
                             }
                             echo "</table>";
                             echo "<br />";
-                            echo "<textarea rows=\"30\" name=\"ABody\" style=\"width: 600px; height: 50px;\"></textarea>";
-                            echo "<input type=\"submit\" name=\"submit\" value=\"Submit Answer\" style=\"margin: 20px 50px; float: right\"/>";
-                            if (isset($_POST["submit"]))
-                            {
-                                $AnswerID = $_POST[$_GET["id"]];
-                                $AnswerBody = $_POST['ABody'];
-                                
-                                $AnswerCreate = "INSERT INTO Answers (questionID,answerBody)
-                                VALUES('{$AnswerID}', '{$AnswerBody}')";
-                            
-                                if (mysqli_query($conn, $AnswerCreate)) {
-                                echo "New record created successfully";
-                                } else {
-                                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                                }
-                            }
-                            echo "</div>";
                     }
                 }
+                ?>
+                
+                <textarea rows="30" name="ABody" style="width: 600px; height: 50px;"></textarea>;
+                <input type="submit" name="submit" value="Submit Answer" style="margin: 20px 50px; float: right"/>";
+                
+                <?php
+                if (isset($_POST["submit"]))
+                    {
+                        $AnswerID = $_POST[$_GET["id"]];
+                        $AnswerBody = $_POST['ABody'];
+                                
+                        $AnswerCreate = "INSERT INTO Answers (questionID,answerBody)
+                        VALUES('{$AnswerID}', '{$AnswerBody}')";
+                            
+                        if (mysqli_query($conn, $AnswerCreate)) {
+                            echo "New record created successfully";
+                        } else {
+                            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                        }
+                    }
+                    echo "</div>";
+                    
+                    mysqli_close($conn);
                 ?>
             </div>
         </div>
