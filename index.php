@@ -48,11 +48,47 @@ require_once("redirected.php");
             <div id="Content">
                 <aside class="TQuest">
                     <h3>Top Questions</h3>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 1</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 2</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 3</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 4</h5></div>
-                    <div><h5>This is a really long title that will be a placeholder for the titles until functionality works number 5</h5></div>
+                    <?php
+                        $servernameT = "localhost";
+                        $usernameT = "root";
+                        $passwordt = "";
+                        $dbNameT = "QuestionAnswer";
+
+                        // Create connection
+                        $connT = mysqli_connect($servernameT, $usernameT, $passwordt, $dbNameT);
+                        
+                        // Check connection
+                        if (!$connT) {
+                            die("Connection failed: " . mysqli_connect_error());
+                        }
+                        
+                        $sqlT = "SELECT * FROM Questions ORDER BY answerScore";
+                        $resultT = mysqli_query($connT, $sqlT);
+                        
+                        if (mysqli_num_rows($resultT) > 0)
+                        {
+                            while ($rowT = mysqli_fetch_assoc($resultT))
+                            {
+                                echo "<div>";
+                                    echo "<div id=\"questionScore\">";
+                                        echo "<h5>" . $rowT["questionScore"] . "</h5>";
+                                    echo "</div>";
+                                    echo "<div id=\"questionTitleLink\">";
+                                        echo "<a href=\"QuestionView.php?id=" . $rowT["id"]. "\">";
+                                            echo "<h5>" . $rowT["questionTitle"] . "</h5>" . "</a>";
+                                    echo "</div>";
+                                echo "</div>";
+                            }
+                        }else {
+                            echo "<div>";
+                            echo "<h5>";
+                            echo "0 Results Found";
+                            echo "</h5>";
+                            echo "</div>";
+                        }
+                        
+                        mysqli_close($connT);
+                    ?>
                 </aside>
                 <aside class="PQuest">
                     <h3>Previously Asked Questions</h3>
