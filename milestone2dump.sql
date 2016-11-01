@@ -43,9 +43,9 @@ CREATE TABLE `Answers` (
 --
 
 LOCK TABLES `Answers` WRITE;
-/*!40000 ALTER TABLE `Questions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Answers` DISABLE KEYS */;
 INSERT INTO `Answers` VALUES (1,1,'That is how do');
-/*!40000 ALTER TABLE `Questions` ENABLE KEYS */;
+/*!40000 ALTER TABLE `Answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
