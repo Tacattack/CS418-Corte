@@ -85,7 +85,7 @@
                                     echo "<tr>";
                                     echo "<td>";
                                     echo "<p>";
-                                    echo $rowA["questionBody"];
+                                    echo $rowA["answerBody"];
                                     echo "</p>";
                                     echo "</td>";
                                     echo "</tr>";
@@ -93,22 +93,19 @@
                             }
                             echo "</table>";
                             echo "<br />";
+                            echo "<textarea rows=\"30\" name=\"ABody\" style=\"width: 600px; height: 50px;\"></textarea>";
+                            echo "<input type=\"submit\" name=\"submit\" value=\"Submit Answer\" style=\"margin: 20px 50px; float: right\"/>";
+                            if (isset($_POST["submit"]))
+                            {
+                                $AnswerID = $_POST[$_GET["id"]];
+                                $AnswerBody = $_POST['ABody'];
+                                
+                                $sql = "INSERT INTO Answers (questionID,answerBody)
+                            VALUES('{$AnswerID}', '{$AnswerBody}')";
+                            }
+                            echo "</div>";
                     }
                 }
-                ?>
-                <textarea rows="30" name="ABody" style="width: 600px; height: 50px;"></textarea>
-                <input type="submit" name="submit" value="Submit Answer" style="margin: 20px 50px; float: right"/>
-                
-                <?php
-                    if (isset($_POST["submit"]))
-                        {
-                            $AnswerID = $_POST[$_GET["id"]];
-                            $AnswerBody = $_POST['ABody'];
-                                
-                            $sql = "INSERT INTO Answers (questionID,answerBody)
-                            VALUES('{$AnswerID}', '{$AnswerBody}')";
-                        }
-                        echo "</div>";
                 ?>
             </div>
         </div>
