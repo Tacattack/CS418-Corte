@@ -100,8 +100,14 @@
                                 $AnswerID = $_POST[$_GET["id"]];
                                 $AnswerBody = $_POST['ABody'];
                                 
-                                $sql = "INSERT INTO Answers (questionID,answerBody)
-                            VALUES('{$AnswerID}', '{$AnswerBody}')";
+                                $AnswerCreate = "INSERT INTO Answers (questionID,answerBody)
+                                VALUES('{$AnswerID}', '{$AnswerBody}')";
+                            
+                                if (mysqli_query($conn, $AnswerCreate)) {
+                                echo "New record created successfully";
+                                } else {
+                                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                                }
                             }
                             echo "</div>";
                     }
