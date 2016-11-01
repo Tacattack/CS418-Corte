@@ -44,7 +44,7 @@ CREATE TABLE `Answers` (
 
 LOCK TABLES `Answers` WRITE;
 /*!40000 ALTER TABLE `Questions` DISABLE KEYS */;
-INSERT INTO `Questions` VALUES (1,1,'That is how do');
+INSERT INTO `Answers` VALUES (1,1,'That is how do');
 /*!40000 ALTER TABLE `Questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -69,8 +69,7 @@ CREATE TABLE `Questions` (
 
 LOCK TABLES `Questions` WRITE;
 /*!40000 ALTER TABLE `Questions` DISABLE KEYS */;
-INSERT INTO `Questions` VALUES (1,'Game Dev In Need Of Help','How Do?','Do How.
-That is how do');
+INSERT INTO `Questions` VALUES (1,'Game Dev In Need Of Help','How Do?');
 /*!40000 ALTER TABLE `Questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,6 +107,4 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
-"milestone2dump.sql" 79 lines, 2787 characters
 
