@@ -131,6 +131,14 @@ body{
     display: inline-block;   
 }
 
+#AnswerScore{
+    width: 10%;
+}
+
+#AnswerText{
+    width: 80%;
+}
+
 /*--------------------------------------------------Questions CSS-------------------------------------------*/
 .QuestionList{
     width: 95%;
@@ -145,7 +153,7 @@ body{
     display: block;
 }
 
-.QuestionList #questionScore{
+#questionScore{
     width: 10%;
     display: inline-block;
     margin: 0px;
@@ -154,7 +162,7 @@ body{
     border-right: 1px solid black;
 }
 
-.QuestionList #questionTitleLink{
+#questionTitleLink{
     width: 80%;
     display: inline-block;
     margin: 0px;

@@ -83,8 +83,8 @@
                                 while ($rowA = mysqli_fetch_assoc($resultA))
                                 {
                                     echo "<tr>";
-                                        echo "<td>" . "<p>" . $rowA["answerScore"] . "</p>" . "</td>";
-                                        echo "<td>" . "<p>" . $rowA["answerBody"] . "</p>" . "</td>";
+                                        echo "<td id=\"AnswerScore\">" . "<p>" . $rowA["answerScore"] . "</p>" . "</td>";
+                                        echo "<td id=\"AnswerText\">" . "<p>" . $rowA["answerBody"] . "</p>" . "</td>";
                                     echo "</tr>";
                                 }
                             }
