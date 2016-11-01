@@ -79,8 +79,8 @@ else
                 </div>>
             </div>
             <img src="" alt=""/>
-            <form action="index.php" method="post" class="FormLogin">
-                Username: <input type="text" name="username" value="" <?php echo htmlspecialchars($username) ?>>
+            <form action="index.php" method="post" class="FormLogin" <?PHP require_once("PHP/Login.php"); ?>>
+                Username: <input type="text" name="username" value="" >
                 Password: <input type="password"name="password" value=""> 
                <input type="submit" name="submit" value="Login">
             </form>
