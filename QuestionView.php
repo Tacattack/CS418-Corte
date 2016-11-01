@@ -59,15 +59,14 @@
                 $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."'";
                 $result = mysqli_query($conn, $sql);
                 $resultA = mysqli_query($conn, $sqlA);
+                
 
                 if (mysqli_num_rows($result) > 0)
                 {
                     while ($row = mysqli_fetch_assoc($result))
                     {
                             echo "<div id=\"QuestionTitle\"";
-                            echo "<h1>";
-                            echo $row["questionTitle"];
-                            echo "</h1>";
+                            echo "<h1>" . $row["questionTitle"] . "</h1>";
                             echo "</div>";
 
                             echo "<div id=\"QuestionBody\"";
@@ -78,8 +77,6 @@
                             
                             echo "<div>";
                             echo "<h4>Answers</h4>";
-                            echo "<textarea rows=\"30\" name=\"QBody\"></textarea>";
-                            echo "<br />";
                             echo "<table>";
                             if (mysqli_num_rows($resultA) > 0)
                             {
@@ -95,6 +92,17 @@
                                 }
                             }
                             echo "</table>";
+                            echo "<br />";
+                            echo "<textarea rows=\"30\" name=\"ABody\" style=\"width: 600px; height: 50px;\"></textarea>";
+                            echo "<input type=\"submit\" name=\"submit\" value=\"Submit Answer\" style=\"margin: 20px 50px; float: right\"/>";
+                            if (isset($_POST["submit"]))
+                            {
+                                $AnswerID = $_POST[$_GET["id"]];
+                                $AnswerBody = $_POST['ABody'];
+                                
+                                $sql = "INSERT INTO Answers (questionID,answerBody)
+                            VALUES('{$AnswerID}', '{$AnswerBody}')";
+                            }
                             echo "</div>";
                     }
                 }
