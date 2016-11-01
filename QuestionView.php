@@ -56,7 +56,7 @@
                 $questionID = (isset($_GET["id"]) && trim($_GET["id"]) == 'QuestionView.php') ? trim($_GET["id"]) : '';
                 
                 $sql = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
-                $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."'";
+                $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC";
                 $result = mysqli_query($conn, $sql);
                 $resultA = mysqli_query($conn, $sqlA);
                 
