@@ -77,18 +77,15 @@
                             
                             echo "<div id=\"Answers\">";
                             echo "<h3>Answers</h3>";
-                            echo "<table>";
+                            echo "<ul>";
                             if (mysqli_num_rows($resultA) > 0)
                             {
                                 while ($rowA = mysqli_fetch_assoc($resultA))
                                 {
-                                    echo "<tr>";
-                                        echo "<td id=\"AnswerScore\">" . "<p>" . $rowA["answerScore"] . "</p>" . "</td>";
-                                        echo "<td id=\"AnswerText\">" . "<p>" . $rowA["answerBody"] . "</p>" . "</td>";
-                                    echo "</tr>";
+                                    echo "<li>" . "<p id=\"AnswerScore\">" . $rowA["answerScore"] . "</p>" .
+                                    "<p id=\"AnswerText\">" . $rowA["answerBody"] . "</p>" . "</li>";
                                 }
                             }
-                            echo "</table>";
                             echo "<br />";
                     }
                 }
@@ -128,7 +125,7 @@
                             }
                         }
                     }
-                    echo "</div>";
+                    echo "</ul>";
                     
                     mysqli_close($conn);
                 ?>

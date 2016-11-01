@@ -119,24 +119,26 @@ body{
     margin: auto;
 }
 
-#Answers table{
+#Answers ul{
     width: 80%;
-    Margin: auto;
+    margin: auto;
 }
 
-#Answers table tr td{
+#Answers ul li{
     width: 100%;
     border: 1px solid black;
-    background-color: #F0F8FF;
-    display: inline-block;   
+    background-color: #F0F8FF;  
+    display: block;
 }
 
 #AnswerScore{
     width: 10%;
+    display: inline-block; 
 }
 
 #AnswerText{
     width: 80%;
+    display: inline-block; 
 }
 
 /*--------------------------------------------------Questions CSS-------------------------------------------*/
