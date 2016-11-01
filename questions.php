@@ -67,9 +67,8 @@
                                     echo "</div>";
                                     echo "<div id=\"questionTitleLink\">";
                                         echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
-                                            echo "<h5>" . $row["questionTitle"] . "</h5>";
-                                        echo "</a>";
-                                    echo "</div";
+                                            echo "<h5>" . $row["questionTitle"] . "</h5>" . "</a>";
+                                    echo "</div>";
                                 echo "</div>";
                             }
                         }else {

@@ -150,7 +150,6 @@ body{
     margin: 0px;
     padding: 0px;
     border: none;
-    border-right: 1px solid black;
 }
 
 .QuestionList #questionTitleLink{
@@ -159,7 +158,6 @@ body{
     margin: 0px;
     padding: 0px;
     border: none;
-    border-left: 1px solid black;
 }
 
 /*----------------------------------------------Questions Front Page----------------------------------------*/
