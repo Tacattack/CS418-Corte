@@ -143,6 +143,24 @@ body{
     border: 1px solid black;
 }
 
+.QuestionList #questionScore{
+    width: 30%;
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    border-right: 1px solid black;
+}
+
+.QuestionList #questionTitleLink{
+    width: 70%;
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    border: none;
+    border-left: 1px solid black;
+}
+
 /*----------------------------------------------Questions Front Page----------------------------------------*/
 .PQuest{
     width: 100%;
