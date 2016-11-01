@@ -96,9 +96,10 @@
                     }
                 }
                 ?>
-                
-                <textarea rows="30" name="ABody" style="width: 600px; height: 50px;"></textarea>;
-                <input type="submit" name="submit" value="Submit Answer" style="margin: 20px 50px; float: right"/>";
+                <form method="post">
+                    <textarea rows="30" name="ABody" style="width: 600px; height: 50px;"></textarea>;
+                    <input type="submit" name="submit" value="Submit Answer" style="margin: 20px 50px; float: right"/>
+                </form>
                 
                 <?php
                 if (isset($_POST["submit"]))
