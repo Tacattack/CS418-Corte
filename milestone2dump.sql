@@ -59,6 +59,8 @@ INSERT INTO `Answers` VALUES (11,5,75,'All about that Shooter Genre');
 INSERT INTO `Answers` VALUES (12,5,50,'PC Musterd Race!');
 INSERT INTO `Answers` VALUES (13,5,-300,'Consoles For the Win');
 INSERT INTO `Answers` VALUES (14,5,200,'I like simulation');
+INSERT INTO `Answers` VALUES (15,8,200,'The short answer is no');
+INSERT INTO `Answers` VALUES (16,8,200,'It is worth it if you like the quick and easy monies');
 /*!40000 ALTER TABLE `Answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,6 +91,9 @@ INSERT INTO `Questions` VALUES (2,-100,'Help A Stoopid Game Dev','How do I make 
 INSERT INTO `Questions` VALUES (3,100,'Which is Better?','Im looking for an engine to use. Which is better? Unity or Unreal?');
 INSERT INTO `Questions` VALUES (4,-50,'Is The Cake Really A Lie?','Was just wondering if the cake really is a lie. Can someone help me?');
 INSERT INTO `Questions` VALUES (5,300,'Best Game Genre?','Im doing a report on the best game genre. What is it?');
+INSERT INTO `Questions` VALUES (6,0,'I need game dev machine','Trying to find a new game dev machine. Any help would be nice');
+INSERT INTO `Questions` VALUES (7,0,'Do mechanics actually work?','Game mechanics are important. Do they actually work though?');
+INSERT INTO `Questions` VALUES (8,0,'Is Mobile Game Dev worth it','Is trying to become a mobile game developer worth the struggle?');
 /*!40000 ALTER TABLE `Questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
