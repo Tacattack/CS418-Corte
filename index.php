@@ -49,21 +49,21 @@ require_once("redirected.php");
                 <aside class="TQuest">
                     <h3>Top Questions</h3>
                     <?php
-                        $servernameT = "localhost";
-                        $usernameT = "root";
-                        $passwordt = "";
-                        $dbNameT = "QuestionAnswer";
+                        $servername = "localhost";
+                        $username = "root";
+                        $password = "";
+                        $dbName = "QuestionAnswer";
 
                         // Create connection
-                        $connT = mysqli_connect($servernameT, $usernameT, $passwordt, $dbNameT);
+                        $conn = mysqli_connect($servername, $username, $password, $dbName);
                         
                         // Check connection
-                        if (!$connT) {
+                        if (!$conn) {
                             die("Connection failed: " . mysqli_connect_error());
                         }
                         
-                        $sqlT = "SELECT * FROM Questions ORDER BY answerScore";
-                        $resultT = mysqli_query($connT, $sqlT);
+                        $sqlT = "SELECT * FROM Questions ORDER BY answerScore DESC";
+                        $resultT = mysqli_query($conn, $sqlT);
                         
                         if (mysqli_num_rows($resultT) > 0)
                         {
@@ -86,26 +86,11 @@ require_once("redirected.php");
                             echo "</h5>";
                             echo "</div>";
                         }
-                        
-                        mysqli_close($connT);
                     ?>
                 </aside>
                 <aside class="PQuest">
                     <h3>Previously Asked Questions</h3>
                     <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $dbName = "QuestionAnswer";
-
-                        // Create connection
-                        $conn = mysqli_connect($servername, $username, $password, $dbName);
-                        
-                        // Check connection
-                        if (!$conn) {
-                            die("Connection failed: " . mysqli_connect_error());
-                        }
-                        
                         $sql = "SELECT * FROM Questions ORDER BY id DESC";
                         $result = mysqli_query($conn, $sql);
                         
