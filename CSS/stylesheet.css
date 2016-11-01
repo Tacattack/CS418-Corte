@@ -141,6 +141,7 @@ body{
     margin: 0px auto;
     padding: 0px;
     border: 1px solid black;
+    display: block;
 }
 
 .QuestionList #questionScore{
