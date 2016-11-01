@@ -145,7 +145,7 @@ body{
 }
 
 .QuestionList #questionScore{
-    width: 25%;
+    width: 10%;
     display: inline-block;
     margin: 0px;
     padding: 0px;
@@ -154,7 +154,7 @@ body{
 }
 
 .QuestionList #questionTitleLink{
-    width: 65%;
+    width: 80%;
     display: inline-block;
     margin: 0px;
     padding: 0px;
