@@ -105,12 +105,29 @@ body{
 
 /*------------------------------------------------Question View CSS---------------------------------------*/
 .QuestionBody {
-    margin: 40px;
+    margin: auto;
+    width: 90%;
 }
 
 #QuestionTitle{
     text-align: center;
     margin: auto;
+}
+
+.Answers{
+    width: 90%;
+    margin: auto;
+}
+
+.Answers table{
+    width: 80%;
+    Margin: auto;
+}
+
+.Answers table tr{
+    width: 100%;
+    border: 1px solid black;
+    background-color: #F0F8FF;
 }
 
 /*--------------------------------------------------Questions CSS-------------------------------------------*/

@@ -75,12 +75,12 @@
                             echo "</p>";
                             echo "</div>";
                             
-                            echo "<div>";
-                            echo "<h4>Answers</h4>";
+                            echo "<div id=\"Answers\">";
+                            echo "<h3>Answers</h3>";
                             echo "<table>";
                             if (mysqli_num_rows($resultA) > 0)
                             {
-                                while ($rowA = mysqli_fetch_assoc($resultA))
+                                while ($rowA = mysqli_fetch_assoc($resultA) < mysqli_num_rows($resultA))
                                 {
                                     echo "<tr>";
                                     echo "<td>";
