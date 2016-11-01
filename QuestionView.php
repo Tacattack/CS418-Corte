@@ -112,8 +112,6 @@
                             
                         if (mysqli_query($conn, $AnswerCreate)) {
                             echo "New record created successfully";
-                            echo $AnswerID;
-                            echo $AnswerBody;
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                         }
@@ -125,9 +123,9 @@
                         {
                             while ($Qrow = mysqli_fetch_assoc($result))
                             {
-                                if ($row["questionBody"] == $Qrow["questionTitle"])
+                                if ($_GET["id"] == $Qrow["id"])
                                 {
-                                    header("Location: QuestionView.php?id=".$row["id"]);
+                                    header("Location: QuestionView.php?id=".$Qrow["id"]);
                                     die(); 
                                 }
                             }
