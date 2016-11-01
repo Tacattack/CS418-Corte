@@ -121,7 +121,7 @@
 
                         if (mysqli_num_rows($QuestionReloadResult) > 0)
                         {
-                            while ($Qrow = mysqli_fetch_assoc($result))
+                            while ($Qrow = mysqli_fetch_assoc($QuestionReloadResult))
                             {
                                 if ($_GET["id"] == $Qrow["id"])
                                 {
