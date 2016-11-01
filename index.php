@@ -1,63 +1,7 @@
 <?php
 
 require_once("redirected.php");
-//require_once("PHP/Connect.php");
-if(isset($_POST["submit"]))
-{
-    //form submitted
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-    
-    //Hard coded until mysql is working with it
-    if($username == "admin" && $password == "cs518pa$$")
-    {
-        redirect_to("loggedin.html");
-    }
-    else if($username == "jbrunelle" && $password == "M0n@rch$")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "pvenkman" && $password == "imadoctor" )
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "dbarrett" && $password == "fr1ed3GGS")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "winston" && $password == "zeddM0r3")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "gozer" && $password == "d3$truct0R")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "slimer" && $password == "f33dM3")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "keymaster" && $password == "n0D@na")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "staypuft" && $password == "m@r$hM@ll0w")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "nbenfiel" && $password == "password")
-    {
-          redirect_to("loggedin.html");
-    }
-    else if($username == "tcorte" && $password == "password")
-    {
-          redirect_to("loggedin.html");
-    }
-}
-else
-{
-  $username = "";   
-}
+require_once("PHP/Connect.php");
 
 ?>
 
@@ -79,7 +23,7 @@ else
                 </div>>
             </div>
             <img src="" alt=""/>
-            <form action="index.php" method="post" class="FormLogin" <?PHP require_once("PHP/Login.php"); ?>>
+            <form action="index.php" method="post" class="FormLogin" >
                 Username: <input type="text" name="username" value="" >
                 Password: <input type="password"name="password" value=""> 
                <input type="submit" name="submit" value="Login">

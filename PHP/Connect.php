@@ -47,5 +47,32 @@
                 echo "Error creating table: " . mysqli_error($conn);
             }
             mysqli_close($conn);
+            
+            $servernameU = "localhost";
+            $usernameU = "root";
+            $passwordU = "";
+            $dbNameU = "Users";
+
+            // Create connection
+            $connU = mysqli_connect($servernameU, $usernameU, $passwordU, $dbNameU);
+
+            // Check connection
+            if (!$connU) {
+                die("Connection failed: " . mysqli_connect_error());
+            }
+            
+            //Create Table used for questions and answers
+            $sqlU = "CREATE TABLE IF NOT EXISTS Users (
+            id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+            username char(50) NOT NULL,
+            password char(50) NOT NULL,
+            )";
+
+            if (mysqli_query($connU, $sqlU)) {
+                echo "Table User created successfully";
+            } else {
+                echo "Error creating table: " . mysqli_error($conn);
+            }
+            mysqli_close($conn);
 ?>
 

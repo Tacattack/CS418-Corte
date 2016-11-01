@@ -108,6 +108,42 @@ LOCK TABLES `UserProfile` WRITE;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
+---
+--- Table Structure for  Logged in User DB
+---
+DROP TABLE IF EXISTS `Users`;
+
+CREATE TABLE `Users`(
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`username` char(50) NOT NULL,
+`password` char(50) NOT NULL,
+PRIMARY KEY (`id`)
+)ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+
+---
+--- Dumping data for table `Users`
+---
+
+LOCK TABLES `Users` WRITE;
+INSERT INTO `Users` VALUES(1,'admin','cs518pa$$');
+INSERT INTO `Users` VALUES(2,'jbrunelle','M0n@rch$');
+INSERT INTO `Users` VALUES(3,'pvenkman','imadoctor');
+INSERT INTO `Users` VALUES(4,'rstantz','"; INSERT INTO Customers (CustomerName,Address,City) Values(@0,@1,@2); --');
+INSERT INTO `Users` VALUES(5,'dbarrett','fr1ed3GGS');
+INSERT INTO `Users` VALUES(6,'ltully','<!--<i>');
+INSERT INTO `Users` VALUES(7,'espengler','dont cross the streams');
+INSERT INTO `Users` VALUES(8,'janine','--!drop tables;');
+INSERT INTO `Users` VALUES(9,'winston','zeddM0r3');
+INSERT INTO `Users` VALUES(10,'gozer','d3$truct0R');
+INSERT INTO `Users` VALUES(11,'slimer','f33dM3');
+INSERT INTO `Users` VALUES(12,'zuul','105"; DROP TABLE');
+INSERT INTO `Users` VALUES(13,'keymaster','n0D@na');
+INSERT INTO `Users` VALUES(14,'gatekeeper','$l0r');
+INSERT INTO `Users` VALUES(15,'staypuft','m@r$hM@ll0w');
+INSERT INTO `Users` VALUES(16,'nbenfiel','password');
+INSERT INTO `Users` VALUES(17,'tcorte','password');
+UNLOCK TABLES;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
