@@ -45,8 +45,8 @@ CREATE TABLE `Answers` (
 LOCK TABLES `Answers` WRITE;
 /*!40000 ALTER TABLE `Answers` DISABLE KEYS */;
 INSERT INTO `Answers` VALUES (1,1,'That is how do');
-INSERT INTO `Answers` VALUES (1,1,'This is also how do');
-INSERT INTO `Answers` VALUES (1,1,'To do how or not how do to');
+INSERT INTO `Answers` VALUES (2,1,'This is also how do');
+INSERT INTO `Answers` VALUES (3,1,'To do how or not how do to');
 /*!40000 ALTER TABLE `Answers` ENABLE KEYS */;
 UNLOCK TABLES;
 

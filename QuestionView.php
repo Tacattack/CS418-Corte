@@ -80,7 +80,7 @@
                             echo "<table>";
                             if (mysqli_num_rows($resultA) > 0)
                             {
-                                while ($rowA = mysqli_fetch_assoc($resultA) < mysqli_num_rows($resultA))
+                                while ($rowA = mysqli_fetch_assoc($resultA))
                                 {
                                     echo "<tr>";
                                     echo "<td>";
