@@ -77,7 +77,9 @@
                             echo "</div>";
                             
                             echo "<div>";
-                            echo "<h2>Answers</h2>";
+                            echo "<h4>Answers</h4>";
+                            echo "<textarea rows=\"30\" name=\"QBody\"></textarea>";
+                            echo "<br />";
                             echo "<table>";
                             if (mysqli_num_rows($resultA) > 0)
                             {
@@ -86,7 +88,7 @@
                                     echo "<tr>";
                                     echo "<td>";
                                     echo "<p>";
-                                    echo $rowA["questionID"];
+                                    echo $rowA["questionBody"];
                                     echo "</p>";
                                     echo "</td>";
                                     echo "</tr>";
