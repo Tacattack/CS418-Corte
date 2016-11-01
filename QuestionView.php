@@ -120,6 +120,21 @@
                     }
                     echo "</div>";
                     
+                    $QuestionReload = "SELECT * FROM Questions";
+                    $QuestionReloadResult = mysqli_query($conn, $QuestionReload);
+
+                        if (mysqli_num_rows($QuestionReloadResult) > 0)
+                        {
+                            while ($Qrow = mysqli_fetch_assoc($result))
+                            {
+                                if ($row["questionBody"] == $Qrow["questionTitle"])
+                                {
+                                    header("Location: QuestionView.php?id=".$row["id"]);
+                                    die(); 
+                                }
+                            }
+                        }
+                    
                     mysqli_close($conn);
                 ?>
             </div>

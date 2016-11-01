@@ -148,6 +148,7 @@ body{
     width: 100%;
     margin: 0;
     padding: 0;
+    vertical-align: top;
 }
 
 .PQuest div{
@@ -161,6 +162,7 @@ body{
     width: 100%;
     margin: 0;
     padding: 0;
+    vertical-align: top;
 }
 
 .TQuest div{
