@@ -117,11 +117,9 @@
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                         }
-                    }
-                    echo "</div>";
-                    
-                    $QuestionReload = "SELECT * FROM Questions";
-                    $QuestionReloadResult = mysqli_query($conn, $QuestionReload);
+                        
+                        $QuestionReload = "SELECT * FROM Questions";
+                        $QuestionReloadResult = mysqli_query($conn, $QuestionReload);
 
                         if (mysqli_num_rows($QuestionReloadResult) > 0)
                         {
@@ -134,6 +132,8 @@
                                 }
                             }
                         }
+                    }
+                    echo "</div>";
                     
                     mysqli_close($conn);
                 ?>
