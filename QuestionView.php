@@ -65,11 +65,11 @@
                 {
                     while ($row = mysqli_fetch_assoc($result))
                     {
-                            echo "<div id=\"QuestionTitle\"";
+                            echo "<div id=\"QuestionTitle\">";
                             echo "<h1>" . $row["questionTitle"] . "</h1>";
                             echo "</div>";
 
-                            echo "<div id=\"QuestionBody\"";
+                            echo "<div id=\"QuestionBody\">";
                             echo "<p>";
                             echo $row["questionBody"];
                             echo "</p>";
@@ -93,19 +93,22 @@
                             }
                             echo "</table>";
                             echo "<br />";
-                            echo "<textarea rows=\"30\" name=\"ABody\" style=\"width: 600px; height: 50px;\"></textarea>";
-                            echo "<input type=\"submit\" name=\"submit\" value=\"Submit Answer\" style=\"margin: 20px 50px; float: right\"/>";
-                            if (isset($_POST["submit"]))
-                            {
-                                $AnswerID = $_POST[$_GET["id"]];
-                                $AnswerBody = $_POST['ABody'];
-                                
-                                $sql = "INSERT INTO Answers (questionID,answerBody)
-                            VALUES('{$AnswerID}', '{$AnswerBody}')";
-                            }
-                            echo "</div>";
                     }
                 }
+                ?>
+                <textarea rows="30" name="ABody" style="width: 600px; height: 50px;"></textarea>
+                <input type="submit" name="submit" value="Submit Answer" style="margin: 20px 50px; float: right"/>
+                
+                <?php
+                    if (isset($_POST["submit"]))
+                        {
+                            $AnswerID = $_POST[$_GET["id"]];
+                            $AnswerBody = $_POST['ABody'];
+                                
+                            $sql = "INSERT INTO Answers (questionID,answerBody)
+                            VALUES('{$AnswerID}', '{$AnswerBody}')";
+                        }
+                        echo "</div>";
                 ?>
             </div>
         </div>
