@@ -61,7 +61,7 @@ require_once("redirected.php");
                             die("Connection failed: " . mysqli_connect_error());
                         }
                         
-                        $sqlT = "SELECT * FROM Questions ORDER BY questionScore DESC";
+                        $sqlT = "SELECT * FROM Questions ORDER BY questionScore DESC LIMIT 5";
                         $resultT = mysqli_query($conn, $sqlT);
                         
                         if (mysqli_num_rows($resultT) > 0)
@@ -90,7 +90,7 @@ require_once("redirected.php");
                 <aside class="PQuest">
                     <h3>Previously Asked Questions</h3>
                     <?php
-                        $sql = "SELECT * FROM Questions ORDER BY id DESC";
+                        $sql = "SELECT * FROM Questions ORDER BY id DESC LIMIT 5";
                         $result = mysqli_query($conn, $sql);
                         
                         if (mysqli_num_rows($result) > 0)
