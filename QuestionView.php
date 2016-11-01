@@ -56,7 +56,9 @@
                 $questionID = (isset($_GET["id"]) && trim($_GET["id"]) == 'QuestionView.php') ? trim($_GET["id"]) : '';
                 
                 $sql = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
+                $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."'";
                 $result = mysqli_query($conn, $sql);
+                $resultA = mysqli_query($conn, $sqlA);
 
                 if (mysqli_num_rows($result) > 0)
                 {
@@ -72,6 +74,27 @@
                             echo "<p>";
                             echo $row["questionBody"];
                             echo "</p>";
+                            echo "</div>";
+                            
+                            echo "<div>";
+                            echo "<h4>Answers</h4>";
+                            echo "<textarea rows=\"30\" name=\"QBody\"></textarea>";
+                            echo "<br />";
+                            echo "<table>";
+                            if (mysqli_num_rows($resultA) > 0)
+                            {
+                                while ($rowA = mysqli_fetch_assoc($resultA))
+                                {
+                                    echo "<tr>";
+                                    echo "<td>";
+                                    echo "<p>";
+                                    echo $rowA["questionBody"];
+                                    echo "</p>";
+                                    echo "</td>";
+                                    echo "</tr>";
+                                }
+                            }
+                            echo "</table>";
                             echo "</div>";
                     }
                 }
