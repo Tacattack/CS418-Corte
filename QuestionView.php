@@ -97,7 +97,7 @@
                 }
                 ?>
                 <form method="post">
-                    <textarea rows="30" name="ABody" style="width: 600px; height: 50px;"></textarea>;
+                    <textarea rows="30" name="ABody" style="width: 600px; height: 50px;"></textarea>
                     <input type="submit" name="submit" value="Submit Answer" style="margin: 20px 50px; float: right"/>
                 </form>
                 
@@ -112,6 +112,8 @@
                             
                         if (mysqli_query($conn, $AnswerCreate)) {
                             echo "New record created successfully";
+                            echo $AnswerID;
+                            echo $AnswerBody;
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                         }
