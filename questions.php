@@ -1,3 +1,6 @@
+<?php
+require('PHP/Connect.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -41,19 +44,6 @@
             <div id="Content">
                 <div class="QuestionList">
                     <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $dbName = "QuestionAnswer";
-
-                        // Create connection
-                        $conn = mysqli_connect($servername, $username, $password, $dbName);
-                        
-                        // Check connection
-                        if (!$conn) {
-                            die("Connection failed: " . mysqli_connect_error());
-                        }
-                        
                         $sql = "SELECT * FROM Questions ORDER BY id DESC";
                         $result = mysqli_query($conn, $sql);
                         

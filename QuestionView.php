@@ -1,3 +1,6 @@
+<?php
+require('PHP/Connect.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -40,19 +43,6 @@
         <div id="Container">
             <div id="Content">
                 <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbName = "QuestionAnswer";
-
-                // Create connection
-                $conn = mysqli_connect($servername, $username, $password, $dbName);
-
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-                
                 $questionID = (isset($_GET["id"]) && trim($_GET["id"]) == 'QuestionView.php') ? trim($_GET["id"]) : '';
                 
                 $sql = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
@@ -99,7 +89,7 @@
                 if (isset($_POST["submit"]))
                     {
                         $AnswerID = $_GET["id"];
-                        $AnswerBody = $_POST['ABody'];
+                        $AnswerBody = $_POST[htmlspecialchars('ABody', ENT_QUOTES)];
                                 
                         $AnswerCreate = "INSERT INTO Answers (questionID,answerBody)
                         VALUES('{$AnswerID}', '{$AnswerBody}')";

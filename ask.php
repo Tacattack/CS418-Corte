@@ -1,3 +1,6 @@
+<?php
+require('PHP/Connect.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -56,20 +59,8 @@
                     
                     <?php
                     if(isset($_POST["submit"])){
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $dbname = "QuestionAnswer";
-
-                        // Create connection
-                        $conn = mysqli_connect($servername, $username, $password, $dbname);
-                        // Check connection
-                        if (!$conn) {
-                            die("Connection failed: " . mysqli_connect_error());
-                        }
-
-                        $QuestionTitle = $_POST['QTitle'];
-                        $QuestionBody = $_POST['QBody'];
+                        $QuestionTitle = $_POST[htmlspecialchars('QTitle', ENT_QUOTES)];
+                        $QuestionBody = $_POST[htmlspecialchars('QBody', ENT_QUOTES)];
 
                         $sql = "INSERT INTO Questions (questionTitle, questionBody)
                             VALUES('{$QuestionTitle}', '{$QuestionBody}')";
