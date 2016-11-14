@@ -56,12 +56,12 @@ require('PHP/Connect.php');
                     while ($row = mysqli_fetch_assoc($result))
                     {
                             echo "<div id=\"QuestionTitle\">";
-                            echo "<h1>" . $row["questionTitle"] . "</h1>";
+                            echo "<h1>" . $row[htmlspecialchars ("questionTitle", ENT_QUOTES)] . "</h1>";
                             echo "</div>";
 
                             echo "<div id=\"QuestionBody\">";
                             echo "<p>";
-                            echo $row["questionBody"];
+                            echo $row[htmlspecialchars ("questionBody", ENT_QUOTES)];
                             echo "</p>";
                             echo "</div>";
                             
