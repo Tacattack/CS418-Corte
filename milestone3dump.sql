@@ -75,7 +75,7 @@ CREATE TABLE `Questions` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `questionScore` int(250) NOT NULL,
   `questionTitle` varchar(250) NOT NULL,
-  `questionBody` varchar(250) NOT NULL,
+  `questionBody` varchar(8000) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
