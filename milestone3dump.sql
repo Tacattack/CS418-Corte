@@ -34,7 +34,7 @@ CREATE TABLE `Answers` (
   `AnswerID` int(11) NOT NULL AUTO_INCREMENT,
   `questionID` int(250) NOT NULL,
   `answerScore` int(250) NOT NULL,
-  `answerBody` varchar(250) NOT NULL,
+  `answerBody` varchar(2000) NOT NULL,
   PRIMARY KEY (`AnswerID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
