@@ -23,7 +23,7 @@ echo "Checking the login";
          session_register("myusername");
          $_SESSION['login_user'] = $myusername;
          echo "Session Created";
-         header("location: welcome.php");
+         header("location: redirected.php");
       }else {
          $error = "Your Login Name or Password is invalid";
       }
