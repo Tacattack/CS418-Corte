@@ -56,12 +56,12 @@ require('PHP/Connect.php');
                     while ($row = mysqli_fetch_assoc($result))
                     {
                             echo "<div id=\"QuestionTitle\">";
-                            echo "<h1>" . $row[htmlspecialchars ("questionTitle", ENT_QUOTES)] . "</h1>";
+                            echo "<h1>" . $row["questionTitle"] . "</h1>";
                             echo "</div>";
 
                             echo "<div id=\"QuestionBody\">";
                             echo "<p>";
-                            echo $row[htmlspecialchars ("questionBody", ENT_QUOTES)];
+                            echo $row["questionBody"];
                             echo "</p>";
                             echo "</div>";
                             
@@ -89,7 +89,7 @@ require('PHP/Connect.php');
                 if (isset($_POST["submit"]))
                     {
                         $AnswerID = $_GET["id"];
-                        $AnswerBody = $_POST[htmlentities('ABody', ENT_QUOTES)];
+                        $AnswerBody = $_POST['ABody'];
                                 
                         $AnswerCreate = "INSERT INTO Answers (questionID,answerBody)
                         VALUES('{$AnswerID}', '{$AnswerBody}')";
