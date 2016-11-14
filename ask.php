@@ -79,7 +79,7 @@ require('PHP/Connect.php');
                         {
                             while ($row = mysqli_fetch_assoc($result))
                             {
-                                if ($QuestionTitle == $row["questionTitle"])
+                                if ($QuestionTitle == $row[addslashes("questionTitle")])
                                 {
                                     header("Location: QuestionView.php?id=".$row["id"]);
                                     die(); 
