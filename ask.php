@@ -59,8 +59,8 @@ require('PHP/Connect.php');
                     
                     <?php
                     if(isset($_POST["submit"])){
-                        $QuestionTitle = mysqli_real_escape_string($_POST['QTitle']);
-                        $QuestionBody = mysqli_real_escape_string($_POST['QBody']);
+                        $QuestionTitle = addslashes($_POST['QTitle']);
+                        $QuestionBody = addslashes($_POST['QBody']);
 
                         $sql = "INSERT INTO Questions (questionTitle, questionBody)
                             VALUES('{$QuestionTitle}', '{$QuestionBody}')";
