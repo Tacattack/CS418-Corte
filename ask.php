@@ -59,8 +59,8 @@ require('PHP/Connect.php');
                     
                     <?php
                     if(isset($_POST["submit"])){
-                        $QuestionTitle = $_POST[htmlspecialchars('QTitle', ENT_QUOTES)];
-                        $QuestionBody = $_POST[htmlspecialchars('QBody', ENT_QUOTES)];
+                        $QuestionTitle = $_POST[htmlentities('QTitle', ENT_QUOTES)];
+                        $QuestionBody = $_POST[htmlentities('QBody', ENT_QUOTES)];
 
                         $sql = "INSERT INTO Questions (questionTitle, questionBody)
                             VALUES('{$QuestionTitle}', '{$QuestionBody}')";

@@ -89,7 +89,7 @@ require('PHP/Connect.php');
                 if (isset($_POST["submit"]))
                     {
                         $AnswerID = $_GET["id"];
-                        $AnswerBody = $_POST[htmlspecialchars('ABody', ENT_QUOTES)];
+                        $AnswerBody = $_POST[htmlentities('ABody', ENT_QUOTES)];
                                 
                         $AnswerCreate = "INSERT INTO Answers (questionID,answerBody)
                         VALUES('{$AnswerID}', '{$AnswerBody}')";
