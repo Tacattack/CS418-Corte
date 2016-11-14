@@ -1,5 +1,5 @@
 <?php
-require('Connect.php');
+require('PHP/Connect.php');
 ?>
 <!DOCTYPE html>
 <html>
