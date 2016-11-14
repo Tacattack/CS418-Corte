@@ -1,10 +1,6 @@
 <?php
-
-require_once("redirected.php");
-//require_once("PHP/Connect.php");
-
+require('Connect.php');
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -48,19 +44,6 @@ require_once("redirected.php");
                 <aside class="TQuest">
                     <h3>Top Questions</h3>
                     <?php
-                        $servername = "localhost";
-                        $username = "root";
-                        $password = "";
-                        $dbName = "QuestionAnswer";
-
-                        // Create connection
-                        $conn = mysqli_connect($servername, $username, $password, $dbName);
-                        
-                        // Check connection
-                        if (!$conn) {
-                            die("Connection failed: " . mysqli_connect_error());
-                        }
-                        
                         $sqlT = "SELECT * FROM Questions ORDER BY questionScore DESC LIMIT 5";
                         $resultT = mysqli_query($conn, $sqlT);
                         
@@ -119,9 +102,6 @@ require_once("redirected.php");
                     ?>
                 </aside>
             </div>
-        </div>
-        <div id="Footer">
-            
         </div>
     </body>
 </html>

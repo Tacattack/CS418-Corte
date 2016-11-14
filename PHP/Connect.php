@@ -2,77 +2,14 @@
             $servername = "localhost";
             $username = "root";
             $password = "";
+            $dbName = "QuestionAnswer";
 
             // Create connection
-            $conn = mysqli_connect($servername, $username, $password);
+            $conn = mysqli_connect($servername, $username, $password, $dbName);
 
             // Check connection
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-            
-            // Create database
-            $sqlDB = "CREATE DATABASE QuestionAnswer";
-            if (mysqli_query($conn, $sqlDB)) {
-                echo "Database created successfully";
-            } else {
-                echo "Error creating database: " . mysqli_error($conn);
-            }
-            
-            mysqli_close($conn);
-            
-            $servernameT = "localhost";
-            $usernameT = "root";
-            $passwordT = "";
-            $dbNameT = "QuestionAnswer";
-
-            // Create connection
-            $connT = mysqli_connect($servernameT, $usernameT, $passwordT, $dbNameT);
-
-            // Check connection
-            if (!$connT) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
-            
-            //Create Table used for questions and answers
-            $sql = "CREATE TABLE IF NOT EXISTS Questions (
-            id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-            questionTitle CHAR(250) NOT NULL,
-            questionBody CHAR(250) NOT NULL
-            )";
-
-            if (mysqli_query($connT, $sql)) {
-                echo "Table QuestionAnswer created successfully";
-            } else {
-                echo "Error creating table: " . mysqli_error($conn);
-            }
-            mysqli_close($conn);
-            
-            $servernameU = "localhost";
-            $usernameU = "root";
-            $passwordU = "";
-            $dbNameU = "Users";
-
-            // Create connection
-            $connU = mysqli_connect($servernameU, $usernameU, $passwordU, $dbNameU);
-
-            // Check connection
-            if (!$connU) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
-            
-            //Create Table used for questions and answers
-            $sqlU = "CREATE TABLE IF NOT EXISTS Users (
-            id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-            username char(50) NOT NULL,
-            password char(50) NOT NULL,
-            )";
-
-            if (mysqli_query($connU, $sqlU)) {
-                echo "Table User created successfully";
-            } else {
-                echo "Error creating table: " . mysqli_error($conn);
-            }
-            mysqli_close($conn);
 ?>
 
