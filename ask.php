@@ -83,8 +83,12 @@ require('PHP/Connect.php');
                                 {
                                     header("Location: QuestionView.php?id=".$row["id"]);
                                     die(); 
+                                }else {
+                                    echo "ERROR: QuestionTitle != row[questionTitle]";
                                 }
                             }
+                        }else {
+                            echo "ERROR: Row is not > 0";
                         }
                         
                         mysqli_close($conn);
