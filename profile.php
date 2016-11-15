@@ -1,3 +1,7 @@
+<?php
+include ('Login.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,7 +13,7 @@
     <body>
         <div id="Header">
             <div id="header-wrapper">
-                Logged info
+                <b id="welcome">Welcome: <i><?php echo $login_session;?></i></b>
             </div>
             <img src="" alt=""/>
             <div class="Navigation">
