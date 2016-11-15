@@ -1,35 +1,36 @@
 <?php
 include("Connect.php");
+
 session_start();
+$error = '';
 
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
+if (isset($_POST('submit')))
+{
+    if (empty($_POST['username']) || empty($_POST['password'])) {
+        $error = "Username or Password is invalid";
+    }
+    else
+    {
+        // Define $username and $password
+        $username=$_POST['username'];
+        $password=$_POST['password'];
 
-      $myusername = mysqli_real_escape_string($db,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
- 
-      $sql = "SELECT id FROM admin WHERE username = '$myusername' and passcode = '$mypassword'";
-      $result = mysqli_query($db,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
-      
-      $count = mysqli_num_rows($result);
-      // If result matched $myusername and $mypassword, table row must be 1 row
-		
-      if($count == 1) {
-         session_register("myusername");
-         $_SESSION['login_user'] = $myusername;
-         echo "Session Created";
-         header("location: profile.php");
-      }else {
-         $error = "Your Login Name or Password is invalid";
-      }
-      
-      header('Location: profile.php');
-   }
-   else 
-   {
-       echo "This shit be busted";
-   }
+        // To protect MySQL injection for Security purpose
+        $username = stripslashes($username);
+        $password = stripslashes($password);
+        $username = mysql_real_escape_string($username);
+        $password = mysql_real_escape_string($password);
+
+        // SQL query to fetch information of registerd users and finds user match.
+        $query = mysqli_query("select * from UserProfile where password='$password' AND username='$username'");
+        $rows = mysqli_num_rows($query);
+        if ($rows == 1) {
+            $_SESSION['login_user']=$username; // Initializing Session
+            header("location: profile.php"); // Redirecting To Other Page
+        } else {
+            $error = "Username or Password is invalid";
+        }
+    }
+}
 ?>
 

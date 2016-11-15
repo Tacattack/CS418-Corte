@@ -12,9 +12,10 @@ include ('Login.php');
     </head>
     <body>
         <div id="Header">
-            <div id="header-wrapper">
-               
-            </div>
+            <form action="" method="post" class="FormLogin" >
+                <b>Welcome: <i><?php echo $login_session?></i></b>
+               <input type="submit" name="submit" value="Logout">
+            </form>
             <img src="" alt=""/>
             <div class="Navigation">
                 <h1>

@@ -1,7 +1,7 @@
 <?php
-
 //require_once("redirected.php");
 require_once("PHP/Connect.php");
+include("PHP/Login.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -20,7 +20,7 @@ require_once("PHP/Connect.php");
                     <a href="" title="help">help</a>
                 </div>
             </div>-->
-            <form action="PHP/Connect.php" method="post" class="FormLogin" >
+            <form action="" method="post" class="FormLogin" >
                 Username: <input type="text" name="username" value="" >
                 Password: <input type="password"name="password" value=""> 
                <input type="submit" name="submit" value="Login">
