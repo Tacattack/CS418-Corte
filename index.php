@@ -1,6 +1,6 @@
 <?php
 //require_once("redirected.php");
-require_once("PHP/Connect.php");
+require("PHP/Connect.php");
 include("PHP/Login.php");
 ?>
 <!DOCTYPE html>
