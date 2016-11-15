@@ -28,18 +28,24 @@
                     {
                         $_SESSION['username'] = $row['password'];
                         echo "signed in";
-                        header('Location: profile.php');
                     }
                     else
                     {
                         echo "Password or username wrong";
                     }
                 }
+                else
+                {
+                    echo "this be breaking";
+                }
             }
             
             if (isset($_POST['submit']))
             {
                 SignIn();
+            }
+            else{
+                echo "I don't work";
             }
 ?>
 
