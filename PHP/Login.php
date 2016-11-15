@@ -8,15 +8,13 @@ echo "Checking the login";
       echo "Passing the Username and Password, ";
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
-      
+      echo "Username: " + $myusername + " ";
+      echo "Password: " + $mypassword + " ";
       echo "Checking the DB, ";
       $sql = "SELECT id FROM admin WHERE username = '$myusername' and passcode = '$mypassword'";
       $result = mysqli_query($db,$sql);
-      echo "Result from DB, " + $result;
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      echo "Row from DB, " + row;
       $active = $row['active'];
-      echo "Active, " + $active;
       
       $count = mysqli_num_rows($result);
       echo "Count = " + $count;
