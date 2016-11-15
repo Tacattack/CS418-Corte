@@ -22,10 +22,10 @@ require_once("PHP/Login.php");
                     <a href="" title="help">help</a>
                 </div>
             </div>-->
-            <form action="index.php" method="post" class="FormLogin" >
+            <form action="PHP/Login.php" method="post" class="FormLogin" >
                 Username: <input type="text" name="username" value="" >
                 Password: <input type="password"name="password" value=""> 
-               <input type="submit" name="submit" value="Login" action="PHP/Login.php" method="post">
+               <input type="submit" name="submit" value="Login">
             </form>
             <!--<form class="FormRegister">
                 Email: <input type="text" name="email">

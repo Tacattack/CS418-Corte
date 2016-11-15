@@ -27,5 +27,9 @@ session_start();
       
       header('Location: profile.php');
    }
+   else 
+   {
+       echo "This shit be busted";
+   }
 ?>
 
