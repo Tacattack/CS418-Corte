@@ -2,7 +2,7 @@
 include("Connect.php");
 session_start();
 
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
+   if(isset($_POST["submit"])) {
       // username and password sent from form 
 
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
