@@ -28,6 +28,7 @@
                     {
                         $_SESSION['username'] = $row['password'];
                         echo "signed in";
+                        header('Location: profile.php');
                     }
                     else
                     {
