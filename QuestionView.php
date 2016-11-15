@@ -72,8 +72,8 @@ require('PHP/Connect.php');
                             {
                                 while ($rowA = mysqli_fetch_assoc($resultA))
                                 {
-                                    echo "<li>" . "<p id=\"AnswerScore\">" . $rowA["answerScore"] . "</p>" .
-                                    "<p id=\"AnswerText\">" . $rowA["answerBody"] . "</p>" . "</li>";
+                                    echo "<li>" . " <button>Up Vote</button>" . "<p id=\"AnswerScore\">" . $rowA["answerScore"] . "</p>" .
+                                    "<button>Down Vote</button>". "<p id=\"AnswerText\">" . $rowA["answerBody"] . "</p>" . "</li>";
                                 }
                             }
                             echo "<br />";

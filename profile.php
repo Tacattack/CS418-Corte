@@ -13,7 +13,7 @@ include ('Login.php');
     <body>
         <div id="Header">
             <div id="header-wrapper">
-                <b id="welcome">Welcome: <i><?php echo $login_session;?></i></b>
+               
             </div>
             <img src="" alt=""/>
             <div class="Navigation">
