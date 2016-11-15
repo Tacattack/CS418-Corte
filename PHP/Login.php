@@ -3,9 +3,10 @@ include("Connect.php");
 
 session_start();
 $error = '';
-
+echo "This loads at least";
 if (isset($_POST('submit')))
 {
+    echo "You hit the submit button at least";
     if (empty($_POST['username']) || empty($_POST['password'])) {
         $error = "Username or Password is invalid";
         echo $error;
@@ -29,7 +30,9 @@ if (isset($_POST('submit')))
         echo "I created the query";
         if ($rows == 1) {
             $_SESSION['login_user']=$username; // Initializing Session
+            echo "You are logged in";
             header("location: ../profile.php"); // Redirecting To Other Page
+            echo "I refuse to do anything pass this point";
         } else {
             $error = "Username or Password is invalid";
             echo $error;
