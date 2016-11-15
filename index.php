@@ -25,7 +25,7 @@ require_once("PHP/Login.php");
             <form action="index.php" method="post" class="FormLogin" >
                 Username: <input type="text" name="username" value="" >
                 Password: <input type="password"name="password" value=""> 
-               <input type="submit" name="submit" value="Login" action="profile.php" method="post">
+               <input type="submit" name="submit" value="Login" action="PHP/Login.php" method="post">
             </form>
             <!--<form class="FormRegister">
                 Email: <input type="text" name="email">

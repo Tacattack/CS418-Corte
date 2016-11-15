@@ -24,6 +24,8 @@ session_start();
       }else {
          $error = "Your Login Name or Password is invalid";
       }
+      
+      header("location: profile.php");
    }
 ?>
 
