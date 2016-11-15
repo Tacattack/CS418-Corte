@@ -12,24 +12,24 @@ require_once("PHP/Connect.php");
     </head>
     <body>
         <div id="Header">
-            <!--<div id="header-wrapper">
+            <div id="header-wrapper">
                 <div id="header-links">
                     <a href="" id="Register">sign up</a>
                     <a href="" id="Login">log in</a>
-                    <a href="" title="help">help</a>
+                    <a href="" title="Help">help</a>
                 </div>
-            </div>-->
+            </div>
             <form action="PHP/Login.php" method="post" class="FormLogin" >
                 Username: <input type="text" name="username" value="" >
                 Password: <input type="password"name="password" value=""> 
                <input type="submit" name="submit" value="Login">
             </form>
-            <!--<form class="FormRegister">
+            <form class="FormRegister">
                 Email: <input type="text" name="email">
                 Username: <input type="text">
                 Password: <input type="password">
                 <input type="submit" value="Register">
-            </form>-->
+            </form>
             <div class="Navigation">
                 <h1>
                     <a href="index.php"><img src="images/Logo.png" class="logo"></a>
