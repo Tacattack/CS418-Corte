@@ -2,38 +2,6 @@
 
 //require_once("redirected.php");
 require_once("PHP/Connect.php");
-include("Connect.php");
-session_start();
-
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
-
-      $myusername = mysqli_real_escape_string($db,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
- 
-      $sql = "SELECT id FROM admin WHERE username = '$myusername' and passcode = '$mypassword'";
-      $result = mysqli_query($db,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
-      
-      $count = mysqli_num_rows($result);
-      // If result matched $myusername and $mypassword, table row must be 1 row
-		
-      if($count == 1) {
-         session_register("myusername");
-         $_SESSION['login_user'] = $myusername;
-         echo "Session Created";
-         header("location: profile.php");
-      }else {
-         $error = "Your Login Name or Password is invalid";
-      }
-      
-      header('Location: profile.php');
-   }
-   else 
-   {
-       echo "This shit be busted";
-   }
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,7 +20,7 @@ session_start();
                     <a href="" title="help">help</a>
                 </div>
             </div>-->
-            <form action="" method="post" class="FormLogin" >
+            <form action="PHP/Login.php" method="post" class="FormLogin" >
                 Username: <input type="text" name="username" value="" >
                 Password: <input type="password"name="password" value=""> 
                <input type="submit" name="submit" value="Login">
