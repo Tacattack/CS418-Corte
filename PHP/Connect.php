@@ -44,8 +44,5 @@
             {
                 SignIn();
             }
-            else{
-                echo "I don't work";
-            }
 ?>
 
