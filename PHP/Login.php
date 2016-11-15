@@ -29,7 +29,7 @@ if (isset($_POST('submit')))
         echo "I created the query";
         if ($rows == 1) {
             $_SESSION['login_user']=$username; // Initializing Session
-            header("location: profile.php"); // Redirecting To Other Page
+            header("location: ../profile.php"); // Redirecting To Other Page
         } else {
             $error = "Username or Password is invalid";
             echo $error;
