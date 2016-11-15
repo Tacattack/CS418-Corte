@@ -66,55 +66,14 @@ include ('Login.php');
                             {
                                 while ($rowA = mysqli_fetch_assoc($resultA))
                                 {
-                                    echo "<li>" . " <button>Up Vote</button>" . "<p id=\"AnswerScore\">" . $rowA["answerScore"] . "</p>" .
-                                    "<button>Down Vote</button>". "<p id=\"AnswerText\">" . $rowA["answerBody"] . "</p>" . "</li>";
+                                    echo "<li>" . "<p id=\"AnswerScore\">" . $rowA["answerScore"] . "</p>" .
+                                     "<p id=\"AnswerText\">" . $rowA["answerBody"] . "</p>" . "</li>";
                                 }
                             }
                             echo "<br />";
                     }
                 }
-                ?>
-                <form method="post">
-                    <textarea rows="30" name="ABody" style="width: 600px; height: 50px;"></textarea>
-                    <input type="submit" name="submit" value="Submit Answer" style="margin: 20px 50px; float: right"/>
-                </form>
-                
-                <?php
-                if (isset($_POST["submit"]))
-                    {
-                        $AnswerID = $_GET["id"];
-                        $AnswerBody = addslashes($_POST['ABody']);
-                                
-                        $AnswerCreate = "INSERT INTO Answers (questionID,answerBody)
-                        VALUES('{$AnswerID}', '{$AnswerBody}')";
-                            
-                        if (mysqli_query($conn, $AnswerCreate)) {
-                            echo "New record created successfully";
-                        } else {
-                            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                        }
-                        
-                        $QuestionReload = "SELECT * FROM Questions";
-                        $QuestionReloadResult = mysqli_query($conn, $QuestionReload);
-
-                        if (mysqli_num_rows($QuestionReloadResult) > 0)
-                        {
-                            while ($Qrow = mysqli_fetch_assoc($QuestionReloadResult))
-                            {
-                                if ($_GET["id"] == $Qrow["id"])
-                                {
-                                    header("Location: QuestionView.php?id=".$Qrow["id"]);
-                                    die(); 
-                                }
-                            }
-                        }
-                    }
-                    echo "</ul>";
-                    
-                    mysqli_close($conn);
-                ?>
-                
-                
+                ?>   
             </div>
         </div>
         <div id="Footer">
