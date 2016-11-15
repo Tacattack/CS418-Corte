@@ -20,7 +20,7 @@ require_once("PHP/Connect.php");
                     <a href="" title="help">help</a>
                 </div>
             </div>-->
-            <form action="PHP/Login.php" method="post" class="FormLogin" >
+            <form action="PHP/Connect.php" method="post" class="FormLogin" >
                 Username: <input type="text" name="username" value="" >
                 Password: <input type="password"name="password" value=""> 
                <input type="submit" name="submit" value="Login">
