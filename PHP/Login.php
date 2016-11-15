@@ -15,7 +15,8 @@ echo "Checking the login";
       $active = $row['active'];
       
       $count = mysqli_num_rows($result);
-      echo "Count = $count";
+      echo "Count = ";
+      echo $count;
       // If result matched $myusername and $mypassword, table row must be 1 row
 		
       if($count == 1) {
