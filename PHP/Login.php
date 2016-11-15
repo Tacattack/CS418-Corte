@@ -8,8 +8,8 @@ echo "Checking the login";
       echo "Passing the Username and Password, ";
       $myusername = mysqli_real_escape_string($db,$_POST['username']);
       $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
-      echo "Username: " + $myusername + " ";
-      echo "Password: " + $mypassword + " ";
+      echo "Username: $myusername  ";
+      echo "Password: $mypassword ";
       echo "Checking the DB, ";
       $sql = "SELECT id FROM admin WHERE username = '$myusername' and passcode = '$mypassword'";
       $result = mysqli_query($db,$sql);
@@ -17,7 +17,7 @@ echo "Checking the login";
       $active = $row['active'];
       
       $count = mysqli_num_rows($result);
-      echo "Count = " + $count;
+      echo "Count = $count " ;
       // If result matched $myusername and $mypassword, table row must be 1 row
 		
       if($count == 1) {
