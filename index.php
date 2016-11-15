@@ -1,6 +1,10 @@
 <?php
 //require_once("redirected.php");
 require_once("PHP/Connect.php");
+
+if(isset($_SESSION['login_user'])){
+    header("location: profile.php");
+}
 ?>
 <!DOCTYPE html>
 <html>
