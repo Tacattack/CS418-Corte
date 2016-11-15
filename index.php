@@ -2,8 +2,6 @@
 
 //require_once("redirected.php");
 require_once("PHP/Connect.php");
-require_once("PHP/Login.php");
-
 ?>
 <!DOCTYPE html>
 <html>
