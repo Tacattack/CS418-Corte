@@ -1,6 +1,61 @@
 <?php
 //require_once("redirected.php");
-    require_once("PHP/Connect.php");
+//require_once("PHP/Connect.php");
+
+    echo "I run before the connection";
+    $host = "localhost";
+    $user = "root";
+    $passwrd = "";
+    $db = "QuestionAnswer";
+    
+    mysqli_connect($host, $user, $pass);
+    mysqli_select_db($db);
+    echo "I run after the connection";
+    
+    echo $host;
+    echo $user;
+    echo $psswrd;
+    echo $db;
+    
+
+    if (isset($_POST['Login']))
+    {
+        echo "The username is: ".$_POST('LoginUsername');
+        echo "The password is: ".$_POST('LoginPassword');
+        
+        $USRNM = $_POST('LoginUsername');
+        $PSSWRD = $_POST('LoginPassword');
+        
+        echo $USRNM;
+        echo $PSSWRD;
+        
+        //Protecting username from MYSQL injection
+        $USRNM = stripslashes($USRNM);
+        $USRNM = mysqli_real_escape_string($USRNM);
+        echo "username protected";
+        //Protecting password from MYSL injection
+        $PSSWRD = stripslashes($PSSWRD);
+        $PSSWRD = mysqli_real_escape_string($PSSWRD);
+        echo "password protected";
+        //comparing username and password to database
+        $sqlLogin = "SELECT * FROM UserProfile WHERE username='".$USRNM."' AND password='".$PSSWRD."' LIMIT 1";
+        $resultLogin = mysqli_query($sqlLogin);
+        echo "query created";
+        //if $result matched username and password, table row must be 1
+        if (mysqli_num_rows($resultLogin) == 1)
+        {
+            //Register the username and password then redirect it to the profile page
+            echo "You have successfully logged in";
+            exit();
+        }
+        else
+        {
+            echo "Wrong username and password";
+            exit();
+        }
+    }
+    
+    echo "I either skipped the if or completed it no probs";
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,10 +74,10 @@
                     <a href="" title="Help">help</a>
                 </div>
             </div>
-            <form method="post" class="FormLogin" action="PHP/Login.php">
+            <form method="post" class="FormLogin" action="">
                 Username: <input type="text" name="LoginUsername">
                 Password: <input type="password" name="LoginPassword"> 
-               <input type="submit" name="Login" value="Login">
+               <input type="submit" name="submit" value="Login">
             </form>
             <!--<form class="FormRegister">
                 Email: <input type="text" name="email">
