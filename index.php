@@ -26,8 +26,8 @@ if(isset($_SESSION['login_user'])){
                 </div>
             </div>
             <form method="post" class="FormLogin" action="PHP/Login.php">
-                Username: <input type="text" name="username" value="" >
-                Password: <input type="password"name="password" value=""> 
+                Username: <input type="text" name="username">
+                Password: <input type="password"name="password"> 
                <input type="submit" name="submit" value="Login">
             </form>
             <!--<form class="FormRegister">

@@ -3,6 +3,9 @@
     include ("Connect.php");
     echo "I run after the include";
     
+    echo $dbName;
+    echo "The username is: ".$_POST('username');
+    echo "The password is: ".$_POST('password');
     $USRNM = $_POST('username');
     $PSSWRD = $_POST('password');
     
