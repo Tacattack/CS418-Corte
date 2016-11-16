@@ -25,7 +25,7 @@
         //Register the username and password then redirect it to the profile page
         session_register("USRNM");
         session_register("PSSWRD");
-        header("location: profile.php");
+        header("location: ../profile.php");
     }
     else
     {
