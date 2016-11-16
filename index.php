@@ -9,7 +9,7 @@
     echo $dbName."\r\n";
     
 
-    if (isset($_POST['LoginUsername']))
+    if (isset($_POST['Login']))
     {
         echo "The username is: ".$_POST('LoginUsername')."\r\n";
         echo "The password is: ".$_POST('LoginPassword')."\r\n";
