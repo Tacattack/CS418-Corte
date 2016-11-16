@@ -120,8 +120,8 @@ CREATE TABLE `UserProfile` (
 
 LOCK TABLES `UserProfile` WRITE;
 /*!40000 ALTER TABLE `UserProfile` DISABLE KEYS */;
-INSERT INTO `UserProfile` VALUES(16,'nbenfiel','password');
-INSERT INTO `UserProfile` VALUES(17,'tcorte','password');
+INSERT INTO `UserProfile` VALUES(1,'nbenfiel','password');
+INSERT INTO `UserProfile` VALUES(2,'tcorte','password');
 /*!40000 ALTER TABLE `UserProfile` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
