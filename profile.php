@@ -1,5 +1,10 @@
 <?php
 session_start();
+
+if (!session_is_registered(USRNM))
+{
+    header("location:index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
