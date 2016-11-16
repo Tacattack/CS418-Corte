@@ -1,8 +1,6 @@
 <?php
 //require_once("redirected.php");
 require_once("PHP/Connect.php");
-include("Login.php");
-
 
 if(isset($_SESSION['login_user'])){
     header("location: profile.php");
@@ -26,8 +24,8 @@ if(isset($_SESSION['login_user'])){
                 </div>
             </div>
             <form method="post" class="FormLogin" action="PHP/Login.php">
-                Username: <input type="text" name="username">
-                Password: <input type="password"name="password"> 
+                Username: <input type="text" name="username" id="username">
+                Password: <input type="password" name="password" id="password"> 
                <input type="submit" name="submit" value="Login">
             </form>
             <!--<form class="FormRegister">
