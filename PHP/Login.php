@@ -13,7 +13,7 @@
     $PSSWRD = mysqli_real_escape_string($PSSWRD);
     
     //comparing username and password to database
-    $sqlLogin = "SELECT * FROM UserProfile WHERE username='$USRNM' and password='$PSSWRD'";
+    $sqlLogin = "SELECT * FROM UserProfile WHERE username='".$_GET['$USRNM']."'and password='".$_GET['$PSSWRD'];
     $resultLogin = mysqli_query($sqlLogin);
     
     //Couting the table row
