@@ -1,6 +1,6 @@
 <?php
 //require_once("redirected.php");
-    require_once("PHP/Connect.php");
+    require_once("PHP/Connect.php");''
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,58 +19,11 @@
                     <a href="" title="Help">help</a>
                 </div>
             </div>
-            <form method="post" class="FormLogin" action="">
+            <form method="post" class="FormLogin" action="PHP/Login.php">
                 Username: <input type="text" name="LoginUsername">
                 Password: <input type="password" name="LoginPassword"> 
                <input type="submit" name="Login" value="Login">
             </form>
-            <?PHP
-                if(isset($_POST["Login"]))
-                {
-                    echo "I run before the include";
-                    echo "I run after the include";
-
-                    echo $dbName;
-                    echo "The username is: ".$_POST('LoginUsername');
-                    echo "The password is: ".$_POST('LoginPassword');
-                    $USRNM = $_POST('LoginUsername');
-                    $PSSWRD = $_POST('LoginPassword');
-
-                    echo $USRNM;
-                    echo $PSSWRD;
-
-                    //Protecting username from MYSQL injection
-                    $USRNM = stripslashes($USRNM);
-                    $USRNM = mysqli_real_escape_string($USRNM);
-                    echo "username protected";
-                    //Protecting password from MYSL injection
-                    $PSSWRD = stripslashes($PSSWRD);
-                    $PSSWRD = mysqli_real_escape_string($PSSWRD);
-                    echo "password protected";
-                    //comparing username and password to database
-                    $sqlLogin = "SELECT * FROM UserProfile WHERE username='$USRNM' and password='$PSSWRD'";
-                    $resultLogin = mysqli_query($sqlLogin);
-                    echo "query created";
-                    //Couting the table row
-                    $count = mysqli_num_rows($result);
-                    echo $count;
-                    //if $result matched username and password, table row must be 1
-                    if ($count == 1)
-                    {
-                        echo "Count == 1";
-                        //Register the username and password then redirect it to the profile page
-                        session_register("USRNM");
-                        session_register("PSSWRD");
-                        header("location: profile.php");
-                    }
-                    else
-                    {
-                        echo "Wrong username and password";
-                    }
-
-                    echo "I either skipped the if or completed it no probs";
-                }
-            ?>
             <!--<form class="FormRegister">
                 Email: <input type="text" name="email">
                 Username: <input type="text">
