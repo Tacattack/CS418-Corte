@@ -20,21 +20,21 @@
                 </div>
             </div>
             <form method="post" class="FormLogin" action="">
-                Username: <input type="text" name="username" id="username">
-                Password: <input type="password" name="password" id="password"> 
-               <input type="submit" name="submit" value="Login">
+                Username: <input type="text" name="LoginUsername">
+                Password: <input type="password" name="LoginPassword"> 
+               <input type="submit" name="Login" value="Login">
             </form>
             <?PHP
-                if(isset($_POST["submit"]))
+                if(isset($_POST["Login"]))
                 {
                     echo "I run before the include";
                     echo "I run after the include";
 
                     echo $dbName;
-                    echo "The username is: ".$_POST('username');
-                    echo "The password is: ".$_POST('password');
-                    $USRNM = $_POST('username');
-                    $PSSWRD = $_POST('password');
+                    echo "The username is: ".$_POST('LoginUsername');
+                    echo "The password is: ".$_POST('LoginPassword');
+                    $USRNM = $_POST('LoginUsername');
+                    $PSSWRD = $_POST('LoginPassword');
 
                     echo $USRNM;
                     echo $PSSWRD;
