@@ -48,6 +48,7 @@
                 $_SESSION["USERID"] = $rowLog["id"];
                 $_SESSION["USER"] = $USRNM;
                 $_SESSION["PASSWORD"] = $PSSWRD;
+                $LogIn = true;
                 echo "| ".$_SESSION["USERID"]." |";
                 echo "| ".$_SESSION["USER"]." |";
                 echo "| ".$_SESSION["PASSWORD"]." |";
