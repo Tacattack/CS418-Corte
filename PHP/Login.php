@@ -27,7 +27,7 @@
     //$PSSWRD = mysqli_real_escape_string($PSSWRD);
     echo "| password protected |";
     //comparing username and password to database
-    $sqlLogin = "SELECT username FROM UserProfile";
+    $sqlLogin = "SELECT * FROM UserProfile";
     $resultLogin = mysqli_query($conn, $sqlLogin);
     echo "| query created |";
     echo "| ".mysqli_num_rows($resultLogin)." |";
