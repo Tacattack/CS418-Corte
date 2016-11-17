@@ -32,9 +32,11 @@
     //if $result matched username and password, table row must be 1
     if (mysqli_num_rows($resultLogin) > 0)
     {
-        while ($rowLog = mysqli_fetch_assoc($resultLogin))
+        echo "| I'm in the first if statement |";
+        while ($rowLog = mysqli_fetch_assoc($resultLogin)) //Searches through the table
         {
-            if ($USRNM == $rowLog["username"])
+            echo "| I'm in the while loop |";
+            if ($USRNM == $rowLog["username"]) //compares usernames to entered username
             {
                 //Register the username and password then redirect it to the profile page
                 echo "| You have successfully logged in |";
@@ -48,6 +50,6 @@
         }
     }
     
-    echo "| If statement skipped |";
+    echo "| If statement exited |";
 ?>
 
