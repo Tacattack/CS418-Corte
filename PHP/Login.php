@@ -29,6 +29,7 @@
     $sqlLogin = "SELECT * FROM UserProfile";
     $resultLogin = mysqli_query($conn, $sqlLogin);
     echo "| query created |";
+    echo "| ".mysqli_num_rows($resultLogin)." |";
     //if $result matched username and password, table row must be 1
     if (mysqli_num_rows($resultLogin) > 0)
     {
