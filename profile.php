@@ -14,7 +14,7 @@ session_start();
             <?PHP
                     if (isset($_SESSION["USER"]))
                     {
-                        echo "<form class=\"FormLogin\" action=\"PHP/Login.php\" method=\"post\">";
+                        echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
                         echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
                         echo "&nbsp&nbsp&nbsp";
                         echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
@@ -22,7 +22,7 @@ session_start();
                     }
                     else
                     {
-                        echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
+                        echo "<form class=\"FormLogin\" action=\"PHP/Login.php\" method=\"post\">";
                         echo "Username: <input type=\"text\" name=\"LoginUsername\">";
                         echo "Password: <input type=\"password\" name=\"LoginPassword\">"; 
                         echo "<input type=\"submit\" name=\"submit\" value=\"Login\">";
