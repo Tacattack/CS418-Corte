@@ -39,7 +39,7 @@
         {
             echo "| I'm in the while loop |";
             echo "| ".$rowLog[addslashes("username")]." |";
-            if ($USRNM == $rowLog["username"]) //compares usernames to entered username
+            if ($USRNM == $rowLog["username"] && $PSSWRD == $rowLog["password"]) //compares usernames to entered username
             {
                 //Register the username and password then redirect it to the profile page
                 echo "| You have successfully logged in |";
@@ -48,6 +48,7 @@
                 $_SESSION["USER"] = $USRNM;
                 $_SESSION["PASSWORD"] = $PSSWRD;
                 header("Location: ../profile.php?id=".$_SESSION["USERID"]);
+                die();
             }
             elseif ($USRNM != $rowLog["username"]) 
             {
