@@ -18,12 +18,12 @@
     echo "| ".$PSSWRD." |";
 
     //Protecting username from MYSQL injection
-    $USRNM = stripslashes($USRNM);
-    $USRNM = mysqli_real_escape_string($USRNM);
+    //$USRNM = stripslashes($USRNM);
+    //$USRNM = mysqli_real_escape_string($USRNM);
     echo "| username protected |";
     //Protecting password from MYSL injection
-    $PSSWRD = stripslashes($PSSWRD);
-    $PSSWRD = mysqli_real_escape_string($PSSWRD);
+    //$PSSWRD = stripslashes($PSSWRD);
+    //$PSSWRD = mysqli_real_escape_string($PSSWRD);
     echo "| password protected |";
     //comparing username and password to database
     $sqlLogin = "SELECT username FROM UserProfile";
@@ -37,6 +37,7 @@
         while ($rowLog = mysqli_fetch_assoc($resultLogin)) //Searches through the table
         {
             echo "| I'm in the while loop |";
+            echo "| ".$rowLog[addslashes("username")]." |";
             if ($USRNM == $rowLog[addslashes("username")]) //compares usernames to entered username
             {
                 //Register the username and password then redirect it to the profile page
