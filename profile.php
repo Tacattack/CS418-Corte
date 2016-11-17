@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-if ($_SESSION["USER"] != $USRNM)
-{
-    header("location:index.php");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
