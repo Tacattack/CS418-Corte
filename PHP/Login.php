@@ -3,13 +3,13 @@
     include("Connect.php");
     echo "I run after the connection";
     
-    echo $host;
-    echo $user;
-    echo $psswrd;
-    echo $db;
+    echo $servername;
+    echo $username;
+    echo $password;
+    echo $dbName;
     
-    echo "The username is: ".$_POST('LoginUsername');
-    echo "The password is: ".$_POST('LoginPassword');
+    echo "The username is: ".$_GET($_POST('LoginUsername'));
+    echo "The password is: ".$_GET($_POST('LoginPassword'));
 
     $USRNM = $_POST('LoginUsername');
     $PSSWRD = $_POST('LoginPassword');
