@@ -20,9 +20,19 @@ require_once("PHP/Connect.php");
                 </div>
             </div>
             <form class="FormLogin" action="PHP/Login.php" method="post">
-                Username: <input type="text" name="LoginUsername">
-                Password: <input type="password" name="LoginPassword"> 
-               <input type="submit" name="submit" value="Login">
+                <?PHP
+                    if ($_SESSION["USERNAME"] == $USR)
+                    {
+                            echo "<b>Welcome: <i>".$_SESSION["USER"]."</i></b>";
+                            echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
+                    }
+                    else
+                    {
+                        echo "Username: <input type=\"text\" name=\"LoginUsername\">";
+                        echo "Password: <input type=\"password\" name=\"LoginPassword\">"; 
+                        echo "<input type=\"submit\" name=\"submit\" value=\"Login\">";
+                    }
+                ?>
             </form>
             <!--<form class="FormRegister">
                 Email: <input type="text" name="email">
