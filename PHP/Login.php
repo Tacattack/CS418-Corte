@@ -1,12 +1,6 @@
 <?php
     echo "I run before the connection";
-    $host = "localhost";
-    $user = "root";
-    $passwrd = "";
-    $db = "QuestionAnswer";
-    
-    mysqli_connect($host, $user, $pass);
-    mysqli_select_db($db);
+    include("Connect.php");
     echo "I run after the connection";
     
     echo $host;
@@ -33,7 +27,7 @@
     echo "password protected";
     //comparing username and password to database
     $sqlLogin = "SELECT * FROM UserProfile WHERE username='".$USRNM."' AND password='".$PSSWRD."' LIMIT 1";
-    $resultLogin = mysqli_query($sqlLogin);
+    $resultLogin = mysqli_query($conn, $sqlLogin);
     echo "query created";
     //if $result matched username and password, table row must be 1
     if (mysqli_num_rows($resultLogin) == 1)
