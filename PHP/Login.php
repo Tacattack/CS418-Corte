@@ -37,7 +37,7 @@
         while ($rowLog = mysqli_fetch_assoc($resultLogin)) //Searches through the table
         {
             echo "| I'm in the while loop |";
-            if ($USRNM == $rowLog["username"]) //compares usernames to entered username
+            if ($USRNM == $rowLog[addslashes("username")]) //compares usernames to entered username
             {
                 //Register the username and password then redirect it to the profile page
                 echo "| You have successfully logged in |";
