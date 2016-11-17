@@ -109,9 +109,9 @@ CREATE TABLE `UserProfile` (
   `username` char(50) NOT NULL,
   `password` char(50) NOT NULL,
   `email` char(50) NOT NULL,
-  `userImage` blob NOT NULL,
+  `userImage` blob,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,8 +120,8 @@ CREATE TABLE `UserProfile` (
 
 LOCK TABLES `UserProfile` WRITE;
 /*!40000 ALTER TABLE `UserProfile` DISABLE KEYS */;
-INSERT INTO `UserProfile` VALUES(1,'nbenfiel','password');
-INSERT INTO `UserProfile` VALUES(2,'tcorte','password');
+INSERT INTO `UserProfile` VALUES(1,'nbenfiel','password','nick@email.com');
+INSERT INTO `UserProfile` VALUES(2,'tcorte','password','trai@email.com');
 /*!40000 ALTER TABLE `UserProfile` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
