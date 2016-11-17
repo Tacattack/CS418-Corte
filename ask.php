@@ -74,14 +74,14 @@ require('PHP/Connect.php');
                         
                         $sql = "SELECT * FROM Questions";
                         $result = mysqli_query($conn, $sql);
-                        echo mysqli_num_rows($result);
+
                         if (mysqli_num_rows($result) > 0)
                         {
                             while ($row = mysqli_fetch_assoc($result))
                             {
                                 if ($QuestionTitle == $row[addslashes("questionTitle")])
                                 {
-                                    //header("Location: QuestionView.php?id=".$row["id"]);
+                                    header("Location: QuestionView.php?id=".$row["id"]);
                                     die(); 
                                 }else {
                                     echo "ERROR: QuestionTitle != row[questionTitle]";
