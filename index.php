@@ -13,22 +13,24 @@ session_start();
     </head>
     <body>
         <div id="Header">
-            <form class="FormLogin" action="PHP/Login.php" method="post">
                 <?PHP
                     if (isset($_SESSION["USER"]))
                     {
+                        echo "<form class=\"FormLogin\" action=\"PHP/Login.php\" method=\"post\">";
                         echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
                         echo "&nbsp&nbsp&nbsp";
                         echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
+                        echo "</form>";
                     }
                     else
                     {
+                        echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
                         echo "Username: <input type=\"text\" name=\"LoginUsername\">";
                         echo "Password: <input type=\"password\" name=\"LoginPassword\">"; 
                         echo "<input type=\"submit\" name=\"submit\" value=\"Login\">";
+                        echo "</form>";
                     }
                 ?>
-            </form>
             <!--<form class="FormRegister">
                 Email: <input type="text" name="email">
                 Username: <input type="text">
