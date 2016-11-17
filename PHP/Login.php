@@ -17,8 +17,6 @@
 
     echo "| ".$USRNM." |";
     echo "| ".$PSSWRD." |";
-
-    $USR = $USRNM;
     
     //Protecting username from MYSQL injection
     //$USRNM = stripslashes($USRNM);

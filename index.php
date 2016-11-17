@@ -22,10 +22,10 @@ session_start();
             </div>
             <form class="FormLogin" action="PHP/Login.php" method="post">
                 <?PHP
-                    if (isset($_SESSION["USERNAME"]))
+                    if (isset($_SESSION["USER"]))
                     {
-                            echo "<b>Welcome: <i>".$_SESSION["USER"]."</i></b>";
-                            echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
+                        echo "<b>Welcome: <i>".$_SESSION["USER"]."</i></b>";
+                        echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
                     }
                     else
                     {
