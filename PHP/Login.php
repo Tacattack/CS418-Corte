@@ -43,7 +43,6 @@
             {
                 //Register the username and password then redirect it to the profile page
                 echo "| You have successfully logged in |";
-                session_is_registered($USRNM);
                 $_SESSION["USERID"] = $rowLog["id"];
                 $_SESSION["USER"] = $USRNM;
                 $_SESSION["PASSWORD"] = $PSSWRD;
