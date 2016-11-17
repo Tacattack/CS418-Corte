@@ -17,7 +17,7 @@ if (!session_is_registered(USRNM))
     <body>
         <div id="Header">
             <form action="" method="post" class="FormLogin" >
-                <b>Welcome: <i><?php echo $login_session?></i></b>
+                <b>Welcome: <i><?php echo $_SESSION["USER"];?></i></b>
                <input type="submit" name="submit" value="Logout">
             </form>
             <img src="" alt=""/>

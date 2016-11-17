@@ -1,6 +1,7 @@
 <?php
     echo "I run before the connection |";
     include("Connect.php");
+    session_start();
     echo "| I run after the connection |";
     
     echo "| ".$servername." |";
@@ -42,11 +43,19 @@
             {
                 //Register the username and password then redirect it to the profile page
                 echo "| You have successfully logged in |";
-                exit();
+                session_is_registered($USRNM);
+                $_SESSION["USERID"] = $rowLog["id"];
+                $_SESSION["USER"] = $USRNM;
+                $_SESSION["PASSWORD"] = $PSSWRD;
+                header("Location: ../profile.php?id=".$_SESSION["USERID"]);
+            }
+            elseif ($USRNM != $rowLog["username"]) 
+            {
+                echo "| NOPE |";
             }
             else
             {
-                echo "| Wrong username and password |";
+                echo "| Wrong Username or Password |";
             }
         }
     }
