@@ -47,6 +47,9 @@
                 $_SESSION["USERID"] = $rowLog["id"];
                 $_SESSION["USER"] = $USRNM;
                 $_SESSION["PASSWORD"] = $PSSWRD;
+                echo "| ".$_SESSION["USERID"]." |";
+                echo "| ".$_SESSION["USER"]." |";
+                echo "| ".$_SESSION["PASSWORD"]." |";
                 header("Location: ../profile.php?id=".$_SESSION["USERID"]);
                 die();
             }
