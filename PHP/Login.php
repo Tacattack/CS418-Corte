@@ -27,7 +27,7 @@
     echo "| password protected |";
     //comparing username and password to database
     $sqlLogin = "SELECT * FROM UserProfile WHERE username='".$_GET[$USRNM]."' AND password='".$_GET[$PSSWRD]."' LIMIT 1";
-    $resultLogin = mysqli_query($conn, $sqlLogin);
+    $resultLogin = mysqli_query($sqlLogin);
     echo "| query created |";
     //if $result matched username and password, table row must be 1
     if (mysqli_num_rows($resultLogin) == 1)
