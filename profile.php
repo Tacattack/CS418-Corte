@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!$_SESSION["USER"] == $USRNM)
+if ($_SESSION["USER"] != $USRNM)
 {
     header("location:index.php");
 }
