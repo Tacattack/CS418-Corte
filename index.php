@@ -21,7 +21,7 @@ require_once("PHP/Connect.php");
             </div>
             <form class="FormLogin" action="PHP/Login.php" method="post">
                 <?PHP
-                    if ($LogIn)
+                    if ($LogIn == true)
                     {
                             echo "<b>Welcome: <i>".$_SESSION["USER"]."</i></b>";
                             echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
