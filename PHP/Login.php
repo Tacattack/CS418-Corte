@@ -26,20 +26,26 @@
     $PSSWRD = mysqli_real_escape_string($PSSWRD);
     echo "| password protected |";
     //comparing username and password to database
-    $sqlLogin = "SELECT * FROM UserProfile WHERE username='".$_GET[$USRNM]."' AND password='".$_GET[$PSSWRD]."'";
+    $sqlLogin = "SELECT * FROM UserProfile";
     $resultLogin = mysqli_query($sqlLogin);
     echo "| query created |";
     //if $result matched username and password, table row must be 1
-    if (mysqli_num_rows($resultLogin))
+    if (mysqli_num_rows($resultLogin) > 0)
     {
-        //Register the username and password then redirect it to the profile page
-        echo "| You have successfully logged in |";
-        exit();
-    }
-    else
-    {
-        echo "| Wrong username and password |";
-        exit();
+        while ($rowLog = mysqli_fetch_assoc($resultLogin))
+        {
+            if ($USRNM == $rowLog["username"])
+            {
+                //Register the username and password then redirect it to the profile page
+                echo "| You have successfully logged in |";
+                exit();
+            }
+            else
+            {
+                echo "| Wrong username and password |";
+                exit();
+            }
+        }
     }
     
     echo "| If statement skipped |";
