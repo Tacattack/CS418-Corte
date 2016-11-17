@@ -6,7 +6,7 @@ unset($_SESSION["PASSWORD"]);
 unset($_SESSION["USERID"]);
 
 
-header('Refresh: 2;,URL= ../index.php');
+header("Location: ../index.php");
 
 ?>
 
