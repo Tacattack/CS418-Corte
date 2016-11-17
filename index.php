@@ -13,18 +13,12 @@ session_start();
     </head>
     <body>
         <div id="Header">
-            <div id="header-wrapper">
-                <div id="header-links">
-                    <a href="" id="Register">sign up</a>
-                    <a href="" id="Login">log in</a>
-                    <a href="" title="Help">help</a>
-                </div>
-            </div>
             <form class="FormLogin" action="PHP/Login.php" method="post">
                 <?PHP
                     if (isset($_SESSION["USER"]))
                     {
-                        echo "<b>Welcome: <i>".$_SESSION["USER"]."</i></b>";
+                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
+                        echo "&nbsp&nbsp&nbsp";
                         echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
                     }
                     else

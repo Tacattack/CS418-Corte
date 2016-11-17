@@ -11,18 +11,21 @@ require('PHP/Connect.php');
     </head>
     <body>
         <div id="Header">
-            <div id="header-wrapper">
-                <!--<div id="header-links">
-                    <a href="" id="Register">sign up</a>
-                    <a href="" id="Login">log in</a>
-                    <a href="" title="help">help</a>
-                </div>-->
-            </div>
-            <img src="" alt=""/>
             <form class="FormLogin">
-                Username: <input type="text" name='user' >
-                Password: <input type="password" name='pass' >
-                <input type="submit" value="Login">
+                <?PHP
+                    if (isset($_SESSION["USER"]))
+                    {
+                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
+                        echo "&nbsp&nbsp&nbsp";
+                        echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
+                    }
+                    else
+                    {
+                        echo "Username: <input type=\"text\" name=\"LoginUsername\">";
+                        echo "Password: <input type=\"password\" name=\"LoginPassword\">"; 
+                        echo "<input type=\"submit\" name=\"submit\" value=\"Login\">";
+                    }
+                ?>
             </form>
             <!--<form class="FormRegister">
                 Email: <input type="text" name='email' >

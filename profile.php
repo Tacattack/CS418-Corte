@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,8 +12,20 @@ session_start();
     <body>
         <div id="Header">
             <form action="" method="post" class="FormLogin" >
-                <b>Welcome: <i><?php echo $_SESSION["USER"];?></i></b>
-               <input type="submit" name="submit" value="Logout">
+                <?PHP
+                    if (isset($_SESSION["USER"]))
+                    {
+                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
+                        echo "&nbsp&nbsp&nbsp";
+                        echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
+                    }
+                    else
+                    {
+                        echo "Username: <input type=\"text\" name=\"LoginUsername\">";
+                        echo "Password: <input type=\"password\" name=\"LoginPassword\">"; 
+                        echo "<input type=\"submit\" name=\"submit\" value=\"Login\">";
+                    }
+                ?>
             </form>
             <img src="" alt=""/>
             <div class="Navigation">
