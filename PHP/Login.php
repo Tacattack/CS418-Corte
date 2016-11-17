@@ -26,7 +26,7 @@
     $PSSWRD = mysqli_real_escape_string($PSSWRD);
     echo "| password protected |";
     //comparing username and password to database
-    $sqlLogin = "SELECT * FROM UserProfile WHERE username='".$USRNM."' AND password='".$PSSWRD."' LIMIT 1";
+    $sqlLogin = "SELECT * FROM UserProfile WHERE username='".$_GET[$USRNM]."' AND password='".$_GET[$PSSWRD]."' LIMIT 1";
     $resultLogin = mysqli_query($conn, $sqlLogin);
     echo "| query created |";
     //if $result matched username and password, table row must be 1
