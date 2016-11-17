@@ -26,11 +26,11 @@
     $PSSWRD = mysqli_real_escape_string($PSSWRD);
     echo "| password protected |";
     //comparing username and password to database
-    $sqlLogin = "SELECT * FROM UserProfile WHERE username='".$_GET[$USRNM]."' AND password='".$_GET[$PSSWRD]."' LIMIT 1";
+    $sqlLogin = "SELECT * FROM UserProfile WHERE username='".$_GET[$USRNM]."' AND password='".$_GET[$PSSWRD]."'";
     $resultLogin = mysqli_query($sqlLogin);
     echo "| query created |";
     //if $result matched username and password, table row must be 1
-    if (mysqli_num_rows($resultLogin) == 1)
+    if (mysqli_num_rows($resultLogin))
     {
         //Register the username and password then redirect it to the profile page
         echo "| You have successfully logged in |";
