@@ -106,9 +106,9 @@ DROP TABLE IF EXISTS `UserProfile`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `UserProfile` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` char(50) NOT NULL,
-  `password` char(50) NOT NULL,
-  `email` char(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `userImage` blob,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
