@@ -1,18 +1,18 @@
 <?php
-    echo "I run before the connection";
+    echo "I run before the connection |";
     include("Connect.php");
-    echo "I run after the connection";
+    echo "| I run after the connection |";
     
-    echo $servername;
-    echo $username;
-    echo $password;
-    echo $dbName;
+    echo "| ".$servername." |";
+    echo "| ".$username." |";
+    echo "| ".$password." |";
+    echo "| ".$dbName." |";
     
-    echo "The username is: ".$_GET($_POST('LoginUsername'));
-    echo "The password is: ".$_GET($_POST('LoginPassword'));
+    echo "| The username is: ".$_POST['LoginUsername']." |";
+    echo "| The password is: ".$_POST['LoginPassword']." |";
 
-    $USRNM = $_POST('LoginUsername');
-    $PSSWRD = $_POST('LoginPassword');
+    $USRNM = $_POST['LoginUsername'];
+    $PSSWRD = $_POST['LoginPassword'];
 
     echo $USRNM;
     echo $PSSWRD;
