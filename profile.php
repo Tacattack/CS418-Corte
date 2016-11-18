@@ -62,9 +62,8 @@ session_start();
                                 {
                                     echo "<div>";
                                     echo "<div id=\"questionTitleLink\">";
-                                        echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
-                                            echo "<h5>" . $row["questionTitle"] . "</h5>" . "</a>";
-                                    echo "</div>";
+                                    echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
+                                    echo "<h5>" . $row["questionTitle"] . "</h5>" . "</a>";
                                     echo "</div>";
                                 }
                             }
