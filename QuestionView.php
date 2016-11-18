@@ -72,7 +72,9 @@ session_start();
                                 echo "</div>";
 
                                 echo "<div>";
-                                echo "Posted By: ".$row["questionPoster"];
+                                echo "Posted By:";
+                                echo "<a href=\"profile.php?id=".$_SESSION["USERID"]."\">";
+                                echo $row["questionPoster"]."</a>";
                                 echo "</div>";
 
                                 echo "<div id=\"Answers\">";
