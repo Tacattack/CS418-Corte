@@ -100,8 +100,8 @@ session_start();
                                         {
                                             echo "<li><p id=\"AnswerScore\">".$rowA["answerScore"]."</p><p id=\"AnswerText\">".$rowA["answerBody"]."</p></li>";
                                             echo "<li><form><table>";
-                                            echo "<tr><td>type=\"submit\" name=\"Like\" value=\"I Like\"></td>".$rowA["answerBody"]."<td></td></tr>";
-                                            echo "<tr><td>type=\"submit\" name=\"upVote\" value=\"+\"></td><td>type=\"submit\" name=\"downVote\" value=\"-\"></td>"
+                                            echo "<tr><td><input type=\"submit\" name=\"Like\" value=\"I Like\"></td>".$rowA["answerBody"]."<td></td></tr>";
+                                            echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\"></td><td><input type=\"submit\" name=\"downVote\" value=\"-\"></td>"
                                             .$rowA["answerScore"].$rowA["answerPoster"]."<td></td></tr>";
                                             echo "</li></form></table>";
                                         }
