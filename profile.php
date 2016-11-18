@@ -47,14 +47,15 @@ session_start();
                     $resultU = mysqli_query($conn, $sqlU);
                     if(mysqli_num_rows($resultU) > 0)//Find the user ID
                     {
-                        echo "I'm in If U";
+                        echo "| I'm in If U |";
+                        echo "| ".$UserID." |";
                         while ($rowU = mysqli_fetch_assoc($resultU))
                         {
-                            echo "I'm in whileU";
+                            echo "| I'm in whileU |";
                             if ($UserID == $rowU["id"])
                             {
                                 $UserIs = $rowU["username"];
-                                echo $UserIs;
+                                echo "| ".$UserIs." |";
                             }
                         }
                     }
