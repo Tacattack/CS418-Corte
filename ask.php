@@ -43,6 +43,7 @@ session_start();
                 <ul>
                     <li><a href="questions.php">View Questions</a></li>
                     <li><a class="active" href="#">Ask Question</a></li>
+                    <li><a href="users.php">Users</a></li>
                 </ul>
             </div>
         </div>
