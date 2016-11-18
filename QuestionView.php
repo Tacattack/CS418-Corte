@@ -91,7 +91,7 @@ session_start();
 
                                 echo "<div id=\"Answers\">";
                                 echo "<h3>Answers</h3>";
-                                echo "<div>";
+                                echo "<ul>";
                                 if (mysqli_num_rows($resultA) > 0)
                                 {
                                     while ($rowA = mysqli_fetch_assoc($resultA))
@@ -102,7 +102,7 @@ session_start();
                                         }
                                         else
                                         {
-                                            echo "<li><p id=\"AnswerScore\">".$rowA["answerScore"]."<p id=\"AnswerText\">".$rowA["answerBody"]."</p></li>";
+                                            echo "<li><p id=\"AnswerScore\">".$rowA["answerScore"]."</p><p id=\"AnswerText\">".$rowA["answerBody"]."</p></li>";
                                         }
                                     }
                                 }
@@ -146,7 +146,7 @@ session_start();
                             }
                         }
                     }
-                    echo "</div>";
+                    echo "</ul>";
                     echo "</div>";
                     mysqli_close($conn);
                 ?>
