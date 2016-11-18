@@ -45,10 +45,10 @@ session_start();
                     $UserID = (isset($_GET["id"]) && trim($_GET["id"]) == 'profile.php') ? trim($_GET["id"]) : '';
                     $sqlU = "SELECT * FROM UserProfile";
                     $resultU = mysqli_query($conn, $sqlU);
+                    echo "| The User ID is: ".$UserID." |";
                     if(mysqli_num_rows($resultU) > 0)//Find the user ID
                     {
                         echo "| I'm in If U |";
-                        echo "| ".$UserID." |";
                         while ($rowU = mysqli_fetch_assoc($resultU))
                         {
                             echo "| I'm in whileU |";
