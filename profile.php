@@ -43,10 +43,10 @@ session_start();
             <div id="Container">
                 <?php
                     $UserID = (isset($_GET["id"]) && trim($_GET["id"]) == 'profile.php') ? trim($_GET["id"]) : '';
-                    $sqlU = "SELECT * FROM UserProfile WHERE id='".$_GET["id"].",";
+                    $sqlU = "SELECT * FROM UserProfile WHERE id='".$_GET["id"]."'";
                     $resultU = mysqli_query($conn, $sqlU);
                     echo "| The User ID is: ".$_GET["id"]." |";
-                    echo mysqli_num_rows($resultU);
+                    echo "| Row Numers are: ".mysqli_num_rows($resultU)." |";
                     if(mysqli_num_rows($resultU) > 0)//Find the user ID
                     {
                         echo "| I'm in If U |";
