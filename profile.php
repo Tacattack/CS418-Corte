@@ -91,10 +91,6 @@ session_start();
                                     echo "<h5>".$row["questionTitle"]."</h5>"."</a>";
                                     echo "</div>";
                                 }
-                                else
-                                {
-                                    exit();
-                                }
                             }
                         }
                         else {
