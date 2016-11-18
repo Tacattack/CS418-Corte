@@ -64,54 +64,59 @@ session_start();
                     {
                         while ($row = mysqli_fetch_assoc($result))
                         {
-                                echo "<div id=\"QuestionTitle\">";
-                                echo "<h1>" . $row["questionTitle"] . "</h1>";
-                                echo "</div>";
+                            echo "<div id=\"QuestionTitle\">";
+                            echo "<h1>" . $row["questionTitle"] . "</h1>";
+                            echo "</div>";
 
-                                echo "<div id=\"QuestionBody\">";
-                                echo "<p>";
-                                echo $row["questionBody"];
-                                echo "</p>";
-                                echo "</div>";
+                            echo "<div id=\"QuestionBody\">";
+                            echo "<p>";
+                            echo $row["questionBody"];
+                            echo "</p>";
 
-                                echo "<div>";
-                                echo "Posted By:";
-                                if (mysqli_num_rows($resultU) > 0)
+                            echo "Posted By:";
+                            if (mysqli_num_rows($resultU) > 0)
+                            {
+                                while ($rowU = mysqli_fetch_assoc($resultU))
                                 {
-                                    while ($rowU = mysqli_fetch_assoc($resultU))
+                                    if ($row["questionPoster"] == $rowU["username"])
                                     {
-                                        if ($row["questionPoster"] == $rowU["username"])
-                                        {
-                                            echo "<a href=\"profile.php?id=".$rowU["id"]."\">";
-                                        }
+                                        echo "<a href=\"profile.php?id=".$rowU["id"]."\">";
                                     }
                                 }
-                                echo $row["questionPoster"]."</a>";
-                                echo "</div>";
+                            }
+                            echo $row["questionPoster"]."</a>";
+                            echo "</div>";
 
-                                echo "<div id=\"Answers\">";
-                                echo "<h3>Answers</h3>";
-                                echo "<ul>";
-                                if (mysqli_num_rows($resultA) > 0)
+                            echo "<div id=\"Answers\">";
+                            echo "<h3>Answers</h3>";
+                            echo "<ul>";
+                            if (mysqli_num_rows($resultA) > 0)
+                            {
+                                while ($rowA = mysqli_fetch_assoc($resultA))
                                 {
-                                    while ($rowA = mysqli_fetch_assoc($resultA))
+                                    if (isset($_SESSION["USER"]))
                                     {
-                                        if (isset($_SESSION["USER"]))
+                                        echo "<li><form action=\"\" method=\"post\"><table>";
+                                        echo "<tr><td><input type=\"submit\" name=\"Like\" value=\"I Like\"></td><td>".$rowA["answerBody"]."</td></tr>";
+                                        echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\">&nbsp".$rowA["answerScore"]."&nbsp<input type=\"submit\" name=\"downVote\" value=\"-\">"
+                                            ."</td><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                        echo "</table></form></li>";
+
+                                        if(isset($_POST["Like"]))
                                         {
-                                            //echo "<li><p id=\"AnswerScore\">".$rowA["answerScore"]."</p><p id=\"AnswerText\">".$rowA["answerBody"]."</p></li>";
-                                            echo "<li><form><table>";
-                                            echo "<tr><td><input type=\"submit\" name=\"Like\" value=\"I Like\"></td><td>".$rowA["answerBody"]."</td></tr>";
-                                            echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\">&nbsp".$rowA["answerScore"]."&nbsp<input type=\"submit\" name=\"downVote\" value=\"-\">"
-                                                ."</td><td>".$rowA["answerPoster"]."</td></tr>";
-                                            echo "</table></form></li>";
-                                        }
-                                        else
-                                        {
-                                            echo "<li><p id=\"AnswerScore\">".$rowA["answerScore"]."</p><p id=\"AnswerText\">".$rowA["answerBody"]."</p></li>";
+                                           echo "I work correclty";
                                         }
                                     }
+                                    else
+                                    {
+                                        echo "<li><form><table>";
+                                        echo "<tr><td>".$rowA["answerScore"]."</td><td>".$rowA["answerBody"]."</td></tr>";
+                                        echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                        echo "</table></form></li>";
+                                    }
                                 }
-                                echo "<br />";
+                            }
+                            echo "<br />";
                         }
                     }
                     echo "</ul>";
