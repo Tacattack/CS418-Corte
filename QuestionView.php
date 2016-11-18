@@ -73,7 +73,7 @@ session_start();
                             echo $row["questionBody"];
                             echo "</p>";
 
-                            echo "Posted By:";
+                            echo "Posted By: ";
                             if (mysqli_num_rows($resultU) > 0)
                             {
                                 while ($rowU = mysqli_fetch_assoc($resultU))
@@ -90,13 +90,15 @@ session_start();
                             echo "<div id=\"Answers\">";
                             echo "<h3>Answers</h3>";
                             echo "<ul>";
+                            $AnswerID;
                             if (mysqli_num_rows($resultA) > 0)
                             {
                                 while ($rowA = mysqli_fetch_assoc($resultA))
                                 {
                                     if (isset($_SESSION["USER"]))
                                     {
-                                        echo "<li><form action=\"\" method=\"post\"><table>";
+                                        $AnswerID = $rowA["id"];
+                                        echo "<li><form action=\"\" method=\"post\ id=\"".$AnswerID."\"><table>";
                                         echo "<tr><td><input type=\"submit\" name=\"Like\" value=\"I Like\"></td><td>".$rowA["answerBody"]."</td></tr>";
                                         echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\">&nbsp".$rowA["answerScore"]."&nbsp<input type=\"submit\" name=\"downVote\" value=\"-\">"
                                             ."</td><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
@@ -104,7 +106,10 @@ session_start();
 
                                         if(isset($_POST["Like"]))
                                         {
-                                           echo "I work correclty";
+                                           if ($AnswerID == $rowA["id"])
+                                           {
+                                                echo "I work";
+                                           }
                                         }
                                     }
                                     else
