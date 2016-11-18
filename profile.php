@@ -41,68 +41,66 @@ session_start();
                 </ul>
             </div>
             <div id="Container">
-                <h1>User Profile</h1>
-                
-                <form action="PHP/Upload.php" method="post" enctype="multipart/form-data">
-                    Select a profile image:
-                    <input type="file" name="fileToUpload" id="fileToUpload">
-                    <input type="submit" value="Upload Image" name="submit">
-                </form>
-                
-                <h3>Asked Questions</h3>
-                    <?php
-                        $sql = "SELECT * FROM Questions ORDER BY id DESC";
-                        $sqlU = "SELECT * FROM UserProfile";
-                        
-                        $result = mysqli_query($conn, $sql);
-                        $resultU = mysqli_query($conn, $sqlU);
-                        
-                        $UserID = (isset($_GET["id"]) && trim($_GET["id"]) == 'profile.php') ? trim($_GET["id"]) : '';
-                        
-                        if(mysqli_num_rows($resultU) > 0)//Find the user ID
+                <?php
+                    $UserID = (isset($_GET["id"]) && trim($_GET["id"]) == 'profile.php') ? trim($_GET["id"]) : '';
+                    $sqlU = "SELECT * FROM UserProfile";
+                    $resultU = mysqli_query($conn, $sqlU);
+                    if(mysqli_num_rows($resultU) > 0)//Find the user ID
+                    {
+                        while ($rowU = mysqli_fetch_assoc($resultU))
                         {
-                            while ($row = mysqli_fetch_assoc($resultU))
+                            if ($UserID == $rowU["id"])
                             {
-                                if ($UserID == $row["id"])
-                                {
-                                    $UserIs = $row["username"];
-                                    exit();
-                                }
+                                $UserIs = $rowU["username"];
                             }
                         }
-                        
-                        if (mysqli_num_rows($result) > 0)
+                    }
+                    echo "<h1>".$UserIs."</h1>";
+                    
+                    if (isset($_SESSION["USER"]))
+                    {
+                        echo "<form action=\"PHP/Upload.php\" method=\"post\" enctype=\"multipart/form-data\">";
+                        echo "Select a profile image:";
+                        echo "<input type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\">";
+                        echo "<input type=\"submit\" value=\"Upload Image\" name=\"submit\">";
+                        echo  "</form>";
+                    }
+                    
+                    echo "<h3>Asked Questions</h3>";
+                    $sql = "SELECT * FROM Questions ORDER BY id DESC";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0)
+                    {
+                        while ($row = mysqli_fetch_assoc($result))
                         {
-                            while ($row = mysqli_fetch_assoc($result))
+                            if ($row["questionPoster"] == $_SESSION["USER"])
                             {
-                                if ($row["questionPoster"] == $_SESSION["USER"])
-                                {
-                                    echo "<div>";
-                                    echo "<div id=\"questionTitleLink\">";
-                                    echo "<a href=\"QuestionView.php?id=". $row["id"]."\">";
-                                    echo "<h5>".$row["questionTitle"]."</h5>"."</a>";
-                                    echo "</div>";
-                                }
-                                else if($UserIs == $row["questionPoster"])
-                                {
-                                    echo "<div>";
-                                    echo "<div id=\"questionTitleLink\">";
-                                    echo "<a href=\"QuestionView.php?id=". $row["id"]."\">";
-                                    echo "<h5>".$row["questionTitle"]."</h5>"."</a>";
-                                    echo "</div>";
-                                }
+                                echo "<div>";
+                                echo "<div id=\"questionTitleLink\">";
+                                echo "<a href=\"QuestionView.php?id=". $row["id"]."\">";
+                                echo "<h5>".$row["questionTitle"]."</h5>"."</a>";
+                                echo "</div>";
+                            }
+                            else if($UserIs == $row["questionPoster"])
+                            {
+                                echo "<div>";
+                                echo "<div id=\"questionTitleLink\">";
+                                echo "<a href=\"QuestionView.php?id=". $row["id"]."\">";
+                                echo "<h5>".$row["questionTitle"]."</h5>"."</a>";
+                                echo "</div>";
                             }
                         }
-                        else {
-                            echo "<div>";
-                            echo "<h5>";
-                            echo "0 Results Found";
-                            echo "</h5>";
-                            echo "</div>";
-                        }
-                        
-                        mysqli_close($conn);
-                    ?>
+                    }
+                    else {
+                        echo "<div>";
+                        echo "<h5>";
+                        echo "0 Results Found";
+                        echo "</h5>";
+                        echo "</div>";
+                    }
+
+                    mysqli_close($conn);
+                ?>
             </div>
         </div>
         <div id="Footer">
