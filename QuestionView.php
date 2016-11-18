@@ -103,7 +103,7 @@ session_start();
                                             echo "<tr><td><input type=\"submit\" name=\"Like\" value=\"I Like\"></td>".$rowA["answerBody"]."<td></td></tr>";
                                             echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\"></td><td><input type=\"submit\" name=\"downVote\" value=\"-\"></td>"
                                             .$rowA["answerScore"].$rowA["answerPoster"]."<td></td></tr>";
-                                            echo "</li></form></table>";
+                                            echo "</table></form></li>";
                                         }
                                         else
                                         {
@@ -114,6 +114,7 @@ session_start();
                                 echo "<br />";
                         }
                     }
+                    echo "</ul>";
                     if (isset($_SESSION["USER"]))
                     {
                         echo "<form method=\"post\">";
@@ -151,8 +152,6 @@ session_start();
                             }
                         }
                     }
-                    echo "</ul>";
-                    echo "</div>";
                     mysqli_close($conn);
                 ?>
             </div>
