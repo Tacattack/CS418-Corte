@@ -96,27 +96,12 @@ session_start();
                                 {
                                     if (isset($_SESSION["USER"]))
                                     {
-                                        echo "<li><form action=\"\" method=\"post\"><input type=\"hidden\" name=\"".$rowA["id"]."\"><table>";
+                                        echo "<li><form action=\"\" method=\"post\"><input type=\"hidden\" name=\"likeIt\" value=\"".
+                                                "<?php".$rowA["bestAnswer"]."= 1 ?>\"><table>";
                                         echo "<tr><td><input type=\"submit\" name=\"Like\" value=\"I Like\"></td><td>".$rowA["answerBody"]."</td></tr>";
                                         echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\">&nbsp".$rowA["answerScore"]."&nbsp<input type=\"submit\" name=\"downVote\" value=\"-\">"
                                             ."</td><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
                                         echo "</table></form></li>";
-
-                                        if(isset($_POST["Like"]))
-                                        {
-                                           $nodes = $data->find("input[type=hidden]");
-                                           
-                                           foreach ($nodes as $node)
-                                           {
-                                               $val = $node->value;
-                                               echo "val: ". $val;
-                                           }
-                                           
-                                           if ($val == $row["id"])
-                                           {
-                                               echo "I worked";
-                                           }
-                                        }
                                     }
                                     else
                                     {
