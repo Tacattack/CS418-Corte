@@ -91,15 +91,14 @@ session_start();
 
                                 echo "<div id=\"Answers\">";
                                 echo "<h3>Answers</h3>";
-                                echo "<ul>";
+                                echo "<div>";
                                 if (mysqli_num_rows($resultA) > 0)
                                 {
                                     while ($rowA = mysqli_fetch_assoc($resultA))
                                     {
                                         if (isset($_SESSION["USER"]))
                                         {
-                                            echo "<li>" . " <button>Up Vote</button>" . "<p id=\"AnswerScore\">" . $rowA["answerScore"] . "</p>" .
-                                        "<button>Down Vote</button>". "<p id=\"AnswerText\">" . $rowA["answerBody"] . "</p>" . "</li>";
+                                            echo "<li><p id=\"AnswerScore\">".$rowA["answerScore"]."</p><p id=\"AnswerText\">".$rowA["answerBody"]."</p></li>";
                                         }
                                         else
                                         {
@@ -147,8 +146,8 @@ session_start();
                             }
                         }
                     }
-                    echo "</ul>";
-                    
+                    echo "</div>";
+                    echo "</div>";
                     mysqli_close($conn);
                 ?>
             </div>

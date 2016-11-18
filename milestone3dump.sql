@@ -35,6 +35,8 @@ CREATE TABLE `Answers` (
   `questionID` int(250) NOT NULL,
   `answerScore` int(250) NOT NULL,
   `answerBody` varchar(2000) NOT NULL,
+  `answerPoster` varchar(250) NOT NULL,
+  `bestAnswer` int (1) NOT NULL,
   PRIMARY KEY (`AnswerID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -45,22 +47,22 @@ CREATE TABLE `Answers` (
 
 LOCK TABLES `Answers` WRITE;
 /*!40000 ALTER TABLE `Answers` DISABLE KEYS */;
-INSERT INTO `Answers` VALUES (1,1,1,'That is how do');
-INSERT INTO `Answers` VALUES (2,1,-1,'This is also how do');
-INSERT INTO `Answers` VALUES (3,1,6,'To do how or not how do to');
-INSERT INTO `Answers` VALUES (4,2,100,'Do you even monies?');
-INSERT INTO `Answers` VALUES (5,2,-250,'U Giv Dem Da MicroTransactions for da monies');
-INSERT INTO `Answers` VALUES (6,2,50,'2 Stoopid For da Monies!');
-INSERT INTO `Answers` VALUES (7,3,-250,'Unity For The Win!!');
-INSERT INTO `Answers` VALUES (8,3,50,'One Does Not Simply Unreal');
-INSERT INTO `Answers` VALUES (9,4,50,'The cake means you die you stoopid gamer 12 year old');
-INSERT INTO `Answers` VALUES (10,5,300,'Civilization Strategy Game FTW!!');
-INSERT INTO `Answers` VALUES (11,5,75,'All about that Shooter Genre');
-INSERT INTO `Answers` VALUES (12,5,50,'PC Musterd Race!');
-INSERT INTO `Answers` VALUES (13,5,-300,'Consoles For the Win');
-INSERT INTO `Answers` VALUES (14,5,200,'I like simulation');
-INSERT INTO `Answers` VALUES (15,8,200,'The short answer is no');
-INSERT INTO `Answers` VALUES (16,8,200,'It is worth it if you like the quick and easy monies');
+INSERT INTO `Answers` VALUES (1,1,1,'That is how do','nbenfiel',0);
+INSERT INTO `Answers` VALUES (2,1,-1,'This is also how do','nbenfiel',0);
+INSERT INTO `Answers` VALUES (3,1,6,'To do how or not how do to','tcorte',0);
+INSERT INTO `Answers` VALUES (4,2,100,'Do you even monies?','tcorte',0);
+INSERT INTO `Answers` VALUES (5,2,-250,'U Giv Dem Da MicroTransactions for da monies','nbenfiel',0);
+INSERT INTO `Answers` VALUES (6,2,50,'2 Stoopid For da Monies!','tcorte',0);
+INSERT INTO `Answers` VALUES (7,3,-250,'Unity For The Win!!','nbenfiel',0);
+INSERT INTO `Answers` VALUES (8,3,50,'One Does Not Simply Unreal','tcorte',0);
+INSERT INTO `Answers` VALUES (9,4,50,'The cake means you die you stoopid gamer 12 year old','nbenfiel',0);
+INSERT INTO `Answers` VALUES (10,5,300,'Civilization Strategy Game FTW!!','tcorte',0);
+INSERT INTO `Answers` VALUES (11,5,75,'All about that Shooter Genre','nbenfiel',0);
+INSERT INTO `Answers` VALUES (12,5,50,'PC Musterd Race!','nbenfiel',0);
+INSERT INTO `Answers` VALUES (13,5,-300,'Consoles For the Win','nbenfiel',0);
+INSERT INTO `Answers` VALUES (14,5,200,'I like simulation','tcorte',0);
+INSERT INTO `Answers` VALUES (15,8,200,'The short answer is no','nbenfiel',0);
+INSERT INTO `Answers` VALUES (16,8,200,'It is worth it if you like the quick and easy monies','tcorte',0);
 /*!40000 ALTER TABLE `Answers` ENABLE KEYS */;
 UNLOCK TABLES;
 

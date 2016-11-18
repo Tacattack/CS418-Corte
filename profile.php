@@ -36,7 +36,7 @@ session_start();
                     <a href="index.php"><img src="images/Logo.png" class="logo"></a>
                 </h1>
                 <ul>
-                    <li><a href="QuestionView.php">View Questions</a></li>
+                    <li><a href="questions.php">View Questions</a></li>
                     <li><a href="ask.php">Ask Question</a></li>
                     <li><a href="users.php" class="active">Users</a></li>
                 </ul>
