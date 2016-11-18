@@ -1,4 +1,5 @@
 <?php
+require_once("PHP/Connect.php");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -39,10 +40,8 @@ session_start();
                     <li><A href="ask.php">Ask Question</a></li>
                 </ul>
             </div>
-            <div class="Profile">
-                <h1>
-                    User Profile
-                </h1>
+            <div id="Content">
+                <h1>User Profile</h1>
                 
                 <form action="PHP/Upload.php" method="post" enctype="multipart/form-data">
                     Select a profile image:
@@ -59,15 +58,15 @@ session_start();
                         {
                             while ($row = mysqli_fetch_assoc($result))
                             {
-                                echo "<div>";
-                                    echo "<div id=\"questionScore\">";
-                                        echo "<h5>" . $row["questionScore"] . "</h5>";
-                                    echo "</div>";
+                                if ($row["questionPoster"] == $_SESSION["User"])
+                                {
+                                    echo "<div>";
                                     echo "<div id=\"questionTitleLink\">";
                                         echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
                                             echo "<h5>" . $row["questionTitle"] . "</h5>" . "</a>";
                                     echo "</div>";
-                                echo "</div>";
+                                    echo "</div>";
+                                }
                             }
                         }else {
                             echo "<div>";
