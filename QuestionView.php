@@ -71,6 +71,10 @@ session_start();
                             echo "</p>";
                             echo "</div>";
                             
+                            echo "<div>";
+                            echo "Posted By: ".$row["questionPoster"];
+                            echo "</div>";
+                            
                             echo "<div id=\"Answers\">";
                             echo "<h3>Answers</h3>";
                             echo "<ul>";
