@@ -58,20 +58,13 @@ session_start();
                         {
                             while ($row = mysqli_fetch_assoc($result))
                             {
-                                if ($row["questionPoster"] == $_SESSION["User"])
+                                if ($row["questionPoster"] == $_SESSION["USER"])
                                 {
                                     echo "<div>";
                                     echo "<div id=\"questionTitleLink\">";
                                     echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
                                     echo "<h5>" . $row["questionTitle"] . "</h5>" . "</a>";
                                     echo "</div>";
-                                }
-                                else{
-                                    echo "<div>";
-                                    echo "<h5>";
-                                    echo "Who posted what?";
-                                    echo "</h5>";
-                                    echo "</div>"; 
                                 }
                             }
                         }else {
