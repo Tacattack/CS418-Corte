@@ -53,8 +53,10 @@ session_start();
 
                     $sql = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
                     $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC";
+                    $sqlU = "SELECT * FROM UserProfile";
                     $result = mysqli_query($conn, $sql);
                     $resultA = mysqli_query($conn, $sqlA);
+                    $resultU = mysqli_query($conn, $sqlU);
 
 
                     if (mysqli_num_rows($result) > 0)
@@ -73,7 +75,16 @@ session_start();
 
                                 echo "<div>";
                                 echo "Posted By:";
-                                echo "<a href=\"profile.php?id=".$_SESSION["USERID"]."\">";
+                                if (mysqli_num_rows($resultU) > 0)
+                                {
+                                    while ($rowU = mysqli_fetch_assoc($resultU))
+                                    {
+                                        if ($row["questionPoster"] == $rowU["username"])
+                                        {
+                                            echo "<a href=\"profile.php?id=".$rowU["id"]."\">";
+                                        }
+                                    }
+                                }
                                 echo $row["questionPoster"]."</a>";
                                 echo "</div>";
 
