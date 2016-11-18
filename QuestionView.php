@@ -106,10 +106,7 @@ session_start();
 
                                         if(isset($_POST["Like"]))
                                         {
-                                           if ($AnswerID == $rowA["id"])
-                                           {
-                                                echo "I work";
-                                           }
+                                           echo "I work";
                                         }
                                     }
                                     else
