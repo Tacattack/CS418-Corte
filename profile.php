@@ -46,6 +46,7 @@ session_start();
                     $sqlU = "SELECT * FROM UserProfile WHERE id='".$_GET["id"].",";
                     $resultU = mysqli_query($conn, $sqlU);
                     echo "| The User ID is: ".$_GET["id"]." |";
+                    echo mysqli_num_rows($resultU);
                     if(mysqli_num_rows($resultU) > 0)//Find the user ID
                     {
                         echo "| I'm in If U |";
