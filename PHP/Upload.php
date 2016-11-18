@@ -20,7 +20,7 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 
-if ($_FILES["fileToUpload"]["size"] > 500000000000000000000000000000000000) {
+if ($_FILES["fileToUpload"]["size"] > 10000000) {
     echo "Sorry, your file is too large.";
     $uploadOk = 0;
 }
