@@ -102,7 +102,7 @@ session_start();
                                         }
                                         else
                                         {
-                                            echo "<li><p id=\"AnswerScore\">" . $rowA["answerScore"] . "</p></li>";
+                                            echo "<li><p id=\"AnswerScore\">".$rowA["answerScore"]."<p id=\"AnswerText\">".$rowA["answerBody"]."</p></li>";
                                         }
                                     }
                                 }
