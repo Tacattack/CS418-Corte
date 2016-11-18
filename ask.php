@@ -52,7 +52,7 @@ session_start();
                     <?php
                     if (isset($_SESSION["USER"]))
                     {
-                        echo "<form name=\"AskQuestion\" method=\"post\">";
+                        echo "<form name=\"AskQuestion\" method=\"post\" action=\"\">";
                         echo "<table>";
                         echo "<tr>";
                         echo "<td>Title:";
