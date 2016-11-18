@@ -49,78 +49,79 @@ session_start();
         <div id="Container">
             <div id="Content">
                 <?php
-                $questionID = (isset($_GET["id"]) && trim($_GET["id"]) == 'QuestionView.php') ? trim($_GET["id"]) : '';
-                
-                $sql = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
-                $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC";
-                $result = mysqli_query($conn, $sql);
-                $resultA = mysqli_query($conn, $sqlA);
-                
+                    $questionID = (isset($_GET["id"]) && trim($_GET["id"]) == 'QuestionView.php') ? trim($_GET["id"]) : '';
 
-                if (mysqli_num_rows($result) > 0)
-                {
-                    while ($row = mysqli_fetch_assoc($result))
+                    $sql = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
+                    $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC";
+                    $result = mysqli_query($conn, $sql);
+                    $resultA = mysqli_query($conn, $sqlA);
+
+
+                    if (mysqli_num_rows($result) > 0)
                     {
-                            echo "<div id=\"QuestionTitle\">";
-                            echo "<h1>" . $row["questionTitle"] . "</h1>";
-                            echo "</div>";
-
-                            echo "<div id=\"QuestionBody\">";
-                            echo "<p>";
-                            echo $row["questionBody"];
-                            echo "</p>";
-                            echo "</div>";
-                            
-                            echo "<div>";
-                            echo "Posted By: ".$row["questionPoster"];
-                            echo "</div>";
-                            
-                            echo "<div id=\"Answers\">";
-                            echo "<h3>Answers</h3>";
-                            echo "<ul>";
-                            if (mysqli_num_rows($resultA) > 0)
-                            {
-                                while ($rowA = mysqli_fetch_assoc($resultA))
-                                {
-                                    echo "<li>" . " <button>Up Vote</button>" . "<p id=\"AnswerScore\">" . $rowA["answerScore"] . "</p>" .
-                                    "<button>Down Vote</button>". "<p id=\"AnswerText\">" . $rowA["answerBody"] . "</p>" . "</li>";
-                                }
-                            }
-                            echo "<br />";
-                    }
-                }
-                ?>
-                <form method="post">
-                    <textarea rows="30" name="ABody" style="width: 600px; height: 50px;"></textarea>
-                    <input type="submit" name="submit" value="Submit Answer" style="margin: 20px 50px; float: right"/>
-                </form>
-                
-                <?php
-                if (isset($_POST["submit"]))
-                    {
-                        $AnswerID = $_GET["id"];
-                        $AnswerBody = addslashes($_POST['ABody']);
-                                
-                        $AnswerCreate = "INSERT INTO Answers (questionID,answerBody)
-                        VALUES('{$AnswerID}', '{$AnswerBody}')";
-                            
-                        if (mysqli_query($conn, $AnswerCreate)) {
-                            echo "New record created successfully";
-                        } else {
-                            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                        }
-                        
-                        $QuestionReload = "SELECT * FROM Questions";
-                        $QuestionReloadResult = mysqli_query($conn, $QuestionReload);
-
-                        if (mysqli_num_rows($QuestionReloadResult) > 0)
+                        while ($row = mysqli_fetch_assoc($result))
                         {
-                            while ($Qrow = mysqli_fetch_assoc($QuestionReloadResult))
-                            {
-                                if ($_GET["id"] == $Qrow["id"])
+                                echo "<div id=\"QuestionTitle\">";
+                                echo "<h1>" . $row["questionTitle"] . "</h1>";
+                                echo "</div>";
+
+                                echo "<div id=\"QuestionBody\">";
+                                echo "<p>";
+                                echo $row["questionBody"];
+                                echo "</p>";
+                                echo "</div>";
+
+                                echo "<div>";
+                                echo "Posted By: ".$row["questionPoster"];
+                                echo "</div>";
+
+                                echo "<div id=\"Answers\">";
+                                echo "<h3>Answers</h3>";
+                                echo "<ul>";
+                                if (mysqli_num_rows($resultA) > 0)
                                 {
-                                    header("Location: QuestionView.php?id=".$Qrow["id"]);
-                                    die(); 
+                                    while ($rowA = mysqli_fetch_assoc($resultA))
+                                    {
+                                        echo "<li>" . " <button>Up Vote</button>" . "<p id=\"AnswerScore\">" . $rowA["answerScore"] . "</p>" .
+                                        "<button>Down Vote</button>". "<p id=\"AnswerText\">" . $rowA["answerBody"] . "</p>" . "</li>";
+                                    }
+                                }
+                                echo "<br />";
+                        }
+                    }
+                    if (isset($_SESSION["USER"]))
+                    {
+                        echo "<form method=\"post\">";
+                        echo "<textarea rows=\"30\" name=\"ABody\" style=\"width: 600px; height: 50px;\"></textarea>";
+                        echo "<input type=\"submit\" name=\"submit\" value=\"Submit Answer\" style=\"margin: 20px 50px; float: right\"/>";
+                        echo "</form>";
+
+                        if (isset($_POST["submit"]))
+                        {
+                            $AnswerID = $_GET["id"];
+                            $AnswerBody = addslashes($_POST['ABody']);
+
+                            $AnswerCreate = "INSERT INTO Answers (questionID,answerBody)
+                            VALUES('{$AnswerID}', '{$AnswerBody}')";
+
+                            if (mysqli_query($conn, $AnswerCreate)) {
+                                echo "New record created successfully";
+                            } else {
+                                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                            }
+
+                            $QuestionReload = "SELECT * FROM Questions";
+                            $QuestionReloadResult = mysqli_query($conn, $QuestionReload);
+
+                            if (mysqli_num_rows($QuestionReloadResult) > 0)
+                            {
+                                while ($Qrow = mysqli_fetch_assoc($QuestionReloadResult))
+                                {
+                                    if ($_GET["id"] == $Qrow["id"])
+                                    {
+                                        header("Location: QuestionView.php?id=".$Qrow["id"]);
+                                        die(); 
+                                    }
                                 }
                             }
                         }
