@@ -90,15 +90,13 @@ session_start();
                             echo "<div id=\"Answers\">";
                             echo "<h3>Answers</h3>";
                             echo "<ul>";
-                            $AnswerID;
                             if (mysqli_num_rows($resultA) > 0)
                             {
                                 while ($rowA = mysqli_fetch_assoc($resultA))
                                 {
                                     if (isset($_SESSION["USER"]))
                                     {
-                                        $AnswerID = $rowA["id"];
-                                        echo "<li><form action=\"\" method=\"post\ id=\"".$AnswerID."\"><table>";
+                                        echo "<li><form action=\"\" method=\"post\"><input type=\"hidden\" name=\"".$rowA["id"]."\"><table>";
                                         echo "<tr><td><input type=\"submit\" name=\"Like\" value=\"I Like\"></td><td>".$rowA["answerBody"]."</td></tr>";
                                         echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\">&nbsp".$rowA["answerScore"]."&nbsp<input type=\"submit\" name=\"downVote\" value=\"-\">"
                                             ."</td><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
@@ -106,7 +104,18 @@ session_start();
 
                                         if(isset($_POST["Like"]))
                                         {
-                                           echo "I work";
+                                           $nodes = $data->find("input[type=hidden]");
+                                           
+                                           foreach ($nodes as $node)
+                                           {
+                                               $val = $node->value;
+                                               echo "val: ". $val;
+                                           }
+                                           
+                                           if ($val == $row["id"])
+                                           {
+                                               echo "I worked";
+                                           }
                                         }
                                     }
                                     else
