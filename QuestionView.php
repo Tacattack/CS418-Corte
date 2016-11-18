@@ -98,11 +98,11 @@ session_start();
                                     {
                                         if (isset($_SESSION["USER"]))
                                         {
-                                            echo "<li><p id=\"AnswerScore\">".$rowA["answerScore"]."</p><p id=\"AnswerText\">".$rowA["answerBody"]."</p></li>";
+                                            //echo "<li><p id=\"AnswerScore\">".$rowA["answerScore"]."</p><p id=\"AnswerText\">".$rowA["answerBody"]."</p></li>";
                                             echo "<li><form><table>";
-                                            echo "<tr><td><input type=\"submit\" name=\"Like\" value=\"I Like\"></td>".$rowA["answerBody"]."<td></td></tr>";
-                                            echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\"></td><td><input type=\"submit\" name=\"downVote\" value=\"-\"></td>"
-                                            .$rowA["answerScore"].$rowA["answerPoster"]."<td></td></tr>";
+                                            echo "<tr><td><input type=\"submit\" name=\"Like\" value=\"I Like\"></td><td>".$rowA["answerBody"]."</td></tr>";
+                                            echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\"></td><td><input type=\"submit\" name=\"downVote\" value=\"-\"></td><td>"
+                                            .$rowA["answerScore"].$rowA["answerPoster"]."</td></tr>";
                                             echo "</table></form></li>";
                                         }
                                         else
