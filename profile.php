@@ -83,7 +83,7 @@ session_start();
                                     echo "<h5>".$row["questionTitle"]."</h5>"."</a>";
                                     echo "</div>";
                                 }
-                                else if($UserID == $row["questionPoster"])
+                                else if($UserIs == $row["questionPoster"])
                                 {
                                     echo "<div>";
                                     echo "<div id=\"questionTitleLink\">";
