@@ -49,27 +49,34 @@ session_start();
         <div id="Container">
             <div id="Content">
                 <div class="AQuestDiv">
-                    <form name="AskQuestion" method="post">
-                        <table>
-                            <tr>
-                                <td>Title:
-                                    <br /><input type="text" class="AQuestTitle" name="QTitle"/></td>
-                            </tr>
-                            <tr>
-                                <td>Description:
-                                    <br /><textarea rows="30" name="QBody"></textarea></td>
-                            </tr>
-                        </table>
-                        <input type="submit" name="submit" value="Submit Question" style="margin: 20px 50px; float: right"/>
-                    </form>
-                    
                     <?php
+                    if (isset($_SESSION["USER"]))
+                    {
+                        echo "<form name=\"AskQuestion\" method=\"post\">";
+                        echo "<table>";
+                        echo "<tr>";
+                        echo "<td>Title:";
+                        echo "<br /><input type=\"text\" class=\"AQuestTitle\" name=\"QTitle\"/></td>";
+                        echo "</tr>";
+                        echo "<tr>";
+                        echo "<td>Description:";
+                        echo "<br /><textarea rows=\"30\" name=\"QBody\"></textarea></td>";
+                        echo "</tr>";
+                        echo "</table>";
+                        echo "<input type=\"submit\" name=\"submit\" value=\"Submit Question\" style=\"margin: 20px 50px; float: right\"/>";
+                        echo "</form>";
+                    }
+                    else
+                    {
+                        echo "<p>Please Sign in to post a question</p>";
+                    }
                     if(isset($_POST["submit"])){
                         $QuestionTitle = addslashes($_POST['QTitle']);
                         $QuestionBody = addslashes($_POST['QBody']);
+                        $QuestionPoster = $_SESSION("USER");
 
-                        $sql = "INSERT INTO Questions (questionTitle, questionBody)
-                            VALUES('{$QuestionTitle}', '{$QuestionBody}')";
+                        $sql = "INSERT INTO Questions (questionTitle, questionBody, questionPoster)
+                            VALUES('{$QuestionTitle}', '{$QuestionBody}', '{$QuestionPoster}')";
 
                         if (mysqli_query($conn, $sql)) {
                             echo "New record created successfully";
