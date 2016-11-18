@@ -45,7 +45,7 @@ session_start();
                     $UserID = (isset($_GET["id"]) && trim($_GET["id"]) == 'profile.php') ? trim($_GET["id"]) : '';
                     $sqlU = "SELECT * FROM UserProfile WHERE id='".$_GET["id"].",";
                     $resultU = mysqli_query($conn, $sqlU);
-                    echo "| The User ID is: ".$UserID." |";
+                    echo "| The User ID is: ".$_GET["id"]." |";
                     if(mysqli_num_rows($resultU) > 0)//Find the user ID
                     {
                         echo "| I'm in If U |";
