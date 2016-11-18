@@ -65,12 +65,8 @@ session_start();
                         echo "</table>";
                         echo "<input type=\"submit\" name=\"submit\" value=\"Submit Question\" style=\"margin: 20px 50px; float: right\"/>";
                         echo "</form>";
-                    }
-                    else
-                    {
-                        echo "<p>Please Sign in to post a question</p>";
-                    }
-                    if(isset($_POST["submit"])){
+                        
+                        if(isset($_POST["submit"])){
                         $QuestionTitle = addslashes($_POST['QTitle']);
                         $QuestionBody = addslashes($_POST['QBody']);
                         $QuestionPoster = $_SESSION("USER");
@@ -105,6 +101,11 @@ session_start();
                         }
                         
                         mysqli_close($conn);
+                    }
+                    }
+                    else
+                    {
+                        echo "<p>Please Sign in to post a question</p>";
                     }
                     ?>
                 </div>
