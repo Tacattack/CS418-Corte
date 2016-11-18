@@ -52,7 +52,24 @@ session_start();
                 <h3>Asked Questions</h3>
                     <?php
                         $sql = "SELECT * FROM Questions ORDER BY id DESC";
+                        $sqlU = "SELECT * FROM UserProfile";
+                        
                         $result = mysqli_query($conn, $sql);
+                        $resultU = mysqli_query($conn, $sqlU);
+                        
+                        $UserID = (isset($_GET["id"]) && trim($_GET["id"]) == 'profile.php') ? trim($_GET["id"]) : '';
+                        
+                        if(mysqli_num_rows($resultU) > 0)//Find the user ID
+                        {
+                            while ($row = mysqli_fetch_assoc($resultU))
+                            {
+                                if ($UserID == $row["id"])
+                                {
+                                    $UserIs = $row["username"];
+                                    exit();
+                                }
+                            }
+                        }
                         
                         if (mysqli_num_rows($result) > 0)
                         {
@@ -62,12 +79,25 @@ session_start();
                                 {
                                     echo "<div>";
                                     echo "<div id=\"questionTitleLink\">";
-                                    echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
-                                    echo "<h5>" . $row["questionTitle"] . "</h5>" . "</a>";
+                                    echo "<a href=\"QuestionView.php?id=". $row["id"]."\">";
+                                    echo "<h5>".$row["questionTitle"]."</h5>"."</a>";
                                     echo "</div>";
                                 }
+                                else if($UserID == $row["questionPoster"])
+                                {
+                                    echo "<div>";
+                                    echo "<div id=\"questionTitleLink\">";
+                                    echo "<a href=\"QuestionView.php?id=". $row["id"]."\">";
+                                    echo "<h5>".$row["questionTitle"]."</h5>"."</a>";
+                                    echo "</div>";
+                                }
+                                else
+                                {
+                                    exit();
+                                }
                             }
-                        }else {
+                        }
+                        else {
                             echo "<div>";
                             echo "<h5>";
                             echo "0 Results Found";
