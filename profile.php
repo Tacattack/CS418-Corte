@@ -40,7 +40,7 @@ session_start();
                     <li><A href="ask.php">Ask Question</a></li>
                 </ul>
             </div>
-            <div id="Content">
+            <div id="Container">
                 <h1>User Profile</h1>
                 
                 <form action="PHP/Upload.php" method="post" enctype="multipart/form-data">
@@ -51,7 +51,7 @@ session_start();
                 
                 <h3>Asked Questions</h3>
                     <?php
-                        $sql = "SELECT * FROM Questions ORDER BY id DESC LIMIT 5";
+                        $sql = "SELECT * FROM Questions ORDER BY id DESC";
                         $result = mysqli_query($conn, $sql);
                         
                         if (mysqli_num_rows($result) > 0)
