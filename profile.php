@@ -43,7 +43,7 @@ session_start();
             <div id="Container">
                 <?php
                     $UserID = (isset($_GET["id"]) && trim($_GET["id"]) == 'profile.php') ? trim($_GET["id"]) : '';
-                    $sqlU = "SELECT * FROM UserProfile";
+                    $sqlU = "SELECT * FROM UserProfile WHERE id='".$_GET["id"].",";
                     $resultU = mysqli_query($conn, $sqlU);
                     echo "| The User ID is: ".$UserID." |";
                     if(mysqli_num_rows($resultU) > 0)//Find the user ID
@@ -51,12 +51,8 @@ session_start();
                         echo "| I'm in If U |";
                         while ($rowU = mysqli_fetch_assoc($resultU))
                         {
-                            echo "| I'm in whileU |";
-                            if ($UserID == $rowU["id"])
-                            {
-                                $UserIs = $rowU["username"];
-                                echo "| ".$UserIs." |";
-                            }
+                            $UserIs = $rowU["username"];
+                            echo "| ".$UserIs." |";
                         }
                     }
                     echo "<h1>".$UserIs."</h1>";
