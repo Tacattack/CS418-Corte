@@ -67,41 +67,41 @@ session_start();
                         echo "</form>";
                         
                         if(isset($_POST["submit"])){
-                        $QuestionTitle = addslashes($_POST['QTitle']);
-                        $QuestionBody = addslashes($_POST['QBody']);
-                        $QuestionPoster = $_SESSION("USER");
+                            $QuestionTitle = addslashes($_POST['QTitle']);
+                            $QuestionBody = addslashes($_POST['QBody']);
+                            $QuestionPoster = $_SESSION["USER"];
 
-                        $sql = "INSERT INTO Questions (questionTitle, questionBody, questionPoster)
-                            VALUES('{$QuestionTitle}', '{$QuestionBody}', '{$QuestionPoster}')";
+                            $sql = "INSERT INTO Questions (questionTitle, questionBody, questionPoster)
+                                VALUES('{$QuestionTitle}', '{$QuestionBody}', '{$QuestionPoster}')";
 
-                        if (mysqli_query($conn, $sql)) {
-                            echo "New record created successfully";
-                        } else {
-                            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                        }
-                
-                        
-                        $sql = "SELECT * FROM Questions";
-                        $result = mysqli_query($conn, $sql);
-
-                        if (mysqli_num_rows($result) > 0)
-                        {
-                            while ($row = mysqli_fetch_assoc($result))
-                            {
-                                if ($QuestionTitle == $row[addslashes("questionTitle")])
-                                {
-                                    header("Location: QuestionView.php?id=".$row["id"]);
-                                    die(); 
-                                }else {
-                                    echo "ERROR: QuestionTitle != row[questionTitle]";
-                                }
+                            if (mysqli_query($conn, $sql)) {
+                                echo "New record created successfully";
+                            } else {
+                                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                             }
-                        }else {
-                            echo "ERROR: Row is not > 0";
+
+
+                            $sql = "SELECT * FROM Questions";
+                            $result = mysqli_query($conn, $sql);
+
+                            if (mysqli_num_rows($result) > 0)
+                            {
+                                while ($row = mysqli_fetch_assoc($result))
+                                {
+                                    if ($QuestionTitle == $row[addslashes("questionTitle")])
+                                    {
+                                        header("Location: QuestionView.php?id=".$row["id"]);
+                                        die(); 
+                                    }else {
+                                        echo "ERROR: QuestionTitle != row[questionTitle]";
+                                    }
+                                }
+                            }else {
+                                echo "ERROR: Row is not > 0";
+                            }
+
+                            mysqli_close($conn);
                         }
-                        
-                        mysqli_close($conn);
-                    }
                     }
                     else
                     {
