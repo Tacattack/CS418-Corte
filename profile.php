@@ -1,5 +1,5 @@
 <?php
-require_once("PHP/Connect.php");
+require("PHP/Connect.php");
 session_start();
 ?>
 <!DOCTYPE html>
@@ -65,6 +65,13 @@ session_start();
                                     echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
                                     echo "<h5>" . $row["questionTitle"] . "</h5>" . "</a>";
                                     echo "</div>";
+                                }
+                                else{
+                                    echo "<div>";
+                                    echo "<h5>";
+                                    echo "Who posted what?";
+                                    echo "</h5>";
+                                    echo "</div>"; 
                                 }
                             }
                         }else {
