@@ -95,8 +95,15 @@ session_start();
                                 {
                                     while ($rowA = mysqli_fetch_assoc($resultA))
                                     {
-                                        echo "<li>" . " <button>Up Vote</button>" . "<p id=\"AnswerScore\">" . $rowA["answerScore"] . "</p>" .
+                                        if (isset($_SESSION["USER"]))
+                                        {
+                                            echo "<li>" . " <button>Up Vote</button>" . "<p id=\"AnswerScore\">" . $rowA["answerScore"] . "</p>" .
                                         "<button>Down Vote</button>". "<p id=\"AnswerText\">" . $rowA["answerBody"] . "</p>" . "</li>";
+                                        }
+                                        else
+                                        {
+                                            echo "<li><p id=\"AnswerScore\">" . $rowA["answerScore"] . "</p></li>";
+                                        }
                                     }
                                 }
                                 echo "<br />";

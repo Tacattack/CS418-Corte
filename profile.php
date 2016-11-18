@@ -45,15 +45,11 @@ session_start();
                     $UserID = (isset($_GET["id"]) && trim($_GET["id"]) == 'profile.php') ? trim($_GET["id"]) : '';
                     $sqlU = "SELECT * FROM UserProfile WHERE id='".$_GET["id"]."'";
                     $resultU = mysqli_query($conn, $sqlU);
-                    echo "| The User ID is: ".$_GET["id"]." |";
-                    echo "| Row Numers are: ".mysqli_num_rows($resultU)." |";
                     if(mysqli_num_rows($resultU) > 0)//Find the user ID
                     {
-                        echo "| I'm in If U |";
                         while ($rowU = mysqli_fetch_assoc($resultU))
                         {
                             $UserIs = $rowU["username"];
-                            echo "| ".$UserIs." |";
                         }
                     }
                     echo "<h1>".$UserIs."</h1>";
@@ -74,15 +70,7 @@ session_start();
                     {
                         while ($row = mysqli_fetch_assoc($result))
                         {
-                            if ($row["questionPoster"] == $_SESSION["USER"])
-                            {
-                                echo "<div>";
-                                echo "<div id=\"questionTitleLink\">";
-                                echo "<a href=\"QuestionView.php?id=". $row["id"]."\">";
-                                echo "<h5>".$row["questionTitle"]."</h5>"."</a>";
-                                echo "</div>";
-                            }
-                            else if($UserIs == $row["questionPoster"])
+                            if($UserIs == $row["questionPoster"])
                             {
                                 echo "<div>";
                                 echo "<div id=\"questionTitleLink\">";
