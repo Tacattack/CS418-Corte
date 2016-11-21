@@ -2,9 +2,9 @@
 include ("Connect.php");
 include ("questions.php");
 
-$id = $_GET['id'];
-echo "<p>This is the ID: " . $id . "</p>";
-mysql_query("DELETE FROM Questions WHERE id='$id'");
+//$result = $_GET['id'];
+echo "<p>This is the ID: " . $result . "</p>";
+mysql_query("DELETE FROM Questions WHERE id='$result'");
 
 //header("Location: ../questions.php");
 ?>
