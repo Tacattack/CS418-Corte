@@ -53,7 +53,7 @@
                 echo "| ".$_SESSION["PASSWORD"]." |";
                 echo "| ".$_SESSION["USERLEVEL"]." |";
                 header("Location: ../profile.php?id=".$_SESSION["USERID"]);
-                die();
+                exit();
             }
             else
             {
