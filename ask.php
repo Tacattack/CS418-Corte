@@ -43,7 +43,12 @@ session_start();
                 <ul>
                     <li><a href="questions.php">View Questions</a></li>
                     <li><a class="active" href="#">Ask Question</a></li>
-                    <li><a href="users.php">Users</a></li>
+                   <?php
+                        if($_SESSION["USERLEVEL"] == 1)
+                        {
+                            echo "<li><a href =\"users.php\" class=\"active\">Users</a></li>";
+                        }
+                        ?>
                 </ul>
             </div>
         </div>
