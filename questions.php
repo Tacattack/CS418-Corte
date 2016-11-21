@@ -72,7 +72,7 @@ session_start();
                                     echo "</div>";
                                     if($_SESSION["USERLEVEL"] == 1)
                                     {
-                                        $_SESSION["CurrentRow"] = $result;
+                                        $_SESSION["CurrentRow"] = $row["id"];
                                     
                                     echo "<div id=\"questionDelete\">";
                                         echo "<h5><form action=\"PHP/Delete.php\" method=\"post\">"
