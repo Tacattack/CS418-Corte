@@ -74,9 +74,11 @@ session_start();
                                     if($_SESSION["USERLEVEL"] == 1)
                                     {
                                     echo "<div id=\"questionDelete\">";
-                                        echo "<td><input type=\"submit\" name=\"Delete\ value=\"EXTERMINATE\"></td>"
+                                        echo "<form action=\"\" method=\"post\">"
+                                    . "<td><input type=\"submit\" name=\"Delete\ value=\"EXTERMINATE\"></td>"
                                     . ""
-                                    ."<?php $sql =\"DELETE * FROM Questions WHERE id =$row \" ?>";
+                                    ."<?php $sql =\"DELETE * FROM Questions WHERE id =$row \" ?>"
+                                    ."</form>";
                                     }
                                 echo "</div>";
                             }
