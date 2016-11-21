@@ -58,7 +58,6 @@ session_start();
                     <?php
                         $sql = "SELECT * FROM Questions ORDER BY id DESC";
                         $result = mysqli_query($conn, $sql);
-                        
                         if (mysqli_num_rows($result) > 0)
                         {
                             while ($row = mysqli_fetch_assoc($result))
@@ -73,7 +72,7 @@ session_start();
                                     echo "</div>";
                                     if($_SESSION["USERLEVEL"] == 1)
                                     {
-                                        header('Location: PHP/Delete.php?var=result');
+                                        $_SESSION["CurrentRow"] = $row;
                                     echo "<div id=\"questionDelete\">";
                                         echo "<h5><form action=\"PHP/Delete.php\" method=\"post\">"
                                     . "<td><input type=\"submit\" name=\"Delete\ value=\"\"></td>"

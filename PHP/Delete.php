@@ -1,4 +1,5 @@
 <?php
+session_start();
 include ("Connect.php");
 include ("questions.php");
 
