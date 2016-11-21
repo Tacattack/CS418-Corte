@@ -22,9 +22,10 @@ session_start();
                         //If the User is Admin
                         if($_SESSION["USERLEVEL"] == 1)
                         {
+                        $UserLevel = "Admin";
                         echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
                         echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"].""
-                        . "</a> <b>Level:".$_SESSION["USERLEVEL"]. "</b> </b>";
+                        . "</a> <b>Level:".$UserLevel. "</b> </b>";
                         echo "&nbsp&nbsp&nbsp";
                         echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
                         echo "</form>";   
@@ -32,8 +33,10 @@ session_start();
                         //Else if the user is a Pleb
                         else if($_SESSION["USERLEVEL" == 0])
                         {
+                        $UserLevel = "Pleb";
                         echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
-                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
+                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a>"
+                                ."<b> Level:".$UserLevel. "</b> </b>";
                         echo "&nbsp&nbsp&nbsp";
                         echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
                         echo "</form>";
