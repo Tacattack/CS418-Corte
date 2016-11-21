@@ -19,12 +19,12 @@
     echo "| ".$PSSWRD." |";
     
     //Protecting username from MYSQL injection
-    //$USRNM = stripslashes($USRNM);
-    //$USRNM = mysqli_real_escape_string($USRNM);
+    $USRNM = stripslashes($USRNM);
+    $USRNM = mysqli_real_escape_string($USRNM);
     echo "| username protected |";
     //Protecting password from MYSL injection
-    //$PSSWRD = stripslashes($PSSWRD);
-    //$PSSWRD = mysqli_real_escape_string($PSSWRD);
+    $PSSWRD = stripslashes($PSSWRD);
+    $PSSWRD = mysqli_real_escape_string($PSSWRD);
     echo "| password protected |";
     //comparing username and password to database
     $sqlLogin = "SELECT * FROM UserProfile";
