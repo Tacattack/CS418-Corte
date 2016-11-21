@@ -31,7 +31,7 @@ session_start();
                         
                         if ($WrongPassUse == true)
                         {
-                            echo "Wrong password dumb dumb";
+                            echo "Wrong username or password dumb dumb";
                         }
                         echo "</form>";
                     }

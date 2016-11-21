@@ -58,12 +58,13 @@
                 header("Location: ../profile.php?id=".$_SESSION["USERID"]);
                 die();
             }
-            else
+        }
+        
+        if ($LogIn != true)
             {
                 $WrongPassUse = true;
                 header("Location: ../index.php");
             }
-        }
     }
     
     echo "| If statement exited |";
