@@ -22,10 +22,12 @@
     $USRNM = stripslashes($USRNM);
     $USRNM = mysqli_real_escape_string($USRNM);
     echo "| username protected |";
+    echo "| ".$USRNM."|";
     //Protecting password from MYSL injection
     $PSSWRD = stripslashes($PSSWRD);
     $PSSWRD = mysqli_real_escape_string($PSSWRD);
     echo "| password protected |";
+    echo "| " .$PSSWRD. "|";
     //comparing username and password to database
     $sqlLogin = "SELECT * FROM UserProfile";
     $resultLogin = mysqli_query($conn, $sqlLogin);
