@@ -7,10 +7,9 @@ include ("Connect.php");
 include ("questions.php");
 
 echo "Getting Parameter that was stored via session". " | ";
-//$result = $_GET['id'];
-
+$result = $_SESSION['CurrentRow'];
 //echo "<p>This is the ID: " .$_SESSION["CurrentRow"]. "</p>" . " | ";
-mysql_query("DELETE FROM Questions WHERE id='._SESSION[\"CurrentRow\"]'");
+mysql_query("DELETE FROM Questions WHERE id=$result)";
 
 header("Location: ../questions.php");
 ?>
