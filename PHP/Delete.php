@@ -8,6 +8,6 @@ echo "<p>This is the ID: " . $_SESSION["CurrentRow"]. "</p>";
 $results =$_SESSION["CurrentRow"];
 mysql_query("DELETE FROM Questions WHERE id='$results'");
 
-//header("Location: ../questions.php");
+header("Location: ../questions.php");
 ?>
 
