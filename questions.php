@@ -77,8 +77,7 @@ session_start();
                                         echo "<h5><form action=\"\" method=\"post\">"
                                     . "<td><input type=\"submit\" name=\"Delete\ value=\"EXTERMINATE\"></td>"
                                     . ""
-                                    ."<?php $sql =\"DELETE * FROM Questions WHERE id =$result\" "
-                                                . "mysqli_query($conn,$sql); ?>"
+                                    .$sql = "DELETE * FROM Questions WHERE id =$result"
                                     ."</form></h5>";
                                     }
                                 echo "</div>";
