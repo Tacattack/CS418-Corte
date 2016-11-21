@@ -31,7 +31,7 @@ session_start();
                         echo "</form>";   
                         }
                         //Else if the user is a Pleb
-                        else if($_SESSION["USERLEVEL" == 0])
+                        else
                         {
                         $UserLevel = "Pleb";
                         echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
