@@ -64,12 +64,6 @@
                 echo "Fucking work correctly";
             }
         }
-        
-        if ($LogIn != true)
-            {
-                $WrongPassUse = true;
-                header("Location: ../index.php");
-            }
     }
     
     echo "| If statement exited |";
