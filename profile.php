@@ -60,7 +60,12 @@ session_start();
                 <ul>
                     <li><a href="questions.php">View Questions</a></li>
                     <li><a href="ask.php">Ask Question</a></li>
-                    <li><a href="users.php" class="active">Users</a></li>
+                    <?php
+                        if($UserLevel == "Admin")
+                        {
+                            echo "<li><a href =\"users.php\" class=\"active\">Users</a></li>";
+                        }
+                        ?>
                 </ul>
             </div>
             <div id="Container">
