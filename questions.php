@@ -71,6 +71,8 @@ session_start();
                                         echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
                                             echo "<h5>" . $row["questionTitle"] . "</h5>" . "</a>";
                                     echo "</div>";
+                                    echo "<div id=\"questionDelete\">";
+                                        echo "<button>Delete</button>";
                                 echo "</div>";
                             }
                         }else {
