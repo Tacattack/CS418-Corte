@@ -125,7 +125,7 @@ CREATE TABLE `UserProfile` (
 LOCK TABLES `UserProfile` WRITE;
 /*!40000 ALTER TABLE `UserProfile` DISABLE KEYS */;
 INSERT INTO `UserProfile` VALUES(1,'nbenfiel','password','nick@email.com',1);
-INSERT INTO `UserProfile` VALUES(2,'tcorte','password','trai@email.com'),1;
+INSERT INTO `UserProfile` VALUES(2,'tcorte','password','trai@email.com',1);
 INSERT INTO `UserProfile` VALUES(3,'admin', 'cs518pa$$','admin@emial.com',1);
 INSERT INTO `UserProfile` VALUES(4,'jbrunelle','M0n@rch$','jbrunelle@email.com',1);
 INSERT INTO `UserProfile` VALUES(5,'pvenkman','imadoctor','pvenkman@email.com',0);
