@@ -113,7 +113,7 @@ CREATE TABLE `UserProfile` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `level` int(11) NOT NULL,
+  `level` int(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
