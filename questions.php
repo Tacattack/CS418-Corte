@@ -74,7 +74,7 @@ session_start();
                                     if($_SESSION["USERLEVEL"] == 1)
                                     {
                                     echo "<div id=\"questionDelete\">";
-                                        echo "<h5><form action=\"Delete.php\" method=\"post\">"
+                                        echo "<h5><form action=\"PHP/Delete.php\" method=\"post\">"
                                     . "<td><input type=\"submit\" name=\"Delete\ value=\"EXTERMINATE\"></td>"
                                     ."</form></h5>";
                                     }
