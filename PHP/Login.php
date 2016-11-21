@@ -33,13 +33,9 @@
                 header("Location: ../profile.php?id=".$_SESSION["USERID"]);
                 die();
             }
-            else
-            {
-                echo "Don't be fucking dumb, go back and put your correct username and password in. <href=\"../index.php\">Return Now stupid</a>";
-            }
         }
     }
     
-    echo "| If statement exited |";
+    echo "Don't be fucking dumb, go back and put your correct username and password in. <a href=\"../index.php\">Return Now stupid</a>";
 ?>
 
