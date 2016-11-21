@@ -46,10 +46,12 @@
                 $_SESSION["USERID"] = $rowLog["id"];
                 $_SESSION["USER"] = $USRNM;
                 $_SESSION["PASSWORD"] = $PSSWRD;
+                $_SESSION["USERLEVEL"] = $rowLog["level"];
                 $LogIn = true;
                 echo "| ".$_SESSION["USERID"]." |";
                 echo "| ".$_SESSION["USER"]." |";
                 echo "| ".$_SESSION["PASSWORD"]." |";
+                echo "| ".$_SESSION["USERLEVEL"]." |";
                 header("Location: ../profile.php?id=".$_SESSION["USERID"]);
                 die();
             }
