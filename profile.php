@@ -20,6 +20,8 @@ session_start();
                         echo "&nbsp&nbsp&nbsp";
                         echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
                         echo "</form>";
+                        echo "<b>".$_SESSION["USERLEVEL"]. "</b>";
+                        
                     }
                     else
                     {
