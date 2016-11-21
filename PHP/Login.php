@@ -14,7 +14,8 @@
 
     $USRNM = $_POST['LoginUsername'];
     $PSSWRD = $_POST['LoginPassword'];
-
+    $LogIn = false;
+    
     echo "| ".$USRNM." |";
     echo "| ".$PSSWRD." |";
     
@@ -57,6 +58,10 @@
                 echo "| ".$_SESSION["USERLEVEL"]." |";
                 header("Location: ../profile.php?id=".$_SESSION["USERID"]);
                 die();
+            }
+            else
+            {
+                echo "Fucking work correctly";
             }
         }
         
