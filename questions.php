@@ -75,7 +75,7 @@ session_start();
                                     {
                                     echo "<div id=\"questionDelete\">";
                                         echo "<h5><form action=\"PHP/Delete.php\" method=\"post\">"
-                                    . "<td><input type=\"submit\" name=\"Delete\ value=\"EXTERMINATE\"></td>"
+                                    . "<td><input type=\"submit\" name=\"Delete\ value=\"\"></td>"
                                     ."</form></h5>";
                                     }
                                 echo "</div>";
