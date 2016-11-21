@@ -77,7 +77,7 @@ session_start();
                                         echo "<h5><form action=\"\" method=\"post\">"
                                     . "<td><input type=\"submit\" name=\"Delete\ value=\"EXTERMINATE\"></td>"
                                     . ""
-                                    .$sql = "DELETE * FROM Questions WHERE id =$result"
+                                    .$sql = "DELETE * FROM Questions WHERE id =$row"
                                     ."</form></h5>";
                                     }
                                 echo "</div>";
