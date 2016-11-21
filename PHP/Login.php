@@ -55,10 +55,6 @@
                 header("Location: ../profile.php?id=".$_SESSION["USERID"]);
                 die();
             }
-            elseif ($USRNM != $rowLog["username"]) 
-            {
-                echo "| NOPE |";
-            }
             else
             {
                 echo "| Wrong Username or Password |";
