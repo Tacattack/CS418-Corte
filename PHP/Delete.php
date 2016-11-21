@@ -1,15 +1,15 @@
 <?php
-echo "Session Starting";
+echo "Session Starting" . " | ";
 session_start();
 
-echo "Including files";
+echo "Including files". " | ";
 include ("Connect.php");
 include ("questions.php");
 
-echo "Getting Parameter that was stored via session";
+echo "Getting Parameter that was stored via session". " | ";
 //$result = $_GET['id'];
-echo "<p>This is the ID: " . $_SESSION["CurrentRow"]. "</p>";
-//$results =$_SESSION["CurrentRow"];
+$results =$_SESSION["CurrentRow"];
+echo "<p>This is the ID: " .$_SESSION["CurrentRow"]. "</p>" . " | ";
 //mysql_query("DELETE FROM Questions WHERE id='$results'");
 
 //header("Location: ../questions.php");
