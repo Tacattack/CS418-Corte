@@ -74,7 +74,8 @@ session_start();
                                     if($_SESSION["USERLEVEL"] == 1)
                                     {
                                     echo "<div id=\"questionDelete\">";
-                                        echo "<button>Delete</button>";
+                                        echo "<form action=\"\" method=\"post\"> <input type=\"hidden\" name=\"likeIt\">"
+                                    ."<?php $sql =\"DELETE * FROM Questions WHERE id =$row \" ?>";
                                     }
                                 echo "</div>";
                             }
