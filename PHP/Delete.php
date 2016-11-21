@@ -4,8 +4,7 @@ include ("questions.php");
 
 $id = $_GET['id'];
 echo "<p>This is the ID: " . $id . "</p>";
-echo 
-mysql_query("DELETE from purchase WHERE id='$id'");
+mysql_query("DELETE FROM Questions WHERE id='$id'");
 
 //header("Location: ../questions.php");
 ?>
