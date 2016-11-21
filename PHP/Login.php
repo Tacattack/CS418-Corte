@@ -14,7 +14,6 @@
 
     $USRNM = $_POST['LoginUsername'];
     $PSSWRD = $_POST['LoginPassword'];
-    $LogIn = false;
     
     echo "| ".$USRNM." |";
     echo "| ".$PSSWRD." |";
@@ -45,7 +44,6 @@
             if ($USRNM == $rowLog["username"] && $PSSWRD == $rowLog["password"]) //compares usernames to entered username
             {
                 //Register the username and password then redirect it to the profile page
-                $WrongPassUse = false;
                 echo "| You have successfully logged in |";
                 $_SESSION["USERID"] = $rowLog["id"];
                 $_SESSION["USER"] = $USRNM;
