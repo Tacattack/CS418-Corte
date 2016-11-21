@@ -28,6 +28,11 @@ session_start();
                         echo "Username: <input type=\"text\" name=\"LoginUsername\">";
                         echo "Password: <input type=\"password\" name=\"LoginPassword\">"; 
                         echo "<input type=\"submit\" name=\"submit\" value=\"Login\">";
+                        
+                        if ($WrongPassUse == true)
+                        {
+                            echo "Wrong password dumb dumb";
+                        }
                         echo "</form>";
                     }
                 ?>

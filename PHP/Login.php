@@ -19,13 +19,13 @@
     echo "| ".$PSSWRD." |";
     
     //Protecting username from MYSQL injection
-    //$USRNM = stripslashes($USRNM);
-    //$USRNM = mysqli_real_escape_string($USRNM);
+    $USRNM = stripslashes($USRNM);
+    $USRNM = mysqli_real_escape_string($USRNM);
     echo "| username protected |";
     echo "| ".$USRNM."|";
     //Protecting password from MYSL injection
-    //$PSSWRD = stripslashes($PSSWRD);
-    //$PSSWRD = mysqli_real_escape_string($PSSWRD);
+    $PSSWRD = stripslashes($PSSWRD);
+    $PSSWRD = mysqli_real_escape_string($PSSWRD);
     echo "| password protected |";
     echo "| " .$PSSWRD. "|";
     //comparing username and password to database
@@ -44,6 +44,7 @@
             if ($USRNM == $rowLog["username"] && $PSSWRD == $rowLog["password"]) //compares usernames to entered username
             {
                 //Register the username and password then redirect it to the profile page
+                $WrongPassUse = false;
                 echo "| You have successfully logged in |";
                 $_SESSION["USERID"] = $rowLog["id"];
                 $_SESSION["USER"] = $USRNM;
@@ -59,7 +60,8 @@
             }
             else
             {
-                echo "| Wrong Username or Password |";
+                $WrongPassUse = true;
+                header("Location: ../index.php);
             }
         }
     }
