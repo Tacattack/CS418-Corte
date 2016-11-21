@@ -19,13 +19,13 @@
     echo "| ".$PSSWRD." |";
     
     //Protecting username from MYSQL injection
-    $USRNM = stripslashes($USRNM);
-    $USRNM = mysqli_real_escape_string($USRNM);
+    //$USRNM = stripslashes($USRNM);
+    //$USRNM = mysqli_real_escape_string($USRNM);
     echo "| username protected |";
     echo "| ".$USRNM."|";
     //Protecting password from MYSL injection
-    $PSSWRD = stripslashes($PSSWRD);
-    $PSSWRD = mysqli_real_escape_string($PSSWRD);
+    //$PSSWRD = stripslashes($PSSWRD);
+    //$PSSWRD = mysqli_real_escape_string($PSSWRD);
     echo "| password protected |";
     echo "| " .$PSSWRD. "|";
     //comparing username and password to database
@@ -55,7 +55,7 @@
                 echo "| ".$_SESSION["PASSWORD"]." |";
                 echo "| ".$_SESSION["USERLEVEL"]." |";
                 header("Location: ../profile.php?id=".$_SESSION["USERID"]);
-                exit();
+                die();
             }
             else
             {
