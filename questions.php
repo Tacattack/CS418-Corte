@@ -80,7 +80,7 @@ session_start();
                                     ."</form></h5>";
                                     echo "<label class=\"switch\">"
                                         ."<input type=\"checkbox\">"
-                                        ."<div class=\"slider\"> </div>"
+                                        ."<div class=\"slider\">Freeze</div>"
                                         ."</label>";
                                     
                                     }
