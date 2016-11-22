@@ -33,6 +33,13 @@
                 <ul>
                     <li><a href="questions.php">View Questions</a></li>
                     <li><a href="ask.php">Ask Question</a></li>
+                    <li><a href="help.php" class="active">Help</a></li>
+                   <?php
+                        if($_SESSION["USERLEVEL"] == 1)
+                        {
+                            echo "<li><a href =\"users.php\" class=\"active\">Users</a></li>";
+                        }
+                        ?>
                 </ul>
             </div>
         </div>
