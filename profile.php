@@ -100,41 +100,6 @@ session_start();
                         echo "<input type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\">";
                         echo "<input type=\"submit\" value=\"Upload Image\" name=\"submit\">";
                         echo  "</form>";
-                        
-                        if(isset($_POST['submit']))
-                        {
-                            if(getimagesize($_FILES['image']['tmp_name']) == false)
-                            {
-                                echo "Please select an image";
-                            }
-                            else
-                            {
-                                $image = addslashes($_FILES['image']['tmp_name']);
-                                $name = addslashes($_FILES['image']['name']);
-                                $image = file_get_contents($image);
-                                $image = base64_encode($image);
-                                saveimage($name, $image);
-                            }
-                        }
-
-                        function saveimage($name, $image){
-                            $SeshUser = $_SESSION["USER"];
-
-                            $qry = "INSERT INTO UserPictures (user, picture)
-                                    VALUES ('{$SeshUser}', '{$name}', '{$image}')";
-
-                            $result = mysqli_query($qry, $conn);
-
-                            if ($result)
-                            {
-                                echo "Image uploaded";
-                            }
-                            else
-                            {
-                                echo "Image not uploaded";
-                            }
-                        }
-                    }
                     
                     echo "<h3>Asked Questions</h3>";
                     $sql = "SELECT * FROM Questions ORDER BY id DESC";
