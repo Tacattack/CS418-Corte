@@ -70,34 +70,22 @@ session_start();
                                     {
                                     $_SESSION["CurrentRow"] = $row["id"];
                                     echo "<div>";
-                                    echo "<div id=\"questionScore\">";
-                                    echo "<h5>" 
-                                    . $row["questionScore"] 
-                                    . "</h5>";
-                                    echo "</div>";
-                                    echo "<div id=\"questionTitleLink\">";
-                                    echo "<a href=\"QuestionView.php?id=" 
-                                    . $row["id"]. "\">";
-                                    echo "<h5>" 
-                                    . $row["questionTitle"] 
-                                    . "</h5>" 
-                                    . "</a>";
-                                    echo "</div>";  
-                                    echo "<div id=\"questionDelete\">";
-                                    echo "<h5><form action=\"PHP/Delete.php\" method=\"post\">"
-                                    . "<button name=\"delete\" type=\"submit\" value=\"1\">Delete</button>"
-                                    ."</form></h5>";
-                                    echo "Freeze:";
-                                    echo "<form method=\"post\" ><label class=\"switch\">"
-                                    ."<input type=\"checkbox\">"
-                                    ."<div class=\"slider\"></div>"
-                                    ."</label>"
-                                    ."</form>";
+                                        echo "<div id=\"questionScore\">";
+                                        echo "<h5>".$row["questionScore"]."</h5>";
+                                        echo "</div>";
+                                        echo "<div id=\"questionTitleLink\">";
+                                        echo "<a href=\"QuestionView.php?id=".$row["id"]."\">";
+                                        echo "<h5>".$row["questionTitle"]."</h5>"."</a>";
+                                        echo "</div>";  
+                                        echo "<div id=\"questionDelete\">";
+                                        echo "<h5><form action=\"PHP/Delete.php\" method=\"post\">"."<button name=\"delete\" type=\"submit\" value=\"1\">Delete</button>"."</form></h5>";
+                                        echo "Freeze:";
+                                        echo "<form method=\"post\" ><label class=\"switch\">"."<input type=\"checkbox\">"."<div class=\"slider\"></div>"."</label>"."</form>";
                                     echo "</div>";
                                     }
                                     else
                                     {
-                                     echo "<div>";
+                                    echo "<div>";
                                     echo "<div id=\"questionScore\">";
                                         echo "<h5>" . $row["questionScore"] . "</h5>";
                                     echo "</div>";
@@ -107,7 +95,6 @@ session_start();
                                     echo "</div>";    
                                     echo "</div>";
                                     }
-
                             }
                         }else {
                             echo "<div>";
@@ -115,8 +102,7 @@ session_start();
                             echo "0 Results Found";
                             echo "</h5>";
                             echo "</div>";
-                        }
-                        
+                        }          
                         mysqli_close($conn);
                     ?>
                 </div>
