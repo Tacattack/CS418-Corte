@@ -5,13 +5,26 @@ include ("questions.php");
 echo "Getting Parameter that was stored via session". " | ";
 //echo "<p>This is the ID: " .$_SESSION["CurrentRow"]. "</p>" . " | ";
 
-
-
-
-//if (isset($_GET['id']) && is_numeric($_GET['id']))
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbName = "QuestionAnswer";
+            
+            $conn = mysqli_connect($servername, $username, $password, $dbName);
+            
 $id = $_GET['id'];
+echo $id;
+
 $result = mysql_query("DELETE FROM Questions WHERE id=$id")
         or die(mysql_error());
+
+    if (mysqli_query($conn,$result)) {
+                echo "Deleting Question successfully";
+            } else {
+                echo "Error creating table: " . mysqli_error($conn);
+            }
+            mysqli_close($conn);
+
 
 //header("Location: ../questions.php");
 ?>
