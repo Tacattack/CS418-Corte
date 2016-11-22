@@ -200,7 +200,7 @@ input:checked + .slider:before {
 .QuestionList div{
     width: 75%;
     margin: 0px auto;
-    padding: 0px;
+    padding: 10px;
     border: 1px solid black;
     display: block;
 }
@@ -210,7 +210,7 @@ input:checked + .slider:before {
     width: 10%;
     display: inline-block;
     margin: 0px;
-    padding: 0px;
+    padding: 10px;
     border: none;
     border-right: 1px solid black;
 }
@@ -219,7 +219,7 @@ input:checked + .slider:before {
     width: 80%;
     display: inline-block;
     margin: 0px;
-    padding: 0px;
+    padding: 10px;
     border: none;
     border-left: 1px solid black;
 }
@@ -229,7 +229,7 @@ input:checked + .slider:before {
     width:10%;
     display: inline-block;
     margin: 0px;
-    padding: 0px;
+    padding: 10px;
     border:none;
     border-left: 1px solid black;
     border-right: 1px solid black;
