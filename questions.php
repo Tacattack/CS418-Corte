@@ -81,7 +81,7 @@ session_start();
                                         echo "<h5>".$row["questionTitle"]."</h5>"."</a>";
                                         echo "</div>"."</td>";  
                                         echo "<td>"."<div id=\"questionDelete\">";
-                                        echo "<h5><form action=\"PHP/Delete.php\" method=\"post\">"."<button name=\"delete\" type=\"submit\" value=\"1\">Delete</button>"."</form></h5></td>";
+                                        echo "<h5><form action=\"PHP/Delete.php?=".$row["id"]." method=\"post\">"."<button name=\"delete\" type=\"submit\" value=\"1\">Delete</button>"."</form></h5></td>";
                                         echo "<td>"."Freeze:";
                                         echo "<form method=\"post\" ><label class=\"switch\">"."<input type=\"checkbox\">"."<div id=\"freezeToggle\" class=\"slider\"></div>"."</label>"."</form>"."</td>"."</tr>";
                                     echo "</div>"; 
