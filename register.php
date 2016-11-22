@@ -56,12 +56,12 @@ session_start();
                     <input type="submit" name="register" value="Register">
                     
                     <?php
-                    /*
+                    
                         if(isset($_POST("register")))
                         {
                             $USERNM = $_POST["RegUser"];
                             $PSSWRD = $_POST["RegPass"];
-
+                        /*
                             $sql = "INSERT INTO UserProfile (username, password, level)
                                                     VALUES('{$USRNM}', '{$PSSWRD}', '0')";
 
@@ -70,9 +70,11 @@ session_start();
                                 header("Location: index.php");
                             } else {
                                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                            }
+                            } 
+                         */
+ 
                         }
-                     */
+                     
                      
                     ?>
                     
