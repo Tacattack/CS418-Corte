@@ -73,14 +73,14 @@ session_start();
                                        echo "<div>";
                                         echo "<div id=\"questionScore\">";
                                      
-                                        echo "<tr>"."<td>"."<h5>".$row["questionScore"]."</h5>"."</td>";
+                                        echo "<tr>"."<td>"."<h5>".$row["questionScore"]."</h5>";
                                         echo "</div>";
                                         echo "<div id=\"questionTitleLink\">";
-                                        echo "<td>"."<a href=\"QuestionView.php?id=".$row["id"]."\">"."</td>";
+                                        echo "<a href=\"QuestionView.php?id=".$row["id"]."\">";
                                         echo "<h5>".$row["questionTitle"]."</h5>"."</a>";
                                         echo "</div>";  
                                         echo "<div id=\"questionDelete\">";
-                                        echo "<td>"."<h5><form action=\"PHP/Delete.php\" method=\"post\">"."<button name=\"delete\" type=\"submit\" value=\"1\">Delete</button>"."</form></h5>";
+                                        echo "<h5><form action=\"PHP/Delete.php\" method=\"post\">"."<button name=\"delete\" type=\"submit\" value=\"1\">Delete</button>"."</form></h5>";
                                         echo "Freeze:";
                                         echo "<form method=\"post\" ><label class=\"switch\">"."<input type=\"checkbox\">"."<div id=\"freezeToggle\" class=\"slider\"></div>"."</label>"."</form>"."</td>"."</tr>";
                                     echo "</div>"; 
