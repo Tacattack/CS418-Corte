@@ -102,14 +102,6 @@ session_start();
                             $start=0;
                             $limit=10;
 
-                            if(isset($_GET['id']))
-                            {
-                                $id=$_GET['id'];
-                                $start=($id-1)*$limit;
-                            }
-                            else{
-                                $id=1;
-                            }
                             //Fetch from database first 10 items which is its limit. For that when page open you can see first 10 items. 
                             $query=mysqli_query($dbconfig,"select * from Answers LIMIT $start, $limit");
                             while($result=mysqli_fetch_array($query))
