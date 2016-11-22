@@ -8,8 +8,8 @@ echo "Getting Parameter that was stored via session". " | ";
 
 
 
-if (isset($_GET['id']) && is_numeric($_GET['id']))
-    $id = $_GET['id'];
+//if (isset($_GET['id']) && is_numeric($_GET['id']))
+$id = $_GET['id'];
 $result = mysql_query("DELETE FROM Questions WHERE id=$id")
         or die(mysql_error());
 
