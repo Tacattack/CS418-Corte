@@ -61,7 +61,7 @@ session_start();
                 <?php
                     $questionID = (isset($_GET["id"]) && trim($_GET["id"]) == 'QuestionView.php') ? trim($_GET["id"]) : '';
                     $sql = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
-                    $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC LIMIT 5";
+                    //$sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC LIMIT 5";
                     $sqlU = "SELECT * FROM UserProfile";
                     $result = mysqli_query($conn, $sql);
                     $resultA = mysqli_query($conn, $sqlA);
@@ -99,13 +99,12 @@ session_start();
                             echo "<h3>Answers</h3>";
                             echo "<ul>";
                             
-                            $start=0;
-                            $limit=10;
-
-                            //Fetch from database first 10 items which is its limit. For that when page open you can see first 10 items. 
-                            $query=mysqli_query($dbconfig,"select * from Answers LIMIT $start, $limit");
-                            while($result=mysqli_fetch_array($query))
-                            {
+                            $limit = 2;  
+                            if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
+                            $start_from = ($page-1) * $limit;
+                            $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY id ASC LIMIT $start_from, $limit";
+                            $rs_result = mysql_query ($sqlA);
+                            while ($rowA = mysql_fetch_assoc($rs_result)) {
                                 if (isset($_SESSION["USER"]))
                                     {
                                         echo "<li><form action=\"\" method=\"post\"><input type=\"hidden\" name=\"likeIt\"><table>";
@@ -121,30 +120,18 @@ session_start();
                                         echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
                                         echo "</table></form></li>";
                                     }
-                            }
-                            //fetch all the data from database.
-                            $rows=mysqli_num_rows(mysqli_query($dbconfig,"select * from user"));
-                            //calculate total page number for the given table in the database 
-                            $total=ceil($rows/$limit);
-                            if($id>1)
-                            {
-                                //Go to previous page to show previous 10 items. If its in page 1 then it is inactive
-                                echo "<a href='?id=".($id-1)."' class='button'>PREVIOUS</a>";
-                            }
-                            if($id!=$total)
-                            {
-                                ////Go to previous page to show next 10 items.
-                                echo "<a href='?id=".($id+1)."' class='button'>NEXT</a>";
-                            }
-                            //show all the page link with page number. When click on these numbers go to particular page. 
-                            for($i=1;$i<=$total;$i++)
-                            {
-                                if($i==$id) { echo "<li class='current'>".$i."</li>"; }
-
-                                else { echo "<li><a href='?page=".$i."'>".$i."</a></li>"; }
-                            }
+                            };
                             
-                            
+                            $sql = "SELECT COUNT(id) FROM posts";  
+                            $rs_result = mysql_query($sql);  
+                            $row = mysql_fetch_row($rs_result);  
+                            $total_records = $row[0];  
+                            $total_pages = ceil($total_records / $limit);  
+                            $pagLink = "<div class='pagination'>";  
+                            for ($i=1; $i<=$total_pages; $i++) {  
+                                         $pagLink .= "<a href='index.php?page=".$i."'>".$i."</a>";  
+                            };  
+                            echo $pagLink;
                             /*if (mysqli_num_rows($resultA) > 0)
                             {
                                 while ($rowA = mysqli_fetch_assoc($resultA))
