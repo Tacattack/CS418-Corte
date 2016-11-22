@@ -13,7 +13,7 @@ echo "Getting Parameter that was stored via session". " | ";
             $conn = mysqli_connect($servername, $username, $password, $dbName);
  
 $url=$_GET['url'];
-$parts = Explode('=',$url);
+$parts = Explode('/',$url);
 $part = $parts[5];
 
 print_r($parts);
