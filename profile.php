@@ -96,7 +96,7 @@ session_start();
                     {
                         echo "<form action=\"PHP/Upload.php\" method=\"post\" enctype=\"multipart/form-data\">";
                         echo "Select a profile image:";
-                        echo "<input type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\">";
+                        echo "<input type=\"file\" name=\"image\" id=\"fileToUpload\">";
                         echo "<input type=\"submit\" value=\"Upload Image\" name=\"submit\">";
                         echo  "</form>";
                     }
