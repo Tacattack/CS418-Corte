@@ -61,7 +61,7 @@ session_start();
                 <?php
                     $questionID = (isset($_GET["id"]) && trim($_GET["id"]) == 'QuestionView.php') ? trim($_GET["id"]) : '';
                     $sql = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
-                    //$sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC LIMIT 5";
+                    $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC LIMIT 5";
                     $sqlU = "SELECT * FROM UserProfile";
                     $result = mysqli_query($conn, $sql);
                     $resultA = mysqli_query($conn, $sqlA);
@@ -98,41 +98,7 @@ session_start();
                             echo "<div id=\"Answers\">";
                             echo "<h3>Answers</h3>";
                             echo "<ul>";
-                            
-                            $limit = 2;  
-                            if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
-                            $start_from = ($page-1) * $limit;
-                            $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY id ASC LIMIT $start_from, $limit";
-                            $rs_result = mysql_query ($sqlA);
-                            while ($rowA = mysql_fetch_assoc($rs_result)) {
-                                if (isset($_SESSION["USER"]))
-                                    {
-                                        echo "<li><form action=\"\" method=\"post\"><input type=\"hidden\" name=\"likeIt\"><table>";
-                                        echo "<tr><td><input type=\"submit\" name=\"Like\" value=\"I Like\"></td><td>".$rowA["answerBody"]."</td></tr>";
-                                        echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\">&nbsp".$rowA["answerScore"]."&nbsp<input type=\"submit\" name=\"downVote\" value=\"-\">"
-                                            ."</td><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
-                                        echo "</table></form></li>";
-                                    }
-                                    else
-                                    {
-                                        echo "<li><form><table>";
-                                        echo "<tr><td>".$rowA["answerScore"]."</td><td>".$rowA["answerBody"]."</td></tr>";
-                                        echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
-                                        echo "</table></form></li>";
-                                    }
-                            };
-                            
-                            $sql = "SELECT COUNT(id) FROM posts";  
-                            $rs_result = mysql_query($sql);  
-                            $row = mysql_fetch_row($rs_result);  
-                            $total_records = $row[0];  
-                            $total_pages = ceil($total_records / $limit);  
-                            $pagLink = "<div class='pagination'>";  
-                            for ($i=1; $i<=$total_pages; $i++) {  
-                                         $pagLink .= "<a href='QuestionView.php?id=".$Qrow["id"]."?page=".$i."'>".$i."</a>";  
-                            };  
-                            echo $pagLink;
-                            /*if (mysqli_num_rows($resultA) > 0)
+                            if (mysqli_num_rows($resultA) > 0)
                             {
                                 while ($rowA = mysqli_fetch_assoc($resultA))
                                 {
@@ -152,7 +118,7 @@ session_start();
                                         echo "</table></form></li>";
                                     }
                                 }
-                            }*/
+                            }
                         }
                         echo "<br />";
                     }
