@@ -60,15 +60,13 @@ session_start();
             <div id="Content">
                 <?php
                     $questionID = (isset($_GET["id"]) && trim($_GET["id"]) == 'QuestionView.php') ? trim($_GET["id"]) : '';
-
+                    $rec_limit = 5;
                     $sql = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
-                    $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC";
                     $sqlU = "SELECT * FROM UserProfile";
                     $result = mysqli_query($conn, $sql);
-                    $resultA = mysqli_query($conn, $sqlA);
                     $resultU = mysqli_query($conn, $sqlU);
 
-
+                    
                     if (mysqli_num_rows($result) > 0)
                     {
                         while ($row = mysqli_fetch_assoc($result))
@@ -99,31 +97,56 @@ session_start();
                             echo "<div id=\"Answers\">";
                             echo "<h3>Answers</h3>";
                             echo "<ul>";
-                            if (mysqli_num_rows($resultA) > 0)
+                            //$sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC";
+                            $sqlA = "SELECT COUNT(id) FROM Answers";
+                            $resultA = mysqli_query($conn, $sqlA);
+                            $rowA = mysql_fetch_array($resultA, MYSQLI_NUM);
+                            $rec_countA = $rowA[0];
+                            
+                            if( isset($_GET{'page'} ) ) {
+                                $page = $_GET{'page'} + 1;
+                                $offset = $rec_limit * $page ;
+                            }else {
+                               $page = 0;
+                               $offset = 0;
+                            }
+                            $left_rec = $rec_count - ($page * $rec_limit);
+                            $sqlA = "SELECT * FROM Answers LIMIT $offset, $rec_limit";
+
+                            while ($rowA = mysqli_fetch_assoc($resultA))
                             {
-                                while ($rowA = mysqli_fetch_assoc($resultA))
+                                if (isset($_SESSION["USER"]))
                                 {
-                                    if (isset($_SESSION["USER"]))
-                                    {
-                                        echo "<li><form action=\"\" method=\"post\"><input type=\"hidden\" name=\"likeIt\"><table>";
-                                        echo "<tr><td><input type=\"submit\" name=\"Like\" value=\"I Like\"></td><td>".$rowA["answerBody"]."</td></tr>";
-                                        echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\">&nbsp".$rowA["answerScore"]."&nbsp<input type=\"submit\" name=\"downVote\" value=\"-\">"
-                                            ."</td><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
-                                        echo "</table></form></li>";
-                                    }
-                                    else
-                                    {
-                                        echo "<li><form><table>";
-                                        echo "<tr><td>".$rowA["answerScore"]."</td><td>".$rowA["answerBody"]."</td></tr>";
-                                        echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
-                                        echo "</table></form></li>";
-                                    }
+                                    echo "<li><form action=\"\" method=\"post\"><input type=\"hidden\" name=\"likeIt\"><table>";
+                                    echo "<tr><td><input type=\"submit\" name=\"Like\" value=\"I Like\"></td><td>".$rowA["answerBody"]."</td></tr>";
+                                    echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\">&nbsp".$rowA["answerScore"]."&nbsp<input type=\"submit\" name=\"downVote\" value=\"-\">"
+                                        ."</td><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                    echo "</table></form></li>";
                                 }
+                                else
+                                {
+                                    echo "<li><form><table>";
+                                    echo "<tr><td>".$rowA["answerScore"]."</td><td>".$rowA["answerBody"]."</td></tr>";
+                                    echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                    echo "</table></form></li>";
+                                }
+                            }
                             }
                             echo "<br />";
                         }
-                    }
                     echo "</ul>";
+                    
+                    if( $page > 0 ) {
+                        $last = $page - 2;
+                        echo "<a href = \"$_PHP_SELF?page = $last\">Last 10 Records</a> |";
+                        echo "<a href = \"$_PHP_SELF?page = $page\">Next 10 Records</a>";
+                     }else if( $page == 0 ) {
+                        echo "<a href = \"$_PHP_SELF?page = $page\">Next 10 Records</a>";
+                     }else if( $left_rec < $rec_limit ) {
+                        $last = $page - 2;
+                        echo "<a href = \"$_PHP_SELF?page = $last\">Last 10 Records</a>";
+                     }
+                    
                     if (isset($_SESSION["USER"]))
                     {
                         echo "<form method=\"post\">";
