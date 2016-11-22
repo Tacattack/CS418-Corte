@@ -38,11 +38,8 @@
         </div>
         <div id="Container">
             <div id="Content">
-                <h1>About US</h1>
-                
-                <h1>How to use the site</h1>
-                
-                
+                <h1>If You Don't know what you are doing on this site</h1>
+                <p>Leave. You aren't welcome here if you don't know how to use the internet responsibly.</p>
             </div>
         </div>
     </body>
