@@ -51,6 +51,10 @@ session_start();
                             echo "<li><a href =\"users.php\" class=\"active\">Users</a></li>";
                         }
                         ?>
+                                        <li><form action="" method="post">
+                        <input type="radio" name="search" value="Users"/> Users
+                        <input type="radio" name="search" value="Questions"/> Questions
+                        <input type="text" name="search" placeholder="Search..."></li>
                 </ul>
             </div>
         </div>
