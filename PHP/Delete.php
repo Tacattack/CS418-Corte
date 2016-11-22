@@ -12,7 +12,7 @@ echo "Getting Parameter that was stored via session". " | ";
             
             $conn = mysqli_connect($servername, $username, $password, $dbName);
             
-$id = $_GET['id'];
+$id = intval($_GET['id']);
 echo $id;
 
 $result = mysql_query("DELETE FROM Questions WHERE id=$id")
