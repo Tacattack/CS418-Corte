@@ -66,16 +66,9 @@ session_start();
                         {
                             while ($row = mysqli_fetch_assoc($result))
                             {
-                                echo "<div>";
-                                    echo "<div id=\"questionScore\">";
-                                        echo "<h5>" . $row["questionScore"] . "</h5>";
-                                    echo "</div>";
-                                    echo "<div id=\"questionTitleLink\">";
-                                        echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
-                                            echo "<h5>" . $row["questionTitle"] . "</h5>" . "</a>";
-                                    echo "</div>";
                                     if($_SESSION["USERLEVEL"] == 1)
                                     {
+                                    $_SESSION["CurrentRow"] = $row["id"];
                                     echo "<div>";
                                     echo "<div id=\"questionScore\">";
                                     echo "<h5>" 
@@ -89,9 +82,7 @@ session_start();
                                     . $row["questionTitle"] 
                                     . "</h5>" 
                                     . "</a>";
-                                    echo "</div>";
-                                    
-                                    $_SESSION["CurrentRow"] = $row["id"];
+                                    echo "</div>";  
                                     echo "<div id=\"questionDelete\">";
                                     echo "<h5><form action=\"PHP/Delete.php\" method=\"post\">"
                                     . "<button name=\"delete\" type=\"submit\" value=\"1\">Delete</button>"
@@ -102,9 +93,21 @@ session_start();
                                     ."<div class=\"slider\"></div>"
                                     ."</label>"
                                     ."</form>";
-                                    
+                                    echo "</div>";
                                     }
-                                echo "</div>";
+                                    else
+                                    {
+                                     echo "<div>";
+                                    echo "<div id=\"questionScore\">";
+                                        echo "<h5>" . $row["questionScore"] . "</h5>";
+                                    echo "</div>";
+                                    echo "<div id=\"questionTitleLink\">";
+                                        echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
+                                            echo "<h5>" . $row["questionTitle"] . "</h5>" . "</a>";
+                                    echo "</div>";    
+                                    echo "</div>";
+                                    }
+
                             }
                         }else {
                             echo "<div>";
