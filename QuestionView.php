@@ -28,14 +28,9 @@ session_start();
                         echo "Password: <input type=\"password\" name=\"LoginPassword\">"; 
                         echo "<input type=\"submit\" name=\"submit\" value=\"Login\">";
                         echo "</form>";
+                        echo "<a href=\"register.php\">Register</a>";
                     }
                 ?>
-            <!--<form class="FormRegister">
-                Email: <input type="text" name='email' >
-                Username: <input type="text" name='newuser' >
-                Password: <input type="password" name='newpass' >
-                <input type="submit" value="Register">
-            </form>-->
             <div class="Navigation">
                 <h1>
                     <a href="index.php"><img src="images/Logo.png" class="logo"></a>
