@@ -71,6 +71,7 @@ session_start();
                                     $_SESSION["CurrentRow"] = $row["id"];
                                     echo "<div>";
                                         echo "<div id=\"questionScore\">";
+                                        echo "<table>";
                                         echo "<tr>"."<td>"."<h5>".$row["questionScore"]."</h5>"."</td>";
                                         echo "</div>";
                                         echo "<div id=\"questionTitleLink\">";
@@ -81,6 +82,7 @@ session_start();
                                         echo "<td>"."<h5><form action=\"PHP/Delete.php\" method=\"post\">"."<button name=\"delete\" type=\"submit\" value=\"1\">Delete</button>"."</form></h5>";
                                         echo "Freeze:";
                                         echo "<form method=\"post\" ><label class=\"switch\">"."<input type=\"checkbox\">"."<div id=\"freezeToggle\" class=\"slider\"></div>"."</label>"."</form>"."</td>"."</tr>";
+                                        echo "</table>";
                                     echo "</div>";
                                     }
                                     else
