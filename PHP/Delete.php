@@ -16,14 +16,7 @@ $url=$_GET['url'];
 $parts = Explode('=',$url);
 $part = $parts[5];
 
-echo " | " .$parts[0]. " | ";
-echo " | " .$parts[1]. " | ";
-echo " | " .$parts[2]. " | ";
-echo " | " .$parts[3]. " | ";
-echo " | " .$parts[4]. " | ";
-echo " | " .$parts[5]. " | ";
-echo " | " .$parts[6]. " | ";
-echo " | " .$parts[7]. " | ";
+print_r($parts);
 
 
 
