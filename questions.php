@@ -98,7 +98,6 @@ session_start();
                                         }
                                          */
                                         echo "<form id=\"freeze\" action=\"PHP/Freezing.php?=".$row["questionFrozen"]." method=\"post\">"."<buton form=\"freeze\" name=\"freeze\" type=\"submit\" value=".row["questionFrozen"].">Freeze</button></div>"."</form>";
-                                        echo $test;
                                         echo "</td>"."</tr>";
                                     echo "</div>"; 
                                     echo "</table>";
