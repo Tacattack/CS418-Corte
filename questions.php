@@ -90,7 +90,8 @@ session_start();
                                         {
                                             echo "Not Frozen";
                                         }
-                                        echo "<form id=\"freeze\""."action=\"PHP/Freezing.php?=".urlencode($test)."&deletes=".urlencode($test2)." ".  "method=\"post\">"."<button form=\"freeze\" name=\"freeze\" type=\"submit\" value=".$test." data-name=\"deletes\" data-value=".$test2.">Freeze</button></div>"."</form>";
+                                    $test3 = "frozen=" . "$test" . "&" . "id=" . $test2;
+                                        echo "<form id=\"freeze\""."action=\"PHP/Freezing.php?=".$test3."method=\"post\">"."<button form=\"freeze\" name=\"freeze\" type=\"submit\" value=".$test.">Freeze</button></div>"."</form>";
                                         echo "</td>"."</tr>";
                                     echo "</div>"; 
                                     echo "</table>";
