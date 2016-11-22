@@ -60,10 +60,8 @@ session_start();
             <div id="Content">
                 <div class="QuestionList">
                     <?php
-                        $sql = "SELECT * FROM Questions ORDER BY id DESC";
-                        $freezesql = "SELECT * FROM Questions ORDER BY questionFrozen";
+                        $sql = "SELECT * FROM Questions ORDER BY id DESC";                      
                         $result = mysqli_query($conn, $sql);
-                        $results= mysqli_query($conn,$freezesql);
                         if (mysqli_num_rows($result) > 0)
                         {
                             while ($row = mysqli_fetch_assoc($result))
@@ -97,7 +95,7 @@ session_start();
                                             echo "Not Frozen" . " ";
                                         }
                                          */
-                                        echo "<form id=\"freeze\" action=\"PHP/Freezing.php?=".$row["questionFrozen"]." method=\"post\">"."<buton form=\"freeze\" name=\"freeze\" type=\"submit\" value=".row["questionFrozen"].">Freeze</button></div>"."</form>";
+                                        //echo "<form id=\"freeze\" action=\"PHP/Freezing.php?=".$row["questionFrozen"]." method=\"post\">"."<buton form=\"freeze\" name=\"freeze\" type=\"submit\" value=".row["questionFrozen"].">Freeze</button></div>"."</form>";
                                         echo "</td>"."</tr>";
                                     echo "</div>"; 
                                     echo "</table>";
