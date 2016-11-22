@@ -12,17 +12,9 @@ echo "Getting Parameter that was stored via session". " | ";
             
             $conn = mysqli_connect($servername, $username, $password, $dbName);
  
-$url=$_GET['url'];
-$parts = Explode('/',$url);
-$part = $parts[5];
-
-print_r($parts);
 
 
-
-
-/*
-$id = intval($_GET['id']);
+$id = intval($_GET['deletes']);
 echo $id;
 
 $result = mysql_query("DELETE FROM Questions WHERE id=$id")
@@ -34,7 +26,7 @@ $result = mysql_query("DELETE FROM Questions WHERE id=$id")
                 echo "Error creating table: " . mysqli_error($conn);
             }
             mysqli_close($conn);
-*/
+
 
             
 //header("Location: ../questions.php");
