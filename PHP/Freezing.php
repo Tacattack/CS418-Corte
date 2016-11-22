@@ -2,9 +2,10 @@
 include ("Connect.php");
 include ("questions.php");
 
-$id = intval($_GET['freeze']);
+$status = intval($_GET['freeze']);
+$id = intval($_GET["delete"]);
 
-$result = "DELETE FROM Questions WHERE id=$id";
+$result = "UPDATE Questions SET questionFrozen = $status WHERE id=$id";
 $sqlresult = mysqli_query($conn,$result);
             
 //header("Location: ../questions.php");
