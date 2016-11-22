@@ -30,6 +30,18 @@ session_start();
                         echo "<input type=\"submit\" name=\"submit\" value=\"Login\">";
                         echo "<input type=\"submit\" name=\"register\" value=\"Register\">";
                         echo "</form>";
+                        
+                        if(isset($_POST("register")))
+                        {
+                            $sql = "INSERT INTO UserProfile (username, password, level)
+                                                    VALUES('{$USRNM}', '{$PSSWRD}', '0')";
+
+                            if (mysqli_query($conn, $sql)) {
+                                echo "Registered Successfully";
+                            } else {
+                                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                            }
+                        }
                     }
                 ?>
             <!--<form class="FormRegister">
