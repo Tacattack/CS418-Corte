@@ -41,7 +41,6 @@ session_start();
                         echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
                         echo "</form>";
                         }
-                        
                     }
                     else
                     {
@@ -81,6 +80,18 @@ session_start();
                         }
                     }
                     echo "<h1>".$UserIs."</h1>";
+                    $SeshUser = $_SESSION["USER"];
+    
+                    $qry = "SELECT * FROM UserPictures";
+                    $result = mysqli_query($qry, $conn);
+
+                    while ($row = mysqli_fetch_array($result))
+                    {
+                        if ($row["user"] == $SeshUser)
+                        {
+                         echo "<img height=\"300px\" width=\"300px\" src=\"data:image;base64,".$row["id"]."\">";   
+                        }   
+                    }
                     
                     if (isset($_SESSION["USER"]))
                     {

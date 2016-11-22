@@ -144,3 +144,28 @@ INSERT INTO `UserProfile` VALUES(17,'staypuft','m@r$hM@ll0w','staypuft@email.com
 
 /*!40000 ALTER TABLE `UserProfile` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `UserPictures`
+--
+
+DROP TABLE IF EXISTS `UserPictures`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `UserPictures` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` varchar(250) NOT NULL,
+  `pictureName` varchar(250) NOT NULL,
+  `picture` blob NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `UserPictures`
+--
+
+LOCK TABLES `UserPictures` WRITE;
+/*!40000 ALTER TABLE `UserPictures` DISABLE KEYS */;
+/*!40000 ALTER TABLE `UserPictures` ENABLE KEYS */;
+UNLOCK TABLES;
