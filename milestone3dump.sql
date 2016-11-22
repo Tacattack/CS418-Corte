@@ -210,18 +210,6 @@ INSERT INTO `Questions` VALUES (117,129,'Should a ghost run for president?','sli
 INSERT INTO `Questions` VALUES (118,0,'why do ghosts not have a say in the government?','slimer',0);
 INSERT INTO `Questions` VALUES (119,0,'Do ghosts have rights?','slimer',0);
 INSERT INTO `Questions` VALUES (120,239,'Are ghosts a minority or a majority?','slimer',0);
-
-
-
-
-
-
-
-
-
-
-
-
 /*!40000 ALTER TABLE `Questions` ENABLE KEYS */;
 UNLOCK TABLES;
 
