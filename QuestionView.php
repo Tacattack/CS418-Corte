@@ -129,7 +129,7 @@ session_start();
                             $total_pages = ceil($total_records / $limit);  
                             $pagLink = "<div class='pagination'>";  
                             for ($i=1; $i<=$total_pages; $i++) {  
-                                         $pagLink .= "<a href='index.php?page=".$i."'>".$i."</a>";  
+                                         $pagLink .= "<a href='QuestionView.php?id=".$Qrow["id"]."?page=".$i."'>".$i."</a>";  
                             };  
                             echo $pagLink;
                             /*if (mysqli_num_rows($resultA) > 0)
