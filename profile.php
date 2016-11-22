@@ -61,6 +61,8 @@ session_start();
                 <ul>
                     <li><a href="questions.php">View Questions</a></li>
                     <li><a href="ask.php">Ask Question</a></li>
+                    <li><a href="help.php">Help</a></li>
+
                     <?php
                         if($UserLevel == "Admin")
                         {

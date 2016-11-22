@@ -13,24 +13,13 @@ require_once("PHP/Connect.php");
     </head>
     <body>
         <div id="Header">
-                <?PHP
-                    if (isset($_SESSION["USER"]))
-                    {
-                        echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
-                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
-                        echo "&nbsp&nbsp&nbsp";
-                        echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
-                        echo "</form>";
-                    }
-                    else
-                    {
+                    <?php
                         echo "<form class=\"FormLogin\" action=\"PHP/Login.php\" method=\"post\">";
                         echo "Username: <input type=\"text\" name=\"LoginUsername\">";
                         echo "Password: <input type=\"password\" name=\"LoginPassword\">"; 
                         echo "<input type=\"submit\" name=\"submit\" value=\"Login\">";
                         echo "</form>";
                         echo "<a href=\"register.php\">Register</a>";
-                    }
                 ?>
             <div class="Navigation">
                 <h1>
@@ -40,13 +29,7 @@ require_once("PHP/Connect.php");
                     <li><a href="questions.php">View Questions</a></li>
                     <li><a href="ask.php">Ask Question</a></li>
                     <li><a href="help.php">Help</a></li>
-                   <?php
-                        if($_SESSION["USERLEVEL"] == 1)
-                        {
-                            echo "<li><a href =\"users.php\" class=\"active\">Users</a></li>";
-                        }
-                        ?>
-                                        <li><form action="" method="post">
+                    <li><form action="" method="post">
                         <input type="radio" name="search" value="Users"/> Users
                         <input type="radio" name="search" value="Questions"/> Questions
                         <input type="text" name="search" placeholder="Search..."></li>

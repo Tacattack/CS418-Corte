@@ -38,6 +38,7 @@ session_start();
                 <ul>
                     <li><a href="#" class="active">View Questions</a></li>
                     <li><A href="ask.php">Ask Question</a></li>
+                    <li><a href="help.php">Help</a></li>
                    <?php
                         if($_SESSION["USERLEVEL"] == 1)
                         {
