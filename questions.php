@@ -80,7 +80,7 @@ session_start();
                                         echo "<div id=\"questionDelete\">";
                                         echo "<h5><form action=\"PHP/Delete.php\" method=\"post\">"."<button name=\"delete\" type=\"submit\" value=\"1\">Delete</button>"."</form></h5>";
                                         echo "Freeze:";
-                                        echo "<form method=\"post\" ><label class=\"switch\">"."<input type=\"checkbox\">"."<div class=\"slider\"></div>"."</label>"."</form>";
+                                        echo "<form method=\"post\" ><label class=\"switch\">"."<input type=\"checkbox\">"."<div id=\"freezeToggle\" class=\"slider\"></div>"."</label>"."</form>";
                                     echo "</div>";
                                     }
                                     else

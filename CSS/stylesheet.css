@@ -223,6 +223,25 @@ input:checked + .slider:before {
     border-left: 1px solid black;
 }
 
+#questionDelete
+{
+    width:10%;
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    border:none;
+    border-left: 1px solid black;
+}
+
+#freezeToggle
+{
+    width:10%;
+    display: inline-block;
+    margin: 0px;
+    padding: 0px;
+    border:none;
+    border-right: 1px solid black;
+}
 /*----------------------------------------------Questions Front Page----------------------------------------*/
 .PQuest{
     width: 100%;
