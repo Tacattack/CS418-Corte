@@ -76,18 +76,32 @@ session_start();
                                     echo "</div>";
                                     if($_SESSION["USERLEVEL"] == 1)
                                     {
-                                        $_SESSION["CurrentRow"] = $row["id"];
-                                        
+                                    echo "<div>";
+                                    echo "<div id=\"questionScore\">";
+                                    echo "<h5>" 
+                                    . $row["questionScore"] 
+                                    . "</h5>";
+                                    echo "</div>";
+                                    echo "<div id=\"questionTitleLink\">";
+                                    echo "<a href=\"QuestionView.php?id=" 
+                                    . $row["id"]. "\">";
+                                    echo "<h5>" 
+                                    . $row["questionTitle"] 
+                                    . "</h5>" 
+                                    . "</a>";
+                                    echo "</div>";
+                                    
+                                    $_SESSION["CurrentRow"] = $row["id"];
                                     echo "<div id=\"questionDelete\">";
-                                        echo "<h5><form action=\"PHP/Delete.php\" method=\"post\">"
+                                    echo "<h5><form action=\"PHP/Delete.php\" method=\"post\">"
                                     . "<button name=\"delete\" type=\"submit\" value=\"1\">Delete</button>"
                                     ."</form></h5>";
                                     echo "Freeze:";
                                     echo "<form method=\"post\" ><label class=\"switch\">"
-                                        ."<input type=\"checkbox\">"
-                                        ."<div class=\"slider\"></div>"
-                                        ."</label>"
-                                        ."</form>";
+                                    ."<input type=\"checkbox\">"
+                                    ."<div class=\"slider\"></div>"
+                                    ."</label>"
+                                    ."</form>";
                                     
                                     }
                                 echo "</div>";
