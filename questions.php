@@ -86,7 +86,7 @@ session_start();
                                         echo "<td>"."<div id=\"questionDelete\">";
                                         echo "<h5><form id=\"delete\" action=\"PHP/Delete.php?=".$row["id"]." method=\"post\">"."<button form=\"delete\" name=\"deletes\" type=\"submit\" value=".$row["id"].">Delete</button>"."</form></h5></td>";
                                         echo "<td>"."Freeze:";
-                                        echo "<form id=\"freeze\" action=\"PHP/Freezing.php?=".$row["questionFrozen"]." method=\"post\">"."<buton form=\"freeze\" name=\"freeze\" type=\"submit\" value="." </div>"."</label>"."</form>"."</td>"."</tr>";
+                                        echo "<form id=\"freeze\" action=\"PHP/Freezing.php?=".$row["questionFrozen"]." method=\"post\">"."<buton form=\"freeze\" name=\"freeze\" type=\"submit\" value=".row["questionFrozen"].">Freeze</button></div>"."</label>"."</form>"."</td>"."</tr>";
                                     echo "</div>"; 
                                     echo "</table>";
                                     }
