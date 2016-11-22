@@ -86,6 +86,14 @@ session_start();
                                         echo "<td>"."<div id=\"questionDelete\">";
                                         echo "<h5><form id=\"delete\" action=\"PHP/Delete.php?=".$row["id"]." method=\"post\">"."<button form=\"delete\" name=\"deletes\" type=\"submit\" value=".$row["id"].">Delete</button>"."</form></h5></td>";
                                         echo "<td>"."Freeze Status:";
+                                        if($test == 1)
+                                        {
+                                            echo "Frozen";
+                                        }
+                                        else if($test == 0)
+                                        {
+                                            echo "Not Frozen";
+                                        }
                                         echo "<form id=\"freeze\""."action=\"PHP/Freezing.php?=".urlencode($test)."&deletes=".urlencode($test2)." ".  "method=\"post\">"."<button form=\"freeze\" name=\"freeze\" type=\"submit\" value=".$test." data-name=\"deletes\" data-value=deletes=".$test2.">Freeze</button></div>"."</form>";
                                         echo "</td>"."</tr>";
                                     echo "</div>"; 
