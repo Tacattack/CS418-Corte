@@ -212,7 +212,7 @@ input:checked + .slider:before {
     margin: 0px;
     padding: 10px;
     border: none;
-    border-right: 1px solid black;
+
 }
 
 #questionTitleLink{
@@ -221,10 +221,6 @@ input:checked + .slider:before {
     margin: 3px;
     padding: 3px;
     border: none;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
 }
 
 #questionDelete
@@ -234,8 +230,7 @@ input:checked + .slider:before {
     margin: 0px;
     padding: 10px;
     border:none;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+
 }
 
 /*----------------------------------------------Questions Front Page----------------------------------------*/

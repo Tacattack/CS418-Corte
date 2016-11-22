@@ -69,7 +69,7 @@ session_start();
                                     if($_SESSION["USERLEVEL"] == 1)
                                     {
                                     $_SESSION["CurrentRow"] = $row["id"];
-                                       echo "<table>";
+                                       echo "<table style=\"width:100%\">";
                                        echo "<tr>"."<div>";
                                         echo "<td>"."<div id=\"questionScore\">";
                                      
