@@ -57,11 +57,11 @@ session_start();
                     
                     <?php
                     
-                        if(isset($_POST("register")))
+                        if(isset($_POST["register"]))
                         {
                             $USERNM = $_POST["RegUser"];
                             $PSSWRD = $_POST["RegPass"];
-                        /*
+                        
                             $sql = "INSERT INTO UserProfile (username, password, level)
                                                     VALUES('{$USRNM}', '{$PSSWRD}', '0')";
 
@@ -71,7 +71,7 @@ session_start();
                             } else {
                                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                             } 
-                         */
+                         
  
                         }
                      
