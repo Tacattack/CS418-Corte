@@ -9,6 +9,6 @@ echo $id;
 $result = "DELETE FROM Questions WHERE id=$id";
 $sqlresult = mysqli_query($conn,$result);
             
-//header("Location: ../questions.php");
+header("Location: ../questions.php");
 ?>
 
