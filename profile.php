@@ -41,6 +41,7 @@ session_start();
                         echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
                         echo "</form>";
                         }
+                        
                     }
                     else
                     {
@@ -80,26 +81,25 @@ session_start();
                         }
                     }
                     echo "<h1>".$UserIs."</h1>";
-                    $SeshUser = $_SESSION["USER"];
-    
+                    
                     $qry = "SELECT * FROM UserPictures";
                     $result = mysqli_query($qry, $conn);
-
                     while ($row = mysqli_fetch_array($result))
                     {
-                        if ($row["user"] == $SeshUser)
+                        if ($_SESSION["USER"] == $row["user"])
                         {
-                         echo "<img height=\"300px\" width=\"300px\" src=\"data:image;base64,".$row["id"]."\">";   
-                        }   
+                            echo "I'm a fucking image";
+                        }
                     }
                     
                     if (isset($_SESSION["USER"]))
                     {
-                        echo "<form action=\"\" method=\"post\" enctype=\"multipart/form-data\">";
+                        echo "<form action=\"PHP/Upload.php\" method=\"post\" enctype=\"multipart/form-data\">";
                         echo "Select a profile image:";
                         echo "<input type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\">";
                         echo "<input type=\"submit\" value=\"Upload Image\" name=\"submit\">";
                         echo  "</form>";
+                    }
                     
                     echo "<h3>Asked Questions</h3>";
                     $sql = "SELECT * FROM Questions ORDER BY id DESC";
