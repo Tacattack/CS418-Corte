@@ -11,6 +11,6 @@ echo "Status is: " . $status;
 $result = "UPDATE Questions SET questionFrozen = $status WHERE id=$id";
 $sqlresult = mysqli_query($conn,$result);
             
-//header("Location: ../questions.php");
+header("Location: ../questions.php");
 
 ?>
