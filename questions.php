@@ -83,10 +83,11 @@ session_start();
                                     . "<button name=\"delete\" type=\"submit\" value=\"1\">Delete</button>"
                                     ."</form></h5>";
                                     echo "Freeze:";
-                                    echo "<label class=\"switch\">"
+                                    echo "<form method=\"post\" ><label class=\"switch\">"
                                         ."<input type=\"checkbox\">"
                                         ."<div class=\"slider\"></div>"
-                                        ."</label>";
+                                        ."</label>"
+                                        ."</form>";
                                     
                                     }
                                 echo "</div>";
