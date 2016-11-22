@@ -9,7 +9,6 @@ session_start();
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS/stylesheet.css">
-        <link type="text/css" rel="stylesheet" href="CSS/simplePagination.css"/>
     </head>
     <body>
         <div id="Header">
@@ -122,12 +121,6 @@ session_start();
                             }
                         }
                         echo "<br />";
-                        
-                        echo "<script type=\"text/javascript\" src=\"JS/jquery-3.1.1.min.js\"></script>";
-                        echo "<script type=\"text/javascript\" src=\"JS/jquery.simplePagination.js\"></script>";
-                        echo "<script>";
-                        echo "$(function() {\$(selector).pagination({items: 100,itemsOnPage: 10,cssStyle: 'light-theme'});});";
-                        echo "</script>";
                     }
                     echo "</ul>";
                     
