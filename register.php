@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 <?php
-//require_once("redirected.php");
 require_once("PHP/Connect.php");
+session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,13 +12,24 @@ require_once("PHP/Connect.php");
     </head>
     <body>
         <div id="Header">
-                    <?php
+                    <?PHP
+                    if (isset($_SESSION["USER"]))
+                    {
+                        echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
+                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
+                        echo "&nbsp&nbsp&nbsp";
+                        echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
+                        echo "</form>";
+                    }
+                    else
+                    {
                         echo "<form class=\"FormLogin\" action=\"PHP/Login.php\" method=\"post\">";
                         echo "Username: <input type=\"text\" name=\"LoginUsername\">";
                         echo "Password: <input type=\"password\" name=\"LoginPassword\">"; 
                         echo "<input type=\"submit\" name=\"submit\" value=\"Login\">";
                         echo "</form>";
                         echo "<a href=\"register.php\">Register</a>";
+                    }
                 ?>
             <div class="Navigation">
                 <h1>
@@ -46,20 +56,20 @@ require_once("PHP/Connect.php");
                     
                     <?php
                         if(isset($_POST("register")))
-                            {
-                                $USERNM = $_POST["RegUser"];
-                                $PSSWRD = $_POST["RegPass"];
-                            
-                                $sql = "INSERT INTO UserProfile (username, password, level)
-                                                        VALUES('{$USRNM}', '{$PSSWRD}', '0')";
+                        {
+                            $USERNM = $_POST["RegUser"];
+                            $PSSWRD = $_POST["RegPass"];
 
-                                if (mysqli_query($conn, $sql)) {
-                                    echo "Registered Successfully";
-                                    header("Location: index.php");
-                                } else {
-                                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                                }
+                            $sql = "INSERT INTO UserProfile (username, password, level)
+                                                    VALUES('{$USRNM}', '{$PSSWRD}', '0')";
+
+                            if (mysqli_query($conn, $sql)) {
+                                echo "Registered Successfully";
+                                header("Location: index.php");
+                            } else {
+                                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                             }
+                        }
                     ?>
                 </form>
             </div>
