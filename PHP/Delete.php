@@ -3,31 +3,11 @@ include ("Connect.php");
 include ("questions.php");
 
 echo "Getting Parameter that was stored via session". " | ";
-//echo "<p>This is the ID: " .$_SESSION["CurrentRow"]. "</p>" . " | ";
-
-            $servername = "localhost";
-            $username = "root";
-            $password = "";
-            $dbName = "QuestionAnswer";
-            
-            $conn = mysqli_connect($servername, $username, $password, $dbName);
- 
-
-
 $id = intval($_GET['deletes']);
 echo $id;
 
-$result = mysql_query("DELETE FROM Questions WHERE id=$id")
-        or die(mysql_error());
-
-    if (mysqli_query($conn,$result)) {
-                echo "Deleting Question successfully";
-            } else {
-                echo "Error creating table: " . mysqli_error($conn);
-            }
-            mysqli_close($conn);
-
-
+$result = "DELETE FROM Questions WHERE id=$id";
+$sqlresult = mysqli_query($conn,$result);
             
 //header("Location: ../questions.php");
 ?>
