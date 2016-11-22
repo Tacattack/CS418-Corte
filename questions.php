@@ -71,16 +71,16 @@ session_start();
                                     $_SESSION["CurrentRow"] = $row["id"];
                                     echo "<div>";
                                         echo "<div id=\"questionScore\">";
-                                        echo "<h5>".$row["questionScore"]."</h5>";
+                                        echo "<td><h5>".$row["questionScore"]."</h5></td>";
                                         echo "</div>";
                                         echo "<div id=\"questionTitleLink\">";
-                                        echo "<a href=\"QuestionView.php?id=".$row["id"]."\">";
+                                        echo "<td><a href=\"QuestionView.php?id=".$row["id"]."\"></td>";
                                         echo "<h5>".$row["questionTitle"]."</h5>"."</a>";
                                         echo "</div>";  
                                         echo "<div id=\"questionDelete\">";
-                                        echo "<h5><form action=\"PHP/Delete.php\" method=\"post\">"."<button name=\"delete\" type=\"submit\" value=\"1\">Delete</button>"."</form></h5>";
+                                        echo "<td><h5><form action=\"PHP/Delete.php\" method=\"post\">"."<button name=\"delete\" type=\"submit\" value=\"1\">Delete</button>"."</form></h5>";
                                         echo "Freeze:";
-                                        echo "<form method=\"post\" ><label class=\"switch\">"."<input type=\"checkbox\">"."<div id=\"freezeToggle\" class=\"slider\"></div>"."</label>"."</form>";
+                                        echo "<form method=\"post\" ><label class=\"switch\">"."<input type=\"checkbox\">"."<div id=\"freezeToggle\" class=\"slider\"></div>"."</label>"."</form></td>";
                                     echo "</div>";
                                     }
                                     else
