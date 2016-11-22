@@ -5,7 +5,8 @@ include ("questions.php");
 $status = intval($_GET['freeze']);
 $id = intval($_GET["data-value"]);
 
-echo $id;
+echo "ID is: " . $id;
+echo "Status is: " . $status;
 
 $result = "UPDATE Questions SET questionFrozen = $status WHERE id=$id";
 $sqlresult = mysqli_query($conn,$result);
