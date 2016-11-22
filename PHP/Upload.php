@@ -45,20 +45,17 @@ if ($uploadOk == 0) {
     }
 }*/
 
-if(isset($_POST['submit']))
+if(getimagesize($_FILES['image']['tmp_name']) == false)
 {
-    if(getimagesize($_FILES['image']['tmp_name']) == false)
-    {
-        echo "Please select an image";
-    }
-    else
-    {
-        $image = addslashes($_FILES['image']['tmp_name']);
-        $name = addslashes($_FILES['image']['name']);
-        $image = file_get_contents($image);
-        $image = base64_encode($image);
-        saveimage($name, $image);
-    }
+    echo "Please select an image";
+}
+else
+{
+    $image = addslashes($_FILES['image']['tmp_name']);
+    $name = addslashes($_FILES['image']['name']);
+    $image = file_get_contents($image);
+    $image = base64_encode($image);
+    saveimage($name, $image);
 }
 
 function saveimage($name, $image){
