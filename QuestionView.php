@@ -98,7 +98,62 @@ session_start();
                             echo "<div id=\"Answers\">";
                             echo "<h3>Answers</h3>";
                             echo "<ul>";
-                            if (mysqli_num_rows($resultA) > 0)
+                            
+                            $start=0;
+                            $limit=10;
+
+                            if(isset($_GET['id']))
+                            {
+                                $id=$_GET['id'];
+                                $start=($id-1)*$limit;
+                            }
+                            else{
+                                $id=1;
+                            }
+                            //Fetch from database first 10 items which is its limit. For that when page open you can see first 10 items. 
+                            $query=mysqli_query($dbconfig,"select * from Answers LIMIT $start, $limit");
+                            while($result=mysqli_fetch_array($query))
+                            {
+                                if (isset($_SESSION["USER"]))
+                                    {
+                                        echo "<li><form action=\"\" method=\"post\"><input type=\"hidden\" name=\"likeIt\"><table>";
+                                        echo "<tr><td><input type=\"submit\" name=\"Like\" value=\"I Like\"></td><td>".$rowA["answerBody"]."</td></tr>";
+                                        echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\">&nbsp".$rowA["answerScore"]."&nbsp<input type=\"submit\" name=\"downVote\" value=\"-\">"
+                                            ."</td><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                        echo "</table></form></li>";
+                                    }
+                                    else
+                                    {
+                                        echo "<li><form><table>";
+                                        echo "<tr><td>".$rowA["answerScore"]."</td><td>".$rowA["answerBody"]."</td></tr>";
+                                        echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                        echo "</table></form></li>";
+                                    }
+                            }
+                            //fetch all the data from database.
+                            $rows=mysqli_num_rows(mysqli_query($dbconfig,"select * from user"));
+                            //calculate total page number for the given table in the database 
+                            $total=ceil($rows/$limit);
+                            if($id>1)
+                            {
+                                //Go to previous page to show previous 10 items. If its in page 1 then it is inactive
+                                echo "<a href='?id=".($id-1)."' class='button'>PREVIOUS</a>";
+                            }
+                            if($id!=$total)
+                            {
+                                ////Go to previous page to show next 10 items.
+                                echo "<a href='?id=".($id+1)."' class='button'>NEXT</a>";
+                            }
+                            //show all the page link with page number. When click on these numbers go to particular page. 
+                            for($i=1;$i<=$total;$i++)
+                            {
+                                if($i==$id) { echo "<li class='current'>".$i."</li>"; }
+
+                                else { echo "<li><a href='?page=".$i."'>".$i."</a></li>"; }
+                            }
+                            
+                            
+                            /*if (mysqli_num_rows($resultA) > 0)
                             {
                                 while ($rowA = mysqli_fetch_assoc($resultA))
                                 {
@@ -118,7 +173,7 @@ session_start();
                                         echo "</table></form></li>";
                                     }
                                 }
-                            }
+                            }*/
                         }
                         echo "<br />";
                     }
