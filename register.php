@@ -1,4 +1,5 @@
 <?php
+echo "Starting";
 require_once("PHP/Connect.php");
 session_start();
 ?>
@@ -55,6 +56,7 @@ session_start();
                     <input type="submit" name="register" value="Register">
                     
                     <?php
+                    /*
                         if(isset($_POST("register")))
                         {
                             $USERNM = $_POST["RegUser"];
@@ -70,7 +72,10 @@ session_start();
                                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                             }
                         }
+                     */
+                     
                     ?>
+                    
                 </form>
             </div>
         </div>
