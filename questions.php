@@ -72,6 +72,7 @@ session_start();
                                     {
                                     $_SESSION["CurrentRow"] = $row["id"];
                                     $_SESSION["CurrentFreeze"] = $row["questionFrozen"];
+                                    $test=$row["questionFrozen"];
                                        echo "<table style=\"width:100%\">";
                                        echo "<tr>"."<div>";
                                         echo "<td>"."<div id=\"questionScore\">";
@@ -86,6 +87,7 @@ session_start();
                                         echo "<td>"."<div id=\"questionDelete\">";
                                         echo "<h5><form id=\"delete\" action=\"PHP/Delete.php?=".$row["id"]." method=\"post\">"."<button form=\"delete\" name=\"deletes\" type=\"submit\" value=".$row["id"].">Delete</button>"."</form></h5></td>";
                                         echo "<td>"."Freeze Status:";
+                                        /*
                                         if($row["questionFrozen"] == 1)
                                         {
                                             echo "Frozen". " ";
@@ -94,8 +96,9 @@ session_start();
                                         {
                                             echo "Not Frozen" . " ";
                                         }
+                                         */
                                         echo "<form id=\"freeze\" action=\"PHP/Freezing.php?=".$row["questionFrozen"]." method=\"post\">"."<buton form=\"freeze\" name=\"freeze\" type=\"submit\" value=".row["questionFrozen"].">Freeze</button></div>"."</form>";
-           
+                                        echo $test;
                                         echo "</td>"."</tr>";
                                     echo "</div>"; 
                                     echo "</table>";
