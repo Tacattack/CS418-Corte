@@ -98,7 +98,14 @@ session_start();
                             echo "<div id=\"Answers\">";
                             echo "<h3>Answers</h3>";
                             echo "<ul>";
-                            if (mysqli_num_rows($resultA) > 0)
+                            while ($rowA = mysqli_fetch_array($resultA))
+                            {
+                                echo "<li><form><table>";
+                                echo "<tr><td>".$rowA["answerScore"]."</td><td>".$rowA["answerBody"]."</td></tr>";
+                                echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                echo "</table></form></li>";
+                            }
+                            /*if (mysqli_num_rows($resultA) > 0)
                             {
                                 while ($rowA = mysqli_fetch_assoc($resultA))
                                 {
@@ -118,7 +125,7 @@ session_start();
                                         echo "</table></form></li>";
                                     }
                                 }
-                            }
+                            }*/
                         }
                         echo "<br />";
                     }
