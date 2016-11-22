@@ -29,6 +29,7 @@ session_start();
                         echo "Password: <input type=\"password\" name=\"LoginPassword\">"; 
                         echo "<input type=\"submit\" name=\"submit\" value=\"Login\">";
                         echo "</form>";
+                        echo "<a href=\"register.php\">Register</a>";
                     }
                 ?>
             <!--<form class="FormRegister">
