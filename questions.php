@@ -82,9 +82,10 @@ session_start();
                                         echo "<h5><form action=\"PHP/Delete.php\" method=\"post\">"
                                     . "<input type=\"\" name=\"\ value=\"'\$row[\"id\"]'>"
                                     ."</form></h5>";
-                                    echo "<form method=\"post\" action=\"\" <label class=\"switch\">"
+                                    echo "Freeze?";
+                                    echo "<form method=\"post\" action=\"\"> <label class=\"switch\">"
                                         ."<input type=\"checkbox\">"
-                                        ."<div class=\"slider\">Freeze</div>"
+                                        ."<div class=\"slider\"></div>"
                                         ."</label>"
                                         ."</form>";
                                     
