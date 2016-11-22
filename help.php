@@ -8,24 +8,25 @@
     </head>
     <body>
         <div id="Header">
-            <!--<div id="header-wrapper">
-                <div id="header-links">
-                    <a href="" id="Register">sign up</a>
-                    <a href="" id="Login">log in</a>
-                    <a href="" title="help">help</a>
-                </div>
-            </div>-->
-            <form action="PHP/Login.php" method="post" class="FormLogin" >
-                Username: <input type="text" name="username" value="" >
-                Password: <input type="password"name="password" value=""> 
-               <input type="submit" name="submit" value="Login">
-            </form>
-            <!--<form class="FormRegister">
-                Email: <input type="text" name="email">
-                Username: <input type="text">
-                Password: <input type="password">
-                <input type="submit" value="Register">
-            </form>-->
+            <?PHP
+                    if (isset($_SESSION["USER"]))
+                    {
+                        echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
+                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
+                        echo "&nbsp&nbsp&nbsp";
+                        echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
+                        echo "</form>";
+                    }
+                    else
+                    {
+                        echo "<form class=\"FormLogin\" action=\"PHP/Login.php\" method=\"post\">";
+                        echo "Username: <input type=\"text\" name=\"LoginUsername\">";
+                        echo "Password: <input type=\"password\" name=\"LoginPassword\">"; 
+                        echo "<input type=\"submit\" name=\"submit\" value=\"Login\">";
+                        echo "</form>";
+                        echo "<a href=\"register.php\">Register</a>";
+                    }
+                ?>
             <div class="Navigation">
                 <h1>
                     <a href="index.php"><img src="images/Logo.png" class="logo"></a>
