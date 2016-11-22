@@ -47,6 +47,12 @@ if ($uploadOk == 0) {
 $image = addslashes(file_get_contents($_FILES['image']['tmp_name'])); //SQL Injection defence!
 $image_name = addslashes($_FILES['image']['name']);
 $sql = "INSERT INTO UserPictures ('user',`image`, `image_name`) VALUES ('{$_SESSION["USER"]}','{$image}', '{$image_name}')";
+
+if (mysqli_query($sql))
+{
+    header("Location: ../profile.php?id=".$_SESSION["USERID"]);
+}
+
 if (!mysqli_query($sql)) { // Error handling
     echo "Something went wrong! :("; 
 }
