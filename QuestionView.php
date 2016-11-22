@@ -155,7 +155,7 @@ session_start();
                                     $iterator = new IteratorIterator($stmt);
 
                                     // Display the results
-                                    foreach ($iterator as $row) {
+                                    foreach ($iterator as $rowA) {
                                         if (isset($_SESSION["USER"]))
                                     {
                                         echo "<li><form action=\"\" method=\"post\"><input type=\"hidden\" name=\"likeIt\"><table>";
