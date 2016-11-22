@@ -59,11 +59,11 @@ session_start();
                     
                         if(isset($_POST["register"]))
                         {
-                            $USERNM = $_POST["RegUser"];
-                            $PSSWRD = $_POST["RegPass"];
+                            $USERNM = addslashes($_POST['RegUser']);
+                            $PSSWRD = addslashes($_POST['RegPass']);
                         
                             $sql = "INSERT INTO UserProfile (username, password, level)
-                                                    VALUES('{$USRNM}', '{$PSSWRD}', '0')";
+                                                    VALUES('{$USERNM}', '{$PSSWRD}', '0')";
 
                             if (mysqli_query($conn, $sql)) {
                                 echo "Registered Successfully";
