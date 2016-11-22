@@ -14,7 +14,9 @@
     //$PSSWRD = stripslashes($PSSWRD);
     //$PSSWRD = mysqli_real_escape_string($PSSWRD);
 
-    //comparing username and password to database
+    if(isset($_POST("submit")))
+    {
+     //comparing username and password to database
     $sqlLogin = "SELECT * FROM UserProfile";
     $resultLogin = mysqli_query($conn, $sqlLogin);
 
@@ -36,6 +38,19 @@
         }
     }
     
-    echo "Don't be fucking dumb, go back and put your correct username and password in. <a href=\"../index.php\">Return Now stupid</a>";
+    echo "Go back and log in like an adult or register if you haven't already: <a href=\"../index.php\">Return Home</a>";   
+    }
+    
+    if(isset($_POST("register")))
+    {
+        $sql = "INSERT INTO UserProfile (username, password, level)
+                                VALUES('{$USRNM}', '{$PSSWRD}', '0')";
+
+        if (mysqli_query($conn, $sql)) {
+            echo "Registered Successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
 ?>
 

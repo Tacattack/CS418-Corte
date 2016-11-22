@@ -49,8 +49,37 @@
         </div>
         <div id="Container">
             <div id="Content">
-                <h1>If You Don't know what you are doing on this site</h1>
-                <p>Leave. You aren't welcome here if you don't know how to use the internet responsibly.</p>
+                <h1>This is a help page for people who struggle without it</h1>
+                <p>This is a list of Q&A's to help you out</p>
+                <ol type="1">
+                    <li>How do I log in?
+                        <ol><li>Go to the top of the page, put in your username and password, then click log in</li></ol>
+                    </li>
+                    <li>I'm not able to log in. What's going on?
+                        <ol><li>Are you registered?</li></ol>
+                    </li>
+                    <li>How do I register?
+                        <ol><li>Click the register button then figure it out</li></ol>
+                    </li>
+                    <li>How do I post a question?
+                        <ol><li>Click the Ask Questions tab in the navigation bar. Make sure you are logged in</li></ol>
+                    </li>
+                    <li>How do I post a reply
+                        <ol><li>Click a questions, make your logged in, fill out the box then hit submit</li></ol>
+                    </li>
+                    <li>Can I look at posted questions?
+                        <ol><li>Yeah</li></ol>
+                    </li>
+                    <li>Can I search questions?
+                        <ol><li>Still working on fixing that but soon yes</li></ol>
+                    </li>
+                    <li>Can I search users?
+                        <ol><li>Soon yes</li></ol>
+                    </li>
+                    <li>Why can't I delete a user?
+                        <ol><li>Because you aren't special and will not receive privileges like that without approval</li></ol>
+                    </li>
+                </ol>
             </div>
         </div>
     </body>

@@ -28,6 +28,7 @@ session_start();
                         echo "Username: <input type=\"text\" name=\"LoginUsername\">";
                         echo "Password: <input type=\"password\" name=\"LoginPassword\">"; 
                         echo "<input type=\"submit\" name=\"submit\" value=\"Login\">";
+                        echo "<input type=\"submit\" name=\"register\" value=\"Register\">";
                         echo "</form>";
                     }
                 ?>
