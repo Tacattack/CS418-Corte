@@ -77,15 +77,16 @@ session_start();
                                     if($_SESSION["USERLEVEL"] == 1)
                                     {
                                         $_SESSION["CurrentRow"] = $row["id"];
-                                    
+                                        
                                     echo "<div id=\"questionDelete\">";
                                         echo "<h5><form action=\"PHP/Delete.php\" method=\"post\">"
-                                    . "<input type=\"delete\" name=\"Delete\ value=\"'\$row[\"id\"]'>"
+                                    . "<input type=\"\" name=\"\ value=\"'\$row[\"id\"]'>"
                                     ."</form></h5>";
-                                    echo "<label class=\"switch\">"
+                                    echo "<form method=\"post\" action=\"\" <label class=\"switch\">"
                                         ."<input type=\"checkbox\">"
                                         ."<div class=\"slider\">Freeze</div>"
-                                        ."</label>";
+                                        ."</label>"
+                                        ."</form>";
                                     
                                     }
                                 echo "</div>";
