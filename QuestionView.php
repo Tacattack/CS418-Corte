@@ -155,26 +155,25 @@ session_start();
                                     $iterator = new IteratorIterator($stmt);
 
                                     // Display the results
-                                    foreach ($iterator as $rowA) {
-                                        if (isset($_SESSION["USER"]))
+                                    if (isset($_SESSION["USER"]))
                                     {
-                                        echo "<li><form action=\"\" method=\"post\"><input type=\"hidden\" name=\"likeIt\"><table>";
-                                        echo "<tr><td><input type=\"submit\" name=\"Like\" value=\"I Like\"></td><td>".$rowA["answerBody"]."</td></tr>";
-                                        echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\">&nbsp".$rowA["answerScore"]."&nbsp<input type=\"submit\" name=\"downVote\" value=\"-\">"
-                                            ."</td><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
-                                        echo "</table></form></li>";
+                                        foreach ($iterator as $row) {
+                                            echo "<li><form action=\"\" method=\"post\"><input type=\"hidden\" name=\"likeIt\"><table>";
+                                            echo "<tr><td><input type=\"submit\" name=\"Like\" value=\"I Like\"></td><td>".$rowA["answerBody"]."</td></tr>";
+                                            echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\">&nbsp".$rowA["answerScore"]."&nbsp<input type=\"submit\" name=\"downVote\" value=\"-\">"
+                                                ."</td><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                            echo "</table></form></li>";
+                                        }
                                     }
                                     else
                                     {
-                                        echo "<li><form><table>";
-                                        echo "<tr><td>".$rowA["answerScore"]."</td><td>".$rowA["answerBody"]."</td></tr>";
-                                        echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
-                                        echo "</table></form></li>";
+                                        foreach ($iterator as $row) {
+                                            echo "<li><form><table>";
+                                            echo "<tr><td>".$rowA["answerScore"]."</td><td>".$rowA["answerBody"]."</td></tr>";
+                                            echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                            echo "</table></form></li>";
+                                        }
                                     }
-                                    }
-
-                                } else {
-                                    echo '<p>No results could be displayed.</p>';
                                 }
 
                             } catch (Exception $e) {
