@@ -147,8 +147,8 @@ session_start();
                             $AnswerID = $_GET["id"];
                             $AnswerBody = addslashes($_POST['ABody']);
 
-                            $AnswerCreate = "INSERT INTO Answers (questionID,answerBody)
-                            VALUES('{$AnswerID}', '{$AnswerBody}')";
+                            $AnswerCreate = "INSERT INTO Answers (questionID,answerBody, answerPoster)
+                            VALUES('{$AnswerID}', '{$AnswerBody}', '{$_SESSION["USER"]}')";
 
                             if (mysqli_query($conn, $AnswerCreate)) {
                                 echo "New record created successfully";
