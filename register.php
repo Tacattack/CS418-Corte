@@ -53,6 +53,7 @@ session_start();
                     <form class="FormRegister" action="" method="post">
                     Username: <input type="text" name="RegUser">
                     Password: <input type="password" name="RegPass">
+                    Email: <input type="email" name="RegEmail">
                     <input type="submit" name="register" value="Register">
                     
                     <?php
@@ -61,6 +62,7 @@ session_start();
                         {
                             $USERNM = addslashes($_POST['RegUser']);
                             $PSSWRD = addslashes($_POST['RegPass']);
+                            $EMAIL = addslashes($_POST['RegEmail']);
                         
                             $sql = "INSERT INTO UserProfile (username, password, level)
                                                     VALUES('{$USERNM}', '{$PSSWRD}', '0')";
