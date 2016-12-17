@@ -110,8 +110,11 @@ session_start();
                                                 }
                                                 else
                                                 {
+                                                    echo "This questions RowID Is: " .$row[ID];
+                                                    $ID= $row["id"];
+                                                    echo "This questions ID is: " . $ID;
                                                     echo "<li><form id=\"BestAnswer\" action=\"PHP/Like.php\" method=\"post\"><table>";
-                                                    echo "<tr><td><button form=\"BestAnswer\" type=\"submit\" name=\"Like\" value=".$rowA["id"].">I Like</button></td><td>" . $rowA["answerBody"] . "</td></tr>";
+                                                    echo "<tr><td><button form=\"BestAnswer\" type=\"submit\" name=\"Like\" value=".$ID.">I Like</button></td><td>" . $rowA["answerBody"] . "</td></tr>";
                                                     echo "<tr><td><form id=\"BestAnswer\" action=\"PHP/Like.php\" method=\"post\">"
                                                     . "<input type=\"submit\" name=\"upVote\" value=\"+\">&nbsp" . $rowA["answerScore"] . "&nbsp<input type=\"submit\" name=\"downVote\" value=\"-\">"
                                                     . "</td><td> posted by: " . $rowA["answerPoster"] . "</td></tr>";   
