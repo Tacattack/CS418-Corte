@@ -116,7 +116,7 @@ session_start();
                                                     $ID= $row["id"];
                                                     echo "<li><form id=\"BestAnswer\" action=\"PHP/Like.php\" method=\"post\"><table>";
                                                     echo "<tr><td><button form=\"BestAnswer\" type=\"submit\" name=\"Like\" value=".$AID.">I Like</button></td><td>" . $rowA["answerBody"] . "</td></tr>";
-                                                    echo "<tr><td><form id=\"BestAnswer\" action=\"PHP/Like.php\" method=\"post\" value=".$ID." name=\"questionID\">"
+                                                    echo "<tr><td><form id=\"BestAnswer\" action=\"PHP/Like.php\" method=\"post\">"
                                                     . "<input type=\"submit\" name=\"upVote\" value=\"+\">&nbsp" . $rowA["answerScore"] . "&nbsp<input type=\"submit\" name=\"downVote\" value=\"-\">"
                                                     . "</td><td> posted by: " . $rowA["answerPoster"] . "</td></tr>";   
                                                 }
