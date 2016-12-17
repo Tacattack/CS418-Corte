@@ -5,10 +5,10 @@ include ("questions.php");
 echo "Starting of the like process" . " | ";
 
 $id = $_POST['Like'];
-$QID = $_POST['$questionID'];
+$QuestionID = $_POST['$QID'];
 
 echo "ID Value: " . $id . " | ";
-echo "QID Value: " . $QID . " | ";
+echo "QID Value: " . $QuestionID . " | ";
 
 $result = "SELECT FROM Answers WHERE id=$id";
 $sqlresult = mysqli_query($conn,$result);
@@ -23,5 +23,5 @@ if (mysqli_num_rows($sqlresult) > 0)
     }
 }
 
-//header("Location: ../QuestionView.php?id=".$QID);
+//header("Location: ../QuestionView.php?id=".$QuestionID);
 ?>
