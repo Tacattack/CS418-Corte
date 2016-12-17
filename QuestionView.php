@@ -102,7 +102,7 @@ session_start();
                                             echo "The Poster is:" . $rowA["answerPoster"];
                                             echo "The Session user is: " . $_SESSION["USER"];
                                         
-                                            if (isset($_SESSION["USER"]) == $rowA["answerPoster"])
+                                            if (isset($_SESSION["USER"]) == $rowA["questionPoster"])
                                             {
                                                 if ($rowA["bestAnswer"] == 1)
                                                 {
