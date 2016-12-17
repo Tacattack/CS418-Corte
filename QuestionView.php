@@ -99,23 +99,17 @@ session_start();
                                 if (mysqli_num_rows($resultA) > 0) {
                                     while ($rowA = mysqli_fetch_assoc($resultA)) {
                                         if (isset($_SESSION["USER"])) {
-                                            echo "The Poster is:" . $row["questionPoster"];
-                                            echo "The Session user is: " . $_SESSION["USER"];
-                                        
                                             if ($_SESSION["USER"] == $row["questionPoster"])
                                             {
-                                                echo "The Best Answer Value" . $rowA["bestAnswer"];
                      
                                                 if ($rowA["bestAnswer"] == 1)
                                                 {
-                                                    echo "Best Answer has been chosen!";
                                                     echo "<li><table>";
                                                     echo "<tr style=\"background:green;\"><td>" . $rowA["answerBody"] . "</td></tr>";
                                                     echo "<tr><td>" . $rowA["answerScore"]. "</td><td> posted by: " . $rowA["answerPoster"] . "</td></tr>";
                                                 }
                                                 else
                                                 {
-                                                    echo "Best answer hasn't been chosen!";
                                                     echo "<li><form id=\"BestAnswer\" action=\"PHP/Like.php\" method=\"post\"><table>";
                                                     echo "<tr><td><button form=\"BestAnswer\" type=\"submit\" name=\"Like\" value=".$rowA["id"].">I Like</button></td><td>" . $rowA["answerBody"] . "</td></tr>";
                                                     echo "<tr><td><form id=\"BestAnswer\" action=\"PHP/Like.php\" method=\"post\">"
