@@ -5,7 +5,7 @@ include ("questions.php");
 echo "Starting of the like process" . " | ";
 
 $answerID = $_POST['Like'];
-$QuestionID = $_POST['Like'];
+$QuestionID = $_POST['questionID'];
 
 echo "ID Value: " . $answerID . " | ";
 echo "QID Value: " . $QuestionID . " | ";
