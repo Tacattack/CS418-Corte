@@ -110,7 +110,9 @@ session_start();
                                                 }
                                                 else
                                                 {
-                                                    $QID= $rowA["id"];
+                                                    //Answer ID
+                                                    $QID= $rowA["AnswerID"];
+                                                    //Question ID
                                                     $ID= $row["id"];
                                                     echo "<li><form id=\"BestAnswer\" action=\"PHP/Like.php\" method=\"post\"><table>";
                                                     echo "<tr><td><button form=\"BestAnswer\" type=\"submit\" name=\"Like\" value=".$QID.">I Like</button></td><td>" . $rowA["answerBody"] . "</td></tr>";

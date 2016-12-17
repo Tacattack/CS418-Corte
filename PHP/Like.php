@@ -4,13 +4,13 @@ include ("questions.php");
 
 echo "Starting of the like process" . " | ";
 
-$id = $_POST['Like'];
+$answerID = $_POST['Like'];
 $QuestionID = $_POST['$QID'];
 
-echo "ID Value: " . $id . " | ";
+echo "ID Value: " . $answerID . " | ";
 echo "QID Value: " . $QuestionID . " | ";
 
-$result = "SELECT FROM Answers WHERE id=$id";
+$result = "SELECT FROM Answers WHERE id=$answerID";
 $sqlresult = mysqli_query($conn,$result);
 
 echo "Entering Result in DB " . " | ";
