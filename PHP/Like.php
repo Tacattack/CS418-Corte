@@ -24,3 +24,4 @@ if (mysqli_num_rows($sqlresult) > 0)
 }
 
 //header("Location: ../QuestionView.php?id=".$QID);
+?>
