@@ -99,6 +99,9 @@ session_start();
                                 if (mysqli_num_rows($resultA) > 0) {
                                     while ($rowA = mysqli_fetch_assoc($resultA)) {
                                         if (isset($_SESSION["USER"])) {
+                                            echo "The Poster is:" . $rowA["answerPoster"];
+                                            echo "The Session user is: " . $_SESSION["USER"];
+                                        
                                             if (isset($_SESSION["USER"]) == $rowA["answerPoster"])
                                             {
                                                 if ($rowA["bestAnswer"] == 1)
