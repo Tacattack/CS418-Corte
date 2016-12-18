@@ -40,7 +40,7 @@ session_start();
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Unstacking Exchange</a>
+          <a class="navbar-brand" href="index.php">Unstacking Exchange</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
@@ -62,9 +62,9 @@ session_start();
       <div class="container">
         <h1>Welcome to Unstacking Exchange</h1>
         <p>Unstacking your game dev needs</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">View Questions &raquo;</a>
-        	<a class="btn btn-primary btn-lg" href="#" role="button">Ask Question &raquo;</a>
-    		<a class="btn btn-primary btn-lg" href="#" role="button">Help &raquo;</a>
+        <p><a class="btn btn-primary btn-lg" href="question.php" role="button">View Questions &raquo;</a>
+        	<a class="btn btn-primary btn-lg" href="ask.php" role="button">Ask Question &raquo;</a>
+    		<a class="btn btn-primary btn-lg" href="help.php" role="button">Help &raquo;</a>
     	</p>
       </div>
     </div>
