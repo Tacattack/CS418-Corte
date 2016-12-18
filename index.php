@@ -72,6 +72,7 @@ session_start();
     <div class="container">
       <!-- Example row of columns -->
       <div class="row">
+        <div class="col-md-6">
           <h2>Previous Questions</h2>
           <?php
             $sql = "SELECT * FROM Questions ORDER BY id DESC LIMIT 5";
@@ -81,7 +82,7 @@ session_start();
             {
                 while ($row = mysqli_fetch_assoc($result))
                 {
-                    echo "<div class=\"col-md-6\">";
+                    echo "<div>";
                         echo "<div id=\"questionScore\">";
                             echo "<h5>" . $row["questionScore"] . "</h5>";
                         echo "</div>";
