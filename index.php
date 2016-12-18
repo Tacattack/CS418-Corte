@@ -82,14 +82,16 @@ session_start();
             {
                 while ($row = mysqli_fetch_assoc($result))
                 {
-                    echo "<div>";
-                        echo "<div id=\"questionScore\">";
-                            echo "<h5>" . $row["questionScore"] . "</h5>";
-                        echo "</div>";
-                        echo "<div id=\"questionTitleLink\">";
-                            echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
-                                echo "<h5>" . $row["questionTitle"] . "</h5>" . "</a>";
-                        echo "</div>";
+                    echo "<div class=\"row\">";
+                        echo "<div class=\"col-xs-6 col-sm-6\">";
+                            echo "<div id=\"questionScore\">";
+                                echo "<h5>" . $row["questionScore"] . "</h5>";
+                            echo "</div>";
+                            echo "<div id=\"questionTitleLink\">";
+                                echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
+                                    echo "<h5>" . $row["questionTitle"] . "</h5>" . "</a>";
+                            echo "</div>";
+                            echo "</div>";
                     echo "</div>";
                 }
             }else {
