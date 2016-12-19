@@ -8,6 +8,10 @@ body {
     border: 1px solid black;
 }
 
+.QuestionSummary{
+    border: 1px solid black;
+}
+
 .QuestionSummary a{
     display: block;
     border: 1px solid black;
