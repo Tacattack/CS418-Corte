@@ -20,9 +20,11 @@ body {
 .tags{
    display: inline-block;
    border: 1px solid black;
+   width: 100%;
 }
 
 .poster{
    display: inline-block;
    border: 1px solid black;
+   width: 100%;
 }
