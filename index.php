@@ -95,10 +95,12 @@ session_start();
                     echo "</div>";
                 }
             }else {
-                echo "<div>";
-                echo "<h5>";
-                echo "0 Results Found";
-                echo "</h5>";
+                echo "<div class=\"row\">";
+                        echo "<div class=\"col-xs-6 col-sm-6\">";
+                            echo "<h5>";
+                                echo "0 Results Found";
+                            echo "</h5>";
+                        echo "</div>";
                 echo "</div>";
             }
         ?>
@@ -114,20 +116,24 @@ session_start();
                 while ($rowT = mysqli_fetch_assoc($resultT))
                 {
                     echo "<div>";
-                        echo "<div id=\"questionScore\">";
-                            echo "<h5>" . $rowT["questionScore"] . "</h5>";
-                        echo "</div>";
-                        echo "<div id=\"questionTitleLink\">";
-                            echo "<a href=\"QuestionView.php?id=" . $rowT["id"]. "\">";
-                                echo "<h5>" . $rowT["questionTitle"] . "</h5>" . "</a>";
+                        echo "<div class=\"col-xs-6 col-sm-6\">";
+                            echo "<div id=\"questionScore\">";
+                                echo "<h5>" . $rowT["questionScore"] . "</h5>";
+                            echo "</div>";
+                            echo "<div id=\"questionTitleLink\">";
+                                echo "<a href=\"QuestionView.php?id=" . $rowT["id"]. "\">";
+                                    echo "<h5>" . $rowT["questionTitle"] . "</h5>" . "</a>";
+                            echo "</div>";
                         echo "</div>";
                     echo "</div>";
                 }
             }else {
-                echo "<div>";
-                echo "<h5>";
-                echo "0 Results Found";
-                echo "</h5>";
+                echo "<div class=\"row\">";
+                        echo "<div class=\"col-xs-6 col-sm-6\">";
+                            echo "<h5>";
+                                echo "0 Results Found";
+                            echo "</h5>";
+                        echo "</div>";
                 echo "</div>";
             }
 
