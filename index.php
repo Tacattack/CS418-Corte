@@ -91,7 +91,7 @@ session_start();
                                 echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
                                     echo "<h5>" . $row["questionTitle"] . "</h5>" . "</a>";
                             echo "</div>";
-                            echo "</div>";
+                        echo "</div>";
                     echo "</div>";
                 }
             }else {
@@ -115,7 +115,7 @@ session_start();
             {
                 while ($rowT = mysqli_fetch_assoc($resultT))
                 {
-                    echo "<div>";
+                    echo "<div class=\"row\">";
                         echo "<div class=\"col-xs-6 col-sm-6\">";
                             echo "<div id=\"questionScore\">";
                                 echo "<h5>" . $rowT["questionScore"] . "</h5>";
