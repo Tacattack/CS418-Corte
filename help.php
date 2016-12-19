@@ -69,7 +69,6 @@ session_start();
     </div>
 
     <div class="container">
-      <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-12">
             <h1>This is a help page for people who struggle without it</h1>

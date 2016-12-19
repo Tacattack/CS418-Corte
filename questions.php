@@ -69,7 +69,6 @@ session_start();
     </div>
 
     <div class="container">
-      <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-8">
           <?php
@@ -136,6 +135,9 @@ session_start();
                 mysqli_close($conn);
             ?>
         </div>
+          <div class="col-md-4">
+              
+          </div>
       </div>
 
       <hr>
