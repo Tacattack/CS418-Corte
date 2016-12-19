@@ -5,20 +5,18 @@ body {
 }
 
 .votes{
-    border: 1px solid black;
     margin: auto;
+    text-align: center;
 }
 
 .QuestionSummary{
-    border: 1px solid black;
+
 }
 
 .tags{
-   display: inline-block;
-   border: 1px solid black;
+
 }
 
 .poster{
-   display: inline-block;
-   border: 1px solid black;
+
 }
