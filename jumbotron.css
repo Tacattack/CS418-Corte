@@ -6,25 +6,19 @@ body {
 
 .votes{
     border: 1px solid black;
+    margin: auto;
 }
 
 .QuestionSummary{
     border: 1px solid black;
 }
 
-.QuestionSummary a{
-    display: block;
-    border: 1px solid black;
-}
-
 .tags{
    display: inline-block;
    border: 1px solid black;
-   width: 100%;
 }
 
 .poster{
    display: inline-block;
    border: 1px solid black;
-   width: 100%;
 }
