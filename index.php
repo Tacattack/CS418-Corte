@@ -111,6 +111,7 @@ session_start();
                             echo "</div>";
                         echo "</div>";
                     echo "</div>";
+                    echo "<hr>";
                 }
             }else {
                 echo "<div class=\"row\">";
