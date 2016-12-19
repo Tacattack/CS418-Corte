@@ -1,5 +1,4 @@
 <?php
-//require_once("redirected.php");
 require_once("PHP/Connect.php");
 session_start();
 ?>
