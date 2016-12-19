@@ -78,52 +78,38 @@ session_start();
             {
                 while ($row = mysqli_fetch_assoc($result))
                 {
-                        if($_SESSION["USERLEVEL"] == 1)
-                        {
-                        $_SESSION["CurrentRow"] = $row["id"];
-                        $_SESSION["CurrentFreeze"] = $row["questionFrozen"];
-                        $test=$row["questionFrozen"];
-                        $test2=$row["id"];
-                           echo "<table style=\"width:100%\">";
-                           echo "<tr>"."<div>";
-                            echo "<td>"."<div id=\"questionScore\">";
-
-                            echo "<h5>".$row["questionScore"]."</h5>";
-                            echo "</div></td>";
-
-                            echo "<td>"."<div id=\"questionTitleLink\">";
-                            echo "<a href=\"QuestionView.php?id=".$row["id"]."\">";
-                            echo "<h5>".$row["questionTitle"]."</h5>"."</a>";
-                            echo "</div>"."</td>";  
-                            echo "<td>"."<div id=\"questionDelete\">";
-                            echo "<h5><form id=\"delete\" action=\"PHP/Delete.php?=".$row["id"]." method=\"post\">"."<button form=\"delete\" name=\"deletes\" type=\"submit\" value=".$row["id"].">Delete</button>"."</form></h5></td>";
-                            echo "<td>"."Freeze Status:";
-                            if($test == 1)
-                            {
-                                echo "Frozen";
-                            }
-                            else if($test == 0)
-                            {
-                                echo "Not Frozen";
-                            }
-                        $test3 = "frozen=" . "$test" . "&" . "id=" . $test2;
-                            echo "<form id=\"freeze\""."action=\"PHP/Freezing.php?=".$test3."method=\"post\">"."<button form=\"freeze\" name=\"freeze\" type=\"submit\" value=".$test.">Freeze</button></div>"."</form>";
-                            echo "</td>"."</tr>";
-                        echo "</div>"; 
-                        echo "</table>";
-                        }
-                        else
-                        {
-                        echo "<div>";
-                        echo "<div id=\"questionScore\">";
-                            echo "<h5>" . $row["questionScore"] . "</h5>";
+                        echo "<div class=\"row\">";
+                        echo "<div class=\"col-xs-12 col-sm-12\">";
+                            echo "<div class=\"row\">";
+                                echo "<div class=\"col-xs-2 col-sm-2 col-md-2\">";
+                                    echo "<div class=\"votes\">";
+                                        echo "<div>";
+                                            echo "<h5>" . $rowT["questionScore"] . "</h5>";
+                                        echo "</div>";
+                                        echo "<div>";
+                                            echo "votes";
+                                        echo "</div>";
+                                    echo "</div>";
+                                echo "</div>";
+                                echo "<div class=\"col-xs-10 col-sm-10 col-md-10 QuestionSummary\">";
+                                    echo "<div class=\"row\">";
+                                        echo "<div class=\"col-xs-12 col-sm-12 col-md-12\">";
+                                            echo "<a href=\"QuestionView.php?id=" . $rowT["id"]. "\"><h4>" . $rowT["questionTitle"] . "</h4>" . "</a>";
+                                        echo "</div>";
+                                    echo "</div>";
+                                    echo "<div class=\"row\">";
+                                        echo "<div class=\"col-xs-6 col-sm-6 col-md-6 tags\">";
+                                            echo "<a href=\"#\">TAGS</a>";
+                                        echo "</div>";
+                                        echo "<div class=\"col-xs-6 col-sm-6 col-md-6 poster\">";
+                                            echo "<p>Posted by: <a href=\"#\">USER</a></p>";
+                                        echo "</div>";
+                                    echo "</div>";
+                                echo "</div>";
+                            echo "</div>";
                         echo "</div>";
-                        echo "<div id=\"questionTitleLink\">";
-                            echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\">";
-                                echo "<h5>" . $row["questionTitle"] . "</h5>" . "</a>";
-                        echo "</div>";    
-                        echo "</div>";
-                        }
+                    echo "</div>";
+                    echo "<hr>";
                     }
                 }else {
                     echo "<div>";
