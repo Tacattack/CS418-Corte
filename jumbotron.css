@@ -8,10 +8,14 @@ body {
     
 }
 
+.QuestionSummary a{
+    display: block;
+}
+
 .tags{
-    
+   display: inline-block; 
 }
 
 .poster{
-    
+   display: inline-block; 
 }

@@ -93,7 +93,7 @@ session_start();
                                         echo "</div>";
                                     echo "</div>";
                                 echo "</div>";
-                                echo "<div class=\"col-xs-4 col-sm-4\">";
+                                echo "<div class=\"col-xs-4 col-sm-4 QuestionSummary\">";
                                     echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\"><h4>" . $row["questionTitle"] . "</h4>" . "</a>";
                                     echo "<div class=\"tags\">";
                                         echo "<a href=\"#\">TAGS</a>";
