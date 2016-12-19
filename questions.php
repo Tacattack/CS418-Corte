@@ -102,7 +102,7 @@ session_start();
                                             echo "<a href=\"#\">TAGS</a>";
                                         echo "</div>";
                                         echo "<div class=\"col-xs-6 col-sm-6 col-md-6 poster\">";
-                                            echo "<p>Posted by: <a href=\"#\">USER</a></p>";
+                                            echo "<p>Posted by: <a href=\"#\">". $row["questionPoster"] ."</a></p>";
                                         echo "</div>";
                                     echo "</div>";
                                 echo "</div>";
