@@ -5,7 +5,7 @@ include ("questions.php");
 echo "Starting of the like process" . " | ";
 
 $answerID = $_POST['Like'];
-$QuestionID = $_GET['id'];
+$QuestionID = $_POST['QID'];
 
 echo "ID Value: " . $answerID . " | ";
 echo "QID Value: " . $QuestionID . " | ";
@@ -23,5 +23,5 @@ if (mysqli_num_rows($sqlresult) > 0)
     }
 }
 
-header("Location: ../QuestionView.php?id=".$QuestionID);
+//header("Location: ../QuestionView.php?id=".$QuestionID);
 ?>
