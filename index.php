@@ -50,7 +50,7 @@ session_start();
               <input type="password" placeholder="Password" class="form-control">
             </div>
             <button type="submit" class="btn btn-success">Sign in</button>
-            <br /><a href="register.html">Need an account? Register Here</a>
+            <br /><a href="register.php">Need an account? Register Here</a>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
