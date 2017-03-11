@@ -83,7 +83,7 @@ session_start();
       </div>
     </div>
 
-    <div class="container">>
+    <div class="container">
       <div class="row">
         <div class="col-md-12">
             <?php
