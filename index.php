@@ -41,11 +41,12 @@ session_start();
           </button>
           <a class="navbar-brand" href="index.php">Unstacking Exchange</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
           <?PHP
-                    if (isset($_SESSION["USER"]))
+                   if (isset($_SESSION["USER"]))
                     {
                         echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
+                        echo "<img src=\"\" style=\"height:35px; width:35px;\">";
+                        echo "&nbsp&nbsp&nbsp";
                         echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
                         echo "&nbsp&nbsp&nbsp";
                         echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
