@@ -224,6 +224,7 @@ CREATE TABLE `UserProfile` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `level` int(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -235,23 +236,23 @@ CREATE TABLE `UserProfile` (
 
 LOCK TABLES `UserProfile` WRITE;
 /*!40000 ALTER TABLE `UserProfile` DISABLE KEYS */;
-INSERT INTO `UserProfile` VALUES(1,'nbenfiel','password',1);
-INSERT INTO `UserProfile` VALUES(2,'tcorte','password',1);
-INSERT INTO `UserProfile` VALUES(3,'admin', 'cs518pa$$',1);
-INSERT INTO `UserProfile` VALUES(4,'jbrunelle','M0n@rch$',1);
-INSERT INTO `UserProfile` VALUES(5,'pvenkman','imadoctor',0);
-INSERT INTO `UserProfile` VALUES(6,'rstantz','boguspassword',0);
-INSERT INTO `UserProfile` VALUES(7,'dbarrett','fr1ed3GGS',0);
-INSERT INTO `UserProfile` VALUES(8,'ltully','<!--<i>',0);
-INSERT INTO `UserProfile` VALUES(9,'espengler','dontcross the streams',0);
-INSERT INTO `UserProfile` VALUES(10,'janine','--!drop tables;',0);
-INSERT INTO `UserProfile` VALUES(11,'winston','zeddM0r3',0);
-INSERT INTO `UserProfile` VALUES(12,'gozer','d3$truct0R',0);
-INSERT INTO `UserProfile` VALUES(13,'slimer','f33dM3',0);
-INSERT INTO `UserProfile` VALUES(14,'zuul','105"; DROP TABLE',0);
-INSERT INTO `UserProfile` VALUES(15,'keymaster','n0D@na',0);
-INSERT INTO `UserProfile` VALUES(16,'gatekeeper','$l0r',0);
-INSERT INTO `UserProfile` VALUES(17,'staypuft','m@r$hM@ll0w',0);
+INSERT INTO `UserProfile` VALUES(1,'nbenfiel','password','nbenf@odu.edu',1);
+INSERT INTO `UserProfile` VALUES(2,'tcorte','password','tcorte@odu.edu',1);
+INSERT INTO `UserProfile` VALUES(3,'admin', 'cs518pa$$','admin@email.com',1);
+INSERT INTO `UserProfile` VALUES(4,'jbrunelle','M0n@rch$','jbrunelle@odu.edu',1);
+INSERT INTO `UserProfile` VALUES(5,'pvenkman','imadoctor','pvenk@email.com',0);
+INSERT INTO `UserProfile` VALUES(6,'rstantz','boguspassword','rstantz@email.com',0);
+INSERT INTO `UserProfile` VALUES(7,'dbarrett','fr1ed3GGS','dbarrett@email.com',0);
+INSERT INTO `UserProfile` VALUES(8,'ltully','<!--<i>','ltully@email.com',0);
+INSERT INTO `UserProfile` VALUES(9,'espengler','dontcross the streams',,'espengler@email.com',0);
+INSERT INTO `UserProfile` VALUES(10,'janine','--!drop tables;','janine@email.com',0);
+INSERT INTO `UserProfile` VALUES(11,'winston','zeddM0r3','winston@email.com',0);
+INSERT INTO `UserProfile` VALUES(12,'gozer','d3$truct0R','gozer@email.com',0);
+INSERT INTO `UserProfile` VALUES(13,'slimer','f33dM3','slimer@email.com',0);
+INSERT INTO `UserProfile` VALUES(14,'zuul','105"; DROP TABLE','zuul@email.com',0);
+INSERT INTO `UserProfile` VALUES(15,'keymaster','n0D@na',,'keymaster@email.com',0);
+INSERT INTO `UserProfile` VALUES(16,'gatekeeper','$l0r','gatekeeper@email.com',0);
+INSERT INTO `UserProfile` VALUES(17,'staypuft','m@r$hM@ll0w','staypuft@email.com',0);
 
 /*!40000 ALTER TABLE `UserProfile` ENABLE KEYS */;
 UNLOCK TABLES;

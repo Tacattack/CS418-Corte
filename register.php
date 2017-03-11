@@ -1,3 +1,7 @@
+<?php
+require_once("PHP/Connect.php");
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,12 +13,13 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>Signin Template for Bootstrap</title>
+    <title>Unstacking Exchange</title>
 
     <!-- Bootstrap core CSS -->
     <link href="bootstrapDist/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
     <link href="register.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -26,19 +31,85 @@
 
   <body>
 
-    <div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.php">Unstacking Exchange</a>
+        </div>
+          <?PHP
+                   if (isset($_SESSION["USER"]))
+                    {
+                        echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
+                        echo "<img src=\"\" style=\"height:35px; width:35px;\">";
+                        echo "&nbsp&nbsp&nbsp";
+                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
+                        echo "&nbsp&nbsp&nbsp";
+                        echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
+                        echo "</form>";
+                    }
+                    else
+                    {
+                        echo "<form class=\"navbar-form navbar-right\" action=\"PHP/Login.php\" method=\"post\">";
+                        echo "<div class=\"form-group\">";
+                        echo "<input type=\"text\" placeholder=\"Username\" class=\"form-control\">";
+                        echo "</div>";
+                        echo "<div class=\"form-group\">";
+                        echo "<input type=\"password\" placeholder=\"Password\" class=\"form-control\">";
+                        echo "</div>";
+                        echo "<button type=\"submit\" class=\"btn btn-success\">Sign in</button>";
+                        echo "<br /><a href=\"register.html\">Need an account? Register Here</a>";
+                        echo "</form>";
+                    }
+                ?>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
 
-      <form class="form-signin">
+    <div class="container">
+        <form class="form-signin">
         <h2 class="form-signin-heading">Register Here</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <input type="email" name="rEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         <label for="inputEmail" class="sr-only">Username</label>
-        <input type="username" id="inputUsername" class="form-control" placeholder="Username" required>
+        <input type="username" name="rUsername" id="inputUsername" class="form-control" placeholder="Username" required>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        <input type="password" name="rPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="Register">
       </form>
+        
+        <?php
+                    if(isset($_POST["submit"])){
+                        $RegisterName = addslashes($_POST['rUsername']);
+                        $RegisterPssWd = addslashes($_POST['rPassword']);
+                        $RegisterEmail = addslashes($_POST['rEmail']);
+                        $RegisterLevel = $_POST['0'];
 
+                        $sql = "INSERT INTO UserProfile (username, password, email, level)
+                            VALUES('{$RegisterName}', '{$RegisterPssWd}', '{$RegisterEmail}', '{$RegisterLevel}')";
+
+                        if (mysqli_query($conn, $sql)) {
+                            echo "Welcome to Unstacking Exchance";
+                        } else {
+                            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                        }
+
+                        mysqli_close($conn);
+                    }
+            ?>
     </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="bootstrapDist/dist/js/bootstrap.min.js"></script>
   </body>
 </html>
