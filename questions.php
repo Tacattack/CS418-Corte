@@ -42,16 +42,31 @@ session_start();
           <a class="navbar-brand" href="index.php">Unstacking Exchange</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <input type="text" placeholder="Username" class="form-control">
-            </div>
-            <div class="form-group">
-              <input type="password" placeholder="Password" class="form-control">
-            </div>
-            <button type="submit" class="btn btn-success">Sign in</button>
-            <br /><a href="register.html">Need an account? Register Here</a>
-          </form>
+          <?PHP
+                   if (isset($_SESSION["USER"]))
+                    {
+                        echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
+                        echo "<img src=\"\" style=\"height:35px; width:35px;\">";
+                        echo "&nbsp&nbsp&nbsp";
+                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
+                        echo "&nbsp&nbsp&nbsp";
+                        echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
+                        echo "</form>";
+                    }
+                    else
+                    {
+                        echo "<form class=\"navbar-form navbar-right\" action=\"PHP/Login.php\" method=\"post\">";
+                        echo "<div class=\"form-group\">";
+                        echo "<input type=\"text\" placeholder=\"Username\" class=\"form-control\">";
+                        echo "</div>";
+                        echo "<div class=\"form-group\">";
+                        echo "<input type=\"password\" placeholder=\"Password\" class=\"form-control\">";
+                        echo "</div>";
+                        echo "<button type=\"submit\" class=\"btn btn-success\">Sign in</button>";
+                        echo "<br /><a href=\"register.html\">Need an account? Register Here</a>";
+                        echo "</form>";
+                    }
+                ?>
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
