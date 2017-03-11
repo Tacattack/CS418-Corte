@@ -62,7 +62,7 @@ session_start();
                         echo "<input type=\"password\" placeholder=\"Password\" class=\"form-control\">";
                         echo "</div>";
                         echo "<button type=\"submit\" class=\"btn btn-success\">Sign in</button>";
-                        echo "<br /><a href=\"register.html\">Need an account? Register Here</a>";
+                        echo "<br /><a href=\"register.php\">Need an account? Register Here</a>";
                         echo "</form>";
                     }
                 ?>
