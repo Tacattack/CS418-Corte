@@ -93,29 +93,12 @@ session_start();
       <div class="row">
         <div class="col-md-8">
           <?php
-            $limit = 10;
-            $sql = "SELECT count(id) FROM Questions";
-            $result = mysqli_query($conn, $sql);
-            
-            $row = mysqli_fetch_array($result, MYSQLI_NUM);
-            $count = $row[0];
-            
-            if(isset($_GET{'page'}))
-            {
-                $page = $_GET{'page'} + 1;
-                $offset = $limit * $page;
-            }
-            else 
-            {
-                $page = 0;
-                $offset = 0;
-            }
-            
-            $left = $count - ($page * $limit);
             $sql = "SELECT * FROM Questions ORDER BY id DESC";
             $result = mysqli_query($conn, $sql);
             
-                while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC))
+            if (mysqli_num_rows($result) > 0)
+            {
+                while ($row = mysqli_fetch_assoc($result))
                 {
                         echo "<div class=\"row\">";
                         echo "<div class=\"col-xs-12 col-sm-12\">";
@@ -150,28 +133,20 @@ session_start();
                         echo "</div>";
                     echo "</div>";
                     echo "<hr>";
-                }
-                
-                if($page > 0)
-                {
-                    $last = $page - 2;
-                    echo "<a href=\"$_PHP_SELF?page = $last\">Last 10 Records</a> |";
-                    echo "a href=\"$_PHP_SELF?page = $page\">Next 10 Records</a>";
-                }
-                else if($page == 0)
-                {
-                    echo "a href=\"$_PHP_SELF?page = $page\">Next 10 Records</a>";
-                }
-                else if($left < $limit)
-                {
-                    $last = $page - 2;
-                    echo "<a href=\"$_PHP_SELF?page = $last\">Last 10 Records</a>";
-                }
-                    
-                
+                    }
+                }else {
+                    echo "<div>";
+                    echo "<h5>";
+                    echo "0 Results Found";
+                    echo "</h5>";
+                    echo "</div>";
+                }          
                 mysqli_close($conn);
             ?>
         </div>
+          <div class="col-md-4">
+              
+          </div>
       </div>
 
       <hr>
