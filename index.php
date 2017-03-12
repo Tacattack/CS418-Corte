@@ -44,7 +44,7 @@ session_start();
           <?PHP
                    if (isset($_SESSION["USER"]))
                     {
-                        echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
+                        echo "<form class=\"FormLogin navbar-form navbar-right\" action=\"PHP/Logout.php\" method=\"post\">";
                         echo "<img src=\"\" style=\"height:35px; width:35px;\">";
                         echo "&nbsp&nbsp&nbsp";
                         echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
@@ -61,7 +61,7 @@ session_start();
                         echo "<div class=\"form-group\">";
                         echo "<input type=\"password\" placeholder=\"Password\" class=\"form-control\">";
                         echo "</div>";
-                        echo "<button type=\"submit\" class=\"btn btn-success\">Sign in</button>";
+                        echo "<input type=\"submit\" name=\"submit\"class=\"btn btn-success\" value=\"Sign In\">";
                         echo "<br /><a href=\"register.php\">Need an account? Register Here</a>";
                         echo "</form>";
                     }
