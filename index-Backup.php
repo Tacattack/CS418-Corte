@@ -47,7 +47,7 @@ session_start();
                         }
                         ?>
                                         <li><form action="" method="post">
-                        <input type="radio" name="search" value="Users"/> Users
+                        <input type="radio" name="search" value="Users"/> User
                         <input type="radio" name="search" value="Questions"/> Questions
                         <input type="text" name="search" placeholder="Search..."></li>
                 </ul>
