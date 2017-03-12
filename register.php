@@ -88,10 +88,9 @@ session_start();
                         $RegisterName = addslashes($_POST['rUsername']);
                         $RegisterPssWd = addslashes($_POST['rPassword']);
                         $RegisterEmail = addslashes($_POST['rEmail']);
-                        $RegisterLevel = $_POST['0'];
 
                         $sql = "INSERT INTO UserProfile (username, password, email, level)
-                            VALUES('{$RegisterName}', '{$RegisterPssWd}', '{$RegisterEmail}', '{$RegisterLevel}')";
+                            VALUES('{$RegisterName}', '{$RegisterPssWd}', '{$RegisterEmail}', '0')";
 
                         if (mysqli_query($conn, $sql)) {
                             echo "Welcome to Unstacking Exchance";
