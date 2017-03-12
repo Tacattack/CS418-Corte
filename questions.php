@@ -1,6 +1,17 @@
 <?php
 require_once("PHP/Connect.php");
+require_once ("PHP/paginator.class.php");
 session_start();
+
+$conn = new mysqli('localhost', 'root', '', 'QuestionAnswer');
+$limit = ( isset( $_GET['limit'] ) ) ? $_GET['limit'] : 10;
+$page = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1;
+$links = ( isset( $_GET['links'] ) ) ? $_GET['links'] : 7;
+$query = "SELECT * FROM Questions ORDER BY id DESC";
+ 
+$Paginator  = new Paginator( $conn, $query );
+ 
+$results = $Paginator->getData( $page, $limit );
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,13 +104,7 @@ session_start();
       <div class="row">
         <div class="col-md-8">
           <?php
-            $sql = "SELECT * FROM Questions ORDER BY id DESC";
-            $result = mysqli_query($conn, $sql);
-            
-            if (mysqli_num_rows($result) > 0)
-            {
-                while ($row = mysqli_fetch_assoc($result))
-                {
+            for ($i = 0; $i < count($result->data); $i++) :
                         echo "<div class=\"row\">";
                         echo "<div class=\"col-xs-12 col-sm-12\">";
                             echo "<div class=\"row\">";
@@ -133,15 +138,8 @@ session_start();
                         echo "</div>";
                     echo "</div>";
                     echo "<hr>";
-                    }
-                }else {
-                    echo "<div>";
-                    echo "<h5>";
-                    echo "0 Results Found";
-                    echo "</h5>";
-                    echo "</div>";
-                }          
-                mysqli_close($conn);
+                    
+                    endfor;
             ?>
         </div>
           <div class="col-md-4">
