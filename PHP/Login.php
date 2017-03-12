@@ -31,7 +31,6 @@
                 $_SESSION["PASSWORD"] = $PSSWRD;
                 $_SESSION["USERLEVEL"] = $rowLog["level"];
                 header("Location: ../profile.php?id=".$_SESSION["USERID"]);
-                die();
             }
         }
     }
