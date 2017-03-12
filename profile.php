@@ -56,12 +56,12 @@ session_start();
                     {
                         echo "<form class=\"navbar-form navbar-right\" action=\"PHP/Login.php\" method=\"post\">";
                         echo "<div class=\"form-group\">";
-                        echo "<input type=\"text\" placeholder=\"Username\" class=\"form-control\">";
+                        echo "<input type=\"text\" name=\"LoginUsername\" placeholder=\"Username\" class=\"form-control\">";
                         echo "</div>";
                         echo "<div class=\"form-group\">";
-                        echo "<input type=\"password\" placeholder=\"Password\" class=\"form-control\">";
+                        echo "<input type=\"password\" name=\"LoginPassword\" placeholder=\"Password\" class=\"form-control\">";
                         echo "</div>";
-                        echo "<button type=\"submit\" class=\"btn btn-success\">Sign in</button>";
+                        echo "<input type=\"submit\" name=\"submit\"class=\"btn btn-success\" value=\"Sign In\">";
                         echo "<br /><a href=\"register.php\">Need an account? Register Here</a>";
                         echo "</form>";
                     }
