@@ -135,16 +135,16 @@ session_start();
                                                         if ($row["questionPoster"] == $rowU["username"])
                                                         {
                                                             echo "<a href=\"profile.php?id=".$rowU["id"]."\">";
-                                                            echo $row["questionPoster"]."</a></p>";
+                                                        }
+                                                    }
+                                                }
+                                                echo $row["questionPoster"]."</a></p>";
                                         echo "</div>";
                                     echo "</div>";
                                 echo "</div>";
                             echo "</div>";
                         echo "</div>";
                     echo "</div>";
-                                                        }
-                                                    }
-                                                }
                     echo "<hr>";
                 }
             }else {
