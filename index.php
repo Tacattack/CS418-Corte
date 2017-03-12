@@ -82,7 +82,7 @@ session_start();
             <?php
                 if($_SESSION["USERLEVEL"] == 1)
                     {
-                    echo "<a href =\"users.php\" class\"btn btn-primary btn-lg\" role=\"button\">Users &raquo;</a>";
+                    echo "<a href =\"users.php\" class=\"btn btn-primary btn-lg\" role=\"button\">Users &raquo;</a>";
                     }
             ?>
     	</p>
@@ -128,22 +128,23 @@ session_start();
                                         echo "</div>";
                                         echo "<div class=\"col-xs-6 col-sm-6 col-md-6 poster\">";
                                             echo "<p>Posted by: ";
-                                                while ($rowU = mysqli_fetch_assoc($resultU))
+                                                if (mysqli_num_rows($resultU) > 0)
                                                 {
-                                                    if ($row["questionPoster"] == $rowU["username"])
+                                                    while ($rowU = mysqli_fetch_assoc($resultU))
                                                     {
-                                                        echo "<a href=\"profile.php?id=".$rowU["id"]."\">";
-                                                        die();
-                                                    }
-                                                    die();
-                                                }
-                                                echo $row["questionPoster"]."</a></p>";
+                                                        if ($row["questionPoster"] == $rowU["username"])
+                                                        {
+                                                            echo "<a href=\"profile.php?id=".$rowU["id"]."\">";
+                                                            echo $row["questionPoster"]."</a></p>";
                                         echo "</div>";
                                     echo "</div>";
                                 echo "</div>";
                             echo "</div>";
                         echo "</div>";
                     echo "</div>";
+                                                        }
+                                                    }
+                                                }
                     echo "<hr>";
                 }
             }else {
