@@ -72,7 +72,7 @@ session_start();
     </nav>
 
     <div class="container">
-        <form class="form-signin">
+        <form class="form-signin" name="Register" method="post" action="">
         <h2 class="form-signin-heading">Register Here</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" name="rEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
