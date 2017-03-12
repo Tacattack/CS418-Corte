@@ -47,9 +47,10 @@ session_start();
                         echo "<form class=\"FormLogin navbar-form navbar-right\" action=\"PHP/Logout.php\" method=\"post\">";
                         echo "<img src=\"\" style=\"height:35px; width:35px;\">";
                         echo "&nbsp&nbsp&nbsp";
-                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]." ".$_SESSION["USERID"]."</a></b>";
+                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
                         echo "&nbsp&nbsp&nbsp";
                         echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
+                        echo "<br /><p>This is the account ID: ".$_SESSION["USERID"]."</p>";
                         echo "</form>";
                     }
                     else
@@ -155,7 +156,9 @@ session_start();
           <h2>Top Questions</h2>
           <?php
             $sqlT = "SELECT * FROM Questions ORDER BY questionScore DESC LIMIT 5";
+            $sqlTU = "SELECT * FROM UserProfile";
             $resultT = mysqli_query($conn, $sqlT);
+            $resultTU = mysqli_query($conn, $sqlTU);
             
             if (mysqli_num_rows($resultT) > 0)
             {
@@ -185,7 +188,18 @@ session_start();
                                             echo "<a href=\"#\">TAGS</a>";
                                         echo "</div>";
                                         echo "<div class=\"col-xs-6 col-sm-6 col-md-6 poster\">";
-                                            echo "<p>Posted by: <a href=\"#\">". $rowT["questionPoster"] ."</a></p>";
+                                            echo "<p>Posted by: ";
+                                            if (mysqli_num_rows($resultTU) > 0)
+                                            {
+                                                while ($rowTU = mysqli_fetch_assoc($resultTU))
+                                                {
+                                                    if ($rowT["questionPoster"] == $rowTU["username"])
+                                                    {
+                                                        echo "<a href=\"profile.php?id=".$rowTU["id"]."\">";
+                                                    }
+                                                }
+                                            }
+                                            echo $rowT["questionPoster"]."</a></p>";
                                         echo "</div>";
                                     echo "</div>";
                                 echo "</div>";

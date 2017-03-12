@@ -87,8 +87,11 @@ session_start();
       <div class="row">
         <div class="col-md-8">
           <?php
-            $sql = "SELECT * FROM Questions ORDER BY id DESC";                      
+            $sql = "SELECT * FROM Questions ORDER BY id DESC";
+            $sqlU = "SELECT * FROM UserProfile";
             $result = mysqli_query($conn, $sql);
+            $resultU = mysqli_query($conn, $sqlU);
+            
             if (mysqli_num_rows($result) > 0)
             {
                 while ($row = mysqli_fetch_assoc($result))
@@ -117,7 +120,18 @@ session_start();
                                             echo "<a href=\"#\">TAGS</a>";
                                         echo "</div>";
                                         echo "<div class=\"col-xs-6 col-sm-6 col-md-6 poster\">";
-                                            echo "<p>Posted by: <a href=\"#\">". $row["questionPoster"] ."</a></p>";
+                                            echo "<p>Posted by: ";
+                                            if (mysqli_num_rows($resultU) > 0)
+                                            {
+                                                while ($rowU = mysqli_fetch_assoc($resultU))
+                                                {
+                                                    if ($row["questionPoster"] == $rowU["username"])
+                                                    {
+                                                        echo "<a href=\"profile.php?id=".$rowU["id"]."\">";
+                                                    }
+                                                }
+                                            }
+                                            echo $row["questionPoster"]."</a></p>";
                                         echo "</div>";
                                     echo "</div>";
                                 echo "</div>";
