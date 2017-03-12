@@ -141,6 +141,8 @@ $results = $Paginator->getData( $page, $limit );
                     
                     endfor;
             ?>
+            
+            <?php echo $Paginator->createLinks($links, 'pagination pagination-sm'); ?>
         </div>
           <div class="col-md-4">
               
