@@ -79,6 +79,12 @@ session_start();
         <p><a class="btn btn-primary btn-lg" href="questions.php" role="button">View Questions &raquo;</a>
         	<a class="btn btn-primary btn-lg" href="ask.php" role="button">Ask Question &raquo;</a>
     		<a class="btn btn-primary btn-lg" href="help.php" role="button">Help &raquo;</a>
+                <?php
+                if($_SESSION["USERLEVEL"] == 1)
+                    {
+                    echo "<a href =\"users.php\" class=\"btn btn-primary btn-lg\" role=\"button\">Users &raquo;</a>";
+                    }
+                ?>
     	</p>
       </div>
     </div>

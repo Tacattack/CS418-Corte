@@ -20,7 +20,6 @@ session_start();
 
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
-    <link href="register.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -45,10 +44,10 @@ session_start();
           <?PHP
                    if (isset($_SESSION["USER"]))
                     {
-                        echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
+                        echo "<form class=\"FormLogin navbar-form navbar-right\" action=\"PHP/Logout.php\" method=\"post\">";
                         echo "<img src=\"\" style=\"height:35px; width:35px;\">";
                         echo "&nbsp&nbsp&nbsp";
-                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
+                        echo "<b>Welcome: <a href=\"profile.php?id=".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
                         echo "&nbsp&nbsp&nbsp";
                         echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
                         echo "</form>";
@@ -57,13 +56,13 @@ session_start();
                     {
                         echo "<form class=\"navbar-form navbar-right\" action=\"PHP/Login.php\" method=\"post\">";
                         echo "<div class=\"form-group\">";
-                        echo "<input type=\"text\" placeholder=\"Username\" class=\"form-control\">";
+                        echo "<input type=\"text\" name=\"LoginUsername\" placeholder=\"Username\" class=\"form-control\">";
                         echo "</div>";
                         echo "<div class=\"form-group\">";
-                        echo "<input type=\"password\" placeholder=\"Password\" class=\"form-control\">";
+                        echo "<input type=\"password\" name=\"LoginPassword\" placeholder=\"Password\" class=\"form-control\">";
                         echo "</div>";
-                        echo "<button type=\"submit\" class=\"btn btn-success\">Sign in</button>";
-                        echo "<br /><a href=\"register.html\">Need an account? Register Here</a>";
+                        echo "<input type=\"submit\" name=\"submit\"class=\"btn btn-success\" value=\"Sign In\">";
+                        echo "<br /><a href=\"register.php\">Need an account? Register Here</a>";
                         echo "</form>";
                     }
                 ?>
@@ -71,55 +70,69 @@ session_start();
       </div>
     </nav>
 
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>Welcome to Unstacking Exchange</h1>
+        <p>Unstacking your game dev needs</p>
+        <p>
+            <a class="btn btn-primary btn-lg" href="questions.php" role="button">View Questions &raquo;</a>
+            <a class="btn btn-primary btn-lg" href="ask.php" role="button">Ask Question &raquo;</a>
+            <a class="btn btn-primary btn-lg" href="help.php" role="button">Help &raquo;</a>
+            <?php
+                if($_SESSION["USERLEVEL"] == 1)
+                    {
+                    echo "<a href =\"users.php\" class=\"btn btn-primary btn-lg\" role=\"button\">Users &raquo;</a>";
+                    }
+            ?>
+    	</p>
+      </div>
+    </div>
+
     <div class="container">
-        <h1>Admins</h1>
-        <div class="row">"
-            <div class="col-xs-12 col-sm-12">
-                <div class="row">
-                    <ol>
-        <?php
-            $sql = "SELECT * FROM UserProfile WHERE level='1'";
-            $result = mysqli_query($conn, $sql);
-            
-             if (mysqli_num_rows($result) > 0)
-            {
-                while ($row = mysqli_fetch_assoc($result))
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Admins</h2>
+           <ol>
+            <?php
+                $sql = "SELECT * FROM UserProfile WHERE level='1'";
+                $result = mysqli_query($conn, $sql);
+
+                 if (mysqli_num_rows($result) > 0)
                 {
-                    echo "<li>";
-                    echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
-                    echo "</li>";
+                    while ($row = mysqli_fetch_assoc($result))
+                    {
+                        echo "<li>";
+                        echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
+                        echo "</li>";
+                    }
                 }
-            }
-        ?>
-                    </ol>
-                </div>
-            </div>
+            ?>
+            </ol>
         </div>
-        <hr>
-                        
-        <h1>Plebs</h1>
-        <div class="row">"
-            <div class="col-xs-12 col-sm-12">
-                <div class="row">
-                    <ol>
-        <?php
-            $sql = "SELECT * FROM UserProfile WHERE level='0'";
-            $result = mysqli_query($conn, $sql);
-            
-             if (mysqli_num_rows($result) > 0)
-            {
-                while ($row = mysqli_fetch_assoc($result))
+        <div class="col-md-6">
+          <h2>Plebs</h2>
+          <ol>
+            <?php
+                $sql = "SELECT * FROM UserProfile WHERE level='0'";
+                $result = mysqli_query($conn, $sql);
+
+                 if (mysqli_num_rows($result) > 0)
                 {
-                    echo "<li>";
-                    echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
-                    echo "</li>";
+                    while ($row = mysqli_fetch_assoc($result))
+                    {
+                        echo "<li>";
+                        echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
+                        echo "</li>";
+                    }
                 }
-            }
-        ?>
-                    </ol>
-                </div>
-            </div>
+            ?>
+          </ol>
+          <?php  mysqli_close($conn); ?>
         </div>
+      </div>
+
+      <hr>
     </div> <!-- /container -->
 
 
