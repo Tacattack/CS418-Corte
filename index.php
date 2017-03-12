@@ -75,9 +75,16 @@ session_start();
       <div class="container">
         <h1>Welcome to Unstacking Exchange</h1>
         <p>Unstacking your game dev needs</p>
-        <p><a class="btn btn-primary btn-lg" href="questions.php" role="button">View Questions &raquo;</a>
-        	<a class="btn btn-primary btn-lg" href="ask.php" role="button">Ask Question &raquo;</a>
-    		<a class="btn btn-primary btn-lg" href="help.php" role="button">Help &raquo;</a>
+        <p>
+            <a class="btn btn-primary btn-lg" href="questions.php" role="button">View Questions &raquo;</a>
+            <a class="btn btn-primary btn-lg" href="ask.php" role="button">Ask Question &raquo;</a>
+            <a class="btn btn-primary btn-lg" href="help.php" role="button">Help &raquo;</a>
+            <?php
+                if($_SESSION["USERLEVEL"] == 1)
+                    {
+                    echo "<a href =\"users.php\" class\"btn btn-primary btn-lg\" role=\"button\">Users &raquo;</a>";
+                    }
+            ?>
     	</p>
       </div>
     </div>
