@@ -121,8 +121,6 @@ session_start();
                                         echo "</div>";
                                         echo "<div class=\"col-xs-6 col-sm-6 col-md-6 poster\">";
                                             echo "<p>Posted by: ";
-                                            if (mysqli_num_rows($resultU) > 0)
-                                            {
                                                 while ($rowU = mysqli_fetch_assoc($resultU))
                                                 {
                                                     if ($row["questionPoster"] == $rowU["username"])
@@ -130,7 +128,6 @@ session_start();
                                                         echo "<a href=\"profile.php?id=".$rowU["id"]."\">";
                                                     }
                                                 }
-                                            }
                                             echo $row["questionPoster"]."</a></p>";
                                         echo "</div>";
                                     echo "</div>";
