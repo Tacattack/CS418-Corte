@@ -49,7 +49,7 @@ session_start();
                         echo "&nbsp&nbsp&nbsp";
                         echo "<b>Welcome: <a href=\"profile.php?id=".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
                         echo "&nbsp&nbsp&nbsp";
-                        echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
+                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"submit\" value=\"Logout\">";
                         echo "</form>";
                     }
                     else

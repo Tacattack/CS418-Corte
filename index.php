@@ -49,7 +49,7 @@ session_start();
                         echo "&nbsp&nbsp&nbsp";
                         echo "<b>Welcome: <a href=\"profile.php?id=".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
                         echo "&nbsp&nbsp&nbsp";
-                        echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
+                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"submit\" value=\"Logout\">";
                         echo "</form>";
                     }
                     else
@@ -61,7 +61,7 @@ session_start();
                         echo "<div class=\"form-group\">";
                         echo "<input type=\"password\" name=\"LoginPassword\" placeholder=\"Password\" class=\"form-control\">";
                         echo "</div>";
-                        echo "<input type=\"submit\" name=\"submit\"class=\"btn btn-success\" value=\"Sign In\">";
+                        echo "<input type=\"submit\" name=\"submit\" class=\"btn btn-success\" value=\"Sign In\">";
                         echo "<br /><a href=\"register.php\">Need an account? Register Here</a>";
                         echo "</form>";
                     }
