@@ -118,7 +118,7 @@ $rs_result = mysql_query ($sql);
 <?php  
 while ($row = mysql_fetch_assoc($rs_result)) {  
     echo "<tr>"; 
-    echo "<tr>" . $row["questionTitle"]. "</td>";  
+    echo "<td>" . $row["questionTitle"]. "</td>";  
     echo "<td>".$row["questionPoster"]."</td>";  
     echo "</tr>";
 }
