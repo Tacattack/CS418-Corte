@@ -135,7 +135,7 @@ $total_records = $row[0];
 $total_pages = ceil($total_records / $limit);  
 $pagLink = "<div class='pagination'>";  
 for ($i=1; $i<=$total_pages; $i++) {  
-             $pagLink .= "<a href='index.php?page=".$i."'>".$i."</a>";  
+             $pagLink .= "<a href='questions.php?page=".$i."'>".$i."</a>";  
 };  
 echo $pagLink . "</div>";  
 ?>
