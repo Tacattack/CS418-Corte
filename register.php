@@ -72,26 +72,17 @@ session_start();
       </div>
     </nav>
 
-    <?php>
-    if (isset($_SESSION["USER"]))
-    {
-        echo "You are already logged into an account. Logout to register a new account";
-    }
-    else
-    {
-        echo "<div class=\"container\">";
-        echo "<form class=\"form-signin\" name=\"Register\" method=\"post\" action=\"\">";
-        echo "<h2 class=\"form-signin-heading\">Register Here</h2>";
-        echo "<label for=\"inputEmail\" class=\"sr-only\">Email address</label>";
-        echo "<input type=\"email\" name=\"rEmail\" id=\"inputEmail\" class=\"form-control\" placeholder=\"Email address\" required autofocus>";
-        echo "<label for=\"inputEmail\" class=\"sr-only\">Username</label>";
-        echo "<input type=\"username\" name=\"rUsername\" id=\"inputUsername\" class=\"form-control\" placeholder=\"Username\" required>";
-        echo "<label for=\"inputPassword\" class=\"sr-only\">Password</label>";
-        echo "<input type=\"password\" name=\"rPassword\" id=\"inputPassword\" class=\"form-control\" placeholder=\"Password\" required>";
-        echo "<input class=\"btn btn-lg btn-primary btn-block\" type=\"submit\" name=\"submit\" value=\"Register\">";
-        echo "</form>";
-    }
-    ?>
+    <div class="container">
+        <form class="form-signin" name="Register" method="post" action="">
+        <h2 class="form-signin-heading">Register Here</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" name="rEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputEmail" class="sr-only">Username</label>
+        <input type="username" name="rUsername" id="inputUsername" class="form-control" placeholder="Username" required>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="rPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="Register">
+      </form>
         
         <?php
                     if(isset($_POST["submit"])){
