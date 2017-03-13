@@ -100,7 +100,7 @@ session_start();
                         while ($rowU = mysqli_fetch_assoc($resultU))
                         {
                             $UserIs = $rowU["username"];
-                            $userEmail = $rowU=["email"];
+                            $userEmail = $rowU["email"];
                             $userAccess = $rowU["level"];
                         }
                     }
@@ -128,13 +128,21 @@ session_start();
                     }
                     echo "</div>";
                     
+                    echo "<div class=\"col-md-8\">";
                     if (isset($_SESSION["USERID"]) == $_GET['id'])
                     {
-                        echo "<div class=\"col-md-8\">";
                         echo "<h4>Email: " . $userEmail . "</h4>";
-                        echo "<h4>Access: ". $userAccess . "</h4>";
-                        echo "</div>";
+                        
+                        if ($userAccess == 1)
+                        {
+                            echo "<h4>Access: Admin</h4>";
+                        }
+                        else
+                        {
+                            echo "<h4>Access: Pleb</h4>";
+                        }
                     }
+                    echo "</div>";
                     ?>
               </div>
               <div class="row">
