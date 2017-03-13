@@ -111,18 +111,16 @@ $rs_result = mysql_query ($sql);
 <thead>  
 <tr>  
 <th>title</th>  
-<th>body</th>  
+<th>Poster</th>  
 </tr>  
 <thead>  
 <tbody>  
 <?php  
 while ($row = mysql_fetch_assoc($rs_result)) {  
-?>  
-            <tr>  
-            <td><?php echo $row["questionTitle"]; ?></td>  
-            <td><?php echo $row["questionPoster"]; ?></td>  
-            </tr>  
-<?php  
+    echo "<tr>"; 
+    echo "<tr>" . $row["questionTitle"]. "</td>";  
+    echo "<td>".$row["questionPoster"]."</td>";  
+    echo "</tr>";
 };
 ?>  
 </tbody>  
