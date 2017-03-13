@@ -127,7 +127,7 @@ session_start();
                                echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
                                echo "</td>";
                                echo "<td>";
-                               echo "<form><input type=\"submit\" name=\"freeze\"class=\"btn btn-success\" value=\"Freeze Account\">";
+                               echo "<form action=\"PHP/Login.php\" method=\"post\"><input type=\"submit\" name=\"freeze\"class=\"btn btn-success\" value=\"Freeze Account\">";
                                echo "<input type=\"submit\" name=\"removeAdmin\"class=\"btn btn-success\" value=\"Remove Admin\"></form>";
                                echo "</td></tr>";
                            }
@@ -158,7 +158,7 @@ session_start();
                                echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
                                echo "</td>";
                                echo "<td>";
-                               echo "<form><input type=\"submit\" name=\"freeze\"class=\"btn btn-success\" value=\"Freeze Account\">";
+                               echo "<form action=\"PHP/Login.php\" method=\"post\"><input type=\"submit\" name=\"freeze\"class=\"btn btn-success\" value=\"Freeze Account\">";
                                echo "<input type=\"submit\" name=\"makeAdmin\"class=\"btn btn-success\" value=\"Make Admin\"></form>";
                                echo "</td></tr>";
                            }
