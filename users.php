@@ -115,7 +115,7 @@ session_start();
                         echo "<tbody>";
                         echo "<tr>";
                         echo "<th><h3>User</h3></th>";
-                        echo "<th><>Options</h3></th>";
+                        echo "<th><h3>Options</h3></th>";
                         echo "</tr>";
 
                         if (mysqli_num_rows($result) > 0)
@@ -129,8 +129,8 @@ session_start();
                         }
                         echo "</tbody>";
                         
-                        $sql = "SELECT * FROM UserProfile WHERE level='0'";
-                        $result = mysqli_query($conn, $sql);
+                        $sqlp = "SELECT * FROM UserProfile WHERE level='0'";
+                        $resultp = mysqli_query($conn, $sqlp);
                     
                         echo "<table class=\"table table-bordered table-striped\">";  
                         echo "<thead>";
@@ -141,12 +141,12 @@ session_start();
                         echo "<tbody>";
                         echo "<tr>";
                         echo "<th><h3>User</h3></th>";
-                        echo "<th><>Options</h3></th>";
+                        echo "<th><h3>Options</h3></th>";
                         echo "</tr>";
 
-                        if (mysqli_num_rows($result) > 0)
+                        if (mysqli_num_rows($resultp) > 0)
                         {
-                           while ($row = mysqli_fetch_assoc($result))
+                           while ($row = mysqli_fetch_assoc($resultp))
                            {
                                echo "<tr>";
                                echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
