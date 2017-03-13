@@ -128,6 +128,7 @@ session_start();
                            }
                         }
                         echo "</tbody>";
+                        echo "</table>";
                     
                         echo "<table class=\"table table-bordered table-striped\">";  
                         echo "<thead>";
@@ -154,6 +155,7 @@ session_start();
                            }
                         }
                         echo "</tbody>";
+                        echo "</table>";
                         
                         mysqli_close($conn);
                     }
