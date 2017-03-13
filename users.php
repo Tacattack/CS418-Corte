@@ -116,7 +116,7 @@ session_start();
                         echo "<td><h3>Options</h3></td>";
                         echo "</tr>";
 
-                        $sql = "SELECT * FROM UserProfile ORDER BY username ASC WHERE level='1'";
+                        $sql = "SELECT * FROM UserProfile WHERE level='1' ORDER BY username ASC";
                         $result = mysqli_query($conn, $sql);
                         
                         if (mysqli_num_rows($result) > 0)
@@ -127,7 +127,8 @@ session_start();
                                echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
                                echo "</td>";
                                echo "<td>";
-                               echo "BUTTON";
+                               echo "<form action=\"PHP/Login.php\" method=\"post\"><input type=\"submit\" name=\"freeze\"class=\"btn btn-success\" value=\"Freeze Account\">";
+                               echo "<input type=\"submit\" name=\"removeAdmin\"class=\"btn btn-success\" value=\"Remove Admin\"></form>";
                                echo "</td></tr>";
                            }
                         }
@@ -146,7 +147,7 @@ session_start();
                         echo "<td><h3>Options</h3></td>";
                         echo "</tr>";
 
-                        $sqlp = "SELECT * FROM UserProfile ORDER BY username ASC WHERE level='0'";
+                        $sqlp = "SELECT * FROM UserProfile WHERE level='0' ORDER BY username ASC";
                         $resultp = mysqli_query($conn, $sqlp);
                         
                         if (mysqli_num_rows($resultp) > 0)
@@ -157,7 +158,8 @@ session_start();
                                echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
                                echo "</td>";
                                echo "<td>";
-                               echo "BUTTON";
+                               echo "<form action=\"PHP/Login.php\" method=\"post\"><input type=\"submit\" name=\"freeze\"class=\"btn btn-success\" value=\"Freeze Account\">";
+                               echo "<input type=\"submit\" name=\"makeAdmin\"class=\"btn btn-success\" value=\"Make Admin\"></form>";
                                echo "</td></tr>";
                            }
                         }
