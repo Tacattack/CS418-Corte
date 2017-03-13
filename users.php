@@ -111,8 +111,8 @@ session_start();
                         echo "</thead>";
                         echo "<tbody>";
                         echo "<tr>";
-                        echo "<th><h3>User</h3></th>";
-                        echo "<th><h3>Options</h3></th>";
+                        echo "<h3>User</h3>";
+                        echo "<h3>Options</h3>";
                         echo "</tr>";
 
                         $sql = "SELECT * FROM UserProfile WHERE level='1'";
@@ -122,9 +122,9 @@ session_start();
                         {
                            while ($row = mysqli_fetch_assoc($result))
                            {
-                               echo "<tr>";
+                               echo "<tr><td>";
                                echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
-                               echo "</tr>";
+                               echo "</td></tr>";
                            }
                         }
                         echo "</tbody>";
@@ -138,8 +138,8 @@ session_start();
                         echo "</thead>";
                         echo "<tbody>";
                         echo "<tr>";
-                        echo "<th><h3>User</h3></th>";
-                        echo "<th><h3>Options</h3></th>";
+                        echo "<h3>User</h3>";
+                        echo "<h3>Options</h3>";
                         echo "</tr>";
 
                         $sqlp = "SELECT * FROM UserProfile WHERE level='0'";
@@ -149,9 +149,9 @@ session_start();
                         {
                            while ($row = mysqli_fetch_assoc($resultp))
                            {
-                               echo "<tr>";
+                               echo "<tr><td>";
                                echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
-                               echo "</tr>";
+                               echo "</td></tr>";
                            }
                         }
                         echo "</tbody>";
