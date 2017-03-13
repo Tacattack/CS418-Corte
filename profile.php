@@ -41,6 +41,7 @@ session_start();
           </button>
           <a class="navbar-brand" href="index.php">Unstacking Exchange</a>
         </div>
+        <div id="navbar" class="navbar-collapse collapse">
           <?PHP
                    if (isset($_SESSION["USER"]))
                     {

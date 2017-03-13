@@ -42,13 +42,14 @@ session_start();
           </button>
           <a class="navbar-brand" href="index.php">Unstacking Exchange</a>
         </div>
+        <div id="navbar" class="navbar-collapse collapse">
           <?PHP
                    if (isset($_SESSION["USER"]))
                     {
-                        echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
+                        echo "<form class=\"FormLogin navbar-form navbar-right\" action=\"PHP/Logout.php\" method=\"post\">";
                         echo "<img src=\"\" style=\"height:35px; width:35px;\">";
                         echo "&nbsp&nbsp&nbsp";
-                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
+                        echo "<b>Welcome: <a href=\"profile.php?id=".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
                         echo "&nbsp&nbsp&nbsp";
                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"submit\" value=\"Logout\">";
                         echo "</form>";
@@ -57,13 +58,13 @@ session_start();
                     {
                         echo "<form class=\"navbar-form navbar-right\" action=\"PHP/Login.php\" method=\"post\">";
                         echo "<div class=\"form-group\">";
-                        echo "<input type=\"text\" placeholder=\"Username\" class=\"form-control\">";
+                        echo "<input type=\"text\" name=\"LoginUsername\" placeholder=\"Username\" class=\"form-control\">";
                         echo "</div>";
                         echo "<div class=\"form-group\">";
-                        echo "<input type=\"password\" placeholder=\"Password\" class=\"form-control\">";
+                        echo "<input type=\"password\" name=\"LoginPassword\" placeholder=\"Password\" class=\"form-control\">";
                         echo "</div>";
-                        echo "<button type=\"submit\" class=\"btn btn-success\">Sign in</button>";
-                        echo "<br /><a href=\"register.html\">Need an account? Register Here</a>";
+                        echo "<input type=\"submit\" name=\"submit\"class=\"btn btn-success\" value=\"Sign In\">";
+                        echo "<br /><a href=\"register.php\">Need an account? Register Here</a>";
                         echo "</form>";
                     }
                 ?>

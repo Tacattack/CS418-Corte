@@ -41,6 +41,7 @@ session_start();
           </button>
           <a class="navbar-brand" href="index.php">Unstacking Exchange</a>
         </div>
+        <div id="navbar" class="navbar-collapse collapse">
           <?PHP
                    if (isset($_SESSION["USER"]))
                     {
@@ -61,7 +62,7 @@ session_start();
                         echo "<div class=\"form-group\">";
                         echo "<input type=\"password\" name=\"LoginPassword\" placeholder=\"Password\" class=\"form-control\">";
                         echo "</div>";
-                        echo "<input type=\"submit\" name=\"submit\" class=\"btn btn-success\" value=\"Sign In\">";
+                        echo "<input type=\"submit\" name=\"submit\"class=\"btn btn-success\" value=\"Sign In\">";
                         echo "<br /><a href=\"register.php\">Need an account? Register Here</a>";
                         echo "</form>";
                     }
