@@ -104,7 +104,7 @@ $limit = 10;
 if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
 $start_from = ($page-1) * $limit;  
   
-$sql = "SELECT * FROM Questions ORDER BY questionTitle ASC LIMIT $start_from, $limit";  
+$sql = "SELECT * FROM Questions ORDER BY id DESC LIMIT $start_from, $limit";  
 $rs_result = mysql_query ($sql);  
 ?>  
 <table class="table table-bordered table-striped">  
