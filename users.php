@@ -7,14 +7,6 @@ session_start();
             {
                 require_once("PHP/Connect.php");
             }
-            else
-            {
-                echo "ACCESS RESTRICTED. YOU DO NOT HAVE ADMIN RIGHTS";
-            }
-    }
-    else
-    {
-        echo "ACCESS RESTRICTED. PLEASE LOGIN AND TRY AGAIN";
     }
 ?>
 <!DOCTYPE html>
