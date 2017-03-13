@@ -34,7 +34,6 @@ session_start();
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-
   <body>
 
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -98,44 +97,78 @@ session_start();
 
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
-          <h2>Admins</h2>
-           <ol>
+        <div class="col-md-12">
             <?php
-                $sql = "SELECT * FROM UserProfile WHERE level='1'";
-                $result = mysqli_query($conn, $sql);
-
-                 if (mysqli_num_rows($result) > 0)
-                {
-                    while ($row = mysqli_fetch_assoc($result))
+            if (isset($_SESSION["USER"]))
+            {
+                if($_SESSION["USERLEVEL"] == 1)
                     {
-                        echo "<li>";
-                        echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
-                        echo "</li>";
-                    }
-                }
-            ?>
-            </ol>
-        </div>
-        <div class="col-md-6">
-          <h2>Plebs</h2>
-          <ol>
-            <?php
-                $sql = "SELECT * FROM UserProfile WHERE level='0'";
-                $result = mysqli_query($conn, $sql);
+                        $sql = "SELECT * FROM UserProfile WHERE level='1'";
+                        $result = mysqli_query($conn, $sql);
+                    
+                        echo "<table class=\"table table-bordered table-striped\">";  
+                        echo "<thead>";
+                        echo "<tr>";
+                        echo "<th colspan='2'><center><h1>ADMINS</h1><center></th>";
+                        echo "</tr>";
+                        echo "<thead>";
+                        echo "<tbody>";
+                        echo "<tr>";
+                        echo "<th><h3>User</h3></th>";
+                        echo "<th><>Options</h3></th>";
+                        echo "</tr>";
 
-                 if (mysqli_num_rows($result) > 0)
-                {
-                    while ($row = mysqli_fetch_assoc($result))
-                    {
-                        echo "<li>";
-                        echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
-                        echo "</li>";
+                        if (mysqli_num_rows($result) > 0)
+                        {
+                           while ($row = mysqli_fetch_assoc($result))
+                           {
+                               echo "<tr>";
+                               echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
+                               echo "</tr>";
+                           }
+                        }
+                        echo "</tbody>";
+                        
+                        $sql = "SELECT * FROM UserProfile WHERE level='0'";
+                        $result = mysqli_query($conn, $sql);
+                    
+                        echo "<table class=\"table table-bordered table-striped\">";  
+                        echo "<thead>";
+                        echo "<tr>";
+                        echo "<th colspan='2'><center><h1>PLEBS</h1><center></th>";
+                        echo "</tr>";
+                        echo "<thead>";
+                        echo "<tbody>";
+                        echo "<tr>";
+                        echo "<th><h3>User</h3></th>";
+                        echo "<th><>Options</h3></th>";
+                        echo "</tr>";
+
+                        if (mysqli_num_rows($result) > 0)
+                        {
+                           while ($row = mysqli_fetch_assoc($result))
+                           {
+                               echo "<tr>";
+                               echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
+                               echo "</tr>";
+                           }
+                        }
+                        echo "</tbody>";
+                        
+                        mysqli_close($conn);
                     }
-                }
+                    else
+                    {
+                        echo "ACCESS RESTRICTED. YOU DO NOT HAVE ADMIN RIGHTS";
+                        die();
+                    }
+            }
+            else
+            {
+                echo "ACCESS RESTRICTED. PLEASE LOGIN AND TRY AGAIN";
+                die();
+            }
             ?>
-          </ol>
-          <?php  mysqli_close($conn); ?>
         </div>
       </div>
 
