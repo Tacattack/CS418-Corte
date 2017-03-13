@@ -118,7 +118,7 @@ session_start();
                         }
                     }
                     
-                    if (isset($_SESSION["USERID"]) == isset($_GET['id']))
+                    if ($_SESSION["USERID"] == $_GET['id'])
                     {
                         echo "<form action=\"PHP/Upload.php\" method=\"post\" enctype=\"multipart/form-data\">";
                         echo "Select a profile image:";
@@ -129,7 +129,7 @@ session_start();
                     echo "</div>";
                     
                     echo "<div class=\"col-md-8\">";
-                    if (isset($_SESSION["USERID"]) == isset($_GET['id']))
+                    if ($_SESSION["USERID"] == $_GET['id'])
                     {
                         echo "<h4>Email: " . $userEmail . "</h4>";
                         
