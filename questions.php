@@ -106,25 +106,44 @@ $start_from = ($page-1) * $limit;
   
 $sql = "SELECT * FROM Questions ORDER BY id DESC LIMIT $start_from, $limit";  
 $rs_result = mysql_query ($sql);  
-?>  
-<table class="table table-bordered table-striped">  
-<thead>  
-<tr>  
-<th>title</th>  
-<th>Poster</th>  
-</tr>  
-<thead>  
-<tbody>  
+?>    
 <?php  
 while ($row = mysql_fetch_assoc($rs_result)) {  
-    echo "<tr>"; 
-    echo "<td>" . $row["questionTitle"]. "</td>";  
-    echo "<td>".$row["questionPoster"]."</td>";  
-    echo "</tr>";
+    echo "<div class=\"row\">";
+                        echo "<div class=\"col-xs-12 col-sm-12\">";
+                            echo "<div class=\"row\">";
+                                echo "<div class=\"col-xs-2 col-sm-2 col-md-2\">";
+                                    echo "<div class=\"votes\">";
+                                        echo "<div>";
+                                            echo "<h5>" . $row["questionScore"] . "</h5>";
+                                        echo "</div>";
+                                        echo "<div>";
+                                            echo "votes";
+                                        echo "</div>";
+                                    echo "</div>";
+                                echo "</div>";
+                                echo "<div class=\"col-xs-10 col-sm-10 col-md-10 QuestionSummary\">";
+                                    echo "<div class=\"row\">";
+                                        echo "<div class=\"col-xs-12 col-sm-12 col-md-12\">";
+                                            echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\"><h4>" . $row["questionTitle"] . "</h4>" . "</a>";
+                                        echo "</div>";
+                                    echo "</div>";
+                                    echo "<div class=\"row\">";
+                                        echo "<div class=\"col-xs-6 col-sm-6 col-md-6 tags\">";
+                                            echo "<a href=\"#\">TAGS</a>";
+                                            echo "</div>";
+                                        echo "<div class=\"col-xs-6 col-sm-6 col-md-6 poster\">";
+                                            echo "<p>Posted by: ";
+                                            echo $row["questionPoster"]."</a></p>";
+                                        echo "</div>";
+                                    echo "</div>";
+                                echo "</div>";
+                            echo "</div>";
+                        echo "</div>";
+                    echo "</div>";
+                    echo "<hr>";
 }
-?>  
-</tbody>  
-</table>  
+?>   
 <?php  
 $sql = "SELECT COUNT(id) FROM Questions";  
 $rs_result = mysql_query($sql);  
