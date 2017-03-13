@@ -115,7 +115,7 @@ session_start();
                         echo "<td><h3>Options</h3></td>";
                         echo "</tr>";
 
-                        $sql = "SELECT * FROM UserProfile WHERE level='1'";
+                        $sql = "SELECT * FROM UserProfile ORDER BY username ASC WHERE level='1'";
                         $result = mysqli_query($conn, $sql);
                         
                         if (mysqli_num_rows($result) > 0)
@@ -143,7 +143,7 @@ session_start();
                         echo "<td><h3>Options</h3></td>";
                         echo "</tr>";
 
-                        $sqlp = "SELECT * FROM UserProfile WHERE level='0'";
+                        $sqlp = "SELECT * FROM UserProfile ORDER BY username ASC WHERE level='0'";
                         $resultp = mysqli_query($conn, $sqlp);
                         
                         if (mysqli_num_rows($resultp) > 0)
