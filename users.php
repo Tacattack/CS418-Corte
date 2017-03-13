@@ -103,9 +103,6 @@ session_start();
             {
                 if($_SESSION["USERLEVEL"] == 1)
                     {
-                        $sql = "SELECT * FROM UserProfile WHERE level='1'";
-                        $result = mysqli_query($conn, $sql);
-                    
                         echo "<table class=\"table table-bordered table-striped\">";  
                         echo "<thead>";
                         echo "<tr>";
@@ -118,6 +115,9 @@ session_start();
                         echo "<th><h3>Options</h3></th>";
                         echo "</tr>";
 
+                        $sql = "SELECT * FROM UserProfile WHERE level='1'";
+                        $result = mysqli_query($conn, $sql);
+                        
                         if (mysqli_num_rows($result) > 0)
                         {
                            while ($row = mysqli_fetch_assoc($result))
@@ -128,9 +128,6 @@ session_start();
                            }
                         }
                         echo "</tbody>";
-                        
-                        $sqlp = "SELECT * FROM UserProfile WHERE level='0'";
-                        $resultp = mysqli_query($conn, $sqlp);
                     
                         echo "<table class=\"table table-bordered table-striped\">";  
                         echo "<thead>";
@@ -144,6 +141,9 @@ session_start();
                         echo "<th><h3>Options</h3></th>";
                         echo "</tr>";
 
+                        $sqlp = "SELECT * FROM UserProfile WHERE level='0'";
+                        $resultp = mysqli_query($conn, $sqlp);
+                        
                         if (mysqli_num_rows($resultp) > 0)
                         {
                            while ($row = mysqli_fetch_assoc($resultp))
