@@ -100,11 +100,11 @@ $conn = mysql_connect($dbhost, $dbuser, $dbpass);
 $dbname = 'QuestionAnswer';  
 $connection = mysql_select_db($dbname);  
   
-$limit = 2;  
+$limit = 10;  
 if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
 $start_from = ($page-1) * $limit;  
   
-$sql = "SELECT * FROM posts ORDER BY title ASC LIMIT $start_from, $limit";  
+$sql = "SELECT * FROM Questions ORDER BY title ASC LIMIT $start_from, $limit";  
 $rs_result = mysql_query ($sql);  
 ?>  
 <table class="table table-bordered table-striped">  
