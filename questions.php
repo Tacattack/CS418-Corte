@@ -92,57 +92,53 @@ session_start();
     <div class="container">
       <div class="row">
         <div class="col-md-8">
-          <?php
-            $sql = "SELECT * FROM Questions ORDER BY id DESC";
-            $result = mysqli_query($conn, $sql);
-            
-            if (mysqli_num_rows($result) > 0)
-            {
-                while ($row = mysqli_fetch_assoc($result))
-                {
-                        echo "<div class=\"row\">";
-                        echo "<div class=\"col-xs-12 col-sm-12\">";
-                            echo "<div class=\"row\">";
-                                echo "<div class=\"col-xs-2 col-sm-2 col-md-2\">";
-                                    echo "<div class=\"votes\">";
-                                        echo "<div>";
-                                            echo "<h5>" . $row["questionScore"] . "</h5>";
-                                        echo "</div>";
-                                        echo "<div>";
-                                            echo "votes";
-                                        echo "</div>";
-                                    echo "</div>";
-                                echo "</div>";
-                                echo "<div class=\"col-xs-10 col-sm-10 col-md-10 QuestionSummary\">";
-                                    echo "<div class=\"row\">";
-                                        echo "<div class=\"col-xs-12 col-sm-12 col-md-12\">";
-                                            echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\"><h4>" . $row["questionTitle"] . "</h4>" . "</a>";
-                                        echo "</div>";
-                                    echo "</div>";
-                                    echo "<div class=\"row\">";
-                                        echo "<div class=\"col-xs-6 col-sm-6 col-md-6 tags\">";
-                                            echo "<a href=\"#\">TAGS</a>";
-                                        echo "</div>";
-                                        echo "<div class=\"col-xs-6 col-sm-6 col-md-6 poster\">";
-                                            echo "<p>Posted by: ";
-                                            echo $row["questionPoster"]."</a></p>";
-                                        echo "</div>";
-                                    echo "</div>";
-                                echo "</div>";
-                            echo "</div>";
-                        echo "</div>";
-                    echo "</div>";
-                    echo "<hr>";
-                    }
-                }else {
-                    echo "<div>";
-                    echo "<h5>";
-                    echo "0 Results Found";
-                    echo "</h5>";
-                    echo "</div>";
-                }          
-                mysqli_close($conn);
-            ?>
+          <?php  
+$dbhost = 'localhost';  
+$dbuser = 'root';  
+$dbpass = "";  
+$conn = mysql_connect($dbhost, $dbuser, $dbpass);  
+$dbname = 'QuestionAnswer';  
+$connection = mysql_select_db($dbname);  
+  
+$limit = 2;  
+if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
+$start_from = ($page-1) * $limit;  
+  
+$sql = "SELECT * FROM posts ORDER BY title ASC LIMIT $start_from, $limit";  
+$rs_result = mysql_query ($sql);  
+?>  
+<table class="table table-bordered table-striped">  
+<thead>  
+<tr>  
+<th>title</th>  
+<th>body</th>  
+</tr>  
+<thead>  
+<tbody>  
+<?php  
+while ($row = mysql_fetch_assoc($rs_result)) {  
+?>  
+            <tr>  
+            <td><?php echo $row["questionTitle"]; ?></td>  
+            <td><?php echo $row["questionPoster"]; ?></td>  
+            </tr>  
+<?php  
+};
+?>  
+</tbody>  
+</table>  
+<?php  
+$sql = "SELECT COUNT(id) FROM Questions";  
+$rs_result = mysql_query($sql);  
+$row = mysql_fetch_row($rs_result);  
+$total_records = $row[0];  
+$total_pages = ceil($total_records / $limit);  
+$pagLink = "<div class='pagination'>";  
+for ($i=1; $i<=$total_pages; $i++) {  
+             $pagLink .= "<a href='index.php?page=".$i."'>".$i."</a>";  
+};  
+echo $pagLink . "</div>";  
+?>
         </div>
           <div class="col-md-4">
               
