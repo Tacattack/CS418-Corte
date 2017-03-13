@@ -111,8 +111,8 @@ session_start();
                         echo "</thead>";
                         echo "<tbody>";
                         echo "<tr>";
-                        echo "<h3>User</h3>";
-                        echo "<h3>Options</h3>";
+                        echo "<td><h3>User</h3></td>";
+                        echo "<td><h3>Options</h3></td>";
                         echo "</tr>";
 
                         $sql = "SELECT * FROM UserProfile WHERE level='1'";
@@ -124,7 +124,8 @@ session_start();
                            {
                                echo "<tr><td>";
                                echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
-                               echo "</td></tr>";
+                               echo "</td>";
+                               echo "<td></td></tr>";
                            }
                         }
                         echo "</tbody>";
@@ -138,8 +139,8 @@ session_start();
                         echo "</thead>";
                         echo "<tbody>";
                         echo "<tr>";
-                        echo "<h3>User</h3>";
-                        echo "<h3>Options</h3>";
+                        echo "<td><h3>User</h3></td>";
+                        echo "<td><h3>Options</h3></td>";
                         echo "</tr>";
 
                         $sqlp = "SELECT * FROM UserProfile WHERE level='0'";
@@ -151,7 +152,8 @@ session_start();
                            {
                                echo "<tr><td>";
                                echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
-                               echo "</td></tr>";
+                               echo "</td>";
+                               echo "<td></td></tr>";
                            }
                         }
                         echo "</tbody>";
