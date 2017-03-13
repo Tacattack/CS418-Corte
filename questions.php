@@ -145,16 +145,16 @@ while ($row = mysql_fetch_assoc($rs_result)) {
 }
 ?>   
 <?php  
-$sql = "SELECT COUNT(id) FROM Questions";  
-$rs_result = mysql_query($sql);  
-$row = mysql_fetch_row($rs_result);  
-$total_records = $row[0];  
-$total_pages = ceil($total_records / $limit);  
-$pagLink = "<div class='pagination'>";  
-for ($i=1; $i<=$total_pages; $i++) {  
-             $pagLink .= "<a href='questions.php?page=".$i."'>".$i."</a>";  
-};  
-echo $pagLink . "</div>";  
+    $sql = "SELECT COUNT(id) FROM Questions";  
+    $rs_result = mysql_query($sql);  
+    $row = mysql_fetch_row($rs_result);  
+    $total_records = $row[0];  
+    $total_pages = ceil($total_records / $limit);  
+    $pagLink = "<div class='pagination'>";  
+    for ($i=1; $i<=$total_pages; $i++) {  
+                 $pagLink .= "<a class=\"btn btn-success\" href='questions.php?page=".$i."'>".$i."</a>";  
+    };  
+    echo $pagLink . "</div>";  
 ?>
         </div>
           <div class="col-md-4">
