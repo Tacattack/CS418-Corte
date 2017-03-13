@@ -88,60 +88,25 @@ session_start();
     	</p>
       </div>
     </div>
-    <?PHP
-                   /* if (isset($_SESSION["USER"]))
-                    {
-
-                        //Checking the User's level of Access
-                        //echo "<b>".$_SESSION["USERLEVEL"]. "</b>";
-                        
-                        //If the User is Admin
-                        if($_SESSION["USERLEVEL"] == 1)
-                        {
-                        $UserLevel = "Admin";
-                        echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
-                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"].""
-                        . "</a> <b>Level:".$UserLevel. "</b> </b>";
-                        echo "&nbsp&nbsp&nbsp";
-                        echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
-                        echo "</form>";   
-                        }
-                        //Else if the user is a Pleb
-                        else
-                        {
-                        $UserLevel = "Pleb";
-                        echo "<form class=\"FormLogin\" action=\"PHP/Logout.php\" method=\"post\">";
-                        echo "<b>Welcome: <a href=\"profile.php?id=\"".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a>"
-                                ."<b> Level:".$UserLevel. "</b> </b>";
-                        echo "&nbsp&nbsp&nbsp";
-                        echo "<input type=\"submit\" name=\"submit\" value=\"Logout\">";
-                        echo "</form>";
-                        }
-                        
-                    }
-                    else
-                    {
-                        echo "<form class=\"FormLogin\" action=\"PHP/Login.php\" method=\"post\">";
-                        echo "Username: <input type=\"text\" name=\"LoginUsername\">";
-                        echo "Password: <input type=\"password\" name=\"LoginPassword\">"; 
-                        echo "<input type=\"submit\" name=\"submit\" value=\"Login\">";
-                        echo "</form>";
-                        echo "<a href=\"register.php\">Register</a>";
-                    }*/
-                ?>
     <div class="container">
+        <div class="row">
       <?php
                     $UserID = (isset($_GET["id"]) && trim($_GET["id"]) == 'profile.php') ? trim($_GET["id"]) : '';
                     $sqlU = "SELECT * FROM UserProfile WHERE id='".$_GET["id"]."'";
                     $resultU = mysqli_query($conn, $sqlU);
+                    
                     if(mysqli_num_rows($resultU) > 0)//Find the user ID
                     {
                         while ($rowU = mysqli_fetch_assoc($resultU))
                         {
                             $UserIs = $rowU["username"];
+                            $userEmail = $rowU=["email"];
+                            $userAccess = $rowU["level"];
                         }
                     }
+                    echo "<div class=\"col-md-4\">";
                     echo "<h1>".$UserIs."</h1>";
+                    echo "<img src=\"\" style=\"height:70px width:70px\">";
                     
                     $qry = "SELECT * FROM UserPictures";
                     $result = mysqli_query($qry, $conn);
@@ -153,7 +118,7 @@ session_start();
                         }
                     }
                     
-                    if (isset($_SESSION["USER"]))
+                    if (isset($_SESSION["USERID"]) == $_GET['id'])
                     {
                         echo "<form action=\"PHP/Upload.php\" method=\"post\" enctype=\"multipart/form-data\">";
                         echo "Select a profile image:";
@@ -161,8 +126,20 @@ session_start();
                         echo "<input type=\"submit\" value=\"Upload Image\" name=\"submit\">";
                         echo  "</form>";
                     }
+                    echo "</div>";
                     
-                    echo "<h3>Asked Questions</h3>";
+                    if (isset($_SESSION["USERID"]) == $_GET['id'])
+                    {
+                        echo "<div class=\"col-md-8\">";
+                        echo "<h4>Email: " . $userEmail . "</h4>";
+                        echo "<h4>Access: ". $userAccess . "</h4>";
+                        echo "</div>";
+                    }
+                    ?>
+              </div>
+              <div class="row">
+                  <h3>Asked Questions</h3>
+                  <?php
                     $sql = "SELECT * FROM Questions ORDER BY id DESC";
                     $result = mysqli_query($conn, $sql);
                     if (mysqli_num_rows($result) > 0)
@@ -189,6 +166,7 @@ session_start();
 
                     mysqli_close($conn);
                 ?>
+        </div>
     </div> <!-- /container -->
 
 
