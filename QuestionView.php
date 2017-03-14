@@ -184,7 +184,7 @@ session_start();
                         }
                         else
                         {
-                            echo "ERROR YO!"
+                            echo "ERROR YO!";
                         }
                     }
                 }
