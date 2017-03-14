@@ -135,39 +135,6 @@ session_start();
                         while ($rowA = mysqli_fetch_array($resultA)) {
                             if (mysqli_num_rows($resultA) > 0) {
                                 while ($rowA = mysqli_fetch_assoc($resultA)) {
-                                    if (isset($_SESSION["USER"])) {
-                                        if ($_SESSION["USER"] == $row["questionPoster"])
-                                        {
-
-                                            if ($rowA["bestAnswer"] == 1)
-                                            {
-                                                echo "<li><table>";
-                                                echo "<tr style=\"background:green;\"><td>" . $rowA["answerBody"] . "</td></tr>";
-                                                echo "<tr><td>" . $rowA["answerScore"]. "</td><td> posted by: " . $rowA["answerPoster"] . "</td></tr>";
-                                            }
-                                            else
-                                            {
-                                                //Answer ID
-                                                $AID= $rowA["AnswerID"];
-                                                //Question ID
-                                                $ID= $row["id"];
-                                                echo "<li><form id=\"BestAnswer\" action=\"PHP/Like.php\" method=\"post\"><table>";
-                                                echo "<tr><td><button form=\"BestAnswer\" type=\"submit\" name=\"Like\" value=".$AID.">I Like</button></td><td>" . $rowA["answerBody"] . "</td></tr>";
-                                                echo "<tr><td><input name=\"QID\" type=\"submit\" value=".$ID ."/>";
-                                                echo "<tr><td><form id=\"BestAnswer\" action=\"PHP/Like.php\" method=\"post\">"
-                                                . "<input type=\"submit\" name=\"upVote\" value=\"+\">&nbsp" . $rowA["answerScore"] . "&nbsp<input type=\"submit\" name=\"downVote\" value=\"-\">"
-                                                . "</td><td> posted by: " . $rowA["answerPoster"] . "</td></tr>";   
-                                            }
-                                        }
-                                        else
-                                        {
-                                            echo "<li><form action=\"\" method=\"post\"><table>";
-                                            echo "<tr><td>" . $rowA["answerBody"] . "</td></tr>";
-                                            echo "<tr><td><input type=\"submit\" name=\"upVote\" value=\"+\">&nbsp" . $rowA["answerScore"] . "&nbsp<input type=\"submit\" name=\"downVote\" value=\"-\">"
-                                            . "</td><td> posted by: " . $rowA["answerPoster"] . "</td></tr>";
-                                        }
-                                        echo "</table></form></li>";
-                                    } else {
                                         echo "<li><form><table>";
                                         echo "<tr><td>" . $rowA["answerScore"] . "</td><td>" . $rowA["answerBody"] . "</td></tr>";
                                         echo "<tr><td> posted by: " . $rowA["answerPoster"] . "</td></tr>";
@@ -176,9 +143,8 @@ session_start();
                                 }
                             }
                         }
+                        echo "<br />";
                     }
-                    echo "<br />";
-                }
                 echo "</ul>";
 
                 if (isset($_SESSION["USER"]))
