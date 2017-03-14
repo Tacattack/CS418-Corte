@@ -182,10 +182,10 @@ session_start();
                                 }
                             }
                         }
-                    }
-                    else
-                    {
-                        echo "ERROR?";
+                        else
+                        {
+                            echo "ERROR YO!"
+                        }
                     }
                 }
                 mysqli_close($conn);
