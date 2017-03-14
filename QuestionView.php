@@ -149,7 +149,7 @@ session_start();
 
                 if (isset($_SESSION["USER"]))
                 {
-                    echo "<form method=\"post\">";
+                    echo "<form method=\"post\" action=\"\">";
                     echo "<textarea rows=\"30\" name=\"ABody\" style=\"width: 600px; height: 50px;\"></textarea>";
                     echo "<input type=\"submit\" name=\"submit\" value=\"Submit Answer\" style=\"margin: 20px 50px; float: right\"/>";
                     echo "</form>";
@@ -159,7 +159,7 @@ session_start();
                         $AnswerID = $_GET["id"];
                         $AnswerBody = addslashes($_POST['ABody']);
 
-                        $AnswerCreate = "INSERT INTO Answers (questionID,answerBody, answerPoster)
+                        $AnswerCreate = "INSERT INTO Answers (questionID, answerBody, answerPoster)
                         VALUES('{$AnswerID}', '{$AnswerBody}', '{$_SESSION["USER"]}')";
 
                         if (mysqli_query($conn, $AnswerCreate)) {
@@ -181,10 +181,6 @@ session_start();
                                     die(); 
                                 }
                             }
-                        }
-                        else
-                        {
-                            echo "ERROR YO!";
                         }
                     }
                 }
