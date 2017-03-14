@@ -95,7 +95,8 @@ session_start();
           <?php
                 $questionID = (isset($_GET["id"]) && trim($_GET["id"]) == 'QuestionView.php') ? trim($_GET["id"]) : '';
                 $sql = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
-                $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC LIMIT 5";
+                $sqlA = "SELECT * FROM Answers ORDER BY answerScore DESC";
+                /*$sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC LIMIT 5";*/
                 $sqlU = "SELECT * FROM UserProfile";
                 $result = mysqli_query($conn, $sql);
                 $resultA = mysqli_query($conn, $sqlA);
