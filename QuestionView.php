@@ -95,10 +95,8 @@ session_start();
           <?php
                 $questionID = (isset($_GET["id"]) && trim($_GET["id"]) == 'QuestionView.php') ? trim($_GET["id"]) : '';
                 $sql = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
-                $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC";
                 $sqlU = "SELECT * FROM UserProfile";
                 $result = mysqli_query($conn, $sql);
-                $resultA = mysqli_query($conn, $sqlA);
                 $resultU = mysqli_query($conn, $sqlU);
 
 
@@ -128,10 +126,17 @@ session_start();
                         }
                         echo $row["questionPoster"]."</a>";
                         echo "</div>";
-
+                        ?>
+                        <?php
                         echo "<div id=\"Answers\">";
                         echo "<h3>Answers</h3>";
                         echo "<ul>";
+                        
+                        $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC";
+                        $sqlU = "SELECT * FROM UserProfile";
+                        $resultA = mysqli_query($conn, $sqlA);
+                        $resultU = mysqli_query($conn, $sqlU);
+                        
                         while ($rowA = mysqli_fetch_array($resultA)) {
                             if (mysqli_num_rows($resultA) > 0) {
                                 while ($rowA = mysqli_fetch_assoc($resultA)) {
