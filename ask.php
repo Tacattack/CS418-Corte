@@ -135,8 +135,6 @@ session_start();
                                 {
                                     header("Location: QuestionView.php?id=".$row["id"]);
                                     die(); 
-                                }else {
-                                    echo "ERROR: QuestionTitle != row[questionTitle]";
                                 }
                             }
                         }else {
