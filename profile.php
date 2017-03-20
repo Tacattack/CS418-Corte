@@ -111,13 +111,13 @@ session_start();
                     $resultP = mysqli_query($qryP, $conn);
                     if (mysqli_num_rows($resultP) > 0)
                     {
-                        while ($row = mysqli_fetch_array($resultP))
+                        /*while ($row = mysqli_fetch_array($resultP))
                         {
                             if ($row["user"] == $_GET['id'])
                             {
                                 echo "<img style=\"height:70px width:70px\" src=\"data:image;base64,".row[2]."\">";
                             }
-                        }
+                        }*/
                     }
                     else
                     {
