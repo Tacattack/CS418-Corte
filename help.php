@@ -46,7 +46,22 @@ session_start();
                    if (isset($_SESSION["USER"]))
                     {
                         echo "<form class=\"FormLogin navbar-form navbar-right\" action=\"PHP/Logout.php\" method=\"post\">";
-                        echo "<img src=\"\" style=\"height:35px; width:35px;\">";
+                        $qryP = "SELECT * FROM UserPictures";
+                        $resultP = mysqli_query($qryP, $conn);
+                        if (mysqli_num_rows($resultP) > 0)
+                        {
+                            while ($row = mysqli_fetch_array($resultP))
+                            {
+                                if ($row["user"] == $_GET['id'])
+                                {
+                                    echo '<img style="height:35px; width:35px;" src="data:image/jpeg;base64,'.\base64_encode($row['picture']).'"/>';
+                                }
+                            }
+                        }
+                        else
+                        {
+                            echo "<img style=\"height:35px; width:35px;\" src=\"../images/person.png\">";
+                        }
                         echo "&nbsp&nbsp&nbsp";
                         echo "<b>Welcome: <a href=\"profile.php?id=".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
                         echo "&nbsp&nbsp&nbsp";
