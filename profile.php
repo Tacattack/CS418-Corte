@@ -142,22 +142,23 @@ session_start();
                                 $pictureUploader = $_SESSION["USER"];
                                 $image = addslashes($_FILES['image']['tmp_name']);
                                 $name = addslashes($_FILES['image']['name']);
-                                $image = file_get_contents($image);
-                                $image = \base64_encode($image);
+                                $imageA = file_get_contents($image);
+                                $imageE = \base64_encode($imageE);
                                 saveimage($name, $image, $pictureUploader);
-                            }
-                        }
-
-                        function saveimage($name, $image, $pictureUploader)
-                        {
-                            $qry = "insert into UserPictures (user, pictureName, picture)
+                                
+                                $qry = "insert into UserPictures (user, pictureName, picture)
                                     VALUES ('{$pictureUploader}','{$name}','{$image}')";
 
-                            $result = mysqli_query($qry, $conn);
-                            if($result)
-                                echo "<br />Image Uploaded";
-                            else
-                                echo "<br />Image Not Uploaded";
+                                $result = mysqli_query($qry, $conn);
+                                if($result)
+                                {
+                                    echo "<br />Image Uploaded";
+                                }
+                                else
+                                {
+                                    echo "<br />Image Not Uploaded";
+                                }                                
+                            }
                         }
                     }
                     echo "</div>";
