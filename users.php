@@ -69,7 +69,7 @@ session_start();
                             echo "<img style=\"height:35px; width:35px;\" src=\"../images/person.png\">";
                         }
                         echo "&nbsp&nbsp&nbsp";
-                        echo "<b>Welcome: <a href=\"profile.php?id=".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
+                        echo "<b style=\"color:white;\">Welcome: <a href=\"profile.php?id=".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
                         echo "&nbsp&nbsp&nbsp";
                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"submit\" value=\"Logout\">";
                         echo "</form>";
