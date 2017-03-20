@@ -71,7 +71,7 @@ session_start();
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-      <div>
+      <div class="container">
         <?php
                     $qryP = "SELECT * FROM UserPictures";
                     $resultP = mysqli_query($qryP, $conn);
@@ -99,7 +99,7 @@ session_start();
                                 $image = addslashes($_FILES['image']['tmp_name']);
                                 $name = addslashes($_FILES['image']['name']);
                                 $imageA = file_get_contents($image);
-                                $imageE = \base64_encode($imageE);
+                                $imageE = base64_encode($imageE);
                                 saveimage($name, $image);
                                 
                                 $qry = "insert into UserPictures (pictureName, picture)
