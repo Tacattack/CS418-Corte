@@ -268,7 +268,7 @@ CREATE TABLE `UserPictures` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user` varchar(250) NOT NULL,
   `pictureName` varchar(250) NOT NULL,
-  `picture` BLOB NOT NULL,
+  `picture` LONGBLOB NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
