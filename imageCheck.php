@@ -72,6 +72,7 @@ session_start();
       </div>
     </nav>
       <div class="container">
+          <br /><br /><br />
         <?php
                     $qryP = "SELECT * FROM UserPictures";
                     $resultP = mysqli_query($qryP, $conn);
