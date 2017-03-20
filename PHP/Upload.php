@@ -4,7 +4,7 @@ start_session();
 
 if(isset($_POST['submit']))
 {   
-    if (getimagesize($FILES['image']['tmp_name']) == false)
+    if (getimagesize($_FILES['image']['tmp_name']) == false)
     {
         echo "Please select an image.";
     }
