@@ -4,12 +4,11 @@ start_session();
 
 if(isset($_POST['submit']))
 {   
-    echo "I'm in the if submit has been hit statement";
     if (getimagesize($_FILES['image']['tmp_name']) == false)
     {
         echo "Please select an image.";
     }
-    /*else
+    else
     {
         $pictureUploader = $_SESSION["USER"];
         $image = addslashes($_FILES['image']['tmp_name']);
@@ -17,10 +16,10 @@ if(isset($_POST['submit']))
         $image = file_get_contents($image);
         $image = \base64_encode($image);
         saveimage($name, $image, $pictureUploader);
-    }*/
+    }
 }
 
-/*function saveimage($name, $image, $pictureUploader)
+function saveimage($name, $image, $pictureUploader)
 {
     $qry = "insert into UserPictures (user, pictureName, picture)
             VALUES ('{$pictureUploader}','{$name}','{$image}')";
@@ -30,7 +29,7 @@ if(isset($_POST['submit']))
         echo "<br />Image Uploaded";
     else
         echo "<br />Image Not Uploaded";
-}*/
+}
 
 //header("Location: ../profile.php?id=".$_SESSION["USERID"]);
 ?>
