@@ -32,6 +32,5 @@ function saveimage($name, $image)
         echo "<br />Image Not Uploaded";
 }
 
-
 header("Location: ../profile.php?id=".$_SESSION["USERID"]);
 ?>

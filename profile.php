@@ -109,13 +109,21 @@ session_start();
                     
                     $qryP = "select * from UserPictures";
                     $resultP = mysqli_query($qryP, $conn);
-                    while ($row = mysqli_fetch_array($resultP))
+                    if (mysqli_num_rows($resultP) > 0)
                     {
-                        if ($row["user"] == SESSION["USER"])
+                        while ($row = mysqli_fetch_array($resultP))
                         {
-                            echo '<img style="height:70px width:70px" src="data:image;base64,'.row["picture"].'">';
+                            if ($row["user"] == $_GET['id'])
+                            {
+                                echo '<img style="height:70px width:70px" src="data:image;base64,'.row["picture"].'">';
+                            }
                         }
                     }
+                    else
+                    {
+                        echo '<img style="height:70px width:70px" src="../images/person.png>';
+                    }
+                    
                     
                     if ($_SESSION["USERID"] == $_GET['id'])
                     {
