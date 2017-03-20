@@ -8,7 +8,7 @@ if(isset($_POST['submit']))
     {
         echo "Please select an image.";
     }
-    else
+    /*else
     {
         $pictureUploader = $_SESSION["USER"];
         $image = addslashes($_FILES['image']['tmp_name']);
@@ -16,7 +16,7 @@ if(isset($_POST['submit']))
         $image = file_get_contents($image);
         $image = \base64_encode($image);
         saveimage($name, $image, $pictureUploader);
-    }
+    }*/
 }
 
 /*function saveimage($name, $image, $pictureUploader)
@@ -31,5 +31,5 @@ if(isset($_POST['submit']))
         echo "<br />Image Not Uploaded";
 }*/
 
-header("Location: ../profile.php?id=".$_SESSION["USERID"]);
+//header("Location: ../profile.php?id=".$_SESSION["USERID"]);
 ?>
