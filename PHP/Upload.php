@@ -4,6 +4,7 @@ start_session();
 
 if(isset($_POST['submit']))
 {   
+    echo "I'm in the if submit has been hit statement";
     if (getimagesize($_FILES['image']['tmp_name']) == false)
     {
         echo "Please select an image.";
