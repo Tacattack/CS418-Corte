@@ -105,8 +105,6 @@ session_start();
                         }
                     }
                     echo "<div class=\"col-md-4\">";
-                    echo "<h1>".$UserIs."</h1>";
-                    
                     $qryP = "SELECT * FROM UserPictures";
                     $resultP = mysqli_query($qryP, $conn);
                     if (mysqli_num_rows($resultP) > 0)
@@ -115,7 +113,7 @@ session_start();
                         {
                             if ($row["user"] == $_GET['id'])
                             {
-                                //echo "<img style=\"height:50px width:50px\" src=\"data:image;base64,".row[2]."\">";
+                                echo '<img style="height:50px width:50px" src="data:image;base64,'.row[2].'">';
                             }
                         }
                     }
@@ -136,6 +134,8 @@ session_start();
                     echo "</div>";
                     
                     echo "<div class=\"col-md-8\">";
+                    echo "<h1>".$UserIs."</h1>";
+                    
                     if ($_SESSION["USERID"] == $_GET['id'])
                     {
                         echo "<h4>Email: " . $userEmail . "</h4>";
