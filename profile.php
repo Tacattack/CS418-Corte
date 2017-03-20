@@ -107,7 +107,7 @@ session_start();
                     echo "<div class=\"col-md-4\">";
                     echo "<h1>".$UserIs."</h1>";
                     
-                    $qryP = "select * from UserPictures";
+                    /*$qryP = "select * from UserPictures";
                     $resultP = mysqli_query($qryP, $conn);
                     if (mysqli_num_rows($resultP) > 0)
                     {
@@ -122,7 +122,7 @@ session_start();
                     else
                     {
                         echo "<img style=\"height:70px width:70px\" src=\"../images/person.png\">";
-                    }
+                    }*/
                     
                     
                     if ($_SESSION["USERID"] == $_GET['id'])
