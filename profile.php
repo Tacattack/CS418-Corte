@@ -115,13 +115,13 @@ session_start();
                         {
                             if ($row["user"] == $_GET['id'])
                             {
-                                echo '<img style="height:70px width:70px" src="data:image;base64,'.row["picture"].'">';
+                                echo "<img style=\"height:70px width:70px\" src=\"data:image;base64,".row["picture"]."\">";
                             }
                         }
                     }
                     else
                     {
-                        echo '<img style="height:70px width:70px" src="../images/person.png>';
+                        echo "<img style=\"height:70px width:70px\" src=\"../images/person.png\">";
                     }
                     
                     
