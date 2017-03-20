@@ -71,19 +71,6 @@ session_start();
         </div><!--/.navbar-collapse -->
       </div>
     </nav>
-
-    <div class="container">
-        <form class="form-signin" name="Register" method="post" action="">
-        <h2 class="form-signin-heading">Register Here</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name="rEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputEmail" class="sr-only">Username</label>
-        <input type="username" name="rUsername" id="inputUsername" class="form-control" placeholder="Username" required>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="rPassword" id="inputPassword" class="form-control" placeholder="Password" required>
-        <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="Register">
-      </form>
-        
         <?php
                     $qryP = "SELECT * FROM UserPictures";
                     $resultP = mysqli_query($qryP, $conn);
@@ -91,7 +78,7 @@ session_start();
                     {
                         while ($row = mysqli_fetch_array($resultP))
                         {
-                            echo '<img style="height:50px width:50px" src="data:image/jpeg;base64,'.\base64_encode($row['picture']).'"/>';
+                            echo '<img style="height:50px width:50px" src="data:image/jpeg;base64,'.\base64_decode($row['picture']).'"/>';
                         }
                     }
                         echo "<form action=\"\" method=\"post\" enctype=\"multipart/form-data\">";
