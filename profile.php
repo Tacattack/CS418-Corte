@@ -106,15 +106,14 @@ session_start();
                     }
                     echo "<div class=\"col-md-4\">";
                     echo "<h1>".$UserIs."</h1>";
-                    echo "<img src=\"\" style=\"height:70px width:70px\">";
                     
-                    $qry = "SELECT * FROM UserPictures";
-                    $result = mysqli_query($qry, $conn);
-                    while ($row = mysqli_fetch_array($result))
+                    $qryP = "select * from UserPictures";
+                    $resultP = mysqli_query($qryP, $conn);
+                    while ($row = mysqli_fetch_array($resultP))
                     {
-                        if ($_SESSION["USER"] == $row["user"])
+                        if ($row["user"] == SESSION["USER"])
                         {
-                            echo "I'm a fucking image";
+                            echo '<img style="height:70px width:70px" src="data:image;base64,'.row["picture"].'">';
                         }
                     }
                     
