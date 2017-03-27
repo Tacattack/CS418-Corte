@@ -47,7 +47,7 @@ CREATE TABLE `Answers` (
 
 LOCK TABLES `Answers` WRITE;
 /*!40000 ALTER TABLE `Answers` DISABLE KEYS */;
-INSERT INTO `Answers` VALUES (1,1,1,'That is how do','nbenfiel',0);
+INSERT INTO `Answers` VALUES (1,80,1,'That is how do','nbenfiel',0);
 INSERT INTO `Answers` VALUES (2,1,-1,'This is also how do','nbenfiel',0);
 INSERT INTO `Answers` VALUES (3,1,6,'To do how or not how do to','tcorte',0);
 INSERT INTO `Answers` VALUES (4,2,100,'Do you even monies?','tcorte',0);
@@ -58,7 +58,7 @@ INSERT INTO `Answers` VALUES (8,3,50,'One Does Not Simply Unreal','tcorte',0);
 INSERT INTO `Answers` VALUES (9,4,50,'The cake means you die you stoopid gamer 12 year old','nbenfiel',0);
 INSERT INTO `Answers` VALUES (10,5,300,'Civilization Strategy Game FTW!!','tcorte',0);
 INSERT INTO `Answers` VALUES (11,5,75,'All about that Shooter Genre','nbenfiel',0);
-INSERT INTO `Answers` VALUES (12,5,50,'PC Musterd Race!','nbenfiel',0);
+INSERT INTO `Answers` VALUES (12,80,50,'PC Musterd Race!','nbenfiel',0);
 INSERT INTO `Answers` VALUES (13,5,-300,'Consoles For the Win','nbenfiel',0);
 INSERT INTO `Answers` VALUES (14,5,200,'I like simulation','tcorte',0);
 INSERT INTO `Answers` VALUES (15,8,200,'The short answer is no','nbenfiel',0);
