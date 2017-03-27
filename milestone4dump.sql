@@ -279,7 +279,7 @@ CREATE TABLE `UserPictures` (
 
 LOCK TABLES `UserPictures` WRITE;
 /*!40000 ALTER TABLE `UserPictures` DISABLE KEYS */;
-INSERT INTO UserPictures VALUES(1,1,'nbenfiel','lordgaben.png');
-INSERT INTO UserPictures VALUES(2,2,'tcorte','tacAttack.png');
+INSERT INTO `UserPictures` VALUES(1,1,'nbenfiel','lordgaben.png');
+INSERT INTO `UserPictures` VALUES(2,2,'tcorte','tacAttack.png');
 /*!40000 ALTER TABLE `UserPictures` ENABLE KEYS */;
 UNLOCK TABLES;

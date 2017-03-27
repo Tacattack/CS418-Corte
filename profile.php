@@ -120,9 +120,11 @@ session_start();
                         }
                     }
                     echo "<div class=\"col-md-4\">";
+                    
                     $imageSetProfile = 0;
                     $qryP = "SELECT * FROM UserPictures";
                     $resultP = mysqli_query($qryP, $conn);
+                    
                     if(mysqli_num_rows($resultP) > 0)
                     {
                         echo "Before while loop";
