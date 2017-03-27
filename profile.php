@@ -50,22 +50,19 @@ session_start();
                         $resultP = mysqli_query($qryP, $conn);
                         
                         $imageSet = 0;
-                        
-                        if (mysqli_num_rows($resultP) > 0)
+
+                        while ($row = mysqli_fetch_array($resultP))
                         {
-                            while ($row = mysqli_fetch_array($resultP))
+                            if ($row["user"] == $_SESSION["USER"])
                             {
-                                if ($row["user"] == $_SESSION["USER"])
-                                {
-                                    echo "<img style=\"height:35px width:35px\" src=\"images/".$row['pictureName']."\">";
-                                    $imageSet = 1;
-                                }
+                                echo "<img style=\"height:35px; width:35px\" src=\"images/".$row['pictureName']."\">";
+                                $imageSet = 1;
                             }
                         }
                         
                         if ($imageSet == 0)
                         {
-                            echo "<img style=\"height:35px width:35px\" src=\"images/person.png\">";
+                            echo "<img style=\"height:35px; width:35px\" src=\"images/person.png\">";
                         }
                         echo "&nbsp&nbsp&nbsp";
                         echo "<b style=\"color:white;\">Welcome: <a href=\"profile.php?id=".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
@@ -140,21 +137,18 @@ session_start();
                     
                     $qryP = "SELECT * FROM UserPictures";
                     $resultP = mysqli_query($qryP, $db);
-                    if (mysqli_num_rows($resultP) > 0)
+                    while ($row = mysqli_fetch_array($resultP))
                     {
-                        while ($row = mysqli_fetch_array($resultP))
+                        if ($row["user"] == $userProfile)
                         {
-                            if ($row["user"] == $userProfile)
-                            {
-                                echo "<img style=\"height:50px width:50px\" src=\"images/".$row['pictureName']."\">";
-                                $imageSetProfile = 1;
-                            }
+                            echo "<img style=\"height:50px; width:50px\" src=\"images/".$row['pictureName']."\">";
+                            $imageSetProfile = 1;
                         }
                     }
                     
                     if ($imageSetProfile == 0)
                         {
-                            echo "<img style=\"height:50px width:50px\" src=\"images/person.png\">";
+                            echo "<img style=\"height:50px; width:50px\" src=\"images/person.png\">";
                         }
                     
                     
@@ -191,7 +185,7 @@ session_start();
                                 if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target))
                                 {
                                     echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-                                    header("Location: profile.php?id=".$_SESSION["USERID"]);
+                                    //header("Location: profile.php?id=".$_SESSION["USERID"]);
                                 }
                                 else 
                                 {
