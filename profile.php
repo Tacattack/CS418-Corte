@@ -122,12 +122,12 @@ session_start();
                     echo "<div class=\"col-md-4\">";
                     
                     $imageSetProfile = 0;
-                    $qryP = "SELECT * FROM UserPictures";
+                    $qryP = "SELECT id FROM UserPictures";
                     $resultP = mysqli_query($qryP, $conn);
-                    
+                    echo "Before the IF statement";
                     if(mysqli_num_rows($resultP) > 0)
                     {
-                        echo "Before while loop";
+                        echo "In the IF before WHILE loop";
                         while ($rowImage = mysqli_fetch_assoc($resultP))
                         {
                             echo "In While Loop";
