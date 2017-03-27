@@ -154,7 +154,7 @@ session_start();
                     
                     if ($imageSetProfile == 0)
                         {
-                            echo "<img style=\"height:35px width:35px\" src=\"images/person.png\">";
+                            echo "<img style=\"height:50px width:50px\" src=\"images/person.png\">";
                         }
                     
                     
