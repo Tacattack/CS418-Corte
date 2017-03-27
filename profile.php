@@ -125,11 +125,11 @@ session_start();
                     $qryP = "SELECT * FROM UserPictures";
                     $resultP = mysqli_query($qryP, $conn);
                     
-                    if($qryP)
-                    {echo "The qry was called: ". $qryP;}
+                    /*if($qryP)
+                    {echo "The qry was called: ". $qryP;}*/
                     
-                    if ($conn)
-                    {echo "The connection was made";}
+                    /*if ($conn)
+                    {echo "The connection was made";}*/
                     
                     if ($resultP)
                     {
@@ -150,7 +150,7 @@ session_start();
                         }
                         else
                         {
-                            echo "I'm fucking stupid and don't think the table exists";
+                            echo "Failed to connect to MySQL: " . mysqli_connect_error();
                         }
                     }
                     
