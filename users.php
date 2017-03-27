@@ -122,7 +122,7 @@ session_start();
                         echo "<form class=\"FormLogin navbar-form\" action=\"\" method=\"post\">";
                         echo "<b style=\"color:white;\">Search Users:</b>";
                         echo "<div class=\"form-group\">";
-                        echo "<input type=\"text\" name=\"userSearch\" placeholder=\"Search Users\" class=\"form-control\">";
+                        echo "<input type=\"text\" name=\"userSearch\" placeholder=\"Search Users\" class=\"form-control\" onkeyup=\"showHint(this.value)\">";
                         echo "</div>";
                         echo "&nbsp&nbsp&nbsp";
                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"submit\" value=\"Search\">";
@@ -218,5 +218,31 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="bootstrapDist/dist/js/bootstrap.min.js"></script>
+    <script>
+    function showHint(str)
+    {
+        var xhttp;
+        
+        if (str.length == 0)
+        {
+            document.getElementByID("getuser").innerhtml = str;
+            document.getElementById("getuser").style.border="0px";
+            return;
+        }
+        else
+        {
+         xhttp = new XMLHttpRequest();
+         xhttp.onreadystatechange = function()
+         {
+             if(this.readyState == 4 && this.status == 200)
+             {
+             document.getElementById("getuser").innerHTML = this.responseText;
+             document.getElementById("getuser").style.border="1px solid #A5ACB2";
+             }
+         }
+        };
+        xhttp.open("GET","PHP/getuser.php?q=" + str,true);
+    }
+    </script>
   </body>
 </html>
