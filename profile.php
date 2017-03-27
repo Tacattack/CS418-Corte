@@ -133,7 +133,6 @@ session_start();
                     
                     if (!$resultP)
                     {
-                        echo "I fucking suck, I qry'd, I fucking connected but I'm too stupid to find what's there<br>";
                         echo "I FAILED!! THE ERROR IS: ". mysqli_error($resultP);
                     }
                     
@@ -144,7 +143,7 @@ session_start();
                         if(mysqli_num_rows($resultP) > 0)
                         {
                             echo "In the IF before WHILE loop";
-                            while ($rowImage = mysqli_fetch_assoc($resultP))
+                            while ($rowImage = mysqli_fetch_array($resultP))
                             {
                                 echo "In While Loop";
                                 if ($rowImage["userID"] == $_GET['id'])
@@ -156,7 +155,7 @@ session_start();
                         }
                         else
                         {
-                            echo "This isn't even showing anymore is it?";
+                            echo "Table doesn't exist";
                         }
                     }
                     
