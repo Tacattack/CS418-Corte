@@ -1,5 +1,5 @@
 <?php
-$q = intval($_GET['q']);
+$q = $_GET['q'];
 
      $servername = "localhost";
      $username = "root";
