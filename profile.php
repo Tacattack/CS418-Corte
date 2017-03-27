@@ -124,14 +124,17 @@ session_start();
                     $qryP = "SELECT * FROM UserPictures";
                     $resultP = mysqli_query($qryP, $conn);
                     echo "Before while loop";
-                    while ($rowImage = mysqli_fetch_assoc($resultP))
+                    if(mysqli_num_rows($resultU) > 0)
                     {
-                        echo "In While Loop";
-                        if ($rowImage["userID"] == $_GET['id'])
+                        while ($rowImage = mysqli_fetch_assoc($resultP))
                         {
-                            echo '<img style="height:150px; width:150px" src"images/"'.$rowImage['pictureName'].'">';
-                            $imageSetProfile = 1;
-                        }
+                            echo "In While Loop";
+                            if ($rowImage["userID"] == $_GET['id'])
+                            {
+                                echo '<img style="height:150px; width:150px" src"images/"'.$rowImage['pictureName'].'">';
+                                $imageSetProfile = 1;
+                            }
+                        }   
                     }
                     
                     if ($imageSetProfile == 0)
