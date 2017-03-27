@@ -52,15 +52,15 @@ session_start();
                         {
                             while ($row = mysqli_fetch_array($resultP))
                             {
-                                if ($row["user"] == $_GET['id'])
+                                if ($row["user"] == $_SESSION["USER"])
                                 {
-                                    echo '<img style="height:35px; width:35px;" src="data:image/jpeg;base64,'.\base64_encode($row['picture']).'"/>';
+                                    echo "<img style=\"height:35px width:35px\" src=\"images/".$row['pictureName']."\">";
                                 }
                             }
                         }
                         else
                         {
-                            echo "<img style=\"height:35px; width:35px;\" src=\"../images/person.png\">";
+                            echo "<img style=\"height:35px width:35px\" src=\"images/person.png\">";
                         }
                         echo "&nbsp&nbsp&nbsp";
                         echo "<b style=\"color:white;\">Welcome: <a href=\"profile.php?id=".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
@@ -140,7 +140,7 @@ session_start();
                         {
                             if ($row["user"] == $userProfile)
                             {
-                                echo "<img style=\"height:50px width:50px\" src=\"images/users/".$row['pictureName']."\">";
+                                echo "<img style=\"height:50px width:50px\" src=\"images/".$row['pictureName']."\">";
                             }
                         }
                     }
@@ -175,12 +175,8 @@ session_start();
                                 
                                 $image = $_FILES['fileToUpload']['name'];
                                 
-                                echo $pictureUploader;
-                                echo $image;
-                                
                                 $sqlPic = "INSERT INTO UserPictures(user, pictureName)
                                     VALUES ({'$pictureUploader'}, {'$image'})";
-                                
                                 
                                 mysqli_query($db, $sqlPic);
                                 
