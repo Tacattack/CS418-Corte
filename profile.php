@@ -138,14 +138,15 @@ session_start();
                     
                     if ($resultP)
                     {
-                        echo "Result exists";
-                        echo "Before the IF statement";
+                        echo "Result exists<br>";
+                        echo "Before the IF statement<br>";
                         if(mysqli_num_rows($resultP) > 0)
                         {
-                            echo "In the IF before WHILE loop";
+                            echo "In the IF before WHILE loop<br>";
                             while ($rowImage = mysqli_fetch_array($resultP))
                             {
-                                echo "In While Loop";
+                                echo "In While Loop<br>";
+                                echo "User is: ".$rowImage["userID"]."<br>";
                                 if ($rowImage["userID"] == $_GET['id'])
                                 {
                                     echo '<img style="height:150px; width:150px" src"images/"'.$rowImage['pictureName'].'">';
