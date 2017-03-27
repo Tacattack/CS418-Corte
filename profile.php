@@ -164,10 +164,6 @@ session_start();
                             {
                                 echo "Please select an image.";
                             }
-                            else if (getimagesize($_FILES['image']['tmp_name']) > 512000)
-                            {
-                                echo "Image is too big.";
-                            }
                             else
                             {
                                 $pictureUploader = $_SESSION["USER"];
