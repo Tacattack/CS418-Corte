@@ -122,8 +122,14 @@ session_start();
                     echo "<div class=\"col-md-4\">";
                     
                     $imageSetProfile = 0;
-                    $qryP = "SELECT id FROM UserPictures";
+                    $qryP = "SELECT * FROM UserPictures";
                     $resultP = mysql_query($qryP, $conn);
+                    
+                    if($qryP)
+                    {echo "The qry was called: ". $qryP;}
+                    
+                    if ($conn)
+                    {echo "The connection was made";}
                     
                     if ($resultP)
                     {
