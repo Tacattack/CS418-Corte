@@ -123,15 +123,15 @@ session_start();
                     
                     $imageSetProfile = 0;
                     $qryP = "SELECT * FROM UserPictures";
-                    $resultP = mysqli_query($qryP, $conn);
+                    $resultP = mysqli_query($conn, $qryP);
                     
                     if($qryP)
-                    {echo "The qry was called: ". $qryP;}
+                    {echo "The qry was called";}
                     
                     if ($conn)
                     {echo "<br>The connection was made<br>";}
                     
-                    if (!$result)
+                    if (!$resultP)
                     {
                         echo "I fucking suck, I qry'd, I fucking connected but I'm too stupid to find what's there<br>";
                         echo "I FAILED!! THE ERROR IS: ". mysqli_error($resultP);
