@@ -125,7 +125,7 @@ session_start();
                         echo "<input type=\"text\" name=\"userSearch\" placeholder=\"Search Users\" class=\"form-control\">";
                         echo "</div>";
                         echo "&nbsp&nbsp&nbsp";
-                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"submit\" value=\"Logout\">";
+                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"submit\" value=\"Search\">";
                         echo "</form>";
                     
                     
