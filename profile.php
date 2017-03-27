@@ -240,11 +240,39 @@ session_start();
                         {
                             if($UserIs == $row["questionPoster"])
                             {
-                                echo "<div>";
-                                echo "<div id=\"questionTitleLink\">";
-                                echo "<a href=\"QuestionView.php?id=". $row["id"]."\">";
-                                echo "<h5>".$row["questionTitle"]."</h5>"."</a>";
+                                echo "<div class=\"row\">";
+                                echo "<div class=\"col-xs-12 col-sm-12\">";
+                                    echo "<div class=\"row\">";
+                                        echo "<div class=\"col-xs-2 col-sm-2 col-md-2\">";
+                                            echo "<div class=\"votes\">";
+                                                echo "<div>";
+                                                    echo "<h5>" . $row["questionScore"] . "</h5>";
+                                                echo "</div>";
+                                                echo "<div>";
+                                                    echo "votes";
+                                                echo "</div>";
+                                            echo "</div>";
+                                        echo "</div>";
+                                        echo "<div class=\"col-xs-10 col-sm-10 col-md-10 QuestionSummary\">";
+                                            echo "<div class=\"row\">";
+                                                echo "<div class=\"col-xs-12 col-sm-12 col-md-12\">";
+                                                    echo "<a href=\"QuestionView.php?id=" . $row["id"]. "\"><h4>" . $row["questionTitle"] . "</h4>" . "</a>";
+                                                echo "</div>";
+                                            echo "</div>";
+                                            echo "<div class=\"row\">";
+                                                echo "<div class=\"col-xs-6 col-sm-6 col-md-6 tags\">";
+                                                    echo "<a href=\"#\">TAGS</a>";
+                                                    echo "</div>";
+                                                echo "<div class=\"col-xs-6 col-sm-6 col-md-6 poster\">";
+                                                    echo "<p>Posted by: ";
+                                                    echo $row["questionPoster"]."</a></p>";
+                                                echo "</div>";
+                                            echo "</div>";
+                                        echo "</div>";
+                                    echo "</div>";
                                 echo "</div>";
+                            echo "</div>";
+                            echo "<hr>";
                             }
                         }
                     }
