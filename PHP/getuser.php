@@ -13,7 +13,7 @@ $q = $_GET['q'];
             if (!$conn) {
                 die("Connection failed: " . mysqli_connect_error());
             }
-    $sql = "SELECT * FROM UserProfile WHERE username = '". $q ."'";
+    $sql = "SELECT username FROM UserProfile WHERE username = '". $q ."'";
     $result = mysqli_query($conn,$sql);
     
     while($row = mysqli_fetch_array($result)) {
