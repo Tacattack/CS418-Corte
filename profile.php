@@ -180,9 +180,9 @@ session_start();
                                 
                                 mysqli_query($db, $sqlPic);
                                 
-                                if (move_uploaded_file($_FILES['tmpName']['name'], target))
+                                if (move_uploaded_file($_FILES['image']['name'], $target))
                                 {
-                                    echo "Image upload complete";
+                                    echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
                                 }
                                 else 
                                 {
