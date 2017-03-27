@@ -150,6 +150,7 @@ session_start();
                         }
                         else
                         {
+                            echo "It failed";
                             echo "Failed to connect to MySQL: " . mysqli_connect_error();
                         }
                     }
