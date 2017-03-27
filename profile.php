@@ -168,7 +168,7 @@ session_start();
                             {
                                 $pictureUploader = $_SESSION["USER"];
                                 
-                                $target = "images/users/".basename($_FILES['image']['name']);
+                                $target = "../images/users/".basename($_FILES['image']['name']);
                                 
                                 $db = mysqli_connect("localhost", "root", "", "QuestionAnswer");
                                 
@@ -176,6 +176,8 @@ session_start();
                                 
                                 $sqlPic = "INSERT INTO UserPictures(user, pictureName)
                                     VALUES ({'$pictureUploader'}, {'$image'})";
+                                
+                                echo $sqlPic;
                                 
                                 mysqli_query($db, $sqlPic);
                                 
