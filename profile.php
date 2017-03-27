@@ -140,13 +140,13 @@ session_start();
                         {
                             if ($row["user"] == $userProfile)
                             {
-                                echo "<img style=\"height:50px width:50px\" src=\"../images/users/".$row['pictureName']."\">";
+                                echo "<img style=\"height:50px width:50px\" src=\"images/users/".$row['pictureName']."\">";
                             }
                         }
                     }
                     else
                     {
-                        echo "<img style=\"height:50px width:50px\" src=\"../images/person.png\">";
+                        echo "<img style=\"height:50px width:50px\" src=\"images/person.png\">";
                     }
                     
                     
@@ -168,7 +168,7 @@ session_start();
                             {
                                 $pictureUploader = $_SESSION["USER"];
                                 
-                                $target = "../images/users/".basename($_FILES['image']['name']);
+                                $target = "images/users/".basename($_FILES['image']['name']);
                                 
                                 $db = mysqli_connect("localhost", "root", "", "QuestionAnswer");
                                 
@@ -177,7 +177,6 @@ session_start();
                                 $sqlPic = "INSERT INTO UserPictures(user, pictureName)
                                     VALUES ({'$pictureUploader'}, {'$image'})";
                                 
-                                echo $sqlPic;
                                 
                                 mysqli_query($db, $sqlPic);
                                 
