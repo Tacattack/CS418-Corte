@@ -129,10 +129,13 @@ session_start();
                     {echo "The qry was called: ". $qryP;}
                     
                     if ($conn)
-                    {echo "The connection was made";}
+                    {echo "<br>The connection was made<br>";}
                     
                     if (!$result)
-                    {echo "I fucking suck, I qry'd, I fucking connected but I'm too stupid to find what's there";}
+                    {
+                        echo "I fucking suck, I qry'd, I fucking connected but I'm too stupid to find what's there<br>";
+                        echo "I FAILED!! THE ERROR IS: ". mysqli_error($resultP);
+                    }
                     
                     if ($resultP)
                     {
