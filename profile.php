@@ -155,21 +155,15 @@ session_start();
                             else
                             {
                                 $pictureUploader = $_SESSION["USER"];
-                                echo "Made it past pictureUploader: " .$pictureUploader."<br>";
                                 $image = mysqli_real_escape_string($_FILES['image']['tmp_name']);
-                                echo "Made it past first image variable <br>";
                                 $name = mysqli_real_escape_string($_FILES['image']['name']);
-                                echo "Made it past name variable: ".$name."<br>";
                                 $image = file_get_contents($image);
-                                echo "Made it past image2<br>";
                                 $image = \base64_encode($image);
-                                echo "Made it past image3<br>";
                                 
                                 $qry = "insert into UserPictures (user, pictureName, picture)
-                                    VALUES ('{$pictureUploader}','{$name}','{$imageE}')";
+                                    VALUES ('{$pictureUploader}','{$name}','{$image}')";
                                 
                                 echo $qry;
-                                echo "Made it past qry call<br>";
                                 $result = mysqli_query($qry, $conn);
                                 
                                 if($result)
