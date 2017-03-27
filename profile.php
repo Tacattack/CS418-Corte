@@ -155,8 +155,8 @@ session_start();
                             else
                             {
                                 $pictureUploader = $_SESSION["USER"];
-                                $image = addslashes($_FILES['image']['tmp_name']);
-                                $name = addslashes($_FILES['image']['name']);
+                                $image = mysqli_real_escape_string($_FILES['image']['tmp_name']);
+                                $name = mysqli_real_escape_string($_FILES['image']['name']);
                                 $imageA = file_get_contents($image);
                                 $imageE = \base64_encode($imageE);
                                 saveimage($name, $image, $pictureUploader);
