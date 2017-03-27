@@ -46,11 +46,9 @@ session_start();
                    if (isset($_SESSION["USER"]))
                     {
                         echo "<form class=\"FormLogin navbar-form navbar-right\" action=\"PHP/Logout.php\" method=\"post\">";
+                        $imageSet = 0;
                         $qryP = "SELECT * FROM UserPictures";
                         $resultP = mysqli_query($qryP, $conn);
-                        
-                        $imageSet = 0;
-
                         while ($row = mysqli_fetch_array($resultP))
                         {
                             if ($row["user"] == $_SESSION["USER"])
@@ -123,24 +121,13 @@ session_start();
                     }
                     echo "<div class=\"col-md-4\">";
                     $db = mysqli_connect("localhost", "root", "", "QuestionAnswer");
-                    $userProfile = "";
-                    $$imageSetProfile = 0;
-                    $qryUser = "SELECT * FROM UserProfile";
-                    $resultUser = mysqli_query($qryP, $db);
-                    while ($rowUser = mysqli_fetch_array($resultUser))
-                        {
-                            if ($_GET['id'] == $rowUser['id'])
-                            {
-                                $userProfile = $rowUser['username'];
-                            }
-                        }
-                    
+                    $$imageSetProfile = 0;                 
                     $qryP = "SELECT * FROM UserPictures";
                     $resultP = mysqli_query($qryP, $db);
                     while ($row = mysqli_fetch_array($resultP))
                     {
                         echo "In While Loop";
-                        if ($row["user"] == $userProfile)
+                        if ($row["user"] == $_GET['id'])
                         {
                             echo "<img style=\"height:100px; width:100px\" src=\"images/".$row['pictureName']."\">";
                             $imageSetProfile = 1;
@@ -149,7 +136,7 @@ session_start();
                     
                     if ($imageSetProfile == 0)
                         {
-                            echo "<img style=\"height:100px; width:100px\" src=\"images/person.png\">";
+                            echo "<img style=\"height:150px; width:150px\" src=\"images/person.png\">";
                         }
                     
                     
