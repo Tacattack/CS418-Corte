@@ -139,9 +139,9 @@ session_start();
                     $resultP = mysqli_query($qryP, $db);
                     while ($row = mysqli_fetch_array($resultP))
                     {
-                        if ($row["user"] == $userProfile)
+                        if ($row["user"] == "tcorte")
                         {
-                            echo "<img style=\"height:50px; width:50px\" src=\"images/".$row['pictureName']."\">";
+                            echo "<img style=\"height:100px; width:100px\" src=\"images/".$row['pictureName']."\">";
                             $imageSetProfile = 1;
                         }
                     }
