@@ -121,33 +121,37 @@ session_start();
                     }
                     echo "<div class=\"col-md-4\">";
                     
-                    //$imageSetProfile = 0;
+                    $imageSetProfile = 0;
                     $qryP = "SELECT id FROM UserPictures";
-                    $resultP = mysqli_query($qryP, $conn);
-                    echo "Before the IF statement";
-                    if(mysqli_num_rows($resultP) > 0)
+                    $resultP = mysql_query($qryP, $conn);
+                    
+                    if ($resultP)
                     {
-                        echo "In the IF before WHILE loop";
-                        while ($rowImage = mysqli_fetch_assoc($resultP))
+                        echo "Result exists";
+                        echo "Before the IF statement";
+                        if(mysqli_num_rows($resultP) > 0)
                         {
-                            echo "In While Loop";
-                            if ($rowImage["userID"] == $_GET['id'])
+                            echo "In the IF before WHILE loop";
+                            while ($rowImage = mysqli_fetch_assoc($resultP))
                             {
-                                echo '<img style="height:150px; width:150px" src"images/"'.$rowImage['pictureName'].'">';
-                                //$imageSetProfile = 1;
-                            }
-                        }   
-                    }
-                    else
-                    {
-                        echo "I'm fucking stupid and don't think the table exists";
+                                echo "In While Loop";
+                                if ($rowImage["userID"] == $_GET['id'])
+                                {
+                                    echo '<img style="height:150px; width:150px" src"images/"'.$rowImage['pictureName'].'">';
+                                    //$imageSetProfile = 1;
+                                }
+                            }   
+                        }
+                        else
+                        {
+                            echo "I'm fucking stupid and don't think the table exists";
+                        }
                     }
                     
-                    /*if ($imageSetProfile == 0)
+                    if ($imageSetProfile == 0)
                         {
                             echo "<img style=\"height:150px; width:150px\" src=\"images/person.png\">";
                         }
-                    */
                     
                     if ($_SESSION["USERID"] == $_GET['id'])
                     {
@@ -167,6 +171,7 @@ session_start();
                             else
                             {
                                 $pictureUploader = $_SESSION["USER"];
+                                
                                 
                                 $target = "images/".basename($_FILES['fileToUpload']['name']);
                                 
