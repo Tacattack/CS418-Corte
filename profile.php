@@ -121,7 +121,7 @@ session_start();
                     }
                     echo "<div class=\"col-md-4\">";
                     
-                    $imageSetProfile = 0;
+                    //$imageSetProfile = 0;
                     $qryP = "SELECT id FROM UserPictures";
                     $resultP = mysqli_query($qryP, $conn);
                     echo "Before the IF statement";
@@ -143,11 +143,11 @@ session_start();
                         echo "I'm fucking stupid and don't think the table exists";
                     }
                     
-                    if ($imageSetProfile == 0)
+                    /*if ($imageSetProfile == 0)
                         {
                             echo "<img style=\"height:150px; width:150px\" src=\"images/person.png\">";
                         }
-                    
+                    */
                     
                     if ($_SESSION["USERID"] == $_GET['id'])
                     {
