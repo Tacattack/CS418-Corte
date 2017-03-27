@@ -123,7 +123,7 @@ session_start();
                     
                     $imageSetProfile = 0;
                     $qryP = "SELECT * FROM UserPictures";
-                    $resultP = mysql_query($qryP, $conn);
+                    $resultP = mysqli_query($qryP, $conn);
                     
                     if($qryP)
                     {echo "The qry was called: ". $qryP;}
