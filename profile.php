@@ -146,7 +146,10 @@ session_start();
                             while ($rowImage = mysqli_fetch_array($resultP))
                             {
                                 echo "In While Loop<br>";
-                                echo "User is: ".$rowImage["userID"]."<br>";
+                                echo "UserID is: ".$rowImage["userID"]."<br>";
+                                echo "User is: ".$rowImage["user"]."<br>";
+                                echo "Picture is: ".$rowImage["pictureName"]."<br>";
+                                echo "profile ID: ".$_GET['id']."<br>";
                                 if ($rowImage["userID"] == $_GET['id'])
                                 {
                                     echo '<img style="height:150px; width:150px" src"images/"'.$rowImage['pictureName'].'">';
