@@ -48,6 +48,9 @@ session_start();
                         echo "<form class=\"FormLogin navbar-form navbar-right\" action=\"PHP/Logout.php\" method=\"post\">";
                         $qryP = "SELECT * FROM UserPictures";
                         $resultP = mysqli_query($qryP, $conn);
+                        
+                        $imageSet = 0;
+                        
                         if (mysqli_num_rows($resultP) > 0)
                         {
                             while ($row = mysqli_fetch_array($resultP))
@@ -55,10 +58,12 @@ session_start();
                                 if ($row["user"] == $_SESSION["USER"])
                                 {
                                     echo "<img style=\"height:35px width:35px\" src=\"images/".$row['pictureName']."\">";
+                                    $imageSet = 1;
                                 }
                             }
                         }
-                        else
+                        
+                        if ($imageSet == 0)
                         {
                             echo "<img style=\"height:35px width:35px\" src=\"images/person.png\">";
                         }
@@ -122,6 +127,7 @@ session_start();
                     echo "<div class=\"col-md-4\">";
                     $db = mysqli_connect("localhost", "root", "", "QuestionAnswer");
                     $userProfile = "";
+                    $$imageSetProfile = 0;
                     $qryUser = "SELECT id FROM UserProfile";
                     $resultUser = mysqli_query($qryP, $db);
                     while ($rowUser = mysqli_fetch_array($resultUser))
@@ -141,13 +147,15 @@ session_start();
                             if ($row["user"] == $userProfile)
                             {
                                 echo "<img style=\"height:50px width:50px\" src=\"images/".$row['pictureName']."\">";
+                                $imageSetProfile = 1;
                             }
                         }
                     }
-                    else
-                    {
-                        echo "<img style=\"height:50px width:50px\" src=\"images/person.png\">";
-                    }
+                    
+                    if ($imageSetProfile == 0)
+                        {
+                            echo "<img style=\"height:35px width:35px\" src=\"images/person.png\">";
+                        }
                     
                     
                     if ($_SESSION["USERID"] == $_GET['id'])
