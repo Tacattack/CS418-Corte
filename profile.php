@@ -120,14 +120,13 @@ session_start();
                         }
                     }
                     echo "<div class=\"col-md-4\">";
-                    $db = mysqli_connect("localhost", "root", "", "QuestionAnswer");
                     $$imageSetProfile = 0;                 
                     $qryP = "SELECT * FROM UserPictures";
-                    $resultP = mysqli_query($qryP, $db);
+                    $resultP = mysqli_query($qryP, $conn);
                     while ($row = mysqli_fetch_array($resultP))
                     {
                         echo "In While Loop";
-                        if ($row["user"] == $_GET['id'])
+                        if ($row["userID"] == $_GET['id'])
                         {
                             echo "<img style=\"height:100px; width:100px\" src=\"images/".$row['pictureName']."\">";
                             $imageSetProfile = 1;
