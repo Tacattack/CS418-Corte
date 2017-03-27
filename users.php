@@ -242,7 +242,7 @@ session_start();
          }
         };
         xhttp.open("GET","PHP/getuser.php?q=" + str,true);
-        xmlhttp.send();
+        xhttp.send();
     }
     </script>
   </body>
