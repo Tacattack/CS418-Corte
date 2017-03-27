@@ -154,13 +154,14 @@ session_start();
                     {
                         echo "<form action=\"\" method=\"post\" enctype=\"multipart/form-data\">";
                         echo "Select a profile image:";
-                        echo "<input type=\"file\" name=\"image\" id=\"fileToUpload\">";
+                        echo "<input type=\"file\" name=\"fileToUpload\" id=\"fileToUpload\">";
                         echo "<input type=\"submit\" value=\"Upload Image\" name=\"submit\">";
                         echo  "</form>";
                         
                         if(isset($_POST['submit']))
                         {   
-                            if (getimagesize($_FILES['image']['tmp_name']) == false)
+                            $check = getimagesize($_FILES['fileToUpload']['tmp_name']);
+                            if ($check == false)
                             {
                                 echo "Please select an image.";
                             }
@@ -168,11 +169,14 @@ session_start();
                             {
                                 $pictureUploader = $_SESSION["USER"];
                                 
-                                $target = "images/users/".basename($_FILES['image']['name']);
+                                $target = "images/".basename($_FILES['fileToUpload']['name']);
                                 
                                 $db = mysqli_connect("localhost", "root", "", "QuestionAnswer");
                                 
-                                $image = $_FILES['image']['name'];
+                                $image = $_FILES['fileToUpload']['name'];
+                                
+                                echo $pictureUploader;
+                                echo $image;
                                 
                                 $sqlPic = "INSERT INTO UserPictures(user, pictureName)
                                     VALUES ({'$pictureUploader'}, {'$image'})";
@@ -180,7 +184,7 @@ session_start();
                                 
                                 mysqli_query($db, $sqlPic);
                                 
-                                if (move_uploaded_file($_FILES['image']['name'], $target))
+                                if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target))
                                 {
                                     echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
                                 }
