@@ -152,7 +152,6 @@ session_start();
                                 echo "profile ID: ".$_GET['id']."<br>";
                                 if ($rowImage["userID"] == $_GET['id'])
                                 {
-                                    echo '<img style="height:150px; width:150px" src"images/"'.$rowImage['pictureName'].'">';
                                     $imageSetProfile = 1;
                                 }
                             }   
@@ -162,10 +161,14 @@ session_start();
                             echo "Table doesn't exist";
                         }
                     }
-                    
+                    echo "ImageNumber: ".$imageSetProfile;
                     if ($imageSetProfile == 0)
                         {
                             echo "<img style=\"height:150px; width:150px\" src=\"images/person.png\">";
+                        }
+                        else
+                        {
+                            echo '<img style="height:150px; width:150px" src"images/"'.$rowImage['pictureName'].'">';
                         }
                     
                     if ($_SESSION["USERID"] == $_GET['id'])
