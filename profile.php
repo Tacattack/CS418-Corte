@@ -120,12 +120,12 @@ session_start();
                         }
                     }
                     echo "<div class=\"col-md-4\">";
-                    $$imageSetProfile = 0;                 
+                    $imageSetProfile = 0;
                     $qryP = "SELECT * FROM UserPictures";
                     $resultP = mysqli_query($qryP, $conn);
-                    echo "Before while loop";
-                    if(mysqli_num_rows($resultU) > 0)
+                    if(mysqli_num_rows($resultP) > 0)
                     {
+                        echo "Before while loop";
                         while ($rowImage = mysqli_fetch_assoc($resultP))
                         {
                             echo "In While Loop";
