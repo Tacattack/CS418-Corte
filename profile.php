@@ -125,7 +125,7 @@ session_start();
                     $db = mysqli_connect("localhost", "root", "", "QuestionAnswer");
                     $userProfile = "";
                     $$imageSetProfile = 0;
-                    $qryUser = "SELECT id FROM UserProfile";
+                    $qryUser = "SELECT * FROM UserProfile";
                     $resultUser = mysqli_query($qryP, $db);
                     while ($rowUser = mysqli_fetch_array($resultUser))
                         {
@@ -139,7 +139,8 @@ session_start();
                     $resultP = mysqli_query($qryP, $db);
                     while ($row = mysqli_fetch_array($resultP))
                     {
-                        if ($row["user"] == "tcorte")
+                        echo "In While Loop";
+                        if ($row["user"] == $userProfile)
                         {
                             echo "<img style=\"height:100px; width:100px\" src=\"images/".$row['pictureName']."\">";
                             $imageSetProfile = 1;
@@ -148,7 +149,7 @@ session_start();
                     
                     if ($imageSetProfile == 0)
                         {
-                            echo "<img style=\"height:50px; width:50px\" src=\"images/person.png\">";
+                            echo "<img style=\"height:100px; width:100px\" src=\"images/person.png\">";
                         }
                     
                     
@@ -185,7 +186,7 @@ session_start();
                                 if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target))
                                 {
                                     echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-                                    //header("Location: profile.php?id=".$_SESSION["USERID"]);
+                                    header("Location: profile.php?id=".$_SESSION["USERID"]);
                                 }
                                 else 
                                 {
