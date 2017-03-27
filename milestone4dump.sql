@@ -279,5 +279,6 @@ CREATE TABLE `UserPictures` (
 
 LOCK TABLES `UserPictures` WRITE;
 /*!40000 ALTER TABLE `UserPictures` DISABLE KEYS */;
+INSERT INTO UserPictures VALUES(1,'nbenfiel','lordgaben.png','',);
 /*!40000 ALTER TABLE `UserPictures` ENABLE KEYS */;
 UNLOCK TABLES;
