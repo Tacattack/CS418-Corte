@@ -120,15 +120,27 @@ session_start();
                         }
                     }
                     echo "<div class=\"col-md-4\">";
+                    $db = mysqli_connect("localhost", "root", "", "QuestionAnswer");
+                    $userProfile = "";
+                    $qryUser = "SELECT id FROM UserProfile";
+                    $resultUser = mysqli_query($qryP, $db);
+                    while ($rowUser = mysqli_fetch_array($resultUser))
+                        {
+                            if ($_GET['id'] == $rowUser['id'])
+                            {
+                                $userProfile = $rowUser['username'];
+                            }
+                        }
+                    
                     $qryP = "SELECT * FROM UserPictures";
-                    $resultP = mysqli_query($qryP, $conn);
+                    $resultP = mysqli_query($qryP, $db);
                     if (mysqli_num_rows($resultP) > 0)
                     {
                         while ($row = mysqli_fetch_array($resultP))
                         {
-                            if ($row["user"] == $_GET['id'])
+                            if ($row["user"] == $userProfile)
                             {
-                                echo '<img style="height:50px width:50px" src="data:image/jpeg;base64,'.\base64_encode($row['picture']).'"/>';
+                                echo "<img style=\"height:50px width:50px\" src=\"../images/users/".$row['pictureName']."\">";
                             }
                         }
                     }
@@ -152,28 +164,33 @@ session_start();
                             {
                                 echo "Please select an image.";
                             }
+                            else if (getimagesize($_FILES['image']['tmp_name']) > 65535)
+                            {
+                                echo "Image is too big.";
+                            }
                             else
                             {
                                 $pictureUploader = $_SESSION["USER"];
-                                $image = mysqli_real_escape_string($_FILES['image']['tmp_name']);
-                                $name = mysqli_real_escape_string($_FILES['image']['name']);
-                                $image = file_get_contents($image);
-                                $image = \base64_encode($image);
                                 
-                                $qry = "insert into UserPictures (user, pictureName, picture)
-                                    VALUES ('{$pictureUploader}','{$name}','{$image}')";
+                                $target = "images/users/".basename($_FILES['image']['name']);
                                 
-                                echo $qry;
-                                $result = mysqli_query($qry, $conn);
+                                $db = mysqli_connect("localhost", "root", "", "QuestionAnswer");
                                 
-                                if($result)
+                                $image = $_FILES['image']['name'];
+                                
+                                $sqlPic = "INSERT INTO UserPictures(user, pictureName)
+                                    VALUES ({'$pictureUploader'}, {'$image'})";
+                                
+                                mysqli_query($db, $sqlPic);
+                                
+                                if (move_uploaded_file($_FILES['tmpName']['name'], target))
                                 {
-                                    echo "<br />Image Uploaded";
+                                    echo "Image upload complete";
                                 }
-                                else
+                                else 
                                 {
-                                    echo "<br />Image Not Uploaded";
-                                }                                
+                                    echo "Image upload failed";
+                                }
                             }
                         }
                     }

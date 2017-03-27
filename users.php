@@ -119,6 +119,16 @@ session_start();
             {
                 if($_SESSION["USERLEVEL"] == 1)
                     {
+                        echo "<form class=\"FormLogin navbar-form\" action=\"\" method=\"post\">";
+                        echo "<b style=\"color:white;\">Search Users:</b>";
+                        echo "<div class=\"form-group\">";
+                        echo "<input type=\"text\" name=\"userSearch\" placeholder=\"Search Users\" class=\"form-control\">";
+                        echo "</div>";
+                        echo "&nbsp&nbsp&nbsp";
+                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"submit\" value=\"Logout\">";
+                        echo "</form>";
+                    
+                    
                         echo "<table class=\"table table-bordered table-striped\">";  
                         echo "<thead>";
                         echo "<tr>";
