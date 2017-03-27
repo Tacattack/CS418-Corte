@@ -225,8 +225,8 @@ session_start();
         
         if (str.length == 0)
         {
-            document.getElementById("userSearch").innerhtml = str;
-            document.getElementById("userSearch").style.border="0px";
+            document.getElementById("form-group").innerhtml = str;
+            document.getElementById("form-group").style.border="0px";
             return;
         }
         else
@@ -236,8 +236,8 @@ session_start();
          {
              if(this.readyState == 4 && this.status == 200)
              {
-             document.getElementById("userSearch").innerHTML = this.responseText;
-             document.getElementById("userSearch").style.border="1px solid #A5ACB2";
+             document.getElementById("form-group").innerHTML = this.responseText;
+             document.getElementById("form-group").style.border="1px solid #A5ACB2";
              }
          }
         };
