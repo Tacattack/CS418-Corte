@@ -129,7 +129,7 @@ session_start();
                     {echo "The qry was called: ". $qryP;}
                     
                     if ($conn)
-                    {echo "The connection was made";}
+                    {echo "The connection was made".$conn;}
                     
                     if ($resultP)
                     {
