@@ -156,7 +156,7 @@ session_start();
                             {
                                 $pictureUploader = $_SESSION["USER"];
                                 //echo "Made it past pictureUploader";
-                                $image = mysqli_real_escape_string($_FILES['image']['tmp_name']);
+                                $image = file_get_contents($_FILES['image']['tmp_name']);
                                 //echo "Made it past first image variable";
                                 $name = mysqli_real_escape_string($_FILES['image']['name']);
                                 //echo "Made it past name variable";
@@ -169,7 +169,6 @@ session_start();
                                     VALUES ('{$pictureUploader}','{$name}','{$imageE}')";
                                 
                                 echo $qry;
-                                echo $conn;
                                 //echo "Made it past qry call";
                                 $result = mysqli_query($qry, $conn);
                                 //echo "result found";
