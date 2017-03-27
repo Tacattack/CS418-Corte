@@ -138,6 +138,10 @@ session_start();
                             }
                         }   
                     }
+                    else
+                    {
+                        echo "I'm fucking stupid and don't think the table exists";
+                    }
                     
                     if ($imageSetProfile == 0)
                         {
