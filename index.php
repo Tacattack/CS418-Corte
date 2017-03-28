@@ -48,7 +48,7 @@ session_start();
                         echo "<form class=\"FormLogin navbar-form navbar-right\" action=\"PHP/Logout.php\" method=\"post\">";
                         $imageSet = 0;
                         $qryPT = "SELECT * FROM UserPictures";
-                        $resultPT = mysqli_query($qryPT, $conn);
+                        $resultPT = mysqli_query($conn, $qryPT);
                         if ($resultPT)
                         {
                             if(mysqli_num_rows($resultPT) > 0)
