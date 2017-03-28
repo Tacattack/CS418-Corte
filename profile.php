@@ -210,7 +210,7 @@ session_start();
                                                 $fileToDelete = "images/".$filename;
                                                 unlink($fileToDelete);
                                                 $qryDelete = "DELETE FROM UserPictures WHERE id=".$_SESSION["USERID"];
-                                                mysqli_query($db, $qryDelete);
+                                                mysqli_query($conn, $qryDelete);
                                                 $Deleted = 1;
                                             }
                                             else
@@ -233,7 +233,7 @@ session_start();
                                 if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target))
                                 {
                                     echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-                                    header("Location: profile.php?id=".$_SESSION["USERID"]);
+                                    //header("Location: profile.php?id=".$_SESSION["USERID"]);
                                 }
                                 else 
                                 {
