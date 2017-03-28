@@ -185,16 +185,16 @@ session_start();
                         if(isset($_POST['submit']))
                         {   
                             $check = getimagesize($_FILES['fileToUpload']['tmp_name']);
+                            $pictureUploader = $_SESSION["USER"];
+                            $pictureUserID = $_SESSION["USERID"];
+                            $Deleted = 0;
+                                
                             if ($check == false)
                             {
                                 echo "Please select an image.";
                             }
                             else
                             {
-                                $pictureUploader = $_SESSION["USER"];
-                                $pictureUserID = $_SESSION["USERID"];
-                                $Deleted = 0;
-                                
                                 $qryPCheck = "SELECT * FROM UserPictures";
                                 $resultPCheck = mysqli_query($conn, $qryPCheck);
                                 
@@ -232,16 +232,20 @@ session_start();
                                 {
                                     while ($rowCheck = mysqli_fetch_array($resultCheck))
                                     {
-                                        echo "---------------------------------------";
+                                        echo "---------------------------------------<br>";
                                         echo "UserID is: ".$rowCheck["userID"]."<br>";
                                         echo "User is: ".$rowCheck["user"]."<br>";
                                         echo "Picture is: ".$rowCheck["pictureName"]."<br>";
-                                        echo "---------------------------------------";
+                                        echo "---------------------------------------<br>";
                                     }   
                                 }
                             }
                             
-                            if ($deleted == 1)
+                            echo "---------------------------------------<br>";
+                            echo "Deleted is: ".$Deleted."<br>";
+                            echo "---------------------------------------<br>";
+                            
+                            if ($Deleted == 1)
                             {
                                 $target = "images/".basename($_FILES['fileToUpload']['name']);
                                 $db = mysqli_connect("localhost", "root", "", "QuestionAnswer");
