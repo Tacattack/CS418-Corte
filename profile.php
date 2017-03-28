@@ -220,18 +220,19 @@ session_start();
                                                 echo "Deleted has been set to: ".$Deleted."<br>";
                                                 echo "---------------------------------------<br>";
                                             }
-                                            else
-                                            {
-                                                echo "---------------------------------------<br>";
-                                                echo "User wasn't in the table<br>";
-                                                echo "Deleted before: ".$Deleted."<br>";
-                                                $Deleted = 1;
-                                                echo "Deleted has been set to: ".$Deleted."<br>";
-                                                echo "---------------------------------------<br>";
-                                            }
                                         }
                                     }
                                 }
+                            }
+                            
+                            if ($Deleted == 0)
+                            {
+                                echo "---------------------------------------<br>";
+                                echo "User wasn't in the table<br>";
+                                echo "Deleted before: ".$Deleted."<br>";
+                                $Deleted = 1;
+                                echo "Deleted has been set to: ".$Deleted."<br>";
+                                echo "---------------------------------------<br>";
                             }
                             
                             //Check that the information was deleted from the table
@@ -268,6 +269,7 @@ session_start();
                                 if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target))
                                 {
                                     echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+                                    $Deleted = 0;
                                     //header("Location: profile.php?id=".$_SESSION["USERID"]);
                                 }
                                 else 
