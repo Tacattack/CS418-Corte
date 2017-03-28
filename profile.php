@@ -206,16 +206,28 @@ session_start();
                                         {
                                             if ($rowImage["userID"] == $_SESSION["USERID"])
                                             {
+                                                echo "---------------------------------------<br>";
                                                 $filename = $rowImage["pictureName"];
                                                 $fileToDelete = "images/".$filename;
+                                                echo "File to delete is: ".$fileToDelete."<br>";
                                                 unlink($fileToDelete);
+                                                echo "File has been deleted.<br>";
                                                 $qryDelete = "DELETE FROM UserPictures WHERE id=".$_SESSION["USERID"];
+                                                echo "Table row has been removed.<br>";
                                                 mysqli_query($conn, $qryDelete);
+                                                echo "Deleted before: ".$Deleted."<br>";
                                                 $Deleted = 1;
+                                                echo "Deleted has been set to: ".$Deleted."<br>";
+                                                echo "---------------------------------------<br>";
                                             }
                                             else
                                             {
+                                                echo "---------------------------------------<br>";
+                                                echo "User wasn't in the table<br>";
+                                                echo "Deleted before: ".$Deleted."<br>";
                                                 $Deleted = 1;
+                                                echo "Deleted has been set to: ".$Deleted."<br>";
+                                                echo "---------------------------------------<br>";
                                             }
                                         }
                                     }
