@@ -139,7 +139,7 @@ session_start();
                             VALUES('{$RegisterName}', '{$RegisterPssWd}', '{$RegisterEmail}', '0')";
                             
                             if (mysqli_query($conn, $sql)) {
-                                echo "You have Successfully Registered With Unstacking Exchange. You May Not Log In To Get Started";
+                                echo "You Have Successfully Registered With Unstacking Exchange. You May Now Log In To Get Started";
                             } else {
                                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                             }
