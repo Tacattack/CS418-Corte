@@ -192,7 +192,7 @@ session_start();
                             else
                             {
                                 $pictureUploader = $_SESSION["USER"];
-                                
+                                $pictureUserID = $_SESSION["USERID"];
                                 
                                 $target = "images/".basename($_FILES['fileToUpload']['name']);
                                 
@@ -200,8 +200,8 @@ session_start();
                                 
                                 $image = $_FILES['fileToUpload']['name'];
                                 
-                                $sqlPic = "INSERT INTO UserPictures(user, pictureName)
-                                    VALUES ({'$pictureUploader'}, {'$image'})";
+                                $sqlPic = "INSERT INTO UserPictures(user, userID, pictureName)
+                                    VALUES ({'$pictureUploader'}, {'$pictureUserID'}, {'$image'})";
                                 
                                 mysqli_query($db, $sqlPic);
                                 
