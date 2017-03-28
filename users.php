@@ -63,7 +63,7 @@ session_start();
                                 {
                                     if ($rowImage["userID"] == $_GET['id'])
                                     {
-                                        echo '<img style="height:150px; width:150px" alt="Profile Image" src="images/'.$rowImage["pictureName"].'">';
+                                        echo '<img style="height:35px; width:35px" alt="Profile Image" src="images/'.$rowImage["pictureName"].'">';
                                         $imageSet = 1;
                                     }
                                 }   
