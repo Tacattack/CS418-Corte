@@ -46,21 +46,27 @@ session_start();
                    if (isset($_SESSION["USER"]))
                     {
                         echo "<form class=\"FormLogin navbar-form navbar-right\" action=\"PHP/Logout.php\" method=\"post\">";
+                        $imageSet = 0;
                         $qryP = "SELECT * FROM UserPictures";
                         $resultP = mysqli_query($qryP, $conn);
-                        if (mysqli_num_rows($resultP) > 0)
+                        if ($resultP)
                         {
-                            while ($row = mysqli_fetch_array($resultP))
+                            if(mysqli_num_rows($resultP) > 0)
                             {
-                                if ($row["user"] == $_GET['id'])
+                                while ($rowImage = mysqli_fetch_array($resultP))
                                 {
-                                    echo '<img style="height:35px; width:35px;" src="data:image/jpeg;base64,'.\base64_encode($row['picture']).'"/>';
-                                }
+                                    if ($rowImage["userID"] == $_GET['id'])
+                                    {
+                                        echo '<img style="height:150px; width:150px" alt="Profile Image" src="images/'.$rowImage["pictureName"].'">';
+                                        $imageSetProfile = 1;
+                                    }
+                                }   
                             }
                         }
-                        else
+                        
+                        if ($imageSet == 0)
                         {
-                            echo "<img style=\"height:35px; width:35px;\" src=\"../images/person.png\">";
+                            echo "<img style=\"height:35px; width:35px\" src=\"images/person.png\">";
                         }
                         echo "&nbsp&nbsp&nbsp";
                         echo "<b style=\"color:white;\">Welcome: <a href=\"profile.php?id=".$_SESSION["USERID"]."\">".$_SESSION["USER"]."</a></b>";
