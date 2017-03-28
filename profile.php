@@ -206,9 +206,12 @@ session_start();
                                         {
                                             if ($rowImage["userID"] == $_SESSION["USERID"])
                                             {
+                                                $filename = $rowImage["pictureName"];
+                                                $fileToDelete = "images/".$filename;
+                                                unlink($fileToDelete);
                                                 $qryDelete = "DELETE FROM UserPictures WHERE id=".$_SESSION["USERID"];
                                                 mysqli_query($db, $qryDelete);
-                                                $Deleted = 1;  
+                                                $Deleted = 1;
                                             }
                                             else
                                             {
