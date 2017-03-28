@@ -280,7 +280,7 @@ CREATE TABLE `UserPictures` (
 LOCK TABLES `UserPictures` WRITE;
 /*!40000 ALTER TABLE `UserPictures` DISABLE KEYS */;
 INSERT INTO `UserPictures` VALUES(1,1,'nbenfiel','lordgaben.png');
-INSERT INTO `UserPictures` VALUES(2,2,'tcorte','tacAttack.png');
+INSERT INTO `UserPictures` VALUES(2,2,'tcorte','TracerBootyGood.jpg');
 INSERT INTO `UserPictures` VALUES(3,3,'admin','admin.png');
 INSERT INTO `UserPictures` VALUES(4,4,'jbrunelle','jBrunelle.png');
 INSERT INTO `UserPictures` VALUES(5,5,'pvenkman','venkman.png');
