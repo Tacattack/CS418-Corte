@@ -126,6 +126,12 @@ session_start();
                     echo "<td>Description:";
                     echo "<br /><textarea rows=\"15\" style=\"width:1000px\" name=\"QBody\"></textarea></td>";
                     echo "</tr>";
+                    echo "<tr>";
+                    echo "<td>Question Tags:<br>";
+                    echo '<input type="text" name="tagOne" style="width:200px"/>';
+                    echo '<input type="text" name="tagTwo" style="width:200px"/>';
+                    echo '<input type="text" name="tagThree" style="width:200px"/>';
+                    echo "</tr>";
                     echo "</table>";
                     echo "<input type=\"submit\" name=\"submit\" value=\"Submit Question\" style=\"margin: 20px 50px; float: right\"/>";
                     echo "</form>";
@@ -134,9 +140,12 @@ session_start();
                         $QuestionTitle = addslashes($_POST['QTitle']);
                         $QuestionBody = addslashes($_POST['QBody']);
                         $QuestionPoster = $_SESSION["USER"];
+                        $QuestionTagOne = addslashes($_POST['tagOne']);
+                        $QuestionTagTwo = addslashes($_POST['tagTwo']);
+                        $QuestionTagThree = addslashes($_POST['tagThree']);
 
                         $sql = "INSERT INTO Questions (questionTitle, questionBody, questionPoster)
-                            VALUES('{$QuestionTitle}', '{$QuestionBody}', '{$QuestionPoster}')";
+                            VALUES('{$QuestionTitle}', '{$QuestionBody}', '{$QuestionPoster}', '{$QuestionTagOne}', '{$QuestionTagTwo}', '{$QuestionTagThree}')";
 
                         if (mysqli_query($conn, $sql)) {
                             echo "New record created successfully";

@@ -80,6 +80,9 @@ CREATE TABLE `Questions` (
   `questionBody` varchar(8000) NOT NULL,
   `questionPoster` varchar(250) NOT NULL,
   `questionFrozen` int(10) NOT NULL,
+  `tagOne` varchar (25),
+  `tagTwo` varchar (25),
+  `tagThree` varchar (25),
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
