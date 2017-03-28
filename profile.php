@@ -142,16 +142,17 @@ session_start();
                         echo "Before the IF statement<br>";*/
                         if(mysqli_num_rows($resultP) > 0)
                         {
-                            echo "In the IF before WHILE loop<br>";
+                            //echo "In the IF before WHILE loop<br>";
                             while ($rowImage = mysqli_fetch_array($resultP))
                             {
-                                /*echo "In While Loop<br>";
+                                echo "In While Loop<br>";
                                 echo "UserID is: ".$rowImage["userID"]."<br>";
                                 echo "User is: ".$rowImage["user"]."<br>";
                                 echo "Picture is: ".$rowImage["pictureName"]."<br>";
-                                echo "profile ID: ".$_GET['id']."<br>";*/
+                                echo "profile ID: ".$_GET['id']."<br>";
                                 if ($rowImage["userID"] == $_GET['id'])
                                 {
+                                    echo '<img style="height:150px; width:150px" alt="Profile Image" src="images/'.$rowImage["pictureName"].'">';
                                     $imageSetProfile = 1;
                                 }
                             }   
@@ -161,14 +162,10 @@ session_start();
                             echo "Table doesn't exist";
                         }
                     }
-                    echo "ImageNumber: ".$imageSetProfile;
+                    echo "<br>ImageNumber: ".$imageSetProfile."<br>";
                     if ($imageSetProfile == 0)
                         {
                             echo "<img style=\"height:150px; width:150px\" src=\"images/person.png\">";
-                        }
-                        else
-                        {
-                            echo '<img style="height:150px; width:150px" alt="Profile Image" src="images/'.$rowImage["pictureName"].'">';
                         }
                     
                     if ($_SESSION["USERID"] == $_GET['id'])
