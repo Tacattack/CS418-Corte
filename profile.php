@@ -212,7 +212,7 @@ session_start();
                                                 echo "File to delete is: ".$fileToDelete."<br>";
                                                 unlink($fileToDelete);
                                                 echo "File has been deleted.<br>";
-                                                $qryDelete = "DELETE FROM UserPictures WHERE id=".$_SESSION["USERID"];
+                                                $qryDelete = "DELETE FROM UserPictures WHERE userID=".$_SESSION["USERID"];
                                                 echo "Table row has been removed.<br>";
                                                 mysqli_query($conn, $qryDelete);
                                                 echo "Deleted before: ".$Deleted."<br>";
