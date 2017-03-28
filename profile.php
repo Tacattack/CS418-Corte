@@ -151,11 +151,11 @@ session_start();
                             //echo "In the IF before WHILE loop<br>";
                             while ($rowImage = mysqli_fetch_array($resultP))
                             {
-                                echo "In While Loop<br>";
+                                /*echo "In While Loop<br>";
                                 echo "UserID is: ".$rowImage["userID"]."<br>";
                                 echo "User is: ".$rowImage["user"]."<br>";
                                 echo "Picture is: ".$rowImage["pictureName"]."<br>";
-                                echo "profile ID: ".$_GET['id']."<br>";
+                                echo "profile ID: ".$_GET['id']."<br>";*/
                                 if ($rowImage["userID"] == $_GET['id'])
                                 {
                                     echo '<img style="height:150px; width:150px" alt="Profile Image" src="images/'.$rowImage["pictureName"].'">';
@@ -193,22 +193,44 @@ session_start();
                             {
                                 $pictureUploader = $_SESSION["USER"];
                                 $pictureUserID = $_SESSION["USERID"];
+                                $Deleted = 0;
                                 
+                                $qryPCheck = "SELECT * FROM UserPictures";
+                                $resultPCheck = mysqli_query($conn, $qryPCheck);
+                                
+                                if ($resultPCheck)
+                                {
+                                    if(mysqli_num_rows($resultPCheck) > 0)
+                                    {
+                                        while ($rowImage = mysqli_fetch_array($resultPCheck))
+                                        {
+                                            if ($rowImage["userID"] == $_SESSION["USERID"])
+                                            {
+                                                $qryDelete = "DELETE FROM UserPictures WHERE id=".$_SESSION["USERID"];
+                                                mysqli_query($db, $qryDelete);
+                                                $Deleted = 1;  
+                                            }
+                                            else
+                                            {
+                                                $Deleted = 1;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            if ($deleted == 1)
+                            {
                                 $target = "images/".basename($_FILES['fileToUpload']['name']);
-                                
                                 $db = mysqli_connect("localhost", "root", "", "QuestionAnswer");
-                                
                                 $image = $_FILES['fileToUpload']['name'];
-                                
                                 $sqlPic = "INSERT INTO UserPictures(user, userID, pictureName)
-                                    VALUES ('{$pictureUploader}', '{$pictureUserID}', '{$image}')";
-                                
+                                            VALUES ('{$pictureUploader}', '{$pictureUserID}', '{$image}')";
                                 mysqli_query($db, $sqlPic);
-                                
                                 if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target))
                                 {
                                     echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-                                    //header("Location: profile.php?id=".$_SESSION["USERID"]);
+                                    header("Location: profile.php?id=".$_SESSION["USERID"]);
                                 }
                                 else 
                                 {
