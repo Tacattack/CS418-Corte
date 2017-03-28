@@ -55,7 +55,7 @@ session_start();
                             {
                                 while ($rowImage = mysqli_fetch_array($resultPT))
                                 {
-                                    if ($rowImage["userID"] == $_GET['id'])
+                                    if ($rowImage["userID"] == $_SESSION["USERID"])
                                     {
                                         echo '<img style="height:35px; width:35px" alt="Profile Image" src="images/'.$rowImage["pictureName"].'">';
                                         $imageSet = 1;
