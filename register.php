@@ -122,12 +122,12 @@ session_start();
                            {
                                if($row["username"] == $RegisterName)
                                {
-                                   echo "That username already exists";
+                                   echo "<center>That username already exists</center>";
                                    $Denied = 1;
                                }
                                else if ($row["email"] == $RegisterEmail)
                                {
-                                   echo "That email is already in use";
+                                   echo "<center>That email is already in use</center>";
                                    $Denied = 1;
                                }
                            }
@@ -139,7 +139,7 @@ session_start();
                             VALUES('{$RegisterName}', '{$RegisterPssWd}', '{$RegisterEmail}', '0')";
                             
                             if (mysqli_query($conn, $sql)) {
-                                echo "You Have Successfully Registered With Unstacking Exchange. You May Now Log In To Get Started";
+                                echo "<center>You Have Successfully Registered With Unstacking Exchange. You May Now Log In To Get Started</center>";
                             } else {
                                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                             }
