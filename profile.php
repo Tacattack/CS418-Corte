@@ -201,14 +201,14 @@ session_start();
                                 $image = $_FILES['fileToUpload']['name'];
                                 
                                 $sqlPic = "INSERT INTO UserPictures(user, userID, pictureName)
-                                    VALUES ({'$pictureUploader'}, {'$pictureUserID'}, {'$image'})";
+                                    VALUES ('{$pictureUploader}', '{$pictureUserID}', '{$image}')";
                                 
                                 mysqli_query($db, $sqlPic);
                                 
                                 if (move_uploaded_file($_FILES['fileToUpload']['tmp_name'], $target))
                                 {
                                     echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
-                                    header("Location: profile.php?id=".$_SESSION["USERID"]);
+                                    //header("Location: profile.php?id=".$_SESSION["USERID"]);
                                 }
                                 else 
                                 {
