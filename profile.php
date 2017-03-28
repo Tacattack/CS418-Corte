@@ -168,7 +168,7 @@ session_start();
                         }
                         else
                         {
-                            echo '<img style="height:150px; width:150px" src"images/"'.$rowImage['pictureName'].'">';
+                            echo '<img style="height:150px; width:150px" src="images/"'.$rowImage["pictureName"].'">';
                         }
                     
                     if ($_SESSION["USERID"] == $_GET['id'])
