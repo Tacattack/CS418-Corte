@@ -206,19 +206,12 @@ session_start();
                                         {
                                             if ($rowImage["userID"] == $_SESSION["USERID"])
                                             {
-                                                echo "---------------------------------------<br>";
                                                 $filename = $rowImage["pictureName"];
                                                 $fileToDelete = "images/".$filename;
-                                                echo "File to delete is: ".$fileToDelete."<br>";
                                                 unlink($fileToDelete);
-                                                echo "File has been deleted.<br>";
                                                 $qryDelete = "DELETE FROM UserPictures WHERE userID=".$_SESSION["USERID"];
-                                                echo "Table row has been removed.<br>";
                                                 mysqli_query($conn, $qryDelete);
-                                                echo "Deleted before: ".$Deleted."<br>";
                                                 $Deleted = 1;
-                                                echo "Deleted has been set to: ".$Deleted."<br>";
-                                                echo "---------------------------------------<br>";
                                             }
                                         }
                                     }
@@ -227,36 +220,8 @@ session_start();
                             
                             if ($Deleted == 0)
                             {
-                                echo "---------------------------------------<br>";
-                                echo "User wasn't in the table<br>";
-                                echo "Deleted before: ".$Deleted."<br>";
                                 $Deleted = 1;
-                                echo "Deleted has been set to: ".$Deleted."<br>";
-                                echo "---------------------------------------<br>";
                             }
-                            
-                            //Check that the information was deleted from the table
-                            $qryCheck = "SELECT * FROM UserPictures";
-                            $resultCheck = mysqli_query($conn, $qryCheck);
-
-                            if ($resultCheck)
-                            {
-                                if(mysqli_num_rows($resultCheck) > 0)
-                                {
-                                    while ($rowCheck = mysqli_fetch_array($resultCheck))
-                                    {
-                                        echo "---------------------------------------<br>";
-                                        echo "UserID is: ".$rowCheck["userID"]."<br>";
-                                        echo "User is: ".$rowCheck["user"]."<br>";
-                                        echo "Picture is: ".$rowCheck["pictureName"]."<br>";
-                                        echo "---------------------------------------<br>";
-                                    }   
-                                }
-                            }
-                            
-                            echo "---------------------------------------<br>";
-                            echo "Deleted is: ".$Deleted."<br>";
-                            echo "---------------------------------------<br>";
                             
                             if ($Deleted == 1)
                             {
@@ -270,7 +235,7 @@ session_start();
                                 {
                                     echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
                                     $Deleted = 0;
-                                    //header("Location: profile.php?id=".$_SESSION["USERID"]);
+                                    header("Location: profile.php?id=".$_SESSION["USERID"]);
                                 }
                                 else 
                                 {

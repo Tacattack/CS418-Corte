@@ -110,14 +110,43 @@ session_start();
                         $RegisterName = addslashes($_POST['rUsername']);
                         $RegisterPssWd = addslashes($_POST['rPassword']);
                         $RegisterEmail = addslashes($_POST['rEmail']);
-
-                        $sql = "INSERT INTO UserProfile (username, password, email, level)
+                        $Denied = 0;
+                        
+                        
+                        $sql = "SELECT * FROM UserProfile";
+                        $result = mysqli_query($conn, $sql);
+                        
+                        if (mysqli_num_rows($result) > 0)
+                        {
+                           while ($row = mysqli_fetch_assoc($result))
+                           {
+                               if($row["username"] == $RegisterName)
+                               {
+                                   echo "That username already exists";
+                                   $Denied = 1;
+                               }
+                               else if ($row["email"] == $RegisterEmail)
+                               {
+                                   echo "That email is already in use";
+                                   $Denied = 1;
+                               }
+                           }
+                        }
+                        
+                        if ($Denied == 0)
+                        {
+                            $sql = "INSERT INTO UserProfile (username, password, email, level)
                             VALUES('{$RegisterName}', '{$RegisterPssWd}', '{$RegisterEmail}', '0')";
-
-                        if (mysqli_query($conn, $sql)) {
                             
-                        } else {
-                            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                            if (mysqli_query($conn, $sql)) {
+                                echo "You have Successfully Registered With Unstacking Exchange. You May Not Log In To Get Started";
+                            } else {
+                                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                            }
+                        }
+                        else
+                        {
+                            $Denied = 0;
                         }
 
                         mysqli_close($conn);
