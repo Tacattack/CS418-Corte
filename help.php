@@ -47,18 +47,18 @@ session_start();
                     {
                         echo "<form class=\"FormLogin navbar-form navbar-right\" action=\"PHP/Logout.php\" method=\"post\">";
                         $imageSet = 0;
-                        $qryP = "SELECT * FROM UserPictures";
-                        $resultP = mysqli_query($qryP, $conn);
-                        if ($resultP)
+                        $qryPT = "SELECT * FROM UserPictures";
+                        $resultPT = mysqli_query($qryPT, $conn);
+                        if ($resultPT)
                         {
-                            if(mysqli_num_rows($resultP) > 0)
+                            if(mysqli_num_rows($resultPT) > 0)
                             {
-                                while ($rowImage = mysqli_fetch_array($resultP))
+                                while ($rowImage = mysqli_fetch_array($resultPT))
                                 {
                                     if ($rowImage["userID"] == $_GET['id'])
                                     {
                                         echo '<img style="height:150px; width:150px" alt="Profile Image" src="images/'.$rowImage["pictureName"].'">';
-                                        $imageSetProfile = 1;
+                                        $imageSet = 1;
                                     }
                                 }   
                             }
