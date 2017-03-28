@@ -222,6 +222,25 @@ session_start();
                                 }
                             }
                             
+                            //Check that the information was deleted from the table
+                            $qryCheck = "SELECT * FROM UserPictures";
+                            $resultCheck = mysqli_query($conn, $qryCheck);
+
+                            if ($resultCheck)
+                            {
+                                if(mysqli_num_rows($resultCheck) > 0)
+                                {
+                                    while ($rowCheck = mysqli_fetch_array($resultCheck))
+                                    {
+                                        echo "---------------------------------------";
+                                        echo "UserID is: ".$rowCheck["userID"]."<br>";
+                                        echo "User is: ".$rowCheck["user"]."<br>";
+                                        echo "Picture is: ".$rowCheck["pictureName"]."<br>";
+                                        echo "---------------------------------------";
+                                    }   
+                                }
+                            }
+                            
                             if ($deleted == 1)
                             {
                                 $target = "images/".basename($_FILES['fileToUpload']['name']);
