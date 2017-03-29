@@ -154,7 +154,7 @@ session_start();
                         echo $row["questionPoster"]."</a>";
                         echo "</div>";
                         echo "<div>";
-                        
+                        echo "voteType = ".$voteType;
                         if (mysqli_num_rows($resultV) > 0)
                         {
                             while ($rowV = mysqli_fetch_assoc($resultV))
@@ -182,6 +182,8 @@ session_start();
                                 }
                             }
                         }
+                        
+                        echo "<br>voteType = ".$voteType;
                         
                         if ($voteType == 0)
                         {
