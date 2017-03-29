@@ -134,7 +134,7 @@ session_start();
                         echo $row["questionBody"];
                         echo "</p>";
                         echo "<hr>";
-                        echo "<div class=\"col-xs-6 col-sm-6 col-md-6 tags\">";
+                        echo "<div class=\"col-xs-4 col-sm-4 col-md-4 tags\">";
                         echo "<p>".$row["tagOne"]." | ".$row["tagTwo"]." | ".$row["tagThree"]."</p>";
                         echo "</div>";
                                                     
