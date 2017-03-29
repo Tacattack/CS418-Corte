@@ -125,19 +125,19 @@ session_start();
 $dbhost = 'localhost';  
 $dbuser = 'root';  
 $dbpass = "";  
-$conn = mysql_connect($dbhost, $dbuser, $dbpass);  
-$dbname = 'QuestionAnswer';  
-$connection = mysql_select_db($dbname);  
-  
-$limit = 10;  
-if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
-$start_from = ($page-1) * $limit;  
-  
-$sql = "SELECT * FROM Questions ORDER BY id DESC LIMIT $start_from, $limit";  
-$rs_result = mysql_query ($sql);  
-?> 
-<?php  
-while ($row = mysql_fetch_assoc($rs_result)) {  
+$conn = mysql_connect($dbhost, $dbuser, $dbpass);
+$dbname = 'QuestionAnswer';
+$connection = mysql_select_db($dbname);
+
+$limit = 10;
+if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };
+$start_from = ($page-1) * $limit;
+
+$sql = "SELECT * FROM Questions ORDER BY id DESC LIMIT $start_from, $limit";
+$rs_result = mysql_query ($sql);
+?>
+<?php
+while ($row = mysql_fetch_assoc($rs_result)) {
     echo "<div class=\"row\">";
                         echo "<div class=\"col-xs-12 col-sm-12\">";
                             echo "<div class=\"row\">";
