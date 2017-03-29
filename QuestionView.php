@@ -211,17 +211,49 @@ session_start();
                             }
                             
                             if ($voteType == 0)
-                                {$questionScore = $questionScore + 1;}
+                            {
+                                $questionScore = $questionScore + 1;
+                                $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
+                                $sqlUpdateV = "UPDATE UserQuestionVote SET voteType='1' WHERE QUI='".$_GET["id"]."' AND user='".$_SESSION["USER"]."'";
+                                
+                                
+                                if (mysqli_query($conn, $sqlUpdate)) {
+                                    
+                                    if (mysqli_query($conn, $sqlUpdateV))
+                                    {
+                                        echo "Score Updated";
+                                        header("Location: QuestionView.php?id=".$QuestionIDTemp);   
+                                    }
+                                    else
+                                    {
+                                        echo "Error: " . $sqlUpdateV . "<br>" . mysqli_error($conn);
+                                    }
+                                } else {
+                                    echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);
+                                }
+                            }
                             else if($voteType == -1)
-                                {$questionScore = $questionScore + 2;}
-                            
-                            $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
-
-                            if (mysqli_query($conn, $sqlUpdate)) {
-                                echo "Score Updated";
-                                header("Location: QuestionView.php?id=".$QuestionIDTemp);
-                            } else {
-                                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                            {
+                                $questionScore = $questionScore + 2;
+                                $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
+                                $sqlUpdateV = "UPDATE UserQuestionVote SET voteType='1' WHERE QUI='".$_GET["id"]."' AND user='".$_SESSION["USER"]."'";
+                                
+                                
+                                if (mysqli_query($conn, $sqlUpdate)) {
+                                    
+                                    if (mysqli_query($conn, $sqlUpdateV))
+                                    {
+                                        echo "Score Updated";
+                                        header("Location: QuestionView.php?id=".$QuestionIDTemp);   
+                                    }
+                                    else
+                                    {
+                                        echo "Error: " . $sqlUpdateV . "<br>" . mysqli_error($conn);
+                                    }
+                                } else {
+                                    echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);
+                                }
+                                
                             }
                         }
                         
@@ -241,18 +273,49 @@ session_start();
                             }
                             
                             if ($voteType == 0)
-                                {$questionScore = $questionScore - 1;}
-                            else if($voteType == 1)
-                                {$questionScore = $questionScore - 2;}
-                            
-                            $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
+                                {
+                                    $questionScore = $questionScore - 1;
+                                    $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
+                                    $sqlUpdateV = "UPDATE UserQuestionVote SET voteType='-1' WHERE QUI='".$_GET["id"]."' AND user='".$_SESSION["USER"]."'";
 
-                            if (mysqli_query($conn, $sqlUpdate)) {
-                                echo "Score Updated";
-                                header("Location: QuestionView.php?id=".$QuestionIDTemp);
-                            } else {
-                                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                            }
+
+                                    if (mysqli_query($conn, $sqlUpdate)) {
+
+                                        if (mysqli_query($conn, $sqlUpdateV))
+                                        {
+                                            echo "Score Updated";
+                                            header("Location: QuestionView.php?id=".$QuestionIDTemp);   
+                                        }
+                                        else
+                                        {
+                                            echo "Error: " . $sqlUpdateV . "<br>" . mysqli_error($conn);
+                                        }
+                                    } else {
+                                        echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);
+                                    }
+                                }
+                            else if($voteType == 1)
+                                {
+                                    $questionScore = $questionScore - 2;
+                                    $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
+                                    $sqlUpdateV = "UPDATE UserQuestionVote SET voteType='-1' WHERE QUI='".$_GET["id"]."' AND user='".$_SESSION["USER"]."'";
+
+
+                                    if (mysqli_query($conn, $sqlUpdate)) {
+
+                                        if (mysqli_query($conn, $sqlUpdateV))
+                                        {
+                                            echo "Score Updated";
+                                            header("Location: QuestionView.php?id=".$QuestionIDTemp);   
+                                        }
+                                        else
+                                        {
+                                            echo "Error: " . $sqlUpdateV . "<br>" . mysqli_error($conn);
+                                        }
+                                    } else {
+                                        echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);
+                                    }
+                                }
                         }
                         ?>
                         <?php
