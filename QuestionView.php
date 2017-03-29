@@ -117,7 +117,7 @@ session_start();
                 $questionID = (isset($_GET["id"]) && trim($_GET["id"]) == 'QuestionView.php') ? trim($_GET["id"]) : '';
                 $sql = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
                 $sqlU = "SELECT * FROM UserProfile";
-                $sqlV = "SELECT * FROM UserQuestionVote WHERE QID='".$_GET["id"]."'";
+                $sqlV = "SELECT * FROM UserQuestionVote";
                 $result = mysqli_query($conn, $sql);
                 $resultU = mysqli_query($conn, $sqlU);
                 $resultV = mysqli_query($conn, $sqlV);
@@ -159,26 +159,29 @@ session_start();
                         {
                             while ($rowV = mysqli_fetch_assoc($resultV))
                             {
-                                if ($rowV["user"] == $_SESSION["USER"])
+                                if ($row["QID"] == $_GET['id'])
                                 {
-                                    if ($rowV["voteType"] == 1)
+                                    if ($rowV["user"] == $_SESSION["USER"])
                                     {
-                                        echo "<form method=\"post\">";
-                                        echo "<span style=\"color:green;\">".$row["questionScore"]."<span>";
-                                        echo "&nbsp&nbsp&nbsp";
-                                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"MinusOne\" value=\"-1\">";
-                                        echo "</form>";
-                                        $voteType = 1;
-                                    }
-                                    else if ($rowV["voteType"] == -1)
-                                    {
-                                        echo "<form method=\"post\">";
-                                        echo "<span style=\"color:red;\">".$row["questionScore"]."<span>";
-                                        echo "&nbsp&nbsp&nbsp";
-                                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"PlusOne\" value=\"+1\">";
-                                        echo "</form>";
-                                        $voteType = -1;
-                                    }
+                                       if ($rowV["voteType"] == 1)
+                                       {
+                                           echo "<form method=\"post\">";
+                                           echo "<span style=\"color:green;\">".$row["questionScore"]."<span>";
+                                           echo "&nbsp&nbsp&nbsp";
+                                           echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"MinusOne\" value=\"-1\">";
+                                           echo "</form>";
+                                           $voteType = 1;
+                                       }
+                                       else if ($rowV["voteType"] == -1)
+                                       {
+                                           echo "<form method=\"post\">";
+                                           echo "<span style=\"color:red;\">".$row["questionScore"]."<span>";
+                                           echo "&nbsp&nbsp&nbsp";
+                                           echo "<input type=\"submit\" class=\"btn btn-success\" name=\"PlusOne\" value=\"+1\">";
+                                           echo "</form>";
+                                           $voteType = -1;
+                                       }
+                                    }   
                                 }
                             }
                         }
@@ -214,9 +217,10 @@ session_start();
                             if ($voteType == 0)
                             {
                                 $questionScore = $questionScore + 1;
+                                $voteType = 1;
                                 $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
                                 $sqlInsertV = "INSERT INTO UserQuestionVote (QID, user, voteType)
-                                    VALUES ('{$QuestionIDTemp}','{$QuestionVoter}','{1}')";
+                                    VALUES ('{$QuestionIDTemp}','{$QuestionVoter}','{$voteType}')";
                                 
                                 
                                 if (mysqli_query($conn, $sqlUpdate)) {
@@ -277,9 +281,10 @@ session_start();
                             if ($voteType == 0)
                                 {
                                     $questionScore = $questionScore - 1;
+                                    $voteType = -1;
                                     $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
                                     $sqlInsertV = "INSERT INTO UserQuestionVote (QID, user, voteType)
-                                    VALUES ('{$QuestionIDTemp}','{$QuestionVoter}','{-1}')";
+                                    VALUES ('{$QuestionIDTemp}','{$QuestionVoter}','{$voteType}')";
 
 
                                     if (mysqli_query($conn, $sqlUpdate)) {
