@@ -342,7 +342,7 @@ session_start();
                                         echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
                                         echo "<tr><td>";
                                         echo "<form method=\"post\">";
-                                        echo "<span style=\"color:red;\"><b>".$rowA["questionScore"]."</b><span>";
+                                        echo "<span style=\"color:red;\"><b>".$rowA["answerScore"]."</b><span>";
                                         echo "&nbsp&nbsp&nbsp";
                                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
                                         echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
