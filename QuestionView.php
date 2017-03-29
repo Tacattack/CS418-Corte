@@ -222,14 +222,14 @@ session_start();
                                 
                                 if (mysqli_query($conn, $sqlUpdate)) {
                                     
-                                    if (mysqli_query($conn, $sqlUpdateV))
+                                    if (mysqli_query($conn, $sqlInsertV))
                                     {
                                         echo "Score Updated";
                                         header("Location: QuestionView.php?id=".$QuestionIDTemp);   
                                     }
                                     else
                                     {
-                                        echo "Error: " . $sqlUpdateV . "<br>" . mysqli_error($conn);
+                                        echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);
                                     }
                                 } else {
                                     echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);
@@ -286,14 +286,14 @@ session_start();
 
                                     if (mysqli_query($conn, $sqlUpdate)) {
 
-                                        if (mysqli_query($conn, $sqlUpdateV))
+                                        if (mysqli_query($conn, $sqlInsertV))
                                         {
                                             echo "Score Updated";
                                             header("Location: QuestionView.php?id=".$QuestionIDTemp);   
                                         }
                                         else
                                         {
-                                            echo "Error: " . $sqlUpdateV . "<br>" . mysqli_error($conn);
+                                            echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);
                                         }
                                     } else {
                                         echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);
