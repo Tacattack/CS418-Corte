@@ -327,3 +327,29 @@ LOCK TABLES `UserQuestionVote` WRITE;
 INSERT INTO `UserQuestionVote` VALUES(1,120,'tcorte',-1);
 /*!40000 ALTER TABLE `UserQuestionVote` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `UserAnswerVote`
+--
+
+DROP TABLE IF EXISTS `UserAnswerVote`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `UserAnswerVote` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `QID` int(11) NOT NULL,
+  `AID` int(11) NOT NULL,
+  `user` varchar(250) NOT NULL,
+  `voteType` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `UserAnswerVote`
+--
+
+LOCK TABLES `UserAnswerVote` WRITE;
+/*!40000 ALTER TABLE `UserAnswerVote` DISABLE KEYS */;
+/*!40000 ALTER TABLE `UserAnswerVote` ENABLE KEYS */;
+UNLOCK TABLES;
