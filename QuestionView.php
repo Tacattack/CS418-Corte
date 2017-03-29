@@ -181,7 +181,7 @@ session_start();
 
                             if (mysqli_query($conn, $sqlUpdate)) {
                                 echo "Score Updated";
-                                header("Location: QuestionView.php?id=".$Qrow["id"]);
+                                header("Location: QuestionView.php?id=".$QuestionIDTemp);
                             } else {
                                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                             }
@@ -208,7 +208,7 @@ session_start();
 
                             if (mysqli_query($conn, $sqlUpdate)) {
                                 echo "Score Updated";
-                                header("Location: QuestionView.php?id=".$Qrow["id"]);
+                                header("Location: QuestionView.php?id=".$QuestionIDTemp);
                             } else {
                                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                             }
