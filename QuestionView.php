@@ -153,7 +153,7 @@ session_start();
                         }
                         echo $row["questionPoster"]."</a>";
                         echo "</div>";
-                        echo "<div>";
+                        echo "<div class=\"col-md-12\">";
 
                         if (mysqli_num_rows($resultV) > 0)
                         {
