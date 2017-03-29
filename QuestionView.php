@@ -163,21 +163,21 @@ session_start();
                                 {
                                     if ($rowV["voteType"] == 1)
                                     {
+                                        $voteType = 1;
                                         echo "<form method=\"post\">";
                                         echo "<span style=\"color:green;\">".$row["questionScore"]."<span>";
                                         echo "&nbsp&nbsp&nbsp";
                                         echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"MinusOne\" value=\"-1\">";
                                         echo "</form>";
-                                        $voteType = 1;
                                     }
                                     else if ($rowV["voteType"] == -1)
                                     {
+                                        $voteType = -1;
                                         echo "<form method=\"post\">";
                                         echo "<span style=\"color:red;\">".$row["questionScore"]."<span>";
                                         echo "&nbsp&nbsp&nbsp";
                                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"PlusOne\" value=\"+1\">";
                                         echo "</form>";
-                                        $voteType = -1;
                                     }
                                 }
                             }
@@ -217,6 +217,7 @@ session_start();
                             if ($voteType == 0)
                             {
                                 $questionScore = $questionScore + 1;
+                                $voteType = 1;
                                 $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
                                 $sqlInsertV = "INSERT INTO UserQuestionVote (QID, user, voteType)
                                     VALUES ('{$QuestionIDTemp}','{$QuestionVoter}','{$voteType}')";
@@ -280,6 +281,7 @@ session_start();
                             if ($voteType == 0)
                                 {
                                     $questionScore = $questionScore - 1;
+                                    $voteType = -1;
                                     $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
                                     $sqlInsertV = "INSERT INTO UserQuestionVote (QID, user, voteType)
                                     VALUES ('{$QuestionIDTemp}','{$QuestionVoter}','{$voteType}')";
