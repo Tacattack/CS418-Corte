@@ -182,8 +182,8 @@ session_start();
                                 }
                             }
                         }
-                        echo "voteType = ". $voteType;
-                        if (voteType == 0)
+                        
+                        if ($voteType == 0)
                         {
                             echo "<form method=\"post\">";
                             echo $row["questionScore"];
