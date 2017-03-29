@@ -161,10 +161,10 @@ session_start();
                         while ($rowA = mysqli_fetch_array($resultA)) {
                             if (mysqli_num_rows($resultA) > 0) {
                                 while ($rowA = mysqli_fetch_assoc($resultA)) {
-                                        echo "<li><form><table>";
+                                        echo "<div class=\"col-md-8\"><form><table>";
                                         echo "<tr><td>" . $rowA["answerBody"] . "</td></tr>";
                                         echo "<tr><td> posted by: " . $rowA["answerPoster"] . "</td></tr>";
-                                        echo "</table></form></li>";
+                                        echo "</table></form></div>";
                                     }
                                 }
                             }
