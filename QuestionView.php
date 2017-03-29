@@ -185,6 +185,32 @@ session_start();
                                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                             }
                         }
+                        
+                        if (isset($_POST["MinusOne"]))
+                        {
+                            $sqlPlus = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
+                            $resultPlus = mysqli_query($conn, $sqlPlus);
+                            $QuestionIDTemp = $_GET["id"];
+                            $questionScore = 0;
+                            
+                            if (mysqli_num_rows($resultPlus) > 0)
+                            {
+                                while ($rowPlus = mysqli_fetch_assoc($resultPlus))
+                                {
+                                    $questionScore = $rowPlus["questionScore"];
+                                }
+                            }
+                            
+                            $questionScore = $questionScore - 1;
+                            
+                            $sqlUpdate = "UPDATE Questions SET questionScore='".questionScore."' WHERE id='".$QuestionIDTemp."'";
+
+                            if (mysqli_query($conn, $sqlUpdate)) {
+                                echo "Score Updated";
+                            } else {
+                                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                            }
+                        }
                         ?>
                         <?php
                         echo "<div id=\"Answers\">";
