@@ -113,6 +113,14 @@ session_start();
     <div class="container">
       <div class="row">
         <div class="col-md-8">
+            <form class="FormLogin navbar-form" action="" method="post">
+            <b style=color:white;">Search Users:</b>
+            <div id="form-group">
+                <input type="text" name="userSearch" placeholder="Search Users" id="form-control">
+            </div>
+            &nbsp&nbsp&nbsp
+            <input type="submit" class="btn btn-success" name="search" value="Search">
+            </form>
           <?php  
 $dbhost = 'localhost';  
 $dbuser = 'root';  
@@ -127,7 +135,7 @@ $start_from = ($page-1) * $limit;
   
 $sql = "SELECT * FROM Questions ORDER BY id DESC LIMIT $start_from, $limit";  
 $rs_result = mysql_query ($sql);  
-?>    
+?> 
 <?php  
 while ($row = mysql_fetch_assoc($rs_result)) {  
     echo "<div class=\"row\">";
