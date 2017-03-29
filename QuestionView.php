@@ -183,7 +183,6 @@ session_start();
                             }
                         }
                         
-                        
                         if ($voteType == 0)
                         {
                             echo "<form method=\"post\">";
@@ -339,8 +338,17 @@ session_start();
                             if (mysqli_num_rows($resultA) > 0) {
                                 while ($rowA = mysqli_fetch_assoc($resultA)) {
                                         echo "<div class=\"col-md-8\"><table>";
-                                        echo "<tr><td>" . $rowA["answerBody"] . "</td></tr>";
-                                        echo "<tr><td> posted by: " . $rowA["answerPoster"] . "</td></tr>";
+                                        echo "<tr><td>".$rowA["answerScore"]."</td></tr>";
+                                        echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
+                                        echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                        echo "<tr><td>";
+                                        echo "<form method=\"post\">";
+                                        echo "<span style=\"color:red;\"><b>".$row["questionScore"]."</b><span>";
+                                        echo "&nbsp&nbsp&nbsp";
+                                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"PlusOne\" value=\"+1\">";
+                                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"PlusOne\" value=\"-1\">";
+                                        echo "</form>";
+                                        echo "</td></tr>";
                                         echo "</table><hr></div>";
                                     }
                                 }
