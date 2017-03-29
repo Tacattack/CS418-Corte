@@ -346,6 +346,7 @@ session_start();
                                         echo "&nbsp&nbsp&nbsp";
                                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
                                         echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
+                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
                                         echo "</form>";
                                         echo "</td></tr>";
                                         echo "</table><hr></div>";
