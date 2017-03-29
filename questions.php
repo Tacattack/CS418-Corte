@@ -151,7 +151,7 @@ while ($row = mysql_fetch_assoc($rs_result)) {
                                     echo "</div>";
                                     echo "<div class=\"row\">";
                                         echo "<div class=\"col-xs-6 col-sm-6 col-md-6 tags\">";
-                                            echo "<p>".$row["tagOne"]." | ".$row["tagTwo"]." | ".$row["tagThree"]."</p>";
+                                            echo "<p>".$row["tagOne"]."   ".$row["tagTwo"]."   ".$row["tagThree"]."</p>";
                                             echo "</div>";
                                         echo "<div class=\"col-xs-6 col-sm-6 col-md-6 poster\">";
                                             echo "<p>Posted by: ";
