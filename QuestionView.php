@@ -179,18 +179,18 @@ session_start();
                                         echo "</form>";
                                         $voteType = -1;
                                     }
-                                    else
-                                    {
-                                        echo "<form method=\"post\">";
-                                        echo $row["questionScore"];
-                                        echo "&nbsp&nbsp&nbsp";
-                                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"PlusOne\" value=\"+1\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"MinusOne\" value=\"-1\">";
-                                        echo "</form>";
-                                        $voteType = 0;
-                                    }
                                 }
                             }
+                        }
+                        
+                        if (voteType == 0)
+                        {
+                            echo "<form method=\"post\">";
+                            echo $row["questionScore"];
+                            echo "&nbsp&nbsp&nbsp";
+                            echo "<input type=\"submit\" class=\"btn btn-success\" name=\"PlusOne\" value=\"+1\">";
+                            echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"MinusOne\" value=\"-1\">";
+                            echo "</form>";
                         }
                         echo "<hr>";
                         echo "</div>";
