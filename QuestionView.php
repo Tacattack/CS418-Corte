@@ -215,7 +215,7 @@ session_start();
                             {
                                 $questionScore = $questionScore + 1;
                                 $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
-                                $sqlInsertV = "INSERT INTO UserQuestionVote (QIU, user, voteType)
+                                $sqlInsertV = "INSERT INTO UserQuestionVote (QID, user, voteType)
                                     VALUES ('{$QuestionIDTemp}','{$QuestionVoter}','{1}')";
                                 
                                 
@@ -238,7 +238,7 @@ session_start();
                             {
                                 $questionScore = $questionScore + 2;
                                 $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
-                                $sqlUpdateV = "UPDATE UserQuestionVote SET voteType='1' WHERE QUI='".$_GET["id"]."' AND user='".$_SESSION["USER"]."'";
+                                $sqlUpdateV = "UPDATE UserQuestionVote SET voteType='1' WHERE QID='".$_GET["id"]."' AND user='".$_SESSION["USER"]."'";
                                 
                                 
                                 if (mysqli_query($conn, $sqlUpdate)) {
@@ -278,7 +278,7 @@ session_start();
                                 {
                                     $questionScore = $questionScore - 1;
                                     $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
-                                    $sqlInsertV = "INSERT INTO UserQuestionVote (QIU, user, voteType)
+                                    $sqlInsertV = "INSERT INTO UserQuestionVote (QID, user, voteType)
                                     VALUES ('{$QuestionIDTemp}','{$QuestionVoter}','{-1}')";
 
 
@@ -301,7 +301,7 @@ session_start();
                                 {
                                     $questionScore = $questionScore - 2;
                                     $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
-                                    $sqlUpdateV = "UPDATE UserQuestionVote SET voteType='-1' WHERE QUI='".$_GET["id"]."' AND user='".$_SESSION["USER"]."'";
+                                    $sqlUpdateV = "UPDATE UserQuestionVote SET voteType='-1' WHERE QID='".$_GET["id"]."' AND user='".$_SESSION["USER"]."'";
 
 
                                     if (mysqli_query($conn, $sqlUpdate)) {
