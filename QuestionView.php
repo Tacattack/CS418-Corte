@@ -166,7 +166,7 @@ session_start();
                             $resultPlus = mysqli_query($conn, $sqlPlus);
                             $QuestionIDTemp = $_GET["id"];
                             $questionScore = 0;
-                            
+                            echo "question score Originial: ".$questionScore;
                             if (mysqli_num_rows($resultPlus) > 0)
                             {
                                 while ($rowPlus = mysqli_fetch_assoc($resultPlus))
@@ -174,9 +174,9 @@ session_start();
                                     $questionScore = $rowPlus["questionScore"];
                                 }
                             }
-                            
+                            echo "question score After Loading: ".$questionScore;
                             $questionScore = $questionScore + 1;
-                            
+                            echo "question score Before Update: ".$questionScore;
                             $sqlUpdate = "UPDATE Questions SET questionScore='".questionScore."' WHERE id='".$QuestionIDTemp."'";
 
                             if (mysqli_query($conn, $sqlUpdate)) {
