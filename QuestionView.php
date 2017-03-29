@@ -133,7 +133,7 @@ session_start();
                         echo "<p>";
                         echo $row["questionBody"];
                         echo "</p>";
-                        echo "<p>_________________________________________________________</p>";
+                        echo "<hr>";
                         echo "<div class=\"col-xs-6 col-sm-6 col-md-6 tags\">";
                         echo "<p>".$row["tagOne"]." | ".$row["tagTwo"]." | ".$row["tagThree"]."</p>";
                         echo "</div>";
@@ -165,11 +165,10 @@ session_start();
                         while ($rowA = mysqli_fetch_array($resultA)) {
                             if (mysqli_num_rows($resultA) > 0) {
                                 while ($rowA = mysqli_fetch_assoc($resultA)) {
-                                        echo "<div class=\"col-md-8\"><form><table>";
+                                        echo "<div class=\"col-md-8\"><table>";
                                         echo "<tr><td>" . $rowA["answerBody"] . "</td></tr>";
                                         echo "<tr><td> posted by: " . $rowA["answerPoster"] . "</td></tr>";
-                                        echo "</table></form></div>";
-                                        echo "<hr>";
+                                        echo "</table><hr></div>";
                                     }
                                 }
                             }
