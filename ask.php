@@ -144,7 +144,7 @@ session_start();
                         $QuestionTagTwo = addslashes($_POST['tagTwo']);
                         $QuestionTagThree = addslashes($_POST['tagThree']);
 
-                        $sql = "INSERT INTO Questions (questionTitle, questionBody, questionPoster)
+                        $sql = "INSERT INTO Questions (questionTitle, questionBody, questionPoster, tagOne, tagTwo, tagThree)
                             VALUES('{$QuestionTitle}', '{$QuestionBody}', '{$QuestionPoster}', '{$QuestionTagOne}', '{$QuestionTagTwo}', '{$QuestionTagThree}')";
 
                         if (mysqli_query($conn, $sql)) {
