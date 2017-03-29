@@ -151,6 +151,55 @@ session_start();
                         }
                         echo $row["questionPoster"]."</a>";
                         echo "</div>";
+                        echo "<div>";
+                        echo "<p>".$row["questionScore"]."</p>";
+                        echo "<form method=\"post\">";
+                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"PlusOne\" value=\"+1\">";
+                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"MinusOne\" value=\"-1\">";
+                        echo "</form>";
+                        echo "<hr>";
+                        echo "</div>";
+                        
+                        if (isset($_POST["PlusOne"]))
+                        {
+                            $sqlPlus = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
+                            $resultPlus = mysqli_query($conn, $sqlPlus);
+                            $QuestionIDTemp = $_GET["id"];
+                            $questionScore = 0;
+                            $questionTitle = "";
+                            $questionBody = "";
+                            $questionPoster = "";
+                            $questionFrozen = 0;
+                            $questionTOne = "";
+                            $questionTTwo = "";
+                            $questionTThree = "";
+                            
+                            if (mysqli_num_rows($resultPlus) > 0)
+                            {
+                                while ($rowPlus = mysqli_fetch_assoc($resultPlus))
+                                {
+                                    $questionScore = $rowPlus["questionScore"];
+                                    $questionTitle = $rowPlus["questionTitle"];
+                                    $questionBody = $rowPlus["questionBody"];
+                                    $questionPoster = $rowPlus["questionPoster"];
+                                    $questionFrozen = $rowPlus["questionFrozen"];
+                                    $questionTOne = $rowPlus["tagOne"];
+                                    $questionTTwo = $rowPlus["tagTwo"];
+                                    $questionTThree = $rowPlus["tagThree"];
+                                }
+                            }
+                            
+                            $questionScore = $questionScore + 1;
+                            
+                            $sqlInsert = "INSERT INTO Questions WHERE id=".$_GET["id"]."(id, questionScore, questionTitle, questionBody, questionPoster, questionFrozen, tagOne, tagTwo, tagThree)
+                            VALUES('{$QuestionIDTemp}', '{$questionScore}' ,'{$QuestionTitle}', '{$QuestionBody}', '{$QuestionPoster}', '{$questionFrozen}','{$QuestionTagOne}', '{$QuestionTagTwo}', '{$QuestionTagThree}')";
+
+                            if (mysqli_query($conn, $sqlInsert)) {
+                                echo "Score Updated";
+                            } else {
+                                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                            }
+                        }
                         ?>
                         <?php
                         echo "<div id=\"Answers\">";
