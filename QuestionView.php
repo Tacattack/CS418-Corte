@@ -200,6 +200,7 @@ session_start();
                             $sqlPlus = "SELECT * FROM Questions WHERE id='".$_GET["id"] . "'";
                             $resultPlus = mysqli_query($conn, $sqlPlus);
                             $QuestionIDTemp = $_GET["id"];
+                            $QuestionVoter = $_SESSION["USER"];
                             $questionScore = 0;
                             
                             if (mysqli_num_rows($resultPlus) > 0)
@@ -214,7 +215,8 @@ session_start();
                             {
                                 $questionScore = $questionScore + 1;
                                 $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
-                                $sqlUpdateV = "UPDATE UserQuestionVote SET voteType='1' WHERE QUI='".$_GET["id"]."' AND user='".$_SESSION["USER"]."'";
+                                $sqlInsertV = "INSERT INTO UserQuestionVote (QIU, user, voteType)
+                                    VALUES ('{$QuestionIDTemp}','{$QuestionVoter}','{1}')";
                                 
                                 
                                 if (mysqli_query($conn, $sqlUpdate)) {
@@ -276,7 +278,8 @@ session_start();
                                 {
                                     $questionScore = $questionScore - 1;
                                     $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
-                                    $sqlUpdateV = "UPDATE UserQuestionVote SET voteType='-1' WHERE QUI='".$_GET["id"]."' AND user='".$_SESSION["USER"]."'";
+                                    $sqlInsertV = "INSERT INTO UserQuestionVote (QIU, user, voteType)
+                                    VALUES ('{$QuestionIDTemp}','{$QuestionVoter}','{-1}')";
 
 
                                     if (mysqli_query($conn, $sqlUpdate)) {
