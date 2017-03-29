@@ -133,7 +133,11 @@ session_start();
                         echo "<p>";
                         echo $row["questionBody"];
                         echo "</p>";
-
+                        echo "<p>_________________________________________________________</p>";
+                        echo "<div class=\"col-xs-6 col-sm-6 col-md-6 tags\">";
+                        echo "<p>".$row["tagOne"]." | ".$row["tagTwo"]." | ".$row["tagThree"]."</p>";
+                        echo "</div>";
+                                                    
                         echo "Posted By: ";
                         if (mysqli_num_rows($resultU) > 0)
                         {
@@ -165,6 +169,7 @@ session_start();
                                         echo "<tr><td>" . $rowA["answerBody"] . "</td></tr>";
                                         echo "<tr><td> posted by: " . $rowA["answerPoster"] . "</td></tr>";
                                         echo "</table></form></div>";
+                                        echo "<hr>";
                                     }
                                 }
                             }
@@ -204,7 +209,7 @@ session_start();
                                 if ($_GET["id"] == $Qrow["id"])
                                 {
                                     header("Location: QuestionView.php?id=".$Qrow["id"]);
-                                    die(); 
+                                    die();
                                 }
                             }
                         }
