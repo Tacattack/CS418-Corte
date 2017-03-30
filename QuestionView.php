@@ -362,7 +362,7 @@ session_start();
                 echo "</ul>";
                 }
                 
-                /*if (isset($_POST("APlusOne")))
+                if (isset($_POST("APlusOne")))
                 {
                     $AnswerIDTemp = $_POST["AID"];
                     $sqlPlus = "SELECT * FROM Answers WHERE questionID='".$_GET["id"] . "' AND AnswerID='".$AnswerIDTemp."'";
@@ -373,7 +373,13 @@ session_start();
                     
                     $answerScore = $answerScore + 1;
                     
-                    $sqlUpdate = "UPDATE Answers SET answerScore='".$AnswerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
+                    echo "$AnswerIDTemp";
+                    echo "$sqlPlus";
+                    echo "$resultPlus";
+                    echo "$QuestionIDTemp";
+                    echo "$AnswerVoter";
+                    
+                    /*$sqlUpdate = "UPDATE Answers SET answerScore='".$AnswerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
                     $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
                                 VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','{$AVoteType}')";
                                 
@@ -385,8 +391,8 @@ session_start();
                         {echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);}
                     } 
                     else 
-                    {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
-                }*/
+                    {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}*/
+                }
                 
                 if (isset($_SESSION["USER"]))
                 {
