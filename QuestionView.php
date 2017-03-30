@@ -379,19 +379,22 @@ session_start();
                     echo "$QuestionIDTemp";
                     echo "$AnswerVoter";
                     
-                    /*$sqlUpdate = "UPDATE Answers SET answerScore='".$AnswerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
+                    $sqlUpdate = "UPDATE Answers SET answerScore='".$AnswerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
                     $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
                                 VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','{$AVoteType}')";
+                    
+                    echo "$sqlUpdate";
+                    echo "$sqlInsertV";
                                 
                     if (mysqli_query($conn, $sqlUpdate)) 
                     {
                         if (mysqli_query($conn, $sqlInsertV))
-                        {header("Location: QuestionView.php?id=".$QuestionIDTemp);   }
+                        {/*header("Location: QuestionView.php?id=".$QuestionIDTemp);*/   }
                         else
                         {echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);}
                     } 
                     else 
-                    {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}*/
+                    {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
                 }
                 
                 if (isset($_SESSION["USER"]))
