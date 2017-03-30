@@ -366,7 +366,12 @@ session_start();
                                 $QuestionIDTemp = $_GET["id"];
                                 $AnswerVoter = $_SESSION["USER"];
                                 $answerScore = 0;
-
+                                
+                                while ($rowPlus = mysqli_fetch_assoc($resultPlus))
+                                {
+                                    $answerScore = $rowPlus["answerScore"];
+                                }
+                                
                                 $answerScore = $answerScore + 1;
 
                                 echo "$AnswerIDTemp"."<br>";
@@ -385,7 +390,9 @@ session_start();
                                 if (mysqli_query($conn, $sqlUpdate)) 
                                 {
                                     if (mysqli_query($conn, $sqlInsertV))
-                                    {header("Location: QuestionView.php?id=".$QuestionIDTemp);}
+                                    {
+                                        header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                    }
                                     else
                                     {echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);}
                                 }
