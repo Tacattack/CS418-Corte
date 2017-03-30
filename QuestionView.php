@@ -348,7 +348,7 @@ session_start();
                                         echo "<form method=\"post\">";
                                         echo "<span><b>".$rowA["answerScore"]."</b><span>";
                                         echo "&nbsp&nbsp&nbsp";
-                                        echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
+                                        //echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
                                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
                                         echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
                                         echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
@@ -362,7 +362,7 @@ session_start();
                 echo "</ul>";
                 }
                 
-                if (isset($_POST("APlusOne")))
+                /*if (isset($_POST("APlusOne")))
                 {
                     $AnswerIDTemp = $_POST["AID"];
                     $sqlPlus = "SELECT * FROM Answers WHERE questionID='".$_GET["id"] . "' AND AnswerID='".$AnswerIDTemp."'";
@@ -386,7 +386,7 @@ session_start();
                     } 
                     else 
                     {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
-                }
+                }*/
                 
                 if (isset($_SESSION["USER"]))
                 {
