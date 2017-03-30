@@ -348,7 +348,7 @@ session_start();
                                         echo "<form method=\"post\">";
                                         echo "<span><b>".$rowA["answerScore"]."</b><span>";
                                         echo "&nbsp&nbsp&nbsp";
-                                        //echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
+                                        echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
                                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
                                         echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
                                         echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
