@@ -369,17 +369,18 @@ session_start();
 
                                 $answerScore = $answerScore + 1;
 
-                                echo "$AnswerIDTemp";
-                                echo "$sqlPlus";
-                                echo "$QuestionIDTemp";
-                                echo "$AnswerVoter";
+                                echo "$AnswerIDTemp"."<br>";
+                                echo "$sqlPlus"."<br>";
+                                echo "$QuestionIDTemp"."<br>";
+                                echo "$AnswerVoter"."<br>";
+                                echo "$answerScore"."<br>";
 
-                                $sqlUpdate = "UPDATE Answers SET answerScore='".$AnswerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
+                                $sqlUpdate = "UPDATE Answers SET answerScore='".$answerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
                                 $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
                                             VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','{$AVoteType}')";
 
-                                echo "$sqlUpdate";
-                                echo "$sqlInsertV";
+                                echo "$sqlUpdate"."<br>";
+                                echo "$sqlInsertV"."<br>";
 
                                 if (mysqli_query($conn, $sqlUpdate)) 
                                 {
