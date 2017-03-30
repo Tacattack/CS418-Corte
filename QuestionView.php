@@ -365,7 +365,7 @@ session_start();
                 if (isset($_POST("APlusOne")))
                 {
                     $AnswerIDTemp = $_POST["AID"];
-                    $sqlPlus = "SELECT * FROM Answers WHERE questionID='".$_GET["id"] . "' AND AnswerID='".$AnswerIDTemp."'";
+                    $sqlPlus = "SELECT * FROM Answers WHERE AnswerID='".$AnswerIDTemp."'";
                     $resultPlus = mysqli_query($conn, $sqlPlus);
                     $QuestionIDTemp = $_GET["id"];
                     $AnswerVoter = $_SESSION["USER"];
