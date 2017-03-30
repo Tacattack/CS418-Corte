@@ -385,7 +385,7 @@ session_start();
                                 if (mysqli_query($conn, $sqlUpdate)) 
                                 {
                                     if (mysqli_query($conn, $sqlInsertV))
-                                    {/*header("Location: QuestionView.php?id=".$QuestionIDTemp);*/}
+                                    {header("Location: QuestionView.php?id=".$QuestionIDTemp);}
                                     else
                                     {echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);}
                                 }
