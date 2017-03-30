@@ -122,7 +122,6 @@ session_start();
                 $resultU = mysqli_query($conn, $sqlU);
                 $resultV = mysqli_query($conn, $sqlV);
                 $voteType = 0;
-                $AVoteType = 0;
 
                 if (mysqli_num_rows($result) > 0)
                 {
@@ -329,46 +328,57 @@ session_start();
                         echo "<div id=\"Answers\">";
                         echo "<h3>Answers</h3>";
                         echo "<ul>";
+                        $AVoteType = 0;
                         
                         $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC";
                         $sqlU = "SELECT * FROM UserProfile";
+                        $sqlVA = "SELECT * FROM UserAnswerVote WHERE QID='".$_GET["id"]."'";
                         $resultA = mysqli_query($conn, $sqlA);
                         $resultU = mysqli_query($conn, $sqlU);
+                        $resultVA = mysqli_query($conn, $sqlVA);
                         
                         while ($rowA = mysqli_fetch_array($resultA)) {
                             if (mysqli_num_rows($resultA) > 0) {
                                 while ($rowA = mysqli_fetch_assoc($resultA)) {
-                                    if ($AVoteType == 1)
+                                    if (mysqli_num_rows($resultVA) > 0)
                                     {
-                                        echo "<div class=\"col-md-8\"><table>";
-                                        echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
-                                        echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
-                                        echo "<tr><td>";
-                                        echo "<form method=\"post\">";
-                                        echo "<span style=\"color: Green;\"><b>".$rowA["answerScore"]."</b><span>";
-                                        echo "&nbsp&nbsp&nbsp";
-                                        echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
-                                        echo "</form>";
-                                        echo "</td></tr>";
-                                        echo "</table><hr></div>";
-                                    }
-                                    else if($AVoteType = -1)
-                                    {
-                                        echo "<div class=\"col-md-8\"><table>";
-                                        echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
-                                        echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
-                                        echo "<tr><td>";
-                                        echo "<form method=\"post\">";
-                                        echo "<span style=\"color: red;\"><b>".$rowA["answerScore"]."</b><span>";
-                                        echo "&nbsp&nbsp&nbsp";
-                                        echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
-                                        echo "</form>";
-                                        echo "</td></tr>";
-                                        echo "</table><hr></div>";
+                                        while ($rowVA = mysqli_fetch_assoc($resultVA))
+                                        {
+                                            if ($rowVA["voteType"] == 1)
+                                            {
+                                                $AVoteType = 1;
+                                                echo "<div class=\"col-md-8\"><table>";
+                                                echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
+                                                echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                                echo "<tr><td>";
+                                                echo "<form method=\"post\">";
+                                                echo "<span style=\"color: Green;\"><b>".$rowA["answerScore"]."</b><span>";
+                                                echo "&nbsp&nbsp&nbsp";
+                                                echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
+                                                echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
+                                                echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
+                                                echo "</form>";
+                                                echo "</td></tr>";
+                                                echo "</table><hr></div>";
+                                            }
+                                            else if($rowVA["voteType"] == -1)
+                                            {
+                                                $AVoteType = -1;
+                                                echo "<div class=\"col-md-8\"><table>";
+                                                echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
+                                                echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                                echo "<tr><td>";
+                                                echo "<form method=\"post\">";
+                                                echo "<span style=\"color: red;\"><b>".$rowA["answerScore"]."</b><span>";
+                                                echo "&nbsp&nbsp&nbsp";
+                                                echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
+                                                echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
+                                                echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
+                                                echo "</form>";
+                                                echo "</td></tr>";
+                                                echo "</table><hr></div>";
+                                            }
+                                        }
                                     }
                                   }
                                 }
@@ -380,7 +390,7 @@ session_start();
                                         echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
                                         echo "<tr><td>";
                                         echo "<form method=\"post\">";
-                                        echo "<span style=\"\"><b>".$rowA["answerScore"]."</b><span>";
+                                        echo "<span><b>".$rowA["answerScore"]."</b><span>";
                                         echo "&nbsp&nbsp&nbsp";
                                         echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
                                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
