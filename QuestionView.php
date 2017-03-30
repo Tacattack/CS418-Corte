@@ -542,10 +542,10 @@ session_start();
                 {
                     echo "<form method=\"post\" action=\"\">";
                     echo "<textarea rows=\"30\" name=\"ABody\" style=\"width: 600px; height: 50px;\"></textarea>";
-                    echo "<input type=\"submit\" name=\"submit\" value=\"Submit Answer\" style=\"margin: 20px 50px; float: right\"/>";
+                    echo "<input type=\"submit\" name=\"submitA\" value=\"Submit Answer\" style=\"margin: 20px 50px; float: right\"/>";
                     echo "</form>";
 
-                    if (isset($_POST["submit"]))
+                    if (isset($_POST["submitA"]))
                     {
                         $AnswerID = $_GET["id"];
                         $AnswerBody = addslashes($_POST['ABody']);
@@ -555,22 +555,9 @@ session_start();
 
                         if (mysqli_query($conn, $AnswerCreate)) {
                             echo "New record created successfully";
+                            header("Location: QuestionView.php?id=".$_GET["id"]);
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                        }
-
-                        $QuestionReload = "SELECT * FROM Questions";
-                        $QuestionReloadResult = mysqli_query($conn, $QuestionReload);
-
-                        if (mysqli_num_rows($QuestionReloadResult) > 0)
-                        {
-                            while ($Qrow = mysqli_fetch_assoc($QuestionReloadResult))
-                            {
-                                if ($_GET["id"] == $Qrow["id"])
-                                {
-                                    header("Location: QuestionView.php?id=".$Qrow["id"]);
-                                }
-                            }
                         }
                     }
                 }
