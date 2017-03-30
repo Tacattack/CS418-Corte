@@ -358,7 +358,7 @@ session_start();
                                 }
                             }
                             
-                            if (isset($_POST("APlusOne")))
+                            if (isset($_POST["APlusOne"]))
                             {
                                 //$AnswerIDTemp = $_REQUEST["AID"];
                                 //$sqlPlus = "SELECT * FROM Answers WHERE AnswerID='".$AnswerIDTemp."'";
