@@ -351,5 +351,6 @@ CREATE TABLE `UserAnswerVote` (
 
 LOCK TABLES `UserAnswerVote` WRITE;
 /*!40000 ALTER TABLE `UserAnswerVote` DISABLE KEYS */;
+INSERT INTO `UserQuestionVote` VALUES(1,8,16,'tcorte',1);
 /*!40000 ALTER TABLE `UserAnswerVote` ENABLE KEYS */;
 UNLOCK TABLES;
