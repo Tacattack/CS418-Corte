@@ -371,7 +371,6 @@ session_start();
 
                                 echo "$AnswerIDTemp";
                                 echo "$sqlPlus";
-                                echo "$resultPlus";
                                 echo "$QuestionIDTemp";
                                 echo "$AnswerVoter";
 
