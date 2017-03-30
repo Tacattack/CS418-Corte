@@ -359,42 +359,41 @@ session_start();
                             }
                         echo "<br />";
                     }
-                echo "</ul>";
-                }
-                
-                if (isset($_POST("APlusOne")))
-                {
-                    //$AnswerIDTemp = $_REQUEST["AID"];
-                    //$sqlPlus = "SELECT * FROM Answers WHERE AnswerID='".$AnswerIDTemp."'";
-                    //$resultPlus = mysqli_query($conn, $sqlPlus);
-                    $QuestionIDTemp = $_GET["id"];
-                    $AnswerVoter = $_SESSION["USER"];
-                    $answerScore = 0;
-                    
-                    $answerScore = $answerScore + 1;
-                    
-                    //echo "$AnswerIDTemp";
-                    //echo "$sqlPlus";
-                    //echo "$resultPlus";
-                    echo "$QuestionIDTemp";
-                    echo "$AnswerVoter";
-                    
-                    /*$sqlUpdate = "UPDATE Answers SET answerScore='".$AnswerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
-                    $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
-                                VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','{$AVoteType}')";
-                    
-                    echo "$sqlUpdate";
-                    echo "$sqlInsertV";
-                                
-                    if (mysqli_query($conn, $sqlUpdate)) 
+                    echo "</ul>";
+                    if (isset($_POST("APlusOne")))
                     {
-                        if (mysqli_query($conn, $sqlInsertV))
-                        {header("Location: QuestionView.php?id=".$QuestionIDTemp);}
-                        else
-                        {echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);}
-                    }
-                    else 
-                    {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}*/
+                        //$AnswerIDTemp = $_REQUEST["AID"];
+                        //$sqlPlus = "SELECT * FROM Answers WHERE AnswerID='".$AnswerIDTemp."'";
+                        //$resultPlus = mysqli_query($conn, $sqlPlus);
+                        $QuestionIDTemp = $_GET["id"];
+                        $AnswerVoter = $_SESSION["USER"];
+                        $answerScore = 0;
+
+                        $answerScore = $answerScore + 1;
+
+                        //echo "$AnswerIDTemp";
+                        //echo "$sqlPlus";
+                        //echo "$resultPlus";
+                        echo "$QuestionIDTemp";
+                        echo "$AnswerVoter";
+
+                        /*$sqlUpdate = "UPDATE Answers SET answerScore='".$AnswerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
+                        $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
+                                    VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','{$AVoteType}')";
+
+                        echo "$sqlUpdate";
+                        echo "$sqlInsertV";
+
+                        if (mysqli_query($conn, $sqlUpdate)) 
+                        {
+                            if (mysqli_query($conn, $sqlInsertV))
+                            {header("Location: QuestionView.php?id=".$QuestionIDTemp);}
+                            else
+                            {echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);}
+                        }
+                        else 
+                        {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}*/
+                    } 
                 }
                 
                 if (isset($_SESSION["USER"]))
