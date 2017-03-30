@@ -357,44 +357,41 @@ session_start();
                                         echo "</table><hr></div>";
                                 }
                             }
-                            
-                            if (isset($_POST["APlusOne"]))
-                            {
-                                $AnswerIDTemp = $_REQUEST["AID"];
-                                $sqlPlus = "SELECT * FROM Answers WHERE AnswerID='".$AnswerIDTemp."'";
-                                $resultPlus = mysqli_query($conn, $sqlPlus);
-                                $QuestionIDTemp = $_GET["id"];
-                                $AnswerVoter = $_SESSION["USER"];
-                                $answerScore = 0;
-                                
-                                while ($rowPlus = mysqli_fetch_assoc($resultPlus))
-                                {
-                                    $answerScore = $rowPlus["answerScore"];
-                                }
-                                
-                                $answerScore = $answerScore + 1;
-
-
-                                $sqlUpdate = "UPDATE Answers SET answerScore='".$answerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
-                                $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
-                                            VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','{$AVoteType}')";
-
-
-                                if (mysqli_query($conn, $sqlUpdate)) 
-                                {
-                                    if (mysqli_query($conn, $sqlInsertV))
-                                    {
-                                        header("Location: QuestionView.php?id=".$QuestionIDTemp);
-                                    }
-                                    else
-                                    {echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);}
-                                }
-                                else 
-                                {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
-                            }
                         echo "<br />";
                     }
                     echo "</ul>";
+                    if (isset($_POST["APlusOne"]))
+                    {
+                        $AnswerIDTemp = $_REQUEST["AID"];
+                        $sqlPlus = "SELECT * FROM Answers WHERE AnswerID='".$AnswerIDTemp."'";
+                        $resultPlus = mysqli_query($conn, $sqlPlus);
+                        $QuestionIDTemp = $_GET["id"];
+                        $AnswerVoter = $_SESSION["USER"];
+                        $answerScore = 0;
+                                
+                        while ($rowPlus = mysqli_fetch_assoc($resultPlus))
+                        {
+                            $answerScore = $rowPlus["answerScore"];
+                        }
+                                
+                        $answerScore = $answerScore + 1;
+
+                        $sqlUpdate = "UPDATE Answers SET answerScore='".$answerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
+                        $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
+                                VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','{$AVoteType}')";
+
+                        if (mysqli_query($conn, $sqlUpdate)) 
+                        {
+                            if (mysqli_query($conn, $sqlInsertV))
+                            {
+                                header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                            }
+                            else
+                            {echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);}
+                        }
+                        else 
+                        {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
+                    }
                 }
                 
                 if (isset($_SESSION["USER"]))
