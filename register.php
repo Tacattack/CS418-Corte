@@ -106,7 +106,7 @@ session_start();
         <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="Register">
         <div class="g-recaptcha" data-sitekey="6Lf-aRsUAAAAAPPL4imKw7IUovJ1AyJChZpGzI8C"></div>
         <?php
-          require_once('recaptchalib.php');
+          require_once('PHP/recaptchalib.php');
           $publickey = "6Lf-aRsUAAAAAPPL4imKw7IUovJ1AyJChZpGzI8C"; // you got this from the signup page
           echo recaptcha_get_html($publickey);
         ?>
@@ -115,7 +115,7 @@ session_start();
         <?php
                     if(isset($_POST["submit"])){
                         
-                        require_once('recaptchalib.php');
+                        require_once('PHP/recaptchalib.php');
                         $privatekey = "6Lf-aRsUAAAAAKtH3hdijI2KgWEu-0psb8OCHGgs";
                         $resp = recaptcha_check_answer ($privatekey,
                                                       $_SERVER["REMOTE_ADDR"],
