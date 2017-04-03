@@ -352,7 +352,7 @@ session_start();
                                                     $AVoteType = 1;
                                                     if ($rowA["bestAnswer"] == 1)
                                                     {
-                                                        echo "<div class=\"col-md-8\" style=\"background-color:#196F3D\">";
+                                                        echo "<div class=\"col-md-8\" style=\"background-color:#196F3D;\">";
                                                     }
                                                     else
                                                     {
@@ -380,7 +380,7 @@ session_start();
                                                     $AVoteType = -1;
                                                     if ($rowA["bestAnswer"] == 1)
                                                     {
-                                                        echo "<div class=\"col-md-8\" style=\"background-color:#196F3D\">";
+                                                        echo "<div class=\"col-md-8\" style=\"background-color:#196F3D;\">";
                                                     }
                                                     else
                                                     {
@@ -409,7 +409,7 @@ session_start();
                                     {
                                         if ($rowA["bestAnswer"] == 1)
                                         {
-                                            echo "<div class=\"col-md-8\" style=\"background-color:#196F3D\">";
+                                            echo "<div class=\"col-md-8\" style=\"background-color:#196F3D;\">";
                                         }
                                         else
                                         {
