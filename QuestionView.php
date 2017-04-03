@@ -354,7 +354,7 @@ session_start();
                                                     {
                                                         echo "<div class=\"col-md-8\" style=\"background-color:#196F3D;\">";
                                                     }
-                                                    else
+                                                    else if ($rowA["bestAnswer"] == 0)
                                                     {
                                                         echo "<div class=\"col-md-8\">";
                                                     }
@@ -382,7 +382,7 @@ session_start();
                                                     {
                                                         echo "<div class=\"col-md-8\" style=\"background-color:#196F3D;\">";
                                                     }
-                                                    else
+                                                    else if ($rowA["bestAnswer"] == 0)
                                                     {
                                                         echo "<div class=\"col-md-8\">";
                                                     }
@@ -411,7 +411,7 @@ session_start();
                                         {
                                             echo "<div class=\"col-md-8\" style=\"background-color:#196F3D;\">";
                                         }
-                                        else
+                                        else if ($rowA["bestAnswer"] == 0)
                                         {
                                             echo "<div class=\"col-md-8\">";
                                         }
