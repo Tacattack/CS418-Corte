@@ -358,7 +358,7 @@ session_start();
                                                     echo "<span style=\"color:green;\"><b>".$rowA["answerScore"]."</b><span>";
                                                     echo "&nbsp&nbsp&nbsp";
                                                     echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
-                                                    echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
+                                                    echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
                                                     if ($rowA["bestAnswer"] == 0)
                                                     {
                                                         echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
@@ -375,10 +375,10 @@ session_start();
                                                     echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
                                                     echo "<tr><td>";
                                                     echo "<form method=\"post\">";
-                                                    echo "<span style=\"color:green;\"><b>".$rowA["answerScore"]."</b><span>";
+                                                    echo "<span style=\"color:red;\"><b>".$rowA["answerScore"]."</b><span>";
                                                     echo "&nbsp&nbsp&nbsp";
                                                     echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
-                                                    echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
+                                                    echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
                                                     if ($rowA["bestAnswer"] == 0)
                                                     {
                                                         echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
@@ -452,6 +452,61 @@ session_start();
 
                             $sqlUpdate = "UPDATE Answers SET answerScore='".$answerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
                             $sqlUpdateV = "UPDATE UserAnswerVote SET voteType='1' WHERE QID='".$_GET["id"]."' AND AID='".$AnswerIDTemp."'AND user='".$_SESSION["USER"]."'";
+                            
+                            if (mysqli_query($conn, $sqlUpdate)) 
+                            {
+                                if (mysqli_query($conn, $sqlUpdateV))
+                                {
+                                    header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                }
+                                else
+                                {echo "Error: " . $sqlUpdateV . "<br>" . mysqli_error($conn);}
+                            }
+                            else 
+                            {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
+                        }
+                    }
+                    
+                    if (isset($_POST["AMinusOne"]))
+                    {
+                        $AnswerIDTemp = $_REQUEST["AID"];
+                        $sqlPlus = "SELECT * FROM Answers WHERE AnswerID='".$AnswerIDTemp."'";
+                        $resultPlus = mysqli_query($conn, $sqlPlus);
+                        $QuestionIDTemp = $_GET["id"];
+                        $AnswerVoter = $_SESSION["USER"];
+                        $answerScore = 0;
+                                
+                        while ($rowPlus = mysqli_fetch_assoc($resultPlus))
+                        {
+                            $answerScore = $rowPlus["answerScore"];
+                        }
+                        
+                        if ($AVoteType == 0)
+                        {
+                            $answerScore = $answerScore - 1;
+
+                            $sqlUpdate = "UPDATE Answers SET answerScore='".$answerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
+                            $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
+                                    VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','-1')";
+                                    
+                            if (mysqli_query($conn, $sqlUpdate)) 
+                            {
+                                if (mysqli_query($conn, $sqlInsertV))
+                                {
+                                    header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                }
+                                else
+                                {echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);}
+                            }
+                            else 
+                            {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
+                        }
+                        else if ($AVoteType == 1)
+                        {
+                            $answerScore = $answerScore - 2;
+
+                            $sqlUpdate = "UPDATE Answers SET answerScore='".$answerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
+                            $sqlUpdateV = "UPDATE UserAnswerVote SET voteType='-1' WHERE QID='".$_GET["id"]."' AND AID='".$AnswerIDTemp."'AND user='".$_SESSION["USER"]."'";
                             
                             if (mysqli_query($conn, $sqlUpdate)) 
                             {
