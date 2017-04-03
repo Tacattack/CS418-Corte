@@ -373,7 +373,7 @@ session_start();
                                                     }
                                                     else if ($rowA["bestAnswer"] == 1)
                                                     {
-                                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" aria-disabled=\"true\">";
+                                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" disabled>";
                                                     }
                                                     echo "</form>";
                                                     echo "</td></tr>";
@@ -405,7 +405,7 @@ session_start();
                                                     }
                                                     else if ($rowA["bestAnswer"] == 1)
                                                     {
-                                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" aria-disabled=\"true\">";
+                                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" disabled>";
                                                     }
                                                     echo "</form>";
                                                     echo "</td></tr>";
@@ -440,7 +440,7 @@ session_start();
                                         }
                                         else if ($rowA["bestAnswer"] == 1)
                                         {
-                                            echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" aria-disabled=\"true\">";
+                                            echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" disabled>";
                                         }
                                         echo "</form>";
                                         echo "</td></tr>";
