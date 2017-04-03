@@ -159,7 +159,7 @@ session_start();
                                echo "</td>";
                                echo "<td>";
                                echo "<form>";
-                               echo "<input type=\"hidden\" name=\"UID\" value=\"".$row["id"]."\">";
+                               echo '<input type="hidden" name="UID" value="'.$row["id"].'">';
                                echo "<input type=\"submit\" name=\"removeAdmin\"class=\"btn btn-danger\" value=\"Remove Admin\"></form>";
                                echo "</td></tr>";
                            }
@@ -191,7 +191,7 @@ session_start();
                                echo "</td>";
                                echo "<td>";
                                echo "<form>";
-                               echo "<input type=\"hidden\" name=\"UID\" value=\"".$row["id"]."\">";
+                               echo '<input type="hidden" name="UID" value="'.$row["id"].'">';
                                echo "<input type=\"submit\" name=\"makeAdmin\"class=\"btn btn-danger\" value=\"Make Admin\"></form>";
                                echo "</td></tr>";
                            }
@@ -202,12 +202,13 @@ session_start();
                         if (isset($_POST["makeAdmin"]))
                         {
                             $UID = $_REQUEST["UID"];
-                            
+                            echo "UID: " .$UID."<br>";
                             $sqlUpdate = "UPDATE Answers SET level='1' WHERE id='".$UID."'";
+                            echo "updating: " .$sqlUpdate."<br>";
                             
                             if (mysqli_query($conn, $sqlUpdate))
                                 {
-                                    header("Location: users.php");
+                                    //header("Location: users.php");
                                 }
                                 else
                                 {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
@@ -216,12 +217,13 @@ session_start();
                         if (isset($_POST["removeAdmin"]))
                         {
                             $UID = $_REQUEST["UID"];
-                            
+                            echo "UID: " .$UID."<br>";
                             $sqlUpdate = "UPDATE Answers SET level='0' WHERE id='".$UID."'";
+                            echo "updating: " .$sqlUpdate."<br>";
                             
                             if (mysqli_query($conn, $sqlUpdate))
                                 {
-                                    header("Location: users.php");
+                                    //header("Location: users.php");
                                 }
                                 else
                                 {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
