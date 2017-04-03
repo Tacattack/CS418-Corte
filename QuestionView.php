@@ -350,7 +350,15 @@ session_start();
                                                 if ($rowVA["voteType"] == 1)
                                                 {
                                                     $AVoteType = 1;
-                                                    echo "<div class=\"col-md-8\"><table>";
+                                                    if ($rowA["bestAnswer"] == 1)
+                                                    {
+                                                        echo "<div class=\"col-md-8\" style=\"background-color:#196F3D\">";
+                                                    }
+                                                    else
+                                                    {
+                                                        echo "<div class=\"col-md-8\">";
+                                                    }
+                                                    echo "<table>";
                                                     echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
                                                     echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
                                                     echo "<tr><td>";
@@ -370,7 +378,14 @@ session_start();
                                                 else if ($rowVA["voteType"] == -1)
                                                 {
                                                     $AVoteType = -1;
-                                                    echo "<div class=\"col-md-8\"><table>";
+                                                    if ($rowA["bestAnswer"] == 1)
+                                                    {
+                                                        echo "<div class=\"col-md-8\" style=\"background-color:#196F3D\">";
+                                                    }
+                                                    else
+                                                    {
+                                                        echo "<div class=\"col-md-8\">";
+                                                    }
                                                     echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
                                                     echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
                                                     echo "<tr><td>";
@@ -392,7 +407,14 @@ session_start();
                                     }
                                     if ($AVoteType == 0)
                                     {
-                                        echo "<div class=\"col-md-8\"><table>";
+                                        if ($rowA["bestAnswer"] == 1)
+                                        {
+                                            echo "<div class=\"col-md-8\" style=\"background-color:#196F3D\">";
+                                        }
+                                        else
+                                        {
+                                            echo "<div class=\"col-md-8\">";
+                                        }
                                         echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
                                         echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
                                         echo "<tr><td>";
@@ -405,6 +427,10 @@ session_start();
                                         if ($rowA["bestAnswer"] == 0 && $row["questionPoster"] == $_SESSION["USER"])
                                         {
                                             echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
+                                        }
+                                        else if ($rowA["bestAnswer"] == 1)
+                                        {
+                                            echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" aria-disabled=\"true\">";
                                         }
                                         echo "</form>";
                                         echo "</td></tr>";
@@ -523,6 +549,18 @@ session_start();
                             else 
                             {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
                         }
+                    }
+                    
+                    if (isset($_POST["ALike"]))
+                    {
+                        $sqlUpdate = "UPDATE Answers SET bestAnswer='1' questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
+                        
+                        if (mysqli_query($conn, $sqlUpdate))
+                            {
+                                header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                            }
+                            else 
+                            {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
                     }
                 }
                 
