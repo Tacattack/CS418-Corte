@@ -579,16 +579,25 @@ session_start();
                                     $AnswerLiked = $rowRemove["AnswerID"];
                                 }
                             }
+                            
                         }
                         
-                        $sqlUpdateLike = "UPDATE Answers SET bestAnswer='0' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerLiked."'";
-                        echo "Unliking: ".$sqlUpdateLike."<br>";
+                        if ($AnswerLiked != 0)
+                            {
+                                $sqlUpdateLike = "UPDATE Answers SET bestAnswer='0' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerLiked."'";
+                                if (mysqli_query($conn, $sqlUpdateLike))
+                                {
+                                    echo "Unliked";
+                                }
+                                else 
+                                {echo "Error: " . $sqlUpdateLike . "<br>" . mysqli_error($conn);}
+                            }
+                        
                         $sqlUpdate = "UPDATE Answers SET bestAnswer='1' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
-                        echo "Liking: ".$sqlUpdate."<br>";
                         
                         if (mysqli_query($conn, $sqlUpdate))
                             {
-                                //header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                header("Location: QuestionView.php?id=".$QuestionIDTemp);
                             }
                             else 
                             {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
