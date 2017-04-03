@@ -345,6 +345,7 @@ session_start();
                                     {
                                         while ($rowVA = mysqli_fetch_assoc($resultVA))
                                         {
+                                            echo "Vote Type: ".$AVoteType."<br>";
                                             if ($rowVA["user"] == $_SESSION["USER"])
                                             {
                                                 if ($rowVA["voteType"] == 1)
@@ -389,23 +390,25 @@ session_start();
                                                 }
                                             }
                                         }
-                                    }
-                                    if ($AVoteType == 0)
-                                    {
-                                        echo "<div class=\"col-md-8\"><table>";
-                                        echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
-                                        echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
-                                        echo "<tr><td>";
-                                        echo "<form method=\"post\">";
-                                        echo "<span><b>".$rowA["answerScore"]."</b><span>";
-                                        echo "&nbsp&nbsp&nbsp";
-                                        echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
-                                        echo "</form>";
-                                        echo "</td></tr>";
-                                        echo "</table><hr></div>";
+                                        
+                                        echo "VoteType After: ".$AVoteType."<br>";
+                                        if ($AVoteType == 0)
+                                        {
+                                            echo "<div class=\"col-md-8\"><table>";
+                                            echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
+                                            echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                            echo "<tr><td>";
+                                            echo "<form method=\"post\">";
+                                            echo "<span><b>".$rowA["answerScore"]."</b><span>";
+                                            echo "&nbsp&nbsp&nbsp";
+                                            echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
+                                            echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
+                                            echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
+                                            echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
+                                            echo "</form>";
+                                            echo "</td></tr>";
+                                            echo "</table><hr></div>";
+                                        }
                                     }
                                 }
                             }
@@ -434,7 +437,7 @@ session_start();
                             $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
                                     VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','{$AVoteType}')";
 
-                            if (mysqli_query($conn, $sqlUpdate)) 
+                            if (mysqli_query($conn, $sqlUpdate))
                             {
                                 if (mysqli_query($conn, $sqlInsertV))
                                 {
