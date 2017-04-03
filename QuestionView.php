@@ -371,6 +371,10 @@ session_start();
                                                     {
                                                         echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
                                                     }
+                                                    else if ($rowA["bestAnswer"] == 1)
+                                                    {
+                                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" aria-disabled=\"true\">";
+                                                    }
                                                     echo "</form>";
                                                     echo "</td></tr>";
                                                     echo "</table><hr></div>";
@@ -398,6 +402,10 @@ session_start();
                                                     if ($rowA["bestAnswer"] == 0 && $row["questionPoster"] == $_SESSION["USER"])
                                                     {
                                                         echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
+                                                    }
+                                                    else if ($rowA["bestAnswer"] == 1)
+                                                    {
+                                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" aria-disabled=\"true\">";
                                                     }
                                                     echo "</form>";
                                                     echo "</td></tr>";
