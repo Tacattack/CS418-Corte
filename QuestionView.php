@@ -553,7 +553,7 @@ session_start();
                     
                     if (isset($_POST["ALike"]))
                     {
-                        $sqlUpdate = "UPDATE Answers SET bestAnswer='1' questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
+                        $sqlUpdate = "UPDATE Answers SET bestAnswer='1' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
                         
                         if (mysqli_query($conn, $sqlUpdate))
                             {
