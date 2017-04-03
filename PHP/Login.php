@@ -7,10 +7,10 @@
     
     
     //Protecting username from MYSQL injection
-    $USRNM = mysqli_real_escape_string(addslashes($USRNM));
+    //$USRNM = mysqli_real_escape_string(addslashes($USRNM));
 
     //Protecting password from MYSL injection
-    $PSSWRD = mysqli_real_escape_string(addslashes($PSSWRD));
+    //$PSSWRD = mysqli_real_escape_string(addslashes($PSSWRD));
 
      //comparing username and password to database
     $sqlLogin = "SELECT * FROM UserProfile";
