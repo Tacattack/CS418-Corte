@@ -12,6 +12,7 @@ session_start();
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
     <title>Unstacking Exchange</title>
 
@@ -103,50 +104,66 @@ session_start();
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" name="rPassword" id="inputPassword" class="form-control" placeholder="Password" required>
         <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="Register">
+        <div class="g-recaptcha" data-sitekey="6Lf-aRsUAAAAAPPL4imKw7IUovJ1AyJChZpGzI8C"></div>
       </form>
         
         <?php
                     if(isset($_POST["submit"])){
-                        $RegisterName = addslashes($_POST['rUsername']);
-                        $RegisterPssWd = addslashes($_POST['rPassword']);
-                        $RegisterEmail = addslashes($_POST['rEmail']);
-                        $Denied = 0;
                         
-                        
-                        $sql = "SELECT * FROM UserProfile";
-                        $result = mysqli_query($conn, $sql);
-                        
-                        if (mysqli_num_rows($result) > 0)
-                        {
-                           while ($row = mysqli_fetch_assoc($result))
-                           {
-                               if($row["username"] == $RegisterName)
-                               {
-                                   echo "<center>That username already exists</center>";
-                                   $Denied = 1;
-                               }
-                               else if ($row["email"] == $RegisterEmail)
-                               {
-                                   echo "<center>That email is already in use</center>";
-                                   $Denied = 1;
-                               }
-                           }
-                        }
-                        
-                        if ($Denied == 0)
-                        {
-                            $sql = "INSERT INTO UserProfile (username, password, email, level)
-                            VALUES('{$RegisterName}', '{$RegisterPssWd}', '{$RegisterEmail}', '0')";
-                            
-                            if (mysqli_query($conn, $sql)) {
-                                echo "<center>You Have Successfully Registered With Unstacking Exchange. You May Now Log In To Get Started</center>";
-                            } else {
-                                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-                            }
-                        }
-                        else
-                        {
+                        require_once('recaptchalib.php');
+                        $privatekey = "6Lf-aRsUAAAAAKtH3hdijI2KgWEu-0psb8OCHGgs";
+                        $resp = recaptcha_check_answer ($privatekey,
+                                                      $_SERVER["REMOTE_ADDR"],
+                                                      $_POST["recaptcha_challenge_field"],
+                                                      $_POST["recaptcha_response_field"]);
+
+                        if (!$resp->is_valid) {
+                          // What happens when the CAPTCHA was entered incorrectly
+                          die ("The reCAPTCHA wasn't entered correctly. Go back and try it again." .
+                               "(reCAPTCHA said: " . $resp->error . ")");
+                        } else {
+                          // Your code here to handle a successful verification
+                            $RegisterName = addslashes($_POST['rUsername']);
+                            $RegisterPssWd = addslashes($_POST['rPassword']);
+                            $RegisterEmail = addslashes($_POST['rEmail']);
                             $Denied = 0;
+
+
+                            $sql = "SELECT * FROM UserProfile";
+                            $result = mysqli_query($conn, $sql);
+
+                            if (mysqli_num_rows($result) > 0)
+                            {
+                               while ($row = mysqli_fetch_assoc($result))
+                               {
+                                   if($row["username"] == $RegisterName)
+                                   {
+                                       echo "<center>That username already exists</center>";
+                                       $Denied = 1;
+                                   }
+                                   else if ($row["email"] == $RegisterEmail)
+                                   {
+                                       echo "<center>That email is already in use</center>";
+                                       $Denied = 1;
+                                   }
+                               }
+                            }
+
+                            if ($Denied == 0)
+                            {
+                                $sql = "INSERT INTO UserProfile (username, password, email, level)
+                                VALUES('{$RegisterName}', '{$RegisterPssWd}', '{$RegisterEmail}', '0')";
+
+                                if (mysqli_query($conn, $sql)) {
+                                    echo "<center>You Have Successfully Registered With Unstacking Exchange. You May Now Log In To Get Started</center>";
+                                } else {
+                                    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+                                }
+                            }
+                            else
+                            {
+                                $Denied = 0;
+                            }
                         }
 
                         mysqli_close($conn);
