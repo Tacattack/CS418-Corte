@@ -167,6 +167,22 @@ session_start();
                         echo "</tbody>";
                         echo "</table>";
                     
+                        if (isset($_POST["makeAdmin"]))
+                        {
+                            $UID = $_REQUEST["UID"];
+                            echo "UID: " .$UID."<br>";
+                            $sqlUpdate = "UPDATE Answers SET level='1' WHERE id='".$UID."'";
+                            echo "updating: " .$sqlUpdate."<br>";
+                            
+                            if (mysqli_query($conn, $sqlUpdate))
+                                {
+                                    echo "Admin Added";
+                                    //header("Location: users.php");
+                                }
+                                else
+                                {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
+                        }
+                        
                         echo "<table class=\"table table-bordered table-striped\">";  
                         echo "<thead>";
                         echo "<tr>";
@@ -198,22 +214,6 @@ session_start();
                         }
                         echo "</tbody>";
                         echo "</table>";
-                        
-                        if (isset($_POST["makeAdmin"]))
-                        {
-                            $UID = $_REQUEST["UID"];
-                            echo "UID: " .$UID."<br>";
-                            $sqlUpdate = "UPDATE Answers SET level='1' WHERE id='".$UID."'";
-                            echo "updating: " .$sqlUpdate."<br>";
-                            
-                            if (mysqli_query($conn, $sqlUpdate))
-                                {
-                                    echo "Admin Added";
-                                    //header("Location: users.php");
-                                }
-                                else
-                                {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
-                        }
                         
                         if (isset($_POST["removeAdmin"]))
                         {
