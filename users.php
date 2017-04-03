@@ -208,6 +208,7 @@ session_start();
                             
                             if (mysqli_query($conn, $sqlUpdate))
                                 {
+                                    echo "Admin Added";
                                     //header("Location: users.php");
                                 }
                                 else
@@ -223,6 +224,7 @@ session_start();
                             
                             if (mysqli_query($conn, $sqlUpdate))
                                 {
+                                echo "Admin removed";
                                     //header("Location: users.php");
                                 }
                                 else
