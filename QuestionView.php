@@ -432,16 +432,13 @@ session_start();
 
                             $sqlUpdate = "UPDATE Answers SET answerScore='".$answerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
                             $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
-                                    VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','{$AVoteType}')";
-                            
-                            echo "Updating: ".$sqlUpdate."<br>";
-                            echo "Insterting: ".$sqlInsertV."<br>";
+                                    VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','1')";
                                     
                             if (mysqli_query($conn, $sqlUpdate)) 
                             {
                                 if (mysqli_query($conn, $sqlInsertV))
                                 {
-                                    //header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                    header("Location: QuestionView.php?id=".$QuestionIDTemp);
                                 }
                                 else
                                 {echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);}
