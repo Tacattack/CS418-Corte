@@ -560,13 +560,9 @@ session_start();
                         
                         $sqlUpdate = "UPDATE Answers SET bestAnswer='1' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
                         
-                        echo "Question ID: ".$QuestionIDTemp."<br>";
-                        echo "Answer ID: ".$AnswerIDTemp."<br>";
-                        echo "I'm updating: ".$sqlUpdate."<br>";
-                        
                         if (mysqli_query($conn, $sqlUpdate))
                             {
-                                //header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                header("Location: QuestionView.php?id=".$QuestionIDTemp);
                             }
                             else 
                             {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
