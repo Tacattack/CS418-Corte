@@ -105,6 +105,11 @@ session_start();
         <input type="password" name="rPassword" id="inputPassword" class="form-control" placeholder="Password" required>
         <input class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="Register">
         <div class="g-recaptcha" data-sitekey="6Lf-aRsUAAAAAPPL4imKw7IUovJ1AyJChZpGzI8C"></div>
+        <?php
+          require_once('recaptchalib.php');
+          $publickey = "6Lf-aRsUAAAAAPPL4imKw7IUovJ1AyJChZpGzI8C"; // you got this from the signup page
+          echo recaptcha_get_html($publickey);
+        ?>
       </form>
         
         <?php
