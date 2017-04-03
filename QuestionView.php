@@ -565,7 +565,7 @@ session_start();
                     {
                         $AnswerIDTemp = $_REQUEST["AID"];
                         $QuestionIDTemp = $_GET["id"];
-                        $AnswerLikedID;
+                        $AnswerLikedID = 0;
                         
                         $sqlRemove = "SELECT * FROM Answers WHERE questionID='".$QuestionIDTemp."'";
                         $resultRemove = mysqli_query($conn, $sqlRemove);
@@ -582,12 +582,13 @@ session_start();
                         }
                         
                         $sqlUpdateLike = "UPDATE Answers SET bestAnswer='0' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerLiked."'";
-                        
+                        echo "Unliking: ".$sqlUpdateLike."<br>";
                         $sqlUpdate = "UPDATE Answers SET bestAnswer='1' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
+                        echo "Liking: ".$sqlUpdate."<br>";
                         
                         if (mysqli_query($conn, $sqlUpdate))
                             {
-                                header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                //header("Location: QuestionView.php?id=".$QuestionIDTemp);
                             }
                             else 
                             {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
