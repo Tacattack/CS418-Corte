@@ -566,6 +566,20 @@ session_start();
                         $AnswerIDTemp = $_REQUEST["AID"];
                         $QuestionIDTemp = $_GET["id"];
                         
+                        $sqlRemove = "SELECT * FROM Answers WHERE questionID='".$QuestionIDTemp."'";
+                        $resultRemove = mysqli_query($conn, $sqlRemove);
+                        
+                        if (mysqli_num_rows($resultRemove) > 0)
+                        {
+                            while ($rowRemove = mysqli_fetch_assoc($resultRemove))
+                            {
+                                if ($rowRemove["bestAnswer"] == 1)
+                                {
+                                    $rowRemove["bestAnswer"] = 0;
+                                }
+                            }
+                        }
+                        
                         $sqlUpdate = "UPDATE Answers SET bestAnswer='1' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
                         
                         if (mysqli_query($conn, $sqlUpdate))
