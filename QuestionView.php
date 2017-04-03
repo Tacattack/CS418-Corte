@@ -386,6 +386,7 @@ session_start();
                                                     {
                                                         echo "<div class=\"col-md-8\">";
                                                     }
+                                                    echo "<table>";
                                                     echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
                                                     echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
                                                     echo "<tr><td>";
@@ -415,6 +416,7 @@ session_start();
                                         {
                                             echo "<div class=\"col-md-8\">";
                                         }
+                                        echo "<table>";
                                         echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
                                         echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
                                         echo "<tr><td>";
