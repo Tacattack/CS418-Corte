@@ -555,6 +555,9 @@ session_start();
                     
                     if (isset($_POST["ALike"]))
                     {
+                        $AnswerIDTemp = $_REQUEST["AID"];
+                        $QuestionIDTemp = $_GET["id"];
+                        
                         $sqlUpdate = "UPDATE Answers SET bestAnswer='1' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
                         
                         echo "Question ID: ".$QuestionIDTemp."<br>";
