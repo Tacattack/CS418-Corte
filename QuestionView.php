@@ -387,25 +387,29 @@ session_start();
                                                     echo "</td></tr>";
                                                     echo "</table><hr></div>";
                                                 }
+                                                else if ($rowVA["voteType"] == 0)
+                                                {
+                                                    $AVoteType = 0;
+                                                    echo "<div class=\"col-md-8\"><table>";
+                                                    echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
+                                                    echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                                    echo "<tr><td>";
+                                                    echo "<form method=\"post\">";
+                                                    echo "<span><b>".$rowA["answerScore"]."</b><span>";
+                                                    echo "&nbsp&nbsp&nbsp";
+                                                    echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
+                                                    echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
+                                                    echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
+                                                    if ($rowA["bestAnswer"] == 0)
+                                                    {
+                                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
+                                                    }
+                                                    echo "</form>";
+                                                    echo "</td></tr>";
+                                                    echo "</table><hr></div>";
+                                                }
                                             }
                                         }
-                                    }
-                                    if ($AVoteType == 0)
-                                    {
-                                        echo "<div class=\"col-md-8\"><table>";
-                                        echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
-                                        echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
-                                        echo "<tr><td>";
-                                        echo "<form method=\"post\">";
-                                        echo "<span><b>".$rowA["answerScore"]."</b><span>";
-                                        echo "&nbsp&nbsp&nbsp";
-                                        echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
-                                        echo "</form>";
-                                        echo "</td></tr>";
-                                        echo "</table><hr></div>";
                                     }
                                 }
                             }
