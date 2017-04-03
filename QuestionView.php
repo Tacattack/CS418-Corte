@@ -593,6 +593,7 @@ session_start();
                 
                 if (isset($_SESSION["USER"]))
                 {
+                    echo "<br><br>";
                     echo "<form method=\"post\" action=\"\">";
                     echo "<textarea rows=\"30\" name=\"ABody\" style=\"width: 600px; height: 50px;\"></textarea>";
                     echo "<input type=\"submit\" name=\"submitA\" value=\"Submit Answer\" style=\"margin: 20px 50px; float: right\"/>";
