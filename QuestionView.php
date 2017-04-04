@@ -247,7 +247,7 @@ session_start();
                             {
                                 echo "Score Updated";
                                 header("Location: QuestionView.php?id=".$QuestionIDTemp);
-                                die();
+                                exit();
                             }
                             else
                             {
@@ -287,7 +287,7 @@ session_start();
                                     {
                                         echo "Score Updated";
                                         header("Location: QuestionView.php?id=".$QuestionIDTemp);
-                                        die();
+                                        exit();
                                     }
                                     else
                                     {
@@ -310,7 +310,7 @@ session_start();
                                     {
                                         echo "Score Updated";
                                         header("Location: QuestionView.php?id=".$QuestionIDTemp);
-                                        die();
+                                        exit();
                                     }
                                     else
                                     {
@@ -353,7 +353,7 @@ session_start();
                                         {
                                             echo "Score Updated";
                                             header("Location: QuestionView.php?id=".$QuestionIDTemp);
-                                            die();
+                                            exit();
                                         }
                                         else
                                         {
@@ -376,7 +376,7 @@ session_start();
                                         {
                                             echo "Score Updated";
                                             header("Location: QuestionView.php?id=".$QuestionIDTemp);
-                                            die();
+                                            exit();
                                         }
                                         else
                                         {
@@ -432,8 +432,6 @@ session_start();
                                                     echo "&nbsp&nbsp&nbsp";
                                                     echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
                                                     echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
-                                                    echo "</form>";
-                                                    echo "<form method=\"post\">";
                                                     if ($rowA["bestAnswer"] == 0 && $row["questionPoster"] == $_SESSION["USER"])
                                                     {
                                                         echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
@@ -466,8 +464,6 @@ session_start();
                                                     echo "&nbsp&nbsp&nbsp";
                                                     echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
                                                     echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
-                                                    echo "</form>";
-                                                    echo "<form method=\"post\">";
                                                     if ($rowA["bestAnswer"] == 0 && $row["questionPoster"] == $_SESSION["USER"])
                                                     {
                                                         echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
@@ -503,8 +499,6 @@ session_start();
                                         echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
                                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
                                         echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
-                                        echo "</form>";
-                                        echo "<form method=\"post\">";
                                         if ($rowA["bestAnswer"] == 0 && $row["questionPoster"] == $_SESSION["USER"])
                                         {
                                             echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
@@ -549,7 +543,7 @@ session_start();
                                 if (mysqli_query($conn, $sqlInsertV))
                                 {
                                     header("Location: QuestionView.php?id=".$QuestionIDTemp);
-                                    die();
+                                    exit();
                                 }
                                 else
                                 {echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);}
@@ -569,7 +563,7 @@ session_start();
                                 if (mysqli_query($conn, $sqlUpdateV))
                                 {
                                     header("Location: QuestionView.php?id=".$QuestionIDTemp);
-                                    die();
+                                    exit();
                                 }
                                 else
                                 {echo "Error: " . $sqlUpdateV . "<br>" . mysqli_error($conn);}
@@ -606,7 +600,7 @@ session_start();
                                 if (mysqli_query($conn, $sqlInsertV))
                                 {
                                     header("Location: QuestionView.php?id=".$QuestionIDTemp);
-                                    die();
+                                    exit();
                                 }
                                 else
                                 {echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);}
@@ -626,7 +620,7 @@ session_start();
                                 if (mysqli_query($conn, $sqlUpdateV))
                                 {
                                     header("Location: QuestionView.php?id=".$QuestionIDTemp);
-                                    die();
+                                    exit();
                                 }
                                 else
                                 {echo "Error: " . $sqlUpdateV . "<br>" . mysqli_error($conn);}
@@ -646,7 +640,7 @@ session_start();
                         if (mysqli_query($conn, $sqlUpdate))
                             {
                                 header("Location: QuestionView.php?id=".$QuestionIDTemp);
-                                die();
+                                exit();
                             }
                             else 
                             {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
@@ -672,7 +666,7 @@ session_start();
                         if (mysqli_query($conn, $AnswerCreate)) {
                             echo "New record created successfully";
                             header("Location: QuestionView.php?id=".$_GET["id"]);
-                            die();
+                            exit();
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                         }
