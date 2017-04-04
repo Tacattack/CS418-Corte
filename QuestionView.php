@@ -508,8 +508,10 @@ session_start();
                                         echo "</table><hr></div>";
                                     }
                                 }
-                                
-                                if (isset($_POST["APlusOne"]))
+                            }
+                        echo "<br />";
+                    echo "</ul>";
+                    if (isset($_POST["APlusOne"]))
                     {
                         $AnswerIDTemp = $_REQUEST["AID"];
                         $sqlPlus = "SELECT * FROM Answers WHERE AnswerID='".$AnswerIDTemp."'";
@@ -638,9 +640,6 @@ session_start();
                             else 
                             {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
                     }
-                            }
-                        echo "<br />";
-                    echo "</ul>";
                 
                 if (isset($_SESSION["USER"]) && $Frozen == 0)
                 {
