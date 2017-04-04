@@ -365,7 +365,6 @@ session_start();
                                     $sqlUpdate = "UPDATE Questions SET questionScore='".$questionScore."' WHERE id='".$QuestionIDTemp."'";
                                     $sqlUpdateV = "UPDATE UserQuestionVote SET voteType='-1' WHERE QID='".$_GET["id"]."' AND user='".$_SESSION["USER"]."'";
 
-
                                     if (mysqli_query($conn, $sqlUpdate)) {
 
                                         if (mysqli_query($conn, $sqlUpdateV))
@@ -625,12 +624,17 @@ session_start();
                     {
                         $AnswerIDTemp = $_REQUEST["AID"];
                         $QuestionIDTemp = $_GET["id"];
+                        echo "AID: ".$AnswerIDTemp."<br>";
+                        echo "QID: ".$QuestionIDTemp."<br>";
+                        
                         
                         $sqlUpdate = "UPDATE Answers SET bestAnswer='1' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
                         
+                        echo "Update: ".$sqlUpdate."<br>";
                         if (mysqli_query($conn, $sqlUpdate))
                             {
-                                header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                echo "You liked a question";
+                                //header("Location: QuestionView.php?id=".$QuestionIDTemp);
                             }
                             else 
                             {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
