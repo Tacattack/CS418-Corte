@@ -157,31 +157,11 @@ session_start();
                                echo "<tr><td>";
                                echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
                                echo "</td>";
-                               echo "<td>";
-                               echo "<form>";
-                               echo '<input type="hidden" name="UID" value="'.$row["id"].'">';
-                               echo "<input type=\"submit\" name=\"removeAdmin\"class=\"btn btn-danger\" value=\"Remove Admin\"></form>";
-                               echo "</td></tr>";
+                               echo "</tr>";
                            }
                         }
                         echo "</tbody>";
                         echo "</table>";
-                    
-                        if (isset($_POST["makeAdmin"]))
-                        {
-                            $UID = $_REQUEST["UID"];
-                            echo "UID: " .$UID."<br>";
-                            $sqlUpdate = "UPDATE Answers SET level='1' WHERE id='".$UID."'";
-                            echo "updating: " .$sqlUpdate."<br>";
-                            
-                            if (mysqli_query($conn, $sqlUpdate))
-                                {
-                                    echo "Admin Added";
-                                    header("Location: users.php");
-                                }
-                                else
-                                {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
-                        }
                         
                         echo "<table class=\"table table-bordered table-striped\">";  
                         echo "<thead>";
@@ -205,31 +185,11 @@ session_start();
                                echo "<tr><td>";
                                echo "<a href=\"profile.php?id=".$row["id"]."\">".$row["username"]."</a>";
                                echo "</td>";
-                               echo "<td>";
-                               echo "<form>";
-                               echo '<input type="hidden" name="UID" value="'.$row["id"].'">';
-                               echo "<input type=\"submit\" name=\"makeAdmin\"class=\"btn btn-danger\" value=\"Make Admin\"></form>";
-                               echo "</td></tr>";
+                               echo "</tr>";
                            }
                         }
                         echo "</tbody>";
                         echo "</table>";
-                        
-                        if (isset($_POST["removeAdmin"]))
-                        {
-                            $UID = $_REQUEST["UID"];
-                            echo "UID: " .$UID."<br>";
-                            $sqlUpdate = "UPDATE Answers SET level='0' WHERE id='".$UID."'";
-                            echo "updating: " .$sqlUpdate."<br>";
-                            
-                            if (mysqli_query($conn, $sqlUpdate))
-                                {
-                                echo "Admin removed";
-                                    header("Location: users.php");
-                                }
-                                else
-                                {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
-                        }
                         
                         mysqli_close($conn);
                     }

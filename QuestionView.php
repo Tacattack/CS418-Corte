@@ -122,15 +122,24 @@ session_start();
                 $resultU = mysqli_query($conn, $sqlU);
                 $resultV = mysqli_query($conn, $sqlV);
                 $voteType = 0;
+                $Frozen = 0;
 
                 if (mysqli_num_rows($result) > 0)
                 {
                     while ($row = mysqli_fetch_assoc($result))
                     {
+                        if ($row["questionFrozen"] == 1)
+                        {
+                            echo "<div class=\"col-md-12\" style=\"background-color:#DBDDDC\">";
+                            echo "<h1>THE QUESTION HAS BEEN FROZEN</h1>";
+                            echo "<h3>What Does This Mean?</h3>";
+                            echo "<p>This means that you will not be able to post anymore answers on this question</p>";
+                            echo "</div>";
+                        }
                         echo "<div id=\"QuestionTitle\">";
                         echo "<h1>" . $row["questionTitle"] . "</h1>";
                         echo "</div>";
-
+                        
                         echo "<div id=\"QuestionBody\">";
                         echo "<p>";
                         echo $row["questionBody"];
@@ -168,6 +177,17 @@ session_start();
                                         echo "<span style=\"color:green;\"><b>".$row["questionScore"]."</b><span>";
                                         echo "&nbsp&nbsp&nbsp";
                                         echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"MinusOne\" value=\"-1\">";
+                                        echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+                                        if ($row["questionFrozen"] == 1)
+                                        {
+                                            echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\" disabled>";
+                                            $Frozen = 1;
+                                        }
+                                        else
+                                        {
+                                           echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\">";
+                                            $Frozen = 0; 
+                                        }
                                         echo "</form>";
                                     }
                                     else if ($rowV["voteType"] == -1)
@@ -177,6 +197,17 @@ session_start();
                                         echo "<span style=\"color:red;\"><b>".$row["questionScore"]."</b><span>";
                                         echo "&nbsp&nbsp&nbsp";
                                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"PlusOne\" value=\"+1\">";
+                                        echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+                                        if ($row["questionFrozen"] == 1)
+                                        {
+                                            echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\" disabled>";
+                                            $Frozen = 1;
+                                        }
+                                        else
+                                        {
+                                           echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\">";
+                                            $Frozen = 0; 
+                                        }
                                         echo "</form>";
                                     }
                                 }
@@ -190,11 +221,39 @@ session_start();
                             echo "&nbsp&nbsp&nbsp";
                             echo "<input type=\"submit\" class=\"btn btn-success\" name=\"PlusOne\" value=\"+1\">";
                             echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"MinusOne\" value=\"-1\">";
+                            echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+                            if ($row["questionFrozen"] == 1)
+                            {
+                                echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\" disabled>";
+                                $Frozen = 1;
+                            }
+                            else
+                            {
+                                echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\">";
+                                $Frozen = 0; 
+                            }
                             echo "</form>";
                         }
                         
                         echo "<hr>";
                         echo "</div>";
+                        
+                        if (isset($_POST["FreezeQuestion"]))
+                        {
+                            $QuestionIDTemp = $_GET["id"];
+                            $sqlUpdate = "UPDATE Questions SET questionFrozen='1' WHERE id='".$QuestionIDTemp."'";
+                            
+                            if (mysqli_query($conn, $sqlUpdate))
+                            {
+                                echo "Score Updated";
+                                header("Location: QuestionView.php?id=".$QuestionIDTemp);   
+                            }
+                            else
+                            {
+                                echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);
+                            }
+                        }
+                        
                         
                         if (isset($_POST["PlusOne"]))
                         {
@@ -328,6 +387,7 @@ session_start();
                         echo "<div id=\"Answers\">";
                         echo "<h3>Answers</h3>";
                         echo "<ul>";
+                        
                         $AVoteType = 0;
                         
                         $sqlA = "SELECT * FROM Answers WHERE questionID='".$_GET["id"]."' ORDER BY answerScore DESC";
@@ -577,7 +637,7 @@ session_start();
                     }
                 }
                 
-                if (isset($_SESSION["USER"]))
+                if (isset($_SESSION["USER"]) && $Frozen == 0)
                 {
                     echo "<br><br>";
                     echo "<form method=\"post\" action=\"\">";
