@@ -409,10 +409,6 @@ session_start();
                                                 if ($rowVA["voteType"] == 1)
                                                 {
                                                     $AVoteType = 1;
-                                                    if ($rowA["bestAnswer"] == 1)
-                                                    {
-                                                        echo "THIS QUESTION HAS BEEN LIKED BY THE USER";
-                                                    }
                                                     echo "<div class=\"col-md-8\">";
                                                     echo "<table>";
                                                     echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
@@ -423,14 +419,6 @@ session_start();
                                                     echo "&nbsp&nbsp&nbsp";
                                                     echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
                                                     echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
-                                                    if ($rowA["bestAnswer"] == 0 && $row["questionPoster"] == $_SESSION["USER"])
-                                                    {
-                                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
-                                                    }
-                                                    else if ($rowA["bestAnswer"] == 1 && $row["questionPoster"] == $_SESSION["USER"])
-                                                    {
-                                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" disabled>";
-                                                    }
                                                     echo "</form>";
                                                     echo "</td></tr>";
                                                     echo "</table><hr></div>";
@@ -438,10 +426,6 @@ session_start();
                                                 else if ($rowVA["voteType"] == -1)
                                                 {
                                                     $AVoteType = -1;
-                                                    if ($rowA["bestAnswer"] == 1)
-                                                    {
-                                                        echo "THIS QUESTION HAS BEEN LIKED BY THE USER";
-                                                    }
                                                     echo "<div class=\"col-md-8\">";
                                                     echo "<table>";
                                                     echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
@@ -452,14 +436,6 @@ session_start();
                                                     echo "&nbsp&nbsp&nbsp";
                                                     echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
                                                     echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
-                                                    if ($rowA["bestAnswer"] == 0 && $row["questionPoster"] == $_SESSION["USER"])
-                                                    {
-                                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
-                                                    }
-                                                    else if ($rowA["bestAnswer"] == 1 && $row["questionPoster"] == $_SESSION["USER"])
-                                                    {
-                                                        echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" disabled>";
-                                                    }
                                                     echo "</form>";
                                                     echo "</td></tr>";
                                                     echo "</table><hr></div>";
@@ -469,10 +445,6 @@ session_start();
                                     }
                                     if ($AVoteType == 0)
                                     {
-                                        if ($rowA["bestAnswer"] == 1)
-                                        {
-                                            echo "THIS QUESTION HAS BEEN LIKED BY THE USER";
-                                        }
                                         echo "<div class=\"col-md-8\">";
                                         echo "<table>";
                                         echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
@@ -484,14 +456,6 @@ session_start();
                                         echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
                                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
                                         echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
-                                        if ($rowA["bestAnswer"] == 0 && $row["questionPoster"] == $_SESSION["USER"])
-                                        {
-                                            echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
-                                        }
-                                        else if ($rowA["bestAnswer"] == 1 && $row["questionPoster"] == $_SESSION["USER"])
-                                        {
-                                            echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" disabled>";
-                                        }
                                         echo "</form>";
                                         echo "</td></tr>";
                                         echo "</table><hr></div>";
@@ -607,26 +571,6 @@ session_start();
                             else 
                             {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
                         }
-                    }
-                    
-                    if (isset($_POST["ALike"]))
-                    {
-                        $AnswerIDTemp = $_REQUEST["AID"];
-                        $QuestionIDTemp = $_GET["id"];
-                        echo "AID: ".$AnswerIDTemp."<br>";
-                        echo "QID: ".$QuestionIDTemp."<br>";
-                        
-                        
-                        $sqlUpdate = "UPDATE Answers SET bestAnswer='1' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
-                        
-                        echo "Update: ".$sqlUpdate."<br>";
-                        if (mysqli_query($conn, $sqlUpdate))
-                            {
-                                echo "You liked a question";
-                                header("Location: QuestionView.php?id=".$QuestionIDTemp);
-                            }
-                            else 
-                            {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
                     }
                 }
                 
