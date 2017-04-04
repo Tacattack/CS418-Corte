@@ -127,9 +127,9 @@ session_start();
                                "(reCAPTCHA said: " . $resp->error . ")");
                         } else {
                           // Your code here to handle a successful verification
-                            $RegisterName = addslashes($_POST['rUsername']);
-                            $RegisterPssWd = addslashes($_POST['rPassword']);
-                            $RegisterEmail = addslashes($_POST['rEmail']);
+                            $RegisterName = mysqli_real_escape_string($conn,htmlspecialchars($_POST['rUsername'], ENT_QUOTES|ENT_HTML5));
+                            $RegisterPssWd = mysqli_real_escape_string($conn,htmlspecialchars($_POST['rPassword'], ENT_QUOTES|ENT_HTML5));
+                            $RegisterEmail = mysqli_real_escape_string($conn,htmlspecialchars($_POST['rEmail'], ENT_QUOTES|ENT_HTML5));
                             $Denied = 0;
 
 

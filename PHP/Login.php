@@ -2,15 +2,8 @@
     include("Connect.php");
     session_start();
 
-    $USRNM = $_POST['LoginUsername'];
-    $PSSWRD = $_POST['LoginPassword'];
-    
-    
-    //Protecting username from MYSQL injection
-    //$USRNM = mysqli_real_escape_string(addslashes($USRNM));
-
-    //Protecting password from MYSL injection
-    //$PSSWRD = mysqli_real_escape_string(addslashes($PSSWRD));
+    $USRNM = mysqli_real_escape_string($conn,htmlspecialchars($_POST['LoginUsername'], ENT_QUOTES|ENT_HTML5));
+    $PSSWRD = mysqli_real_escape_string($conn,htmlspecialchars($_POST['LoginPassword'], ENT_QUOTES|ENT_HTML5));
 
      //comparing username and password to database
     $sqlLogin = "SELECT * FROM UserProfile";
