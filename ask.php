@@ -137,12 +137,12 @@ session_start();
                     echo "</form>";
 
                     if(isset($_POST["submit"])){
-                        $QuestionTitle = addslashes($_POST['QTitle']);
-                        $QuestionBody = addslashes($_POST['QBody']);
+                        $QuestionTitle = mysqli_real_escape_string($conn,addslashes($_POST['QTitle']));
+                        $QuestionBody = mysqli_real_escape_string($conn,addslashes($_POST['QBody']));
                         $QuestionPoster = $_SESSION["USER"];
-                        $QuestionTagOne = addslashes($_POST['tagOne']);
-                        $QuestionTagTwo = addslashes($_POST['tagTwo']);
-                        $QuestionTagThree = addslashes($_POST['tagThree']);
+                        $QuestionTagOne = mysqli_real_escape_string($conn,addslashes($_POST['tagOne']));
+                        $QuestionTagTwo = mysqli_real_escape_string($conn,addslashes($_POST['tagTwo']));
+                        $QuestionTagThree = mysqli_real_escape_string($conn,addslashes($_POST['tagThree']));
 
                         $sql = "INSERT INTO Questions (questionTitle, questionBody, questionPoster, tagOne, tagTwo, tagThree)
                             VALUES('{$QuestionTitle}', '{$QuestionBody}', '{$QuestionPoster}', '{$QuestionTagOne}', '{$QuestionTagTwo}', '{$QuestionTagThree}')";
