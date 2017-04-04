@@ -413,7 +413,7 @@ session_start();
                                                     {
                                                         echo '<div class="col-md-8" style="background-color:#28B463;">';
                                                     }
-                                                    else if ($rowA["bestAnswer"] == 0)
+                                                    else
                                                     {
                                                         echo "<div class=\"col-md-8\">";
                                                     }
@@ -445,7 +445,7 @@ session_start();
                                                     {
                                                         echo '<div class="col-md-8" style="background-color:#28B463;">';
                                                     }
-                                                    else if ($rowA["bestAnswer"] == 0)
+                                                    else
                                                     {
                                                         echo "<div class=\"col-md-8\">";
                                                     }
@@ -479,7 +479,7 @@ session_start();
                                         {
                                             echo '<div class="col-md-8" style="background-color:#28B463;">';
                                         }
-                                        else if ($rowA["bestAnswer"] == 0)
+                                        else
                                         {
                                             echo "<div class=\"col-md-8\">";
                                         }
@@ -527,10 +527,10 @@ session_start();
                         if ($AVoteType == 0)
                         {
                             $answerScore = $answerScore + 1;
-
+                            $AVoteType = 1;
                             $sqlUpdate = "UPDATE Answers SET answerScore='".$answerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
                             $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
-                                    VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','1')";
+                                    VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','{$AVoteType}')";
                                     
                             if (mysqli_query($conn, $sqlUpdate)) 
                             {
@@ -582,10 +582,10 @@ session_start();
                         if ($AVoteType == 0)
                         {
                             $answerScore = $answerScore - 1;
-
+                            $AVoteType = -1;
                             $sqlUpdate = "UPDATE Answers SET answerScore='".$answerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
                             $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
-                                    VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','-1')";
+                                    VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','{$AVoteType}')";
                                     
                             if (mysqli_query($conn, $sqlUpdate)) 
                             {
@@ -634,7 +634,7 @@ session_start();
                         if (mysqli_query($conn, $sqlUpdate))
                             {
                                 echo "You liked a question";
-                                //header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                header("Location: QuestionView.php?id=".$QuestionIDTemp);
                             }
                             else 
                             {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
