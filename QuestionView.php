@@ -466,35 +466,35 @@ session_start();
                                                 }
                                             }
                                         }
-                                    }
-                                    if ($AVoteType == 0)
-                                    {
-                                        /*if ($rowA["bestAnswer"] == 1)
+                                        if ($AVoteType == 0)
                                         {
-                                            echo "THIS QUESTION HAS BEEN LIKED BY THE USER";
-                                        }*/
-                                        echo "<div class=\"col-md-8\">";
-                                        echo "<table>";
-                                        echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
-                                        echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
-                                        echo "<tr><td>";
-                                        echo "<form method=\"post\">";
-                                        echo "<span><b>".$rowA["answerScore"]."</b><span>";
-                                        echo "&nbsp&nbsp&nbsp";
-                                        echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
-                                        /*if ($rowA["bestAnswer"] == 0 && $row["questionPoster"] == $_SESSION["USER"])
-                                        {
-                                            echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
+                                            /*if ($rowA["bestAnswer"] == 1)
+                                            {
+                                                echo "THIS QUESTION HAS BEEN LIKED BY THE USER";
+                                            }*/
+                                            echo "<div class=\"col-md-8\">";
+                                            echo "<table>";
+                                            echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
+                                            echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                            echo "<tr><td>";
+                                            echo "<form method=\"post\">";
+                                            echo "<span><b>".$rowA["answerScore"]."</b><span>";
+                                            echo "&nbsp&nbsp&nbsp";
+                                            echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
+                                            echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
+                                            echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
+                                            /*if ($rowA["bestAnswer"] == 0 && $row["questionPoster"] == $_SESSION["USER"])
+                                            {
+                                                echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
+                                            }
+                                            else if ($rowA["bestAnswer"] == 1)
+                                            {
+                                                echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" disabled>";
+                                            }*/
+                                            echo "</form>";
+                                            echo "</td></tr>";
+                                            echo "</table><hr></div>";
                                         }
-                                        else if ($rowA["bestAnswer"] == 1)
-                                        {
-                                            echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" disabled>";
-                                        }*/
-                                        echo "</form>";
-                                        echo "</td></tr>";
-                                        echo "</table><hr></div>";
                                     }
                                 }
                             }
@@ -518,10 +518,9 @@ session_start();
                         if ($AVoteType == 0)
                         {
                             $answerScore = $answerScore + 1;
-                            $AVoteType = 1;
                             $sqlUpdate = "UPDATE Answers SET answerScore='".$answerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
                             $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
-                                    VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','{$AVoteType}')";
+                                    VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','1')";
                                     
                             if (mysqli_query($conn, $sqlUpdate)) 
                             {
@@ -580,10 +579,9 @@ session_start();
                         if ($AVoteType == 0)
                         {
                             $answerScore = $answerScore - 1;
-                            $AVoteType = -1;
                             $sqlUpdate = "UPDATE Answers SET answerScore='".$answerScore."' WHERE questionID='".$QuestionIDTemp."' AND AnswerID='".$AnswerIDTemp."'";
                             $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
-                                    VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','{$AVoteType}')";
+                                    VALUES ('{$QuestionIDTemp}', '{$AnswerIDTemp}','{$AnswerVoter}','-1')";
                                     
                             if (mysqli_query($conn, $sqlUpdate)) 
                             {
