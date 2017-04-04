@@ -413,12 +413,9 @@ session_start();
                                                     $AVoteType = 1;
                                                     if ($rowA["bestAnswer"] == 1)
                                                     {
-                                                        echo '<div class="col-md-8" style="background-color:#28B463;">';
+                                                        echo "THIS QUESTION HAS BEEN LIKED BY THE USER";
                                                     }
-                                                    else
-                                                    {
-                                                        echo "<div class=\"col-md-8\">";
-                                                    }
+                                                    echo "<div class=\"col-md-8\">";
                                                     echo "<table>";
                                                     echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
                                                     echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
@@ -445,12 +442,10 @@ session_start();
                                                     $AVoteType = -1;
                                                     if ($rowA["bestAnswer"] == 1)
                                                     {
-                                                        echo '<div class="col-md-8" style="background-color:#28B463;">';
+                                                        echo "THIS QUESTION HAS BEEN LIKED BY THE USER";
                                                     }
-                                                    else
-                                                    {
-                                                        echo "<div class=\"col-md-8\">";
-                                                    }
+                                                   
+                                                    echo "<div class=\"col-md-8\">";
                                                     echo "<table>";
                                                     echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
                                                     echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
@@ -479,12 +474,9 @@ session_start();
                                     {
                                         if ($rowA["bestAnswer"] == 1)
                                         {
-                                            echo '<div class="col-md-8" style="background-color:#28B463;">';
+                                            echo "THIS QUESTION HAS BEEN LIKED BY THE USER";
                                         }
-                                        else
-                                        {
-                                            echo "<div class=\"col-md-8\">";
-                                        }
+                                        echo "<div class=\"col-md-8\">";
                                         echo "<table>";
                                         echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
                                         echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
