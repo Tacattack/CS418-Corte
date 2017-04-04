@@ -423,9 +423,36 @@ session_start();
                             }
                         echo "<br />";
                     echo "</ul>";
+                    
                     if (isset($_POST["APlusOne"]))
                     {
+                        $AID = $_REQUEST["AID"];
+                        $QID = $_GET["id"];
+                        $AnswerScoreAdd = 0;
                         
+                        $sqlAdd = "SELECT * FROM Answers WHERE AnswerID='".$AID."' AND questionID='".$QID."'";
+                        $resultAdd = mysqli_query($conn, $sqlAdd);
+                        if (mysqli_num_rows($resultAdd) > 0)
+                        {
+                          while ($rowAdd = mysqli_fetch_assoc($resultAdd))
+                          {
+                              $AnswerScoreAdd = $rowAdd["answerScore"];
+                          }
+                        }
+                        
+                        $AnswerScoreAdd = $AnswerScoreAdd + 1;
+                        
+                        $sqlUpdateAdd = "UPDATE Answers SET answerScore='".$AnswerScoreAdd."' WHERE AnswerID='".$AID."'";
+                        
+                        if (mysqli_query($conn, $sqlUpdateAdd))
+                        {
+                            echo "Score Updated";
+                            header("Location: QuestionView.php?id=".$_GET["id"]);
+                        }
+                        else
+                        {
+                            echo "Error: " . $sqlUpdateAdd . "<br>" . mysqli_error($conn);
+                        }
                     }
                     
                     if (isset($_POST["AMinusOne"]))
