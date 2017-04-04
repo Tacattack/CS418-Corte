@@ -437,7 +437,7 @@ session_start();
                                                     {
                                                         echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" disabled>";
                                                     }
-                                                    echo "/form>";
+                                                    echo "</form>";
                                                     echo "</td></tr>";
                                                     echo "</table><hr></div>";
                                                 }
@@ -471,7 +471,7 @@ session_start();
                                                     {
                                                         echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" disabled>";
                                                     }
-                                                    echo "/form>";
+                                                    echo "</form>";
                                                     echo "</td></tr>";
                                                     echo "</table><hr></div>";
                                                 }
@@ -508,7 +508,7 @@ session_start();
                                         {
                                             echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" disabled>";
                                         }
-                                        echo "/form>";
+                                        echo "</form>";
                                         echo "</td></tr>";
                                         echo "</table><hr></div>";
                                     }
