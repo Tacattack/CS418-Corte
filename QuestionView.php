@@ -246,7 +246,8 @@ session_start();
                             if (mysqli_query($conn, $sqlUpdate))
                             {
                                 echo "Score Updated";
-                                header("Location: QuestionView.php?id=".$QuestionIDTemp);   
+                                header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                die();
                             }
                             else
                             {
@@ -285,7 +286,8 @@ session_start();
                                     if (mysqli_query($conn, $sqlInsertV))
                                     {
                                         echo "Score Updated";
-                                        header("Location: QuestionView.php?id=".$QuestionIDTemp);   
+                                        header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                        die();
                                     }
                                     else
                                     {
@@ -307,7 +309,8 @@ session_start();
                                     if (mysqli_query($conn, $sqlUpdateV))
                                     {
                                         echo "Score Updated";
-                                        header("Location: QuestionView.php?id=".$QuestionIDTemp);   
+                                        header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                        die();
                                     }
                                     else
                                     {
@@ -349,7 +352,8 @@ session_start();
                                         if (mysqli_query($conn, $sqlInsertV))
                                         {
                                             echo "Score Updated";
-                                            header("Location: QuestionView.php?id=".$QuestionIDTemp);   
+                                            header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                            die();
                                         }
                                         else
                                         {
@@ -371,7 +375,8 @@ session_start();
                                         if (mysqli_query($conn, $sqlUpdateV))
                                         {
                                             echo "Score Updated";
-                                            header("Location: QuestionView.php?id=".$QuestionIDTemp);   
+                                            header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                            die();
                                         }
                                         else
                                         {
@@ -544,6 +549,7 @@ session_start();
                                 if (mysqli_query($conn, $sqlInsertV))
                                 {
                                     header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                    die();
                                 }
                                 else
                                 {echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);}
@@ -563,6 +569,7 @@ session_start();
                                 if (mysqli_query($conn, $sqlUpdateV))
                                 {
                                     header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                    die();
                                 }
                                 else
                                 {echo "Error: " . $sqlUpdateV . "<br>" . mysqli_error($conn);}
@@ -599,6 +606,7 @@ session_start();
                                 if (mysqli_query($conn, $sqlInsertV))
                                 {
                                     header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                    die();
                                 }
                                 else
                                 {echo "Error: " . $sqlInsertV . "<br>" . mysqli_error($conn);}
@@ -618,6 +626,7 @@ session_start();
                                 if (mysqli_query($conn, $sqlUpdateV))
                                 {
                                     header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                    die();
                                 }
                                 else
                                 {echo "Error: " . $sqlUpdateV . "<br>" . mysqli_error($conn);}
@@ -637,6 +646,7 @@ session_start();
                         if (mysqli_query($conn, $sqlUpdate))
                             {
                                 header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                die();
                             }
                             else 
                             {echo "Error: " . $sqlUpdate . "<br>" . mysqli_error($conn);}
@@ -662,6 +672,7 @@ session_start();
                         if (mysqli_query($conn, $AnswerCreate)) {
                             echo "New record created successfully";
                             header("Location: QuestionView.php?id=".$_GET["id"]);
+                            die();
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                         }
