@@ -427,7 +427,7 @@ session_start();
                                                     {
                                                         echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
                                                     }
-                                                    else if ($rowA["bestAnswer"] == 1)
+                                                    else if ($rowA["bestAnswer"] == 1 && $row["questionPoster"] == $_SESSION["USER"])
                                                     {
                                                         echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" disabled>";
                                                     }
@@ -456,7 +456,7 @@ session_start();
                                                     {
                                                         echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
                                                     }
-                                                    else if ($rowA["bestAnswer"] == 1)
+                                                    else if ($rowA["bestAnswer"] == 1 && $row["questionPoster"] == $_SESSION["USER"])
                                                     {
                                                         echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" disabled>";
                                                     }
@@ -488,7 +488,7 @@ session_start();
                                         {
                                             echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\">";
                                         }
-                                        else if ($rowA["bestAnswer"] == 1)
+                                        else if ($rowA["bestAnswer"] == 1 && $row["questionPoster"] == $_SESSION["USER"])
                                         {
                                             echo "<input type=\"submit\" class=\"btn btn-primary\" name=\"ALike\" value=\"LIKE\" disabled>";
                                         }
