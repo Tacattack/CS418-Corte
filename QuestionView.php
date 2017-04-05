@@ -381,8 +381,6 @@ session_start();
                                     }
                                 }
                         }
-                    }
-                }
                         ?>
                         <?php
                         echo "<div id=\"Answers\">";
@@ -422,8 +420,9 @@ session_start();
                                 }
                             }
                         echo "<br />";
+                    }
                     echo "</ul>";
-                    
+                }
                     if (isset($_POST["APlusOne"]))
                     {
                         $AID = $_REQUEST["AID"];
