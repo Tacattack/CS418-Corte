@@ -218,25 +218,28 @@ session_start();
                             }
                         }
                         
-                        if ($voteType == 0)
+                        if (isset($_SESSION["USER"]))
                         {
-                            echo "<form method=\"post\">";
-                            echo $row["questionScore"];
-                            echo "&nbsp&nbsp&nbsp";
-                            echo "<input type=\"submit\" class=\"btn btn-success\" name=\"PlusOne\" value=\"+1\">";
-                            echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"MinusOne\" value=\"-1\">";
-                            echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
-                            if ($row["questionFrozen"] == 1 && $_SESSION["USERLEVEL"] == 1)
+                            if ($voteType == 0)
                             {
-                                echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\" disabled>";
-                                $Frozen = 1;
-                            }
-                            else if ($row["questionFrozen"] == 0 && $_SESSION["USERLEVEL"] == 1)
-                            {
-                                echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\">";
-                                $Frozen = 0; 
-                            }
-                            echo "</form>";
+                                echo "<form method=\"post\">";
+                                echo $row["questionScore"];
+                                echo "&nbsp&nbsp&nbsp";
+                                echo "<input type=\"submit\" class=\"btn btn-success\" name=\"PlusOne\" value=\"+1\">";
+                                echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"MinusOne\" value=\"-1\">";
+                                echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+                                if ($row["questionFrozen"] == 1 && $_SESSION["USERLEVEL"] == 1)
+                                {
+                                    echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\" disabled>";
+                                    $Frozen = 1;
+                                }
+                                else if ($row["questionFrozen"] == 0 && $_SESSION["USERLEVEL"] == 1)
+                                {
+                                    echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\">";
+                                    $Frozen = 0; 
+                                }
+                                echo "</form>";
+                            } 
                         }
                         
                         echo "<hr>";
@@ -249,8 +252,8 @@ session_start();
                             
                             if (mysqli_query($conn, $sqlUpdate))
                             {
-                                echo "FREEZE UPDATE : ".$sqlUpdate."<br>";
-                                //header("Refresh:1");
+                                //echo "FREEZE UPDATE : ".$sqlUpdate."<br>";
+                                header("Refresh:1");
                             }
                             else
                             {
@@ -288,9 +291,9 @@ session_start();
                                     
                                     if (mysqli_query($conn, $sqlInsertV))
                                     {
-                                        echo "PLUS UPDATE : ".$sqlUpdate."<br>";
-                                        echo "PLUS INSERTV : ".$sqlInsertV."<br>";
-                                        //header("Refresh:0");
+                                        //echo "PLUS UPDATE : ".$sqlUpdate."<br>";
+                                        //echo "PLUS INSERTV : ".$sqlInsertV."<br>";
+                                        header("Refresh:0");
                                     }
                                     else
                                     {
@@ -311,9 +314,9 @@ session_start();
                                     
                                     if (mysqli_query($conn, $sqlUpdateV))
                                     {
-                                        echo "PLUS UPDATE : ".$sqlUpdate."<br>";
-                                        echo "PLUS UPDATEV : ".$sqlUpdateV."<br>";
-                                        //header("Refresh:1");
+                                        //echo "PLUS UPDATE : ".$sqlUpdate."<br>";
+                                        //echo "PLUS UPDATEV : ".$sqlUpdateV."<br>";
+                                        header("Refresh:1");
                                     }
                                     else
                                     {
@@ -354,9 +357,9 @@ session_start();
 
                                         if (mysqli_query($conn, $sqlInsertV))
                                         {
-                                            echo "MINUS UPDATE : ".$sqlUpdate."<br>";
-                                            echo "MINUS INSERTV : ".$sqlInsertV."<br>";
-                                            //header("Refresh:1");
+                                            //echo "MINUS UPDATE : ".$sqlUpdate."<br>";
+                                            //echo "MINUS INSERTV : ".$sqlInsertV."<br>";
+                                            header("Refresh:1");
                                         }
                                         else
                                         {
@@ -376,9 +379,9 @@ session_start();
 
                                         if (mysqli_query($conn, $sqlUpdateV))
                                         {
-                                            echo "MINUS UPDATE : ".$sqlUpdate."<br>";
-                                            echo "MINUS UPDATEV : ".$sqlUpdateV."<br>";
-                                            //header("Refresh:1");
+                                            //echo "MINUS UPDATE : ".$sqlUpdate."<br>";
+                                            //echo "MINUS UPDATEV : ".$sqlUpdateV."<br>";
+                                            header("Refresh:1");
                                         }
                                         else
                                         {
@@ -453,8 +456,8 @@ session_start();
                         
                         if (mysqli_query($conn, $sqlUpdateAdd))
                         {
-                            echo "ANSWER PLUS UPDATE : ".$sqlUpdateAdd."<br>";
-                            //header("Refresh:1");
+                            //echo "ANSWER PLUS UPDATE : ".$sqlUpdateAdd."<br>";
+                            header("Refresh:1");
                         }
                         else
                         {
@@ -479,8 +482,8 @@ session_start();
                         VALUES('{$AnswerID}', '{$AnswerBody}', '{$_SESSION["USER"]}')";
 
                         if (mysqli_query($conn, $AnswerCreate)) {
-                            echo "ANSWER INSERT: ".$AnswerCreate."<br>";
-                            //header("Refresh:1");
+                            //echo "ANSWER INSERT: ".$AnswerCreate."<br>";
+                            header("Refresh:1");
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                         }
