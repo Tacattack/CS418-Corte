@@ -169,47 +169,50 @@ session_start();
                         {
                             while ($rowV = mysqli_fetch_assoc($resultV))
                             {
-                                if ($rowV["user"] == $_SESSION["USER"])
+                                if (isset($_SESSION["USER"]))
                                 {
-                                    if ($rowV["voteType"] == 1)
+                                    if ($rowV["user"] == $_SESSION["USER"])
                                     {
-                                        $voteType = 1;
-                                        echo "<form method=\"post\">";
-                                        echo "<span style=\"color:green;\"><b>".$row["questionScore"]."</b><span>";
-                                        echo "&nbsp&nbsp&nbsp";
-                                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"MinusOne\" value=\"-1\">";
-                                        echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
-                                        if ($row["questionFrozen"] == 1)
+                                        if ($rowV["voteType"] == 1)
                                         {
-                                            echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\" disabled>";
-                                            $Frozen = 1;
+                                            $voteType = 1;
+                                            echo "<form method=\"post\">";
+                                            echo "<span style=\"color:green;\"><b>".$row["questionScore"]."</b><span>";
+                                            echo "&nbsp&nbsp&nbsp";
+                                            echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"MinusOne\" value=\"-1\">";
+                                            echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+                                            if ($row["questionFrozen"] == 1 && $_SESSION["USERLEVEL"] == 1)
+                                            {
+                                                echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\" disabled>";
+                                                $Frozen = 1;
+                                            }
+                                            else if ($row["questionFrozen"] == 0 && $_SESSION["USERLEVEL"] == 1)
+                                            {
+                                               echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\">";
+                                                $Frozen = 0; 
+                                            }
+                                            echo "</form>";
                                         }
-                                        else
+                                        else if ($rowV["voteType"] == -1)
                                         {
-                                           echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\">";
-                                            $Frozen = 0; 
+                                            $voteType = -1;
+                                            echo "<form method=\"post\">";
+                                            echo "<span style=\"color:red;\"><b>".$row["questionScore"]."</b><span>";
+                                            echo "&nbsp&nbsp&nbsp";
+                                            echo "<input type=\"submit\" class=\"btn btn-success\" name=\"PlusOne\" value=\"+1\">";
+                                            echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
+                                            if ($row["questionFrozen"] == 1 && $_SESSION["USERLEVEL"] == 1)
+                                            {
+                                                echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\" disabled>";
+                                                $Frozen = 1;
+                                            }
+                                            else if($row["questionFrozen"] == 0 && $_SESSION["USERLEVEL"] == 1)
+                                            {
+                                               echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\">";
+                                                $Frozen = 0; 
+                                            }
+                                            echo "</form>";
                                         }
-                                        echo "</form>";
-                                    }
-                                    else if ($rowV["voteType"] == -1)
-                                    {
-                                        $voteType = -1;
-                                        echo "<form method=\"post\">";
-                                        echo "<span style=\"color:red;\"><b>".$row["questionScore"]."</b><span>";
-                                        echo "&nbsp&nbsp&nbsp";
-                                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"PlusOne\" value=\"+1\">";
-                                        echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
-                                        if ($row["questionFrozen"] == 1)
-                                        {
-                                            echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\" disabled>";
-                                            $Frozen = 1;
-                                        }
-                                        else
-                                        {
-                                           echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\">";
-                                            $Frozen = 0; 
-                                        }
-                                        echo "</form>";
                                     }
                                 }
                             }
@@ -223,12 +226,12 @@ session_start();
                             echo "<input type=\"submit\" class=\"btn btn-success\" name=\"PlusOne\" value=\"+1\">";
                             echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"MinusOne\" value=\"-1\">";
                             echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp";
-                            if ($row["questionFrozen"] == 1)
+                            if ($row["questionFrozen"] == 1 && $_SESSION["USERLEVEL"] == 1)
                             {
                                 echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\" disabled>";
                                 $Frozen = 1;
                             }
-                            else
+                            else if ($row["questionFrozen"] == 0 && $_SESSION["USERLEVEL"] == 1)
                             {
                                 echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\">";
                                 $Frozen = 0; 
