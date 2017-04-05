@@ -116,7 +116,7 @@ session_start();
             <form class="FormLogin navbar-form" action="" method="post">
             <b style=color:white;">Search Users:</b>
             <div id="form-group">
-                <input type="text" name="userSearch" placeholder="Search Users" id="form-control">
+                <input type="text" name="userSearch" placeholder="Search Users" id="form-control"  onkeyup=showHint(this.value)>
                 <p>Suggestions: <span id =\"txt-hint\"></span></p>
             </div>
             &nbsp&nbsp&nbsp
