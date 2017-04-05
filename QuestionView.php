@@ -253,7 +253,7 @@ session_start();
                             if (mysqli_query($conn, $sqlUpdate))
                             {
                                 //echo "FREEZE UPDATE : ".$sqlUpdate."<br>";
-                                header("Refresh:1");
+                                header("Location:QuestionView.php?id=".$_GET["id"]);
                             }
                             else
                             {
@@ -293,7 +293,7 @@ session_start();
                                     {
                                         //echo "PLUS UPDATE : ".$sqlUpdate."<br>";
                                         //echo "PLUS INSERTV : ".$sqlInsertV."<br>";
-                                        header("Refresh:0");
+                                        header("Location:QuestionView.php?id=".$_GET["id"]);
                                     }
                                     else
                                     {
@@ -316,7 +316,7 @@ session_start();
                                     {
                                         //echo "PLUS UPDATE : ".$sqlUpdate."<br>";
                                         //echo "PLUS UPDATEV : ".$sqlUpdateV."<br>";
-                                        header("Refresh:1");
+                                        header("Location:QuestionView.php?id=".$_GET["id"]);
                                     }
                                     else
                                     {
@@ -359,7 +359,7 @@ session_start();
                                         {
                                             //echo "MINUS UPDATE : ".$sqlUpdate."<br>";
                                             //echo "MINUS INSERTV : ".$sqlInsertV."<br>";
-                                            header("Refresh:1");
+                                            header("Location:QuestionView.php?id=".$_GET["id"]);
                                         }
                                         else
                                         {
@@ -381,7 +381,7 @@ session_start();
                                         {
                                             //echo "MINUS UPDATE : ".$sqlUpdate."<br>";
                                             //echo "MINUS UPDATEV : ".$sqlUpdateV."<br>";
-                                            header("Refresh:1");
+                                            header("Location:QuestionView.php?id=".$_GET["id"]);
                                         }
                                         else
                                         {
@@ -457,7 +457,7 @@ session_start();
                         if (mysqli_query($conn, $sqlUpdateAdd))
                         {
                             //echo "ANSWER PLUS UPDATE : ".$sqlUpdateAdd."<br>";
-                            header("Refresh:1");
+                            header("Location:QuestionView.php?id=".$_GET["id"]);
                         }
                         else
                         {
@@ -483,7 +483,7 @@ session_start();
 
                         if (mysqli_query($conn, $AnswerCreate)) {
                             //echo "ANSWER INSERT: ".$AnswerCreate."<br>";
-                            header("Refresh:1");
+                            header("Location:QuestionView.php?id=".$_GET["id"]);
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                         }
