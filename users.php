@@ -129,6 +129,7 @@ session_start();
                         echo "<b style=\"color:white;\">Search Users:</b>";
                         echo "<div id=\"form-group\">";
                         echo "<input type=\"text\" name=\"userSearch\" placeholder=\"Search Users\" id=\"form-control\" onkeyup=\"showHint(this.value)\">";
+                        echo "<p>Suggestions: <span id =\"text-hint\"></span></p>";
                         echo "</div>";
                         echo "&nbsp&nbsp&nbsp";
                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"submit\" value=\"Search\">";
@@ -224,7 +225,7 @@ session_start();
         if (str.length == 0)
         {
             document.getElementById("form-group").innerhtml = str;
-            document.getElementById("form-group").style.border="0px";
+            //document.getElementById("form-group").style.border="0px";
             return;
         }
         else
@@ -234,8 +235,8 @@ session_start();
          {
              if(this.readyState == 4 && this.status == 200)
              {
-             document.getElementById("form-group").innerHTML = this.responseText;
-             document.getElementById("form-group").style.border="1px solid #A5ACB2";
+             document.getElementById("txt-hint").innerHTML = this.responseText;
+             //document.getElementById("form-group").style.border="1px solid #A5ACB2";
              }
          }
         };
