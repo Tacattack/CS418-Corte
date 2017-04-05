@@ -117,6 +117,7 @@ session_start();
             <b style=color:white;">Search Users:</b>
             <div id="form-group">
                 <input type="text" name="userSearch" placeholder="Search Users" id="form-control">
+                <p>Suggestions: <span id =\"txt-hint\"></span></p>
             </div>
             &nbsp&nbsp&nbsp
             <input type="submit" class="btn btn-success" name="search" value="Search">
@@ -201,5 +202,32 @@ while ($row = mysql_fetch_assoc($rs_result)) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="bootstrapDist/dist/js/bootstrap.min.js"></script>
+        <script>
+    function showHint(str)
+    {
+        var xhttp;
+        
+        if (str.length == 0)
+        {
+            document.getElementById("txt-hint").innerhtml = str;
+            //document.getElementById("form-group").style.border="0px";
+            return;
+        }
+        else
+        {
+         xhttp = new XMLHttpRequest();
+         xhttp.onreadystatechange = function()
+         {
+             if(this.readyState == 4 && this.status == 200)
+             {
+             document.getElementById("txt-hint").innerHTML = this.responseText;
+             //document.getElementById("form-group").style.border="1px solid #A5ACB2";
+             }
+         }
+        };
+        xhttp.open("GET","PHP/getuser.php?q=" + str,true);
+        xhttp.send();
+    }
+    </script>
   </body>
 </html>

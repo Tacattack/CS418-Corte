@@ -128,8 +128,8 @@ session_start();
                         echo "<form class=\"FormLogin navbar-form\" action=\"\" method=\"post\">";
                         echo "<b style=\"color:white;\">Search Users:</b>";
                         echo "<div id=\"form-group\">";
-                        echo "<input type=\"text\" name=\"userSearch\" placeholder=\"Search Users\" id=\"form-control\" onkeyup=\"showHint(this.value)\">";
-                        echo "<p>Suggestions: <span id =\"text-hint\"></span></p>";
+                        echo "<input type=\"text\" name=\"userSearch\" placeholder=\"Search Users\" onkeyup=\"showHint(this.value)\">";
+                        echo "<p>Suggestions: <span id =\"txt-hint\"></span></p>";
                         echo "</div>";
                         echo "&nbsp&nbsp&nbsp";
                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"submit\" value=\"Search\">";
@@ -224,7 +224,7 @@ session_start();
         
         if (str.length == 0)
         {
-            document.getElementById("form-group").innerhtml = str;
+            document.getElementById("txt-hint").innerhtml = str;
             //document.getElementById("form-group").style.border="0px";
             return;
         }
