@@ -421,6 +421,7 @@ session_start();
                                         echo "<span><b>".$rowA["answerScore"]."</b><span>";
                                         echo "&nbsp&nbsp&nbsp";
                                         echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
+                                        echo "AID: ".$rowA["AnswerID"]."<br>";
                                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
                                         echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
                                         echo "</form>";
@@ -463,6 +464,7 @@ session_start();
                 {
                     $AID = $_REQUEST["AID"];
                     $QID = $_GET["id"];
+                    
                     $AnswerScoreAdd = 0;
 
                     $sqlAdd = "SELECT * FROM Answers WHERE AnswerID='".$AID."' AND questionID='".$QID."'";
@@ -489,6 +491,7 @@ session_start();
                         echo "Error: " . $sqlUpdateAdd . "<br>" . mysqli_error($conn);
                     }
                 }
+                
                 mysqli_close($conn);
             ?>
         </div>
