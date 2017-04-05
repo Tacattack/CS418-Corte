@@ -246,7 +246,6 @@ session_start();
                             if (mysqli_query($conn, $sqlUpdate))
                             {
                                 header("Refresh:1");
-                                exit();
                             }
                             else
                             {
@@ -285,7 +284,6 @@ session_start();
                                     if (mysqli_query($conn, $sqlInsertV))
                                     {
                                         header("Refresh:0");
-                                        exit();
                                     }
                                     else
                                     {
@@ -307,7 +305,6 @@ session_start();
                                     if (mysqli_query($conn, $sqlUpdateV))
                                     {
                                         header("Refresh:1");
-                                        exit();
                                     }
                                     else
                                     {
@@ -349,7 +346,6 @@ session_start();
                                         if (mysqli_query($conn, $sqlInsertV))
                                         {
                                             header("Refresh:1");
-                                            exit();
                                         }
                                         else
                                         {
@@ -370,7 +366,6 @@ session_start();
                                         if (mysqli_query($conn, $sqlUpdateV))
                                         {
                                             header("Refresh:1");
-                                            exit();
                                         }
                                         else
                                         {
@@ -446,7 +441,6 @@ session_start();
                         if (mysqli_query($conn, $sqlUpdateAdd))
                         {
                             header("Refresh:1");
-                            exit();
                         }
                         else
                         {
@@ -477,7 +471,6 @@ session_start();
 
                         if (mysqli_query($conn, $AnswerCreate)) {
                             header("Refresh:1");
-                            exit();
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                         }
