@@ -1,5 +1,5 @@
 <?php
-$q = $_GET['q'];
+$q = $_REQUEST['q'];
 $hint = '';
 
      $servername = "localhost";
