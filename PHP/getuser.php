@@ -17,12 +17,10 @@ $hint = '';
             
     $sql = "SELECT username FROM UserProfile ";
     $result = mysqli_query($conn,$sql);
-    $array = new sqlArray(mysqli_num_fields($result));
-    $i = 0;
+    
     while($row = mysqli_fetch_array($result)) {
-     $array[$i] = $row['username'];
+     $array[] = $row['username'];
     //$a = array_fill(0, mysqli_num_rows($result),$row['username']);
-     $i++;
     }
     
     if ($q !== "") {
