@@ -136,6 +136,7 @@ session_start();
                             echo "<p>This means that you will not be able to post anymore answers on this question</p>";
                             echo "</div>";
                         }
+                        echo "SESSION USER: ".$_SESSION["USER"]."<br>";
                         echo "<div id=\"QuestionTitle\">";
                         echo "<h1>" . $row["questionTitle"] . "</h1>";
                         echo "</div>";
@@ -245,7 +246,8 @@ session_start();
                             
                             if (mysqli_query($conn, $sqlUpdate))
                             {
-                                header("Refresh:1");
+                                echo "FREEZE UPDATE : ".$sqlUpdate."<br>";
+                                //header("Refresh:1");
                             }
                             else
                             {
@@ -283,7 +285,9 @@ session_start();
                                     
                                     if (mysqli_query($conn, $sqlInsertV))
                                     {
-                                        header("Refresh:0");
+                                        echo "PLUS UPDATE : ".$sqlUpdate."<br>";
+                                        echo "PLUS INSERTV : ".$sqlInsertV."<br>";
+                                        //header("Refresh:0");
                                     }
                                     else
                                     {
@@ -304,7 +308,9 @@ session_start();
                                     
                                     if (mysqli_query($conn, $sqlUpdateV))
                                     {
-                                        header("Refresh:1");
+                                        echo "PLUS UPDATE : ".$sqlUpdate."<br>";
+                                        echo "PLUS UPDATEV : ".$sqlUpdateV."<br>";
+                                        //header("Refresh:1");
                                     }
                                     else
                                     {
@@ -345,7 +351,9 @@ session_start();
 
                                         if (mysqli_query($conn, $sqlInsertV))
                                         {
-                                            header("Refresh:1");
+                                            echo "MINUS UPDATE : ".$sqlUpdate."<br>";
+                                            echo "MINUS INSERTV : ".$sqlInsertV."<br>";
+                                            //header("Refresh:1");
                                         }
                                         else
                                         {
@@ -365,7 +373,9 @@ session_start();
 
                                         if (mysqli_query($conn, $sqlUpdateV))
                                         {
-                                            header("Refresh:1");
+                                            echo "MINUS UPDATE : ".$sqlUpdate."<br>";
+                                            echo "MINUS UPDATEV : ".$sqlUpdateV."<br>";
+                                            //header("Refresh:1");
                                         }
                                         else
                                         {
@@ -440,17 +450,13 @@ session_start();
                         
                         if (mysqli_query($conn, $sqlUpdateAdd))
                         {
-                            header("Refresh:1");
+                            echo "ANSWER PLUS UPDATE : ".$sqlUpdateAdd."<br>";
+                            //header("Refresh:1");
                         }
                         else
                         {
                             echo "Error: " . $sqlUpdateAdd . "<br>" . mysqli_error($conn);
                         }
-                    }
-                    
-                    if (isset($_POST["AMinusOne"]))
-                    {
-                        
                     }
                 
                 if (isset($_SESSION["USER"]) && $Frozen == 0)
@@ -470,7 +476,8 @@ session_start();
                         VALUES('{$AnswerID}', '{$AnswerBody}', '{$_SESSION["USER"]}')";
 
                         if (mysqli_query($conn, $AnswerCreate)) {
-                            header("Refresh:1");
+                            echo "ANSWER INSERT: ".$AnswerCreate."<br>";
+                            //header("Refresh:1");
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                         }
