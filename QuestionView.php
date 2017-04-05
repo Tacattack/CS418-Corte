@@ -26,22 +26,6 @@ session_start();
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    
-    <script>
-        function PlusScore(AID, QID)
-        {
-            if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-            } else {
-                // code for IE6, IE5
-                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-            }
-            
-            xmlhttp.open("GET","AnswerVotingPlus.php?a="+AID+"&q="+QID,true);
-            xmlhttp.send();
-        }
-    </script>
   </head>
 
   <body>
@@ -437,10 +421,9 @@ session_start();
                                         echo "<span><b>".$rowA["answerScore"]."</b><span>";
                                         echo "&nbsp&nbsp&nbsp";
                                         echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
-                                        echo "<input type=\"hidden\" name=\"QID\" value=\"".$_GET["id"]."\">";
                                         echo "AID: ".$rowA["AnswerID"]."<br>";
-                                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\" onlick=\"PlusScore(".$rowA["AnswerID"].", ".$_GET["id"].")\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\" onlick=\"MinusScore(".$rowA["AnswerID"].", ".$_GET["id"].")\">";
+                                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
+                                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
                                         echo "</form>";
                                         echo "</td></tr>";
                                         echo "</table><hr></div>";
@@ -474,6 +457,38 @@ session_start();
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                         }
+                    }
+                }
+                
+                if (isset($_POST["APlusOne"]))
+                {
+                    $AID = $_REQUEST["AID"];
+                    $QID = $_GET["id"];
+                    
+                    $AnswerScoreAdd = 0;
+
+                    $sqlAdd = "SELECT * FROM Answers WHERE AnswerID='".$AID."' AND questionID='".$QID."'";
+                    $resultAdd = mysqli_query($conn, $sqlAdd);
+                    if (mysqli_num_rows($resultAdd) > 0)
+                    {
+                        while ($rowAdd = mysqli_fetch_assoc($resultAdd))
+                        {
+                            $AnswerScoreAdd = $rowAdd["answerScore"];
+                        }
+                    }
+
+                    $AnswerScoreAdd = $AnswerScoreAdd + 1;
+
+                    $sqlUpdateAdd = "UPDATE Answers SET answerScore='".$AnswerScoreAdd."' WHERE AnswerID='".$AID."'";
+
+                    if (mysqli_query($conn, $sqlUpdateAdd))
+                    {
+                        //echo "ANSWER PLUS UPDATE : ".$sqlUpdateAdd."<br>";
+                        header("Location:QuestionView.php?id=".$_GET["id"]);
+                    }
+                    else
+                    {
+                        echo "Error: " . $sqlUpdateAdd . "<br>" . mysqli_error($conn);
                     }
                 }
                 
