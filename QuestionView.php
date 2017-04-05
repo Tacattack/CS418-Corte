@@ -245,7 +245,7 @@ session_start();
                             
                             if (mysqli_query($conn, $sqlUpdate))
                             {
-                                header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                header("Location: QuestionView.php?id=".$QuestionIDTemp, true);
                             }
                             else
                             {
@@ -283,7 +283,7 @@ session_start();
                                     
                                     if (mysqli_query($conn, $sqlInsertV))
                                     {
-                                        header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                        header("Location: QuestionView.php?id=".$QuestionIDTemp, true);
                                     }
                                     else
                                     {
@@ -304,7 +304,7 @@ session_start();
                                     
                                     if (mysqli_query($conn, $sqlUpdateV))
                                     {
-                                        header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                        header("Location: QuestionView.php?id=".$QuestionIDTemp, true);
                                     }
                                     else
                                     {
@@ -345,7 +345,7 @@ session_start();
 
                                         if (mysqli_query($conn, $sqlInsertV))
                                         {
-                                            header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                            header("Location: QuestionView.php?id=".$QuestionIDTemp, true);
                                         }
                                         else
                                         {
@@ -365,7 +365,7 @@ session_start();
 
                                         if (mysqli_query($conn, $sqlUpdateV))
                                         {
-                                            header("Location: QuestionView.php?id=".$QuestionIDTemp);
+                                            header("Location: QuestionView.php?id=".$QuestionIDTemp, true);
                                         }
                                         else
                                         {
@@ -441,7 +441,7 @@ session_start();
                         
                         if (mysqli_query($conn, $sqlUpdateAdd))
                         {
-                            header("Location: QuestionView.php?id=".$QID);
+                            header("Location: QuestionView.php?id=".$QID, true);
                         }
                         else
                         {
@@ -471,7 +471,7 @@ session_start();
                         VALUES('{$AnswerID}', '{$AnswerBody}', '{$_SESSION["USER"]}')";
 
                         if (mysqli_query($conn, $AnswerCreate)) {
-                            header("Location: QuestionView.php?id=".$_GET["id"]);
+                            header("Location: QuestionView.php?id=".$_GET["id"], true);
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                         }
