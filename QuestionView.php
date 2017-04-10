@@ -488,7 +488,7 @@ session_start();
                                         {
                                             $AnswerScoreAdd = $AnswerScoreAdd + 1;
                                             $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
-                                            VALUES ('{$QID}','{$AID}','{$_SESSION["USER"]}','{$AVoteType}')";
+                                            VALUES ('{$QID}','{$AID}','{$_SESSION["USER"]}','1')";
                                             if (mysqli_query($conn, $sqlInsertV) == false)
                                             {
                                                 echo "Voting broke";
@@ -534,7 +534,7 @@ session_start();
                                         {
                                             $AnswerScoreAdd = $AnswerScoreAdd - 1;
                                             $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
-                                            VALUES ('{$QID}','{$AID}','{$_SESSION["USER"]}','{$AVoteType}')";
+                                            VALUES ('{$QID}','{$AID}','{$_SESSION["USER"]}','-1')";
                                             if (mysqli_query($conn, $sqlInsertV) == false)
                                             {
                                                 echo "Voting broke";
