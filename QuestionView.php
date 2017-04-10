@@ -582,7 +582,8 @@ session_start();
                                         $AID = $_REQUEST["AID"];
                                         $QID = $_GET["id"];
                                         
-                                        $sqlUpdateAdd = "UPDATE Answers SET bestAnswer='1' WHERE AnswerID='".$AID."'AND questionID='".$QID."'";
+                                        $sqlUpdateAdd = "UPDATE Answers SET bestAnswer='1' WHERE AnswerID='".$AID."'";
+                                        
                                         if (mysqli_query($conn, $sqlUpdateAdd))
                                         {
                                             header("Location:QuestionView.php?id=".$_GET["id"]);
