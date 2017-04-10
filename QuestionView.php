@@ -189,7 +189,7 @@ session_start();
                                             else if ($row["questionFrozen"] == 0 && $_SESSION["USERLEVEL"] == 1)
                                             {
                                                echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\">";
-                                                $Frozen = 0; 
+                                                $Frozen = 0;
                                             }
                                             echo "</form>";
                                         }
@@ -209,7 +209,7 @@ session_start();
                                             else if($row["questionFrozen"] == 0 && $_SESSION["USERLEVEL"] == 1)
                                             {
                                                echo "<input type=\"submit\" class=\"btn btn-warning\" name=\"FreezeQuestion\" value=\"Freeze Question\">";
-                                                $Frozen = 0; 
+                                                $Frozen = 0;
                                             }
                                             echo "</form>";
                                         }
@@ -410,6 +410,49 @@ session_start();
                             {
                                 while ($rowA = mysqli_fetch_assoc($resultA)) 
                                 {   
+                                    if (mysqli_num_rows($resultVA) > 0)
+                                    {
+                                        while ($rowVA = mysqli_fetch_assoc($resultVA))
+                                        {
+                                            if ($rowVA["voteType"] == 1)
+                                            {
+                                                $AVoteType = 1;
+                                                echo "<div class=\"col-md-8\">";
+                                                echo "<table>";
+                                                echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
+                                                echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                                echo "<tr><td>";
+                                                echo "<form method=\"post\">";
+                                                echo "<span><b>".$rowA["answerScore"]."</b><span>";
+                                                echo "&nbsp&nbsp&nbsp";
+                                                echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
+                                                echo "AID: ".$rowA["AnswerID"]."<br>";
+                                                echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinus".$rowA["AnswerID"]."\" value=\"-1\">";
+                                                echo "</form>";
+                                                echo "</td></tr>";
+                                                echo "</table><hr></div>";
+                                            }
+                                            else if ($rowVA["voteType"] == -1)
+                                            {
+                                                $AVoteType = -1;
+                                                echo "<div class=\"col-md-8\">";
+                                                echo "<table>";
+                                                echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
+                                                echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
+                                                echo "<tr><td>";
+                                                echo "<form method=\"post\">";
+                                                echo "<span><b>".$rowA["answerScore"]."</b><span>";
+                                                echo "&nbsp&nbsp&nbsp";
+                                                echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
+                                                echo "AID: ".$rowA["AnswerID"]."<br>";
+                                                echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlus".$rowA["AnswerID"]."\" value=\"+1\">";
+                                                echo "</form>";
+                                                echo "</td></tr>";
+                                                echo "</table><hr></div>";
+                                            }
+                                        }
+                                    }
+                                }
                                     if ($AVoteType == 0)
                                     {
                                         echo "<div class=\"col-md-8\">";
@@ -423,7 +466,7 @@ session_start();
                                         echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
                                         echo "AID: ".$rowA["AnswerID"]."<br>";
                                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlus".$rowA["AnswerID"]."\" value=\"+1\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne".$rowA["AnswerID"]."\" value=\"-1\">";
+                                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinus".$rowA["AnswerID"]."\" value=\"-1\">";
                                         echo "</form>";
                                         echo "</td></tr>";
                                         echo "</table><hr></div>";
@@ -445,14 +488,70 @@ session_start();
                                                 $AnswerScoreAdd = $rowAdd["answerScore"];
                                             }
                                         }
-
-                                        $AnswerScoreAdd = $AnswerScoreAdd + 1;
+                                         
+                                        if ($AVoteType == 0)
+                                        {
+                                            $AnswerScoreAdd = $AnswerScoreAdd + 1;
+                                            $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
+                                            VALUES ('{$QID}','{$AID}','{$_SESSION["USER"]}','{$AVoteType}')";
+                                            if (mysqli_query($conn, $sqlInsertV) == false)
+                                            {
+                                                echo "Voting broke";
+                                            }
+                                        }
+                                        else if ($AVoteType == -1)
+                                        {
+                                            $AnswerScoreAdd = $AnswerScoreAdd + 2;
+                                        }
 
                                         $sqlUpdateAdd = "UPDATE Answers SET answerScore='".$AnswerScoreAdd."' WHERE AnswerID='".$AID."'AND questionID='".$QID."'";
 
                                         if (mysqli_query($conn, $sqlUpdateAdd))
                                         {
-                                            //echo "ANSWER PLUS UPDATE : ".$sqlUpdateAdd."<br>";
+                                            header("Location:QuestionView.php?id=".$_GET["id"]);
+                                        }
+                                        else
+                                        {
+                                            echo "Error: " . $sqlUpdateAdd . "<br>" . mysqli_error($conn);
+                                        }
+                                    }
+                                    
+                                    if (isset($_POST["AMinus".$rowA["AnswerID"].""]))
+                                    {
+                                        $AID = $_REQUEST["AID"];
+                                        $QID = $_GET["id"];
+
+                                        $AnswerScoreAdd = 0;
+
+                                        $sqlAdd = "SELECT * FROM Answers WHERE AnswerID='".$AID."' AND questionID='".$QID."'";
+                                        $resultAdd = mysqli_query($conn, $sqlAdd);
+                                        if (mysqli_num_rows($resultAdd) > 0)
+                                        {
+                                            while ($rowAdd = mysqli_fetch_assoc($resultAdd))
+                                            {
+                                                $AnswerScoreAdd = $rowAdd["answerScore"];
+                                            }
+                                        }
+                                         
+                                        if ($AVoteType == 0)
+                                        {
+                                            $AnswerScoreAdd = $AnswerScoreAdd - 1;
+                                            $sqlInsertV = "INSERT INTO UserAnswerVote (QID, AID, user, voteType)
+                                            VALUES ('{$QID}','{$AID}','{$_SESSION["USER"]}','{$AVoteType}')";
+                                            if (mysqli_query($conn, $sqlInsertV) == false)
+                                            {
+                                                echo "Voting broke";
+                                            }
+                                        }
+                                        else if ($AVoteType == 1)
+                                        {
+                                            $AnswerScoreAdd = $AnswerScoreAdd - 2;
+                                        }
+
+                                        $sqlUpdateAdd = "UPDATE Answers SET answerScore='".$AnswerScoreAdd."' WHERE AnswerID='".$AID."'AND questionID='".$QID."'";
+
+                                        if (mysqli_query($conn, $sqlUpdateAdd))
+                                        {
                                             header("Location:QuestionView.php?id=".$_GET["id"]);
                                         }
                                         else
@@ -465,8 +564,7 @@ session_start();
                         echo "<br />";
                     }
                     echo "</ul>";
-                }
-                
+                    
                 if (isset($_SESSION["USER"]) && $Frozen == 0)
                 {
                     echo "<br><br>";
