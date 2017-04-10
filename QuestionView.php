@@ -426,7 +426,6 @@ session_start();
                                                 echo "<span><b>".$rowA["answerScore"]."</b><span>";
                                                 echo "&nbsp&nbsp&nbsp";
                                                 echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
-                                                echo "AID: ".$rowA["AnswerID"]."<br>";
                                                 echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinus".$rowA["AnswerID"]."\" value=\"-1\">";
                                                 echo "</form>";
                                                 echo "</td></tr>";
@@ -444,7 +443,6 @@ session_start();
                                                 echo "<span><b>".$rowA["answerScore"]."</b><span>";
                                                 echo "&nbsp&nbsp&nbsp";
                                                 echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
-                                                echo "AID: ".$rowA["AnswerID"]."<br>";
                                                 echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlus".$rowA["AnswerID"]."\" value=\"+1\">";
                                                 echo "</form>";
                                                 echo "</td></tr>";
@@ -463,7 +461,6 @@ session_start();
                                         echo "<span><b>".$rowA["answerScore"]."</b><span>";
                                         echo "&nbsp&nbsp&nbsp";
                                         echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
-                                        echo "AID: ".$rowA["AnswerID"]."<br>";
                                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlus".$rowA["AnswerID"]."\" value=\"+1\">";
                                         echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinus".$rowA["AnswerID"]."\" value=\"-1\">";
                                         echo "</form>";
@@ -496,10 +493,12 @@ session_start();
                                             {
                                                 echo "Voting broke";
                                             }
+                                            $AVoteType = 1;
                                         }
                                         else if ($AVoteType == -1)
                                         {
                                             $AnswerScoreAdd = $AnswerScoreAdd + 2;
+                                            $AVoteType = 1;
                                         }
 
                                         $sqlUpdateAdd = "UPDATE Answers SET answerScore='".$AnswerScoreAdd."' WHERE AnswerID='".$AID."'AND questionID='".$QID."'";
@@ -539,11 +538,12 @@ session_start();
                                             if (mysqli_query($conn, $sqlInsertV) == false)
                                             {
                                                 echo "Voting broke";
-                                            }
+                                            }$AVoteType = -1;
                                         }
                                         else if ($AVoteType == 1)
                                         {
                                             $AnswerScoreAdd = $AnswerScoreAdd - 2;
+                                            $AVoteType = -1;
                                         }
 
                                         $sqlUpdateAdd = "UPDATE Answers SET answerScore='".$AnswerScoreAdd."' WHERE AnswerID='".$AID."'AND questionID='".$QID."'";
