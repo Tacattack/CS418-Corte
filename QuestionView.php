@@ -417,7 +417,14 @@ session_start();
                                             if ($rowVA["voteType"] == 1)
                                             {
                                                 $AVoteType = 1;
-                                                echo "<div class=\"col-md-8\">";
+                                                if ($rowA["bestAnswer"] == 1)
+                                                {
+                                                    echo "<div class=\"col-md-8\" style=\"background-color:green\">";
+                                                }
+                                                else
+                                                {
+                                                    echo "<div class=\"col-md-8\">";
+                                                }
                                                 echo "<table>";
                                                 echo "<tr><td>".$rowA["answerBody"]."</td></tr>";
                                                 echo "<tr><td> posted by: ".$rowA["answerPoster"]."</td></tr>";
@@ -427,6 +434,10 @@ session_start();
                                                 echo "&nbsp&nbsp&nbsp";
                                                 echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
                                                 echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinus".$rowA["AnswerID"]."\" value=\"-1\">";
+                                                if ($_SESSION["USER"] == $row["questionPoster"] && $rowA["bestAnswer"] == 0)
+                                                {
+                                                    echo '<input type="submit" class="btn btn-success" name="ALike'.$rowA["AnswerID"].'" value="Like"';
+                                                }
                                                 echo "</form>";
                                                 echo "</td></tr>";
                                                 echo "</table><hr></div>";
@@ -444,6 +455,10 @@ session_start();
                                                 echo "&nbsp&nbsp&nbsp";
                                                 echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
                                                 echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlus".$rowA["AnswerID"]."\" value=\"+1\">";
+                                                if ($_SESSION["USER"] == $row["questionPoster"])
+                                                {
+                                                    echo '<input type="submit" class="btn btn-success" name="ALike'.$rowA["AnswerID"].'" value="Like"';
+                                                }
                                                 echo "</form>";
                                                 echo "</td></tr>";
                                                 echo "</table><hr></div>";
@@ -463,11 +478,15 @@ session_start();
                                         echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
                                         echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlus".$rowA["AnswerID"]."\" value=\"+1\">";
                                         echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinus".$rowA["AnswerID"]."\" value=\"-1\">";
+                                        if ($_SESSION["USER"] == $row["questionPoster"])
+                                                {
+                                                    echo '<input type="submit" class="btn btn-success" name="ALike'.$rowA["AnswerID"].'" value="Like"';
+                                                }
                                         echo "</form>";
                                         echo "</td></tr>";
                                         echo "</table><hr></div>";
                                     }
-                                    if (isset($_POST["APlus".$rowA["AnswerID"].""]))
+                                    if (isset($_POST["APlus".$rowA["AnswerID"]]))
                                     {
                                         $AID = $_REQUEST["AID"];
                                         $QID = $_GET["id"];
@@ -513,7 +532,7 @@ session_start();
                                         }
                                     }
                                     
-                                    if (isset($_POST["AMinus".$rowA["AnswerID"].""]))
+                                    if (isset($_POST["AMinus".$rowA["AnswerID"]]))
                                     {
                                         $AID = $_REQUEST["AID"];
                                         $QID = $_GET["id"];
@@ -548,6 +567,22 @@ session_start();
 
                                         $sqlUpdateAdd = "UPDATE Answers SET answerScore='".$AnswerScoreAdd."' WHERE AnswerID='".$AID."'AND questionID='".$QID."'";
 
+                                        if (mysqli_query($conn, $sqlUpdateAdd))
+                                        {
+                                            header("Location:QuestionView.php?id=".$_GET["id"]);
+                                        }
+                                        else
+                                        {
+                                            echo "Error: " . $sqlUpdateAdd . "<br>" . mysqli_error($conn);
+                                        }
+                                    }
+                                    
+                                    if (isset($_POST["ALike".$rowA["AnswerID"]]))
+                                    {
+                                        $AID = $_REQUEST["AID"];
+                                        $QID = $_GET["id"];
+                                        
+                                        $sqlUpdateAdd = "UPDATE Answers SET bestAnswer='1' WHERE AnswerID='".$AID."'AND questionID='".$QID."'";
                                         if (mysqli_query($conn, $sqlUpdateAdd))
                                         {
                                             header("Location:QuestionView.php?id=".$_GET["id"]);
