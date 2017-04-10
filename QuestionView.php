@@ -433,7 +433,10 @@ session_start();
                                                 echo "<span><b>".$rowA["answerScore"]."</b><span>";
                                                 echo "&nbsp&nbsp&nbsp";
                                                 echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
-                                                echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinus".$rowA["AnswerID"]."\" value=\"-1\">";
+                                                if (isset($_SESSION["USER"]))
+                                                {
+                                                    echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinus".$rowA["AnswerID"]."\" value=\"-1\">";
+                                                }
                                                 if ($_SESSION["USER"] == $row["questionPoster"] && $rowA["bestAnswer"] == 0)
                                                 {
                                                     echo '<input type="submit" class="btn btn-success" name="ALike'.$rowA["AnswerID"].'" value="Like"';
@@ -454,7 +457,10 @@ session_start();
                                                 echo "<span><b>".$rowA["answerScore"]."</b><span>";
                                                 echo "&nbsp&nbsp&nbsp";
                                                 echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
-                                                echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlus".$rowA["AnswerID"]."\" value=\"+1\">";
+                                                if (isset($_SESSION["USER"]))
+                                                {
+                                                    echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlus".$rowA["AnswerID"]."\" value=\"+1\">";
+                                                }
                                                 if ($_SESSION["USER"] == $row["questionPoster"])
                                                 {
                                                     echo '<input type="submit" class="btn btn-success" name="ALike'.$rowA["AnswerID"].'" value="Like"';
@@ -476,11 +482,14 @@ session_start();
                                         echo "<span><b>".$rowA["answerScore"]."</b><span>";
                                         echo "&nbsp&nbsp&nbsp";
                                         echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlus".$rowA["AnswerID"]."\" value=\"+1\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinus".$rowA["AnswerID"]."\" value=\"-1\">";
+                                        if (isset($_SESSION["USER"]))
+                                        {
+                                            echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlus".$rowA["AnswerID"]."\" value=\"+1\">";
+                                            echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinus".$rowA["AnswerID"]."\" value=\"-1\">";
+                                        }
                                         if ($_SESSION["USER"] == $row["questionPoster"])
                                                 {
-                                                    echo '<input type="submit" class="btn btn-success" name="ALike'.$rowA["AnswerID"].'" value="Like"';
+                                                    echo '<input type="submit" class="btn btn-success" name="ALike'.$rowA["AnswerID"].'" value="Like">';
                                                 }
                                         echo "</form>";
                                         echo "</td></tr>";
