@@ -422,11 +422,43 @@ session_start();
                                         echo "&nbsp&nbsp&nbsp";
                                         echo "<input type=\"hidden\" name=\"AID\" value=\"".$rowA["AnswerID"]."\">";
                                         echo "AID: ".$rowA["AnswerID"]."<br>";
-                                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlusOne\" value=\"+1\">";
-                                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne\" value=\"-1\">";
+                                        echo "<input type=\"submit\" class=\"btn btn-success\" name=\"APlus".$rowA["AnswerID"]."\" value=\"+1\">";
+                                        echo "<input type=\"submit\" class=\"btn btn-danger\" name=\"AMinusOne".$rowA["AnswerID"]."\" value=\"-1\">";
                                         echo "</form>";
                                         echo "</td></tr>";
                                         echo "</table><hr></div>";
+                                    }
+                                    
+                                    if (isset($_POST["APlus".$rowA["AnswerID"].""]))
+                                    {
+                                        $AID = $_REQUEST["AID"];
+                                        $QID = $_GET["id"];
+
+                                        $AnswerScoreAdd = 0;
+
+                                        $sqlAdd = "SELECT * FROM Answers WHERE AnswerID='".$AID."' AND questionID='".$QID."'";
+                                        $resultAdd = mysqli_query($conn, $sqlAdd);
+                                        if (mysqli_num_rows($resultAdd) > 0)
+                                        {
+                                            while ($rowAdd = mysqli_fetch_assoc($resultAdd))
+                                            {
+                                                $AnswerScoreAdd = $rowAdd["answerScore"];
+                                            }
+                                        }
+
+                                        $AnswerScoreAdd = $AnswerScoreAdd + 1;
+
+                                        $sqlUpdateAdd = "UPDATE Answers SET answerScore='".$AnswerScoreAdd."' WHERE AnswerID='".$AID."'AND questionID='".$QID."'";
+
+                                        if (mysqli_query($conn, $sqlUpdateAdd))
+                                        {
+                                            //echo "ANSWER PLUS UPDATE : ".$sqlUpdateAdd."<br>";
+                                            header("Location:QuestionView.php?id=".$_GET["id"]);
+                                        }
+                                        else
+                                        {
+                                            echo "Error: " . $sqlUpdateAdd . "<br>" . mysqli_error($conn);
+                                        }
                                     }
                                 }
                             }
@@ -457,38 +489,6 @@ session_start();
                         } else {
                             echo "Error: " . $sql . "<br>" . mysqli_error($conn);
                         }
-                    }
-                }
-                
-                if (isset($_POST["APlusOne"]))
-                {
-                    $AID = $_REQUEST["AID"];
-                    $QID = $_GET["id"];
-                    
-                    $AnswerScoreAdd = 0;
-
-                    $sqlAdd = "SELECT * FROM Answers WHERE AnswerID='".$AID."' AND questionID='".$QID."'";
-                    $resultAdd = mysqli_query($conn, $sqlAdd);
-                    if (mysqli_num_rows($resultAdd) > 0)
-                    {
-                        while ($rowAdd = mysqli_fetch_assoc($resultAdd))
-                        {
-                            $AnswerScoreAdd = $rowAdd["answerScore"];
-                        }
-                    }
-
-                    $AnswerScoreAdd = $AnswerScoreAdd + 1;
-
-                    $sqlUpdateAdd = "UPDATE Answers SET answerScore='".$AnswerScoreAdd."' WHERE AnswerID='".$AID."'AND questionID='".$QID."'";
-
-                    if (mysqli_query($conn, $sqlUpdateAdd))
-                    {
-                        //echo "ANSWER PLUS UPDATE : ".$sqlUpdateAdd."<br>";
-                        header("Location:QuestionView.php?id=".$_GET["id"]);
-                    }
-                    else
-                    {
-                        echo "Error: " . $sqlUpdateAdd . "<br>" . mysqli_error($conn);
                     }
                 }
                 
