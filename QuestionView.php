@@ -470,8 +470,6 @@ session_start();
                                         echo "</td></tr>";
                                         echo "</table><hr></div>";
                                     }
-                                }
-                                    
                                     if (isset($_POST["APlus".$rowA["AnswerID"].""]))
                                     {
                                         $AID = $_REQUEST["AID"];
@@ -561,6 +559,7 @@ session_start();
                                     }
                                 }
                             }
+                        }
                         echo "<br />";
                     }
                     echo "</ul>";
