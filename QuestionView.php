@@ -446,7 +446,7 @@ session_start();
                     if (isset($_POST["submitA"]))
                     {
                         $AnswerID = $_GET["id"];
-                        $AnswerBody = addslashes($_POST['ABody']);
+                        $AnswerBody = mysqli_real_escape_string($conn,htmlspecialchars($_POST['ABody'], ENT_QUOTES|ENT_HTML5));
 
                         $AnswerCreate = "INSERT INTO Answers (questionID, answerBody, answerPoster)
                         VALUES('{$AnswerID}', '{$AnswerBody}', '{$_SESSION["USER"]}')";
@@ -479,7 +479,7 @@ session_start();
 
                     $AnswerScoreAdd = $AnswerScoreAdd + 1;
 
-                    $sqlUpdateAdd = "UPDATE Answers SET answerScore='".$AnswerScoreAdd."' WHERE AnswerID='".$AID."'";
+                    $sqlUpdateAdd = "UPDATE Answers SET answerScore='".$AnswerScoreAdd."' WHERE AnswerID='".$AID."'AND questionID='".$QID."'";
 
                     if (mysqli_query($conn, $sqlUpdateAdd))
                     {
