@@ -452,7 +452,6 @@ session_start();
                                             }
                                         }
                                     }
-                                }
                                     if ($AVoteType == 0)
                                     {
                                         echo "<div class=\"col-md-8\">";
@@ -471,6 +470,7 @@ session_start();
                                         echo "</td></tr>";
                                         echo "</table><hr></div>";
                                     }
+                                }
                                     
                                     if (isset($_POST["APlus".$rowA["AnswerID"].""]))
                                     {
